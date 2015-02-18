@@ -1,80 +1,80 @@
 package fighter.monster;
 
 import cards.Card;
-import cards.Skill;
+import cards.MonsteSkill;
 import fighter.Fighter;
 
 
 public class Monster extends Fighter{
 
 	
-	public static Skill feral = new Skill(new float[]{
+	public static MonsteSkill feral = new MonsteSkill(new float[]{
 			1.2f,
 			1.2f,
 			2.3f,
 			2.3f,
 			3});
 	
-	public static Skill spooky = new Skill(new float[]{
+	public static MonsteSkill spooky = new MonsteSkill(new float[]{
 			1.3f,
 			1.8f,
 			1.8f,
 			2.6f,
 			3.5f});
 	
-	public static Skill rage = new Skill(new float[]{
+	public static MonsteSkill rage = new MonsteSkill(new float[]{
 			0.1f,
 			1.3f,
 			1.3f,
 			2.3f,
 			3.3f});
 	
-	public static Skill stupidity= new Skill(new float[]{
+	public static MonsteSkill stupidity= new MonsteSkill(new float[]{
 			0,
 			0,
 			0,
 			0,
 			0});
 	
-	public static Skill weapon = new Skill(new float[]{
+	public static MonsteSkill weapon = new MonsteSkill(new float[]{
 			1,
 			1,
 			2.3f,	
 			2.3f,
 			3.8f});
 	
-	public static Skill flame = new Skill(new float[]{
+	public static MonsteSkill flame = new MonsteSkill(new float[]{
 			1,
 			1.2f,
 			2,
 			2,
 			3});
 	
-	public static Skill nature = new Skill(new float[]{
+	public static MonsteSkill nature = new MonsteSkill(new float[]{
 			1,
 			1.2f,
 			2,
 			3.5f,
 			3.5f});
 	
-	public static Skill death= new Skill(new float[]{
+	public static MonsteSkill death= new MonsteSkill(new float[]{
 			1,
 			1.5f,
 			2,
 			2.8f,
 			3});
 	
-	public static Skill ferocious = new Skill(new float[]{
+	public static MonsteSkill ferocious = new MonsteSkill(new float[]{
 			2.5f,
 			3.5f,
 			4});
 	
-	public static Skill demonic = new Skill(new float[]{
+	public static MonsteSkill demonic = new MonsteSkill(new float[]{
 			1.8f,
 			2.8f,
 			4});
 	
-	public static Skill sorcery = new Skill(new float[]{
+	public static MonsteSkill sorcery = new MonsteSkill(new float[]{
 			2.2f,
 			2.5f,
 			4});

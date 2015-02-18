@@ -12,7 +12,11 @@ public abstract class Fighter {
 	String name;
 
 	public enum Trait{
-		Tenacious, Brittle, Meaty, Respite, Fury, Burn
+		Tenacious, Brittle, Meaty, Respite, Fury, Burn, BonusHP;
+
+		public String toJson() {
+			return "\""+this+"\"";
+		}
 	}
 
 	protected Trait[] traits;

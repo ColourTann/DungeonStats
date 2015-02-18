@@ -1,7 +1,8 @@
-import fighter.Fighter.Trait;
 import fighter.Fighter.*;
+import item.Item;
 
 import java.util.ArrayList;
+
 
 
 
@@ -96,11 +97,21 @@ public class DStats {
 	static ArrayList<Monster>[] monsterList= new ArrayList[8];
 
 	public static void main(String[] args) {
-		setup();
+		Item.setup();
+		//Item.printNumbers();
+		
+		//Item.analyseLevel(0);
+		
+//		for(int i=1;i<=5;i++){
+//		Item.analyseLevel(i);
+//		}
+		
+		Item.analyseLevel(2, true, true);
+		//Item.printAll();
 		
 		
-	
-		printStrengths(3);
+//		setup();
+//		printStrengths(3);
 		
 	}
 

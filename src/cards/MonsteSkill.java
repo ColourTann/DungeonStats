@@ -2,14 +2,14 @@ package cards;
 
 import java.util.Arrays;
 
-public class Skill {
+public class MonsteSkill {
 	
 	
 	
 	
 	
 	private float[] strengths;
-	public Skill(float[] strengths){
+	public MonsteSkill(float[] strengths){
 		this.strengths=strengths;
 	}
 	public float[] getStrengths(int level){
