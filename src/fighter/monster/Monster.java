@@ -4,6 +4,7 @@ import cards.Card;
 import cards.Skill;
 import fighter.Fighter;
 
+
 public class Monster extends Fighter{
 
 	
@@ -38,7 +39,7 @@ public class Monster extends Fighter{
 	public static Skill weapon = new Skill(new float[]{
 			1,
 			1,
-			2.3f,
+			2.3f,	
 			2.3f,
 			3.8f});
 	
@@ -52,7 +53,7 @@ public class Monster extends Fighter{
 	public static Skill nature = new Skill(new float[]{
 			1,
 			1.2f,
-			3,
+			2,
 			3.5f,
 			3.5f});
 	
@@ -63,17 +64,55 @@ public class Monster extends Fighter{
 			2.8f,
 			3});
 	
+	public static Skill ferocious = new Skill(new float[]{
+			2.5f,
+			3.5f,
+			4});
 	
+	public static Skill demonic = new Skill(new float[]{
+			1.8f,
+			2.8f,
+			4});
+	
+	public static Skill sorcery = new Skill(new float[]{
+			2.2f,
+			2.5f,
+			4});
+	
+	public enum Species{undead, demonic, beast}
 	
 	private int hp;
+	
 	public Monster(String name, int hp, float[]... skills){
 		super(name);
+		setup(hp, skills);
+	}
+	
+	public Monster(String name, int hp, Trait[] traits, float[]... skills){
+		super(name);
+		setup(hp, skills);
+	}
+	
+	public Monster(String name, Species species, int hp, Trait[] traits, float[]... skills){
+		super(name);
+		setup(hp, skills);
+		setup(traits);
+	}
+	
+	
+	
+	
+	public void setup(int hp, float[]... skills){
 		this.hp=hp;
 		for(float cardStats[]:skills){
 			for(float cardStrength:cardStats){
 				addCard(new Card(cardStrength));
 			}
 		}
+	}
+	
+	public void setup(Trait[] traits){
+		this.traits=traits;
 	}
 
 	@Override
