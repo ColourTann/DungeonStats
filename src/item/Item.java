@@ -3,7 +3,7 @@ package item;
 import java.awt.event.TextEvent;
 import java.util.ArrayList;
 
-import cards.MonsteSkill;
+import cards.MSkill;
 import fighter.Fighter.Trait;
 import fighter.player.Skill;
 import fighter.player.Skill.SkillType;

@@ -1,10 +1,10 @@
 package fighter.player;
 
-import cards.MonsteSkill;
+import cards.MSkill;
 import fighter.Fighter;
 
 public abstract class Hero extends Fighter{
-	public static MonsteSkill playerSkill = new MonsteSkill(new float[]{2,2.5f,3});
+	public static MSkill playerSkill = new MSkill("Player", new float[]{2,2.5f,3});
 	private int level;
 	public Hero(String name){
 		super(name);

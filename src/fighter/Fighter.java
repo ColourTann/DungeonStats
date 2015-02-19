@@ -9,7 +9,7 @@ import cards.Card;
 
 public abstract class Fighter {
 	private ArrayList<Card> cards = new ArrayList<>();
-	String name;
+	protected String name;
 
 	public enum Trait{
 		Tenacious, Brittle, Meaty, Respite, Fury, Burn, BonusHP;
@@ -41,6 +41,7 @@ public abstract class Fighter {
 			
 			for(Trait t:traits){
 				switch (t){
+				
 				case Tenacious:
 					bonusHP+=.5f;
 					break;

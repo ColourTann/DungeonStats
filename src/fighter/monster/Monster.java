@@ -1,123 +1,108 @@
 package fighter.monster;
 
 import cards.Card;
-import cards.MonsteSkill;
+import cards.MSkill;
 import fighter.Fighter;
+import fighter.Fighter.Trait;
+import fighter.MonsterFactory.MSound;
+import fighter.player.Skill;
 
 
 public class Monster extends Fighter{
 
-	
-	public static MonsteSkill feral = new MonsteSkill(new float[]{
-			1.2f,
-			1.2f,
-			2.3f,
-			2.3f,
-			3});
-	
-	public static MonsteSkill spooky = new MonsteSkill(new float[]{
-			1.3f,
-			1.8f,
-			1.8f,
-			2.6f,
-			3.5f});
-	
-	public static MonsteSkill rage = new MonsteSkill(new float[]{
-			0.1f,
-			1.3f,
-			1.3f,
-			2.3f,
-			3.3f});
-	
-	public static MonsteSkill stupidity= new MonsteSkill(new float[]{
-			0,
-			0,
-			0,
-			0,
-			0});
-	
-	public static MonsteSkill weapon = new MonsteSkill(new float[]{
-			1,
-			1,
-			2.3f,	
-			2.3f,
-			3.8f});
-	
-	public static MonsteSkill flame = new MonsteSkill(new float[]{
-			1,
-			1.2f,
-			2,
-			2,
-			3});
-	
-	public static MonsteSkill nature = new MonsteSkill(new float[]{
-			1,
-			1.2f,
-			2,
-			3.5f,
-			3.5f});
-	
-	public static MonsteSkill death= new MonsteSkill(new float[]{
-			1,
-			1.5f,
-			2,
-			2.8f,
-			3});
-	
-	public static MonsteSkill ferocious = new MonsteSkill(new float[]{
-			2.5f,
-			3.5f,
-			4});
-	
-	public static MonsteSkill demonic = new MonsteSkill(new float[]{
-			1.8f,
-			2.8f,
-			4});
-	
-	public static MonsteSkill sorcery = new MonsteSkill(new float[]{
-			2.2f,
-			2.5f,
-			4});
-	
+
+
+
 	public enum Species{undead, demonic, beast}
-	
-	private int hp;
-	
-	public Monster(String name, int hp, float[]... skills){
+
+	private String plural;
+	private String description;
+	private Species species;
+	private int frameNumber;
+	private int level;
+	private int health;
+	private int randomPool;
+	private MSound sound;
+	private MSkill[] skills;
+
+	public Monster(String name, String plural, Species species, String description, 
+			int frameNumber, int level, int health, int randomPool, 
+			MSound sound, Trait[] traits, MSkill[] skills){
 		super(name);
-		setup(hp, skills);
+		this.plural=plural;
+		this.frameNumber=frameNumber;
+		this.level=level;
+		this.description=description;
+		this.frameNumber=frameNumber;
+		this.level=level;
+		this.health=health;
+		this.randomPool=randomPool;
+		this.sound=sound;
+		this.traits=traits;
+		this.skills=skills;
+
+		setupDeck();
 	}
-	
-	public Monster(String name, int hp, Trait[] traits, float[]... skills){
-		super(name);
-		setup(hp, skills);
-	}
-	
-	public Monster(String name, Species species, int hp, Trait[] traits, float[]... skills){
-		super(name);
-		setup(hp, skills);
-		setup(traits);
-	}
-	
-	
-	
-	
-	public void setup(int hp, float[]... skills){
-		this.hp=hp;
-		for(float cardStats[]:skills){
-			for(float cardStrength:cardStats){
-				addCard(new Card(cardStrength));
+
+
+
+	private void setupDeck() {
+		for(MSkill s:skills){
+			for(float f:s.getStrengths()){
+				addCard(new Card(f));
 			}
 		}
+
 	}
-	
-	public void setup(Trait[] traits){
-		this.traits=traits;
-	}
+
+
 
 	@Override
 	public int getHP() {
-		return hp;
+		return health;
+	}
+
+	public String toJson(){
+
+		String output="";
+		output+="\""+name+"\" : {\n";
+		output+="\"Plural\" : \""+plural+"\",\n";
+		if(species!=null)output+="\"Species\" : \""+species+"\",\n";
+		output+="\"description\" : \""+description+"\",\n";
+		output+="\"frameNumber\" : "+frameNumber+",\n";
+		if(level>0) output+="\"dread\" : "+level+",\n";
+		output+="\"health\" : "+health+",\n";
+		output+="\"RandomPool\" : "+randomPool+",\n";
+		if(sound!=null) output+="\"sound\" : \""+sound+"\",\n";
+				
+		if(skills!=null){
+			output+="\"Skills\" : {\n";
+			for(int i=0;i<skills.length;i++){
+				MSkill s = skills[i];
+				output+=s.toJson();
+				if(skills.length>i+1)output+=",";
+				output+="\n";
+			}
+			output+="},\n";
+		}
+		if(traits!=null){
+			output+="\"Traits\" : [\n";
+			for(int i=0;i<traits.length;i++){
+				Trait t = traits[i];
+				output+=t.toJson();
+				if(traits.length>i+1)output+=",";
+				output+="\n";
+			}
+			output+="],\n";
+		}
+		
+
+		output+="}";
+		StringBuilder sb = new StringBuilder(output);
+		sb.deleteCharAt(sb.lastIndexOf(","));
+
+		return sb.toString();
+
 	}
 
 }
