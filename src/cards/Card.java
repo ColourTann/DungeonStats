@@ -36,13 +36,13 @@ public class Card {
 			for (int i=0;i<actions.size();i++){
 				output+=Json.enclose();
 				output+=actions.get(i).toJson();
+				output=Json.removeComma(output);
 				output+=Json.endEnclose();
 			}
 			output=Json.removeComma(output);
 			output+=Json.endArray();
-			output=Json.removeComma(output);
 		}
-		
+		output=Json.removeComma(output);
 		output+=Json.endEnclose();
 		output=Json.removeComma(output);
 		

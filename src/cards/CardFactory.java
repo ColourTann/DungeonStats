@@ -13,7 +13,7 @@ import fighter.player.Warrior;
 public class CardFactory {
 
 	public enum Icon{
-		Default_icon, STAT_STRENGTH, STAT_MAGIC, STAT_DREAD, STAT_HEALTH
+		Default_icon, STAT_STRENGTH, STAT_MAGIC, STAT_DREAD, STAT_HEALTH, STAT_ARMOUR
 	}
 
 	public enum BonusVsSpecies{
@@ -25,7 +25,7 @@ public class CardFactory {
 	}
 	
 	public enum ActionEffectCondition{
-		damageDealt
+		damageDealt, damageBlocked
 	}
 
 	private static String cName;
@@ -44,7 +44,7 @@ public class CardFactory {
 	private static int aEffect;
 	private static BonusVsSpecies aBonusSpecies;
 	private static BonusVsMechanic aBonusMechanic;
-	private static int aBonusAmount;
+	
 
 	private static ActionType raType;
 	private static int raEffect;
@@ -138,14 +138,204 @@ public class CardFactory {
 		
 		switch (type){
 		case Arcane:
+			
+			cName= "Force Shield";
+			cDescription = "Block 1 magic, +1 card per dmg blocked";
+			cDescSize=20;
+			cIcon=Icon.STAT_ARMOUR;
+			aActionType=ActionType.Block;
+			aDamageType=DamageType.Magical;
+			aEffect=1;
+			addAction();
+			aActionType=ActionType.Draw;
+			aEffectCondition=ActionEffectCondition.damageBlocked;
+			addAction();
+			addCard(type);
+			
+			cName= "Focus";
+			cDescription = "+2 on next magic attack, +1 hp";
+			cDescSize=20;
+			cIcon=Icon.STAT_MAGIC;
+			aActionType=ActionType.NextAttack;
+			aDamageType=DamageType.Magical;
+			aEffect=2;
+			addAction();
+			aActionType=ActionType.Heal;
+			aEffect=1;
+			addAction();
+			addCard(type);
+			
+			cName= "Arcane Barrage";
+			cDescription = "3 magic damage, unblockable";
+			cDescSize=22;
+			cIcon=Icon.STAT_ARMOUR;
+			aActionType=ActionType.Attack;
+			aDamageType=DamageType.Magical;
+			aEffect=3;
+			aUnblockable=true;
+			addAction();
+			addCard(type);
+			
 			break;
 		case Armour:
+			
+			cName= "Advance";
+			cDescription = "1 physical damage, block 1 damage";
+			cDescSize=20;
+			cIcon=Icon.STAT_STRENGTH;
+			aActionType=ActionType.Attack;
+			aDamageType=DamageType.Physical;
+			aEffect=1;
+			addAction();
+			aActionType=ActionType.Block;
+			aDamageType=DamageType.Either;
+			aEffect=1;
+			addAction();
+			addCard(type);
+			
+			cName= "Barge";
+			cDescription = "Block 2 physical dmg, +1 to next physical attack";
+			cDescSize=19;
+			cIcon=Icon.STAT_ARMOUR;
+			aActionType=ActionType.Block;
+			aDamageType=DamageType.Physical;
+			aEffect=2;
+			addAction();
+			aActionType=ActionType.NextAttack;
+			aDamageType=DamageType.Physical;
+			aEffect=1;
+			addAction();
+			addCard(type);
+			
+			cName= "Brace";
+			cDescription = "Block all, +1 card";
+			cDescSize=24;
+			cIcon=Icon.STAT_ARMOUR;
+			aActionType=ActionType.Block;
+			aDamageType=DamageType.Either;
+			addAction();
+			aActionType=ActionType.Draw;
+			aEffect=1;
+			addAction();
+			addCard(type);
+			
 			break;
 		case Blade:
+			
+			cName= "Slice";
+			cDescription = "2 physical damage";
+			cDescSize=24;
+			cIcon=Icon.STAT_STRENGTH;
+			aActionType=ActionType.Attack;
+			aDamageType=DamageType.Physical;
+			aEffect=2;
+			addAction();
+			addCard(type);
+			
+			cName= "Dice";
+			cDescription = "2 physical damage, +2 vs unblockable";
+			cDescSize=22;
+			cIcon=Icon.STAT_STRENGTH;
+			aActionType=ActionType.Attack;
+			aDamageType=DamageType.Physical;
+			aEffect=2;
+			addAction();
+			aActionType=ActionType.Attack;
+			aDamageType=DamageType.Physical;
+			aBonusMechanic=BonusVsMechanic.Unblockable;
+			aEffect=2;
+			addAction();
+			addCard(type);
+			
+			cName= "Eviscerate";
+			cDescription = "3 physical damage, block 1 magic";
+			cDescSize=20;
+			cIcon=Icon.STAT_STRENGTH;
+			aActionType=ActionType.Attack;
+			aDamageType=DamageType.Physical;
+			aEffect=3;
+			addAction();
+			aActionType=ActionType.Block;
+			aDamageType=DamageType.Magical;
+			aEffect=1;
+			addAction();			
+			addCard(type);
 			break;
+			
 		case Crush:
+			
+			cName= "Bash";
+			cDescription = "2 physical damage";
+			cDescSize=24;
+			cIcon=Icon.STAT_STRENGTH;
+			aActionType=ActionType.Attack;
+			aDamageType=DamageType.Physical;
+			aEffect=2;
+			addAction();
+			addCard(type);
+			
+			cName= "Slam";
+			cDescription = "2 physical damage, unblockable";
+			cDescSize=24;
+			cIcon=Icon.STAT_STRENGTH;
+			aActionType=ActionType.Attack;
+			aDamageType=DamageType.Physical;
+			aUnblockable=true;
+			aEffect=2;
+			addAction();
+			addCard(type);
+			
+			cName= "Smash";
+			cDescription = "3 physical damage, block 1 physical";
+			cDescSize=20;
+			cIcon=Icon.STAT_STRENGTH;
+			aActionType=ActionType.Attack;
+			aDamageType=DamageType.Physical;
+			aEffect=3;
+			addAction();
+			aActionType=ActionType.Block;
+			aDamageType=DamageType.Physical;
+			aEffect=1;
+			addAction();			
+			addCard(type);
 			break;
+			
 		case Fire:
+			
+			cName= "Fireblast";
+			cDescription = "2 magic damage";
+			cDescSize=24;
+			cIcon=Icon.STAT_MAGIC;
+			aActionType=ActionType.Attack;
+			aDamageType=DamageType.Magical;
+			aEffect=2;
+			addAction();
+			addCard(type);
+			
+			cName= "Flamelash";
+			cDescription = "2 magic damage [quick]";
+			cDescSize=24;
+			cIcon=Icon.STAT_MAGIC;
+			aActionType=ActionType.Attack;
+			aDamageType=DamageType.Magical;
+			aQuick=true;
+			aEffect=2;
+			addAction();
+			addCard(type);
+			
+			cName= "Ignite";
+			cDescription = "1 magic damage: 1 magic damage each turn";
+			cDescSize=22;
+			cIcon=Icon.STAT_MAGIC;
+			aActionType=ActionType.Attack;
+			aDamageType=DamageType.Magical;
+			aEffect=1;
+			raType=ActionType.Effect;
+			raEffectType=
+			
+			addAction();
+			addCard(type);
+			
 			break;
 		case Growth:
 			break;
@@ -218,11 +408,73 @@ public class CardFactory {
 			break;
 		case Death:
 			
+			cName= "Pain";
+			cDescription = "1 magic damage";
+			cDescSize=24;
+			cIcon=Icon.STAT_DREAD;
+			aActionType=ActionType.Attack;
+			aDamageType=DamageType.Magical;
+			aEffect=1;
+			addAction();
+			addCard(type);
+			
+			cName= "Darkness";
+			cDescription = "1 magic damage, block 1 magical";
+			cDescSize=20;
+			cIcon=Icon.STAT_DREAD;
+			aActionType=ActionType.Attack;
+			aDamageType=DamageType.Magical;
+			aEffect=1;
+			addAction();
+			aActionType=ActionType.Block;
+			aDamageType=DamageType.Magical;
+			aEffect=1;
+			addAction();
+			addCard(type);
+			
+			cName= "Shadow Strike";
+			cDescription = "1 magic damage, 1 physical damage";
+			cDescSize=22;
+			cIcon=Icon.STAT_DREAD;
+			aActionType=ActionType.Attack;
+			aDamageType=DamageType.Magical;
+			aEffect=1;
+			addAction();
+			aActionType=ActionType.Attack;
+			aDamageType=DamageType.Physical;
+			aEffect=1;
+			addAction();
+			addCard(type);
+			
+			cName= "Shadow Spear";
+			cDescription = "2 magic damage, unblockable";
+			cDescSize=22;
+			cIcon=Icon.STAT_DREAD;
+			aActionType=ActionType.Attack;
+			aDamageType=DamageType.Magical;
+			aEffect=2;
+			aUnblockable=true;
+			addAction();
+			addCard(type);
+			
+			cName= "Curse";
+			cDescription = "2 magic damage: enemy discards 1 card";
+			cDescSize=19;
+			cIcon=Icon.STAT_DREAD;
+			aActionType=ActionType.Attack;
+			aDamageType=DamageType.Magical;
+			aEffect=2;
+			raType=ActionType.Discard;
+			raEffect=1;
+			addResultAction();
+			addAction();
+			addCard(type);
+			
 			break;
 		case Flame:
 
 			cName= "Spark";
-			cDescription = "1 magical damage";
+			cDescription = "1 magic damage";
 			cDescSize=24;
 			cIcon=Icon.STAT_MAGIC;
 			aActionType=ActionType.Attack;
@@ -232,7 +484,7 @@ public class CardFactory {
 			addCard(type);
 			
 			cName= "Flare";
-			cDescription = "1 magical damage, unblockable";
+			cDescription = "1 magic damage, unblockable";
 			cDescSize=22;
 			cIcon=Icon.STAT_MAGIC;
 			aActionType=ActionType.Attack;
@@ -243,7 +495,7 @@ public class CardFactory {
 			addCard(type);
 			
 			cName= "Fiery Weapon";
-			cDescription = "1 magical damage, 1 physical damage";
+			cDescription = "1 magic damage, 1 physical damage";
 			cDescSize=22;
 			cIcon=Icon.STAT_MAGIC;
 			aActionType=ActionType.Attack;
@@ -257,7 +509,7 @@ public class CardFactory {
 			addCard(type);
 			
 			cName= "Fireball";
-			cDescription = "2 magical damage";
+			cDescription = "2 magic damage";
 			cDescSize=24;
 			cIcon=Icon.STAT_MAGIC;
 			aActionType=ActionType.Attack;
@@ -267,7 +519,7 @@ public class CardFactory {
 			addCard(type);
 			
 			cName= "Blaze";
-			cDescription = "3 magical damage";
+			cDescription = "3 magic damage";
 			cDescSize=24;
 			cIcon=Icon.STAT_MAGIC;
 			aActionType=ActionType.Attack;
@@ -290,7 +542,7 @@ public class CardFactory {
 			addCard(type);
 			
 			cName= "Neurotoxin";
-			cDescription = "1 magical damage: enemy discards 1 card";
+			cDescription = "1 magic damage: enemy discards 1 card";
 			cDescSize=19;
 			cIcon=Icon.STAT_MAGIC;
 			aActionType=ActionType.Attack;
@@ -303,7 +555,7 @@ public class CardFactory {
 			addCard(type);
 			
 			cName= "Restore";
-			cDescription = "1 magical damage: +2 hp";
+			cDescription = "1 magic damage: +2 hp";
 			cDescSize=24;
 			cIcon=Icon.STAT_HEALTH;
 			aActionType=ActionType.Attack;
@@ -325,12 +577,9 @@ public class CardFactory {
 			aEffect=2;
 			addAction();
 			aActionType=ActionType.Block;
-			aDamageType=DamageType.Magical;
+			aDamageType=DamageType.Either;
 			aEffect=2;
 			addAction();
-			aActionType=ActionType.Block;
-			aDamageType=DamageType.Physical;
-			aEffect=2;
 			addCard(type);
 			
 			cName= "Entangle";
@@ -342,12 +591,9 @@ public class CardFactory {
 			aEffect=2;
 			addAction();
 			aActionType=ActionType.Block;
-			aDamageType=DamageType.Magical;
+			aDamageType=DamageType.Either;
 			aEffect=2;
 			addAction();
-			aActionType=ActionType.Block;
-			aDamageType=DamageType.Physical;
-			aEffect=2;
 			addCard(type);
 			break;
 		case Rage:
@@ -596,14 +842,13 @@ public class CardFactory {
 		aUnblockable=false;
 		aEffect=0;
 		aEffectCondition=null;
-		aBonusAmount=0;
 		aBonusMechanic=null;
 		aBonusSpecies=null;
 		resultActions.clear();
 	}
 	
 	static void addAction(){
-		cActions.add(new Action(aActionType, aDamageType, aUnblockable, aQuick, aEffectCondition, aEffect, aBonusMechanic, aBonusSpecies, aBonusAmount, resultActions==null?null:(ArrayList<ResultAction>) resultActions.clone()));		
+		cActions.add(new Action(aActionType, aDamageType, aUnblockable, aQuick, aEffectCondition, aEffect, aBonusMechanic, aBonusSpecies, resultActions==null?null:(ArrayList<ResultAction>) resultActions.clone()));		
 		resetAction();
 	}
 	
@@ -644,7 +889,9 @@ public class CardFactory {
 		output+=Json.enclose();
 		output+=Json.startList("BattleCards");
 		output+=Json.startList("Skills");
-		output+=jsonSkills(SkillType.Nature);
+		for(SkillType type:Skill.monsterSkills){
+			output+=jsonSkills(type);	
+		}
 		output=Json.removeComma(output);
 		output+=Json.endList();
 		output=Json.removeComma(output);
@@ -710,26 +957,31 @@ public class CardFactory {
 		ActionEffectCondition effectCondition;
 		BonusVsMechanic bonusVsMechanic;
 		BonusVsSpecies bonusVsSpecies;
-		int bonusAmount;
 		ArrayList<ResultAction> resultActions;
-		public Action(ActionType aType, DamageType dtType, boolean unblockable, boolean quick, ActionEffectCondition aEffectCondition, int effect, BonusVsMechanic bonusVsMechanic, BonusVsSpecies bonusVsSpecies, int bonusAmount, ArrayList<ResultAction> resultActions){
+		public Action(ActionType aType, DamageType dtType, boolean unblockable, boolean quick, ActionEffectCondition effectCondition, int effect, BonusVsMechanic bonusVsMechanic, BonusVsSpecies bonusVsSpecies, ArrayList<ResultAction> resultActions){
 			this.aType=aType;
 			this.dType=dtType;
 			this.unblockable=unblockable;
 			this.quick=quick;
 			this.effect=effect;
-			this.effectCondition=aEffectCondition;
+			this.effectCondition=effectCondition;
 			this.bonusVsMechanic=bonusVsMechanic;
 			this.bonusVsSpecies=bonusVsSpecies;
-			this.bonusAmount=bonusAmount;
 			this.resultActions=resultActions;
 		}
 
 		public enum ActionType{
-			Attack, Heal, Block, Discard, TakeDamage
+			Attack, Heal, Block, Discard, TakeDamage, Draw, NextAttack, Effect
 		}
 		public enum DamageType{
-			Physical, Magical
+			Physical("Physical"), Magical("Magical"), Either("Magical,Physical");
+			String s;
+			DamageType(String s){
+				this.s=s;
+			}
+			public String toString(){
+				return s;
+			}
 		}
 		public String toJson() {
 			String output="";
@@ -739,14 +991,13 @@ public class CardFactory {
 			if(effect>0){
 				switch(aType){
 				case Attack:
-					output+=Json.addKey("damage", effect);
-					break;
 				case Block:
+				case NextAttack:
+				case Effect:
+				case TakeDamage:
 					output+=Json.addKey("damage", effect);
 					break;
 				case Discard:
-					output+=Json.addKey("quantity", effect);
-					break;
 				case Heal:
 					output+=Json.addKey("quantity", effect);
 					break;
@@ -754,7 +1005,7 @@ public class CardFactory {
 					break;	
 				}
 			}
-			if(aEffectCondition!=null) output+=Json.addKey("quantityCondition", effectCondition.toString());
+			if(effectCondition!=null) output+=Json.addKey("quantityCondition", effectCondition.toString());
 			if(unblockable)output+=Json.addKey("unblockable", true);
 			if(quick)output+=Json.addKey("quick", true);
 			if(bonusVsMechanic!=null||bonusVsSpecies!=null) output+=Json.addKey("versesType", "ANY");
@@ -768,7 +1019,6 @@ public class CardFactory {
 				output=Json.removeComma(output);
 				output+=Json.endArray();
 			}
-			output=Json.removeComma(output);
 			return output;
 		}
 	}

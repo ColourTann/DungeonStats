@@ -43,7 +43,7 @@ public class MonsterFactory {
 			0,
 			0});
 	
-	public static MSkill weapon = new MSkill("Weapon Skill", new float[]{
+	public static MSkill weapon = new MSkill("Weapon", new float[]{
 			1,
 			1,
 			2.3f,	
@@ -108,6 +108,18 @@ public class MonsterFactory {
 	public static void setup(){
 		
 		reset();
+		
+		name = "Debug Ducky";
+		plural= "Debug Duckies";
+		description = "Haha! I will defeat you with this ne---CRASH";
+		frameNumber = 2;
+		level = 0;
+		health = 10;
+		randomPool=0;
+		sound = MSound.rubber_ducky;
+		traits = null;
+		skills = new MSkill[]{feral.asLevel(5)};
+		make();
 		
 		name = "Rubber Ducky";
 		plural= "Rubber Duckies";

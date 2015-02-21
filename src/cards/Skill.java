@@ -11,6 +11,9 @@ public class Skill {
 		
 	}
 	
+	public static SkillType[] monsterSkills=new SkillType[]{SkillType.Feral, SkillType.Spooky, SkillType.Rage, SkillType.Stupidity, SkillType.Weapon, SkillType.Flame, SkillType.Nature, SkillType.Death};
+	public static SkillType[] playerSkills=new SkillType[]{SkillType.Fire, SkillType.Arcane, SkillType.Holy, SkillType.Growth, SkillType.Armour, SkillType.Blade, SkillType.Crush, SkillType.Swift};
+	
 	public static Skill fire= new Skill(SkillType.Fire);
 	public static Skill arcane= new Skill(SkillType.Arcane);
 	public static Skill holy= new Skill(SkillType.Holy);
