@@ -8,12 +8,12 @@ public class Wizard extends Hero{
 	}
 	@Override
 	protected void setupBasicDeck() {
-		addCard(new Card(1));
-		addCard(new Card(1));
-		addCard(new Card(2));
-		addCard(new Card(1.5f));
-		addCard(new Card(1.5f));
-		addCard(new Card(1,true));
+//		addCard(new Card(1));
+//		addCard(new Card(1));
+//		addCard(new Card(2));
+//		addCard(new Card(1.5f));
+//		addCard(new Card(1.5f));
+//		addCard(new Card(1,true));
 	}
 
 }

@@ -12,7 +12,7 @@ public abstract class Fighter {
 	protected String name;
 
 	public enum Trait{
-		Tenacious, Brittle, Meaty, Respite, Fury, Burn, BonusHP;
+		Tenacious, Brittle, Meaty, Respite, Fury, Burn, BonusHP, Skilled;
 
 		public String toJson() {
 			return "\""+this+"\"";
@@ -31,8 +31,8 @@ public abstract class Fighter {
 		float totalStrength=0;
 		float numberOfCards=0;
 		for(Card c:cards){
-			totalStrength+=c.getStrength();
-			numberOfCards+=c.getBlock()?0:1;
+//			totalStrength+=c.getStrength();
+//			numberOfCards+=c.getBlock()?0:1;
 		}
 		float bonusHP=0;
 		float bonusAverageStrength=0;

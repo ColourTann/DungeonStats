@@ -1,19 +1,52 @@
 package cards;
 
+import java.util.ArrayList;
+
+import json.Json;
+import cards.CardFactory.Action;
+import cards.CardFactory.Icon;
+
 public class Card {
-	private float strength;
-	private boolean block;
-	public Card(float strength){
-		this.strength=strength;
+
+	String name;
+	String description;
+	int descSize;
+	Icon icon;
+	ArrayList<Action> actions;
+	
+	public Card(String name, String description, int descSize, Icon icon, ArrayList<Action> actions){
+		this.name=name;
+		this.description=description;
+		this.descSize=descSize;
+		this.icon=icon;
+		this.actions=actions;
 	}
-	public Card(float strength, boolean block){
-		this.strength=strength;
-		this.block=block;
-	}
-	public float getStrength(){
-		return strength;
-	}
-	public boolean getBlock(){
-		return block;
+	
+	public String toJson(){
+		String output="";
+		
+		output+=Json.startList(name);
+		output+=Json.addKey("description", description);
+		output+=Json.addKey("descSize", descSize);
+		output+=Json.addKey("icon", icon.toString());
+		
+		
+		if(actions.size()>0){
+			output+=Json.startArray("Actions");
+			for (int i=0;i<actions.size();i++){
+				output+=Json.enclose();
+				output+=actions.get(i).toJson();
+				output+=Json.endEnclose();
+			}
+			output=Json.removeComma(output);
+			output+=Json.endArray();
+			output=Json.removeComma(output);
+		}
+		
+		output+=Json.endEnclose();
+		output=Json.removeComma(output);
+		
+		return output;
+		
 	}
 }

@@ -4,9 +4,9 @@ import java.awt.event.TextEvent;
 import java.util.ArrayList;
 
 import cards.MSkill;
+import cards.Skill;
+import cards.Skill.SkillType;
 import fighter.Fighter.Trait;
-import fighter.player.Skill;
-import fighter.player.Skill.SkillType;
 
 public class Item {
 	static ArrayList<Item> items = new ArrayList<Item>();
@@ -80,7 +80,7 @@ public class Item {
 		aDesc="A single coin lying in the dirt";
 		aGlory=1;
 		aLevel=1;
-		aRandomPool=0;
+		aRandomPool=1;
 		aSound=Sound.equip_coin_single;
 		add();
 
@@ -88,7 +88,7 @@ public class Item {
 		aDesc="A handful of silver scattered around";
 		aGlory=2;
 		aLevel=2;
-		aRandomPool=0;
+		aRandomPool=1;
 		aSound=Sound.equip_coin_double;
 		add();
 
@@ -96,7 +96,7 @@ public class Item {
 		aDesc="A pouch bulging with coins";
 		aLevel=3;
 		aGlory=3;
-		aRandomPool=0;
+		aRandomPool=1;
 		aSound=Sound.equip_coin_bag;
 		add();
 
@@ -487,7 +487,7 @@ public class Item {
 		aSkills=new Skill[]{Skill.swift.asLevel(1)};
 		add();
 
-		aName="Straightjacket";
+		aName="Straitjacket";
 		aDesc="We're not crazy, the rest of the world is!";
 		aEquipment=1;
 		aType=EquipmentType.armour;
@@ -526,7 +526,7 @@ public class Item {
 		aEquipment=1;
 		aType=EquipmentType.armour;
 		aLevel=2;
-		aEquipFrame=0; //ERROR// 
+		aEquipFrame=98; 
 		aRandomPool=1;
 		aSound=Sound.equip_chainmail;
 		aSkills=new Skill[]{Skill.armour.asLevel(1), Skill.crush.asLevel(1)};
@@ -1266,10 +1266,10 @@ public class Item {
 		}
 		if(traits!=null){
 			output+="\"Traits\" : [\n";
-			for(int i=0;i<skills.length;i++){
+			for(int i=0;i<traits.length;i++){
 				Trait t = traits[i];
 				output+=t.toJson();
-				if(skills.length>i+1)output+=",";
+				if(traits.length>i+1)output+=",";
 				output+="\n";
 			}
 			output+="],\n";

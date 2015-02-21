@@ -2,8 +2,7 @@ package cards;
 
 import java.util.Arrays;
 
-import fighter.player.Skill;
-import fighter.player.Skill.SkillType;
+import cards.Skill.SkillType;
 
 public class MSkill {
 	

@@ -1,11 +1,14 @@
-package fighter.player;
+package cards;
 
 public class Skill {
 	public SkillType type;
 	public int level;
 	
 	public enum SkillType{
-		Fire, Arcane, Holy, Growth, Armour, Blade, Crush, Swift
+		Fire, Arcane, Holy, Growth, Armour, Blade, Crush, Swift,
+		
+		Feral, Spooky, Rage, Stupidity, Weapon, Flame, Nature, Death
+		
 	}
 	
 	public static Skill fire= new Skill(SkillType.Fire);

@@ -2,10 +2,10 @@ package fighter.monster;
 
 import cards.Card;
 import cards.MSkill;
+import cards.Skill;
 import fighter.Fighter;
 import fighter.Fighter.Trait;
-import fighter.MonsterFactory.MSound;
-import fighter.player.Skill;
+import fighter.monster.MonsterFactory.MSound;
 
 
 public class Monster extends Fighter{
@@ -49,7 +49,7 @@ public class Monster extends Fighter{
 	private void setupDeck() {
 		for(MSkill s:skills){
 			for(float f:s.getStrengths()){
-				addCard(new Card(f));
+				//addCard(new Card(f));
 			}
 		}
 

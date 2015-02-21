@@ -1,11 +1,12 @@
-package fighter;
+package fighter.monster;
 import item.Item;
 
 import java.util.ArrayList;
 
 import cards.MSkill;
+import cards.Skill.SkillType;
+import fighter.Fighter;
 import fighter.Fighter.*;
-import fighter.monster.Monster;
 import fighter.monster.Monster.Species;
 
 
@@ -211,7 +212,7 @@ public class MonsterFactory {
 		plural= "Snakes";
 		species=Species.beast;
 		species=Species.beast;
-		description = "";
+		description = "SSSsssssssss";
 		frameNumber = 28;
 		level = 2;
 		health = 7;
@@ -259,7 +260,7 @@ public class MonsterFactory {
 		
 		name = "Gnoll";
 		plural= "Gnolls";
-		description = "Need to write this";
+		description = "What are you looking at??";
 		frameNumber = 31;
 		level = 2;
 		health = 7;
@@ -284,7 +285,7 @@ public class MonsterFactory {
 		name = "Bear-Owl";
 		plural= "Bear-Owls";
 		description = "A bit top-heavy";
-		frameNumber = 45;
+		frameNumber = 36;
 		level = 3;
 		health = 8;
 		randomPool=1;
@@ -338,6 +339,17 @@ public class MonsterFactory {
 		randomPool=1;
 		traits = null;
 		skills = new MSkill[]{weapon.asLevel(5)};
+		make();
+		
+		name = "Fire Demon";
+		plural= "Fire Demons";
+		description = "OW! This card is burning hot!";
+		frameNumber = 8;
+		level = 4;
+		health = 10;
+		randomPool=0;
+		traits = new Trait[]{Trait.Skilled};
+		skills = new MSkill[]{weapon.asLevel(5), flame.asLevel(5), rage.asLevel(5)};
 		make();
 		
 //		name = "";

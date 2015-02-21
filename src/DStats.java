@@ -1,4 +1,3 @@
-import fighter.MonsterFactory;
 import fighter.Fighter.*;
 import item.Item;
 
@@ -9,7 +8,13 @@ import java.util.ArrayList;
 
 
 
+
+
+
+import cards.CardFactory;
+import cards.Skill.SkillType;
 import fighter.monster.Monster;
+import fighter.monster.MonsterFactory;
 import fighter.monster.Monster.*;
 import fighter.player.Hero;
 import fighter.player.Wizard;
@@ -99,7 +104,11 @@ public class DStats {
 	static ArrayList<Monster>[] monsterList= new ArrayList[8];
 
 	public static void main(String[] args) {
-		//Item.setup();
+		String s =CardFactory.jsonAllSkills();
+		System.out.println(s);
+		
+//		Item.setup();
+//		Item.printAll();
 		//Item.printNumbers();
 		
 		//Item.analyseLevel(0);
@@ -109,11 +118,11 @@ public class DStats {
 //		}
 		
 		//Item.analyseLevel(2, true, true);
-		//Item.printAll();
 		
 		
-		MonsterFactory.setup();
-		MonsterFactory.jsonAll();
+		
+//		MonsterFactory.setup();
+//		MonsterFactory.jsonAll();
 		//MonsterFactory.printAll();
 		
 		//printStrengths(3);
