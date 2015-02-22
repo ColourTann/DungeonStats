@@ -1,10 +1,11 @@
 package fighter.player;
 
-import cards.MSkill;
+import cards.Skill;
+import cards.Skill.SkillType;
 import fighter.Fighter;
 
 public abstract class Hero extends Fighter{
-	public static MSkill playerSkill = new MSkill("Player", new float[]{2,2.5f,3});
+	//public static Skill playerSkill = new Skill(SkillType.Warrior, new float[]{2,2.5f,3});
 	private int level;
 	public Hero(String name){
 		super(name);

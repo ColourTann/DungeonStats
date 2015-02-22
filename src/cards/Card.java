@@ -9,13 +9,15 @@ import cards.CardFactory.Icon;
 public class Card {
 
 	String name;
+	public float strength;
 	String description;
 	int descSize;
 	Icon icon;
 	ArrayList<Action> actions;
 	
-	public Card(String name, String description, int descSize, Icon icon, ArrayList<Action> actions){
+	public Card(String name, float strength, String description, int descSize, Icon icon, ArrayList<Action> actions){
 		this.name=name;
+		this.strength=strength;
 		this.description=description;
 		this.descSize=descSize;
 		this.icon=icon;

@@ -3,7 +3,7 @@ package item;
 import java.awt.event.TextEvent;
 import java.util.ArrayList;
 
-import cards.MSkill;
+import json.Json;
 import cards.Skill;
 import cards.Skill.SkillType;
 import fighter.Fighter.Trait;
@@ -26,7 +26,7 @@ public class Item {
 	Sound sound;
 	Trait[] traits;
 	Skill[] skills;
-
+	int health;
 	public Item(String name, 
 			String description, 
 			int frameNumber, 
@@ -39,7 +39,8 @@ public class Item {
 			int keepHair,
 			Sound sound,
 			Skill[] skills,
-			Trait[] traits
+			Trait[] traits,
+			int health
 			){
 		this.name=name;
 		this.description=description;
@@ -54,7 +55,7 @@ public class Item {
 		this.sound=sound;
 		this.skills=skills;
 		this.traits=traits;
-
+		this.health=health;
 
 	}
 	static String aName;
@@ -67,6 +68,7 @@ public class Item {
 	static int aGlory;
 	static int aRandomPool;
 	static int aKeepHair;
+	static int aHealth;
 	static Sound aSound;
 	static Skill[] aSkills;
 	static Trait[] aTraits;
@@ -595,7 +597,7 @@ public class Item {
 		aEquipFrame=53;
 		aRandomPool=1;
 		aSound=Sound.equip_club;
-		aTraits= new Trait[]{Trait.BonusHP};
+		aHealth=1;
 		add();
 
 		aName="Wolf Hat";
@@ -621,7 +623,7 @@ public class Item {
 		aSkills=null;
 		add();
 
-		aName="Spikey hat";
+		aName="Spikey Hat";
 		aDesc="Charge!";
 		aEquipment=1;
 		aType=EquipmentType.helmet;
@@ -1132,7 +1134,7 @@ public class Item {
 
 	public static void add(){
 		if(aName=="placeholder")return;
-		items.add(new Item(aName, aDesc, aFrameNumber, aEquipment, aType, aEquipFrame, aLevel, aGlory, aRandomPool, aKeepHair, aSound, aSkills, aTraits));
+		items.add(new Item(aName, aDesc, aFrameNumber, aEquipment, aType, aEquipFrame, aLevel, aGlory, aRandomPool, aKeepHair, aSound, aSkills, aTraits, aHealth));
 		aFrameNumber++;
 		reset();
 	}
@@ -1146,6 +1148,7 @@ public class Item {
 		aLevel=-1;
 		aGlory=-1;
 		aRandomPool=-1;
+		aHealth=0;
 		aKeepHair=0;
 		aSound=null;
 		aSkills=null;
@@ -1274,6 +1277,7 @@ public class Item {
 			}
 			output+="],\n";
 		}
+		if(health>0) output+=Json.addKey("bonusHP", health);
 
 		output+="}";
 		StringBuilder sb = new StringBuilder(output);

@@ -1,11 +1,8 @@
 package fighter.monster;
-import item.Item;
-
 import java.util.ArrayList;
 
-import cards.MSkill;
+import cards.Skill;
 import cards.Skill.SkillType;
-import fighter.Fighter;
 import fighter.Fighter.*;
 import fighter.monster.Monster.Species;
 
@@ -14,80 +11,7 @@ public class MonsterFactory {
 	
 	public static ArrayList<Monster> monsters= new ArrayList<Monster>();
 	
-	
-	public static MSkill feral = new MSkill("Feral", new float[]{
-			1.2f,
-			1.2f,
-			2.3f,
-			2.3f,
-			3});
-	
-	public static MSkill spooky = new MSkill("Spooky", new float[]{
-			1.3f,
-			1.8f,
-			1.8f,
-			2.6f,
-			3.5f});
-	
-	public static MSkill rage = new MSkill("Rage", new float[]{
-			0.1f,
-			1.3f,
-			1.3f,
-			2.3f,
-			3.3f});
-	
-	public static MSkill stupidity= new MSkill("Stupidity", new float[]{
-			0,
-			0,
-			0,
-			0,
-			0});
-	
-	public static MSkill weapon = new MSkill("Weapon", new float[]{
-			1,
-			1,
-			2.3f,	
-			2.3f,
-			3.8f});
-	
-	public static MSkill flame = new MSkill("Flame", new float[]{
-			1,
-			1.2f,
-			2,
-			2,
-			3});
-	
-	public static MSkill nature = new MSkill("Nature", new float[]{
-			1,
-			1.2f,
-			2,
-			3.5f,
-			3.5f});
-	
-	public static MSkill death= new MSkill("Death", new float[]{
-			1,
-			1.5f,
-			2,
-			2.8f,
-			3});
-	
-	public static MSkill ferocious = new MSkill("Ferocious", new float[]{
-			2.5f,
-			3.5f,
-			4});
-	
-	public static MSkill demonic = new MSkill("Demonic", new float[]{
-			1.8f,
-			2.8f,
-			4});
-	
-	public static MSkill sorcery = new MSkill("Sorcery", new float[]{
-			2.2f,
-			2.5f,
-			4});
-	
-	
-	
+
 	
 	public enum MSound{
 		giant_bat, goblin, scary_spider, gray_ooze, ghost, skeleton, mummy, rubber_ducky
@@ -103,7 +27,7 @@ public class MonsterFactory {
 	static int randomPool;
 	static MSound sound;
 	static Trait[] traits;
-	static MSkill[] skills;
+	static Skill[] skills;
 	
 	public static void setup(){
 		
@@ -118,7 +42,7 @@ public class MonsterFactory {
 		randomPool=0;
 		sound = MSound.rubber_ducky;
 		traits = null;
-		skills = new MSkill[]{feral.asLevel(5)};
+		skills = new Skill[]{Skill.get(SkillType.Feral).asLevel(5)};
 		make();
 		
 		name = "Rubber Ducky";
@@ -130,7 +54,7 @@ public class MonsterFactory {
 		randomPool=0;
 		sound = MSound.rubber_ducky;
 		traits = null;
-		skills = new MSkill[]{feral.asLevel(2),stupidity.asLevel(1)};
+		skills = new Skill[]{Skill.get(SkillType.Feral).asLevel(2), Skill.get(SkillType.Stupidity).asLevel(1)};
 		make();
 		
 		name = "Giant Bat";
@@ -143,7 +67,7 @@ public class MonsterFactory {
 		randomPool=1;
 		sound = MSound.giant_bat;
 		traits = null;
-		skills = new MSkill[]{feral.asLevel(2), spooky.asLevel(3)};
+		skills = new Skill[]{Skill.get(SkillType.Feral).asLevel(2), Skill.get(SkillType.Spooky).asLevel(3)};
 		make();
 		
 		name = "Nasty Rat";
@@ -155,7 +79,7 @@ public class MonsterFactory {
 		health = 5;
 		randomPool=1;
 		traits = null;
-		skills = new MSkill[]{feral.asLevel(2), nature.asLevel(2)};
+		skills = new Skill[]{Skill.get(SkillType.Feral).asLevel(2), Skill.get(SkillType.Nature).asLevel(2)};
 		make();
 		
 		name = "Goblin";
@@ -167,7 +91,7 @@ public class MonsterFactory {
 		randomPool=1;
 		sound = MSound.goblin;
 		traits = null;
-		skills = new MSkill[]{rage.asLevel(3), weapon.asLevel(2)};
+		skills = new Skill[]{Skill.get(SkillType.Rage).asLevel(3), Skill.get(SkillType.Weapon).asLevel(2)};
 		make();
 		
 		name = "Scary Spider";
@@ -180,7 +104,7 @@ public class MonsterFactory {
 		randomPool=1;
 		sound = MSound.scary_spider;
 		traits = null;
-		skills = new MSkill[]{nature.asLevel(2), spooky.asLevel(3)};
+		skills = new Skill[]{Skill.get(SkillType.Nature).asLevel(2), Skill.get(SkillType.Spooky).asLevel(3)};
 		make();
 		
 		name = "Fire Imp";
@@ -192,7 +116,7 @@ public class MonsterFactory {
 		health = 5;
 		randomPool=1;
 		traits = null;
-		skills = new MSkill[]{flame.asLevel(4), stupidity.asLevel(1)};
+		skills = new Skill[]{Skill.get(SkillType.Flame).asLevel(4), Skill.get(SkillType.Stupidity).asLevel(1)};
 		make();
 		
 		name = "Gray Ooze";
@@ -204,7 +128,7 @@ public class MonsterFactory {
 		randomPool=1;
 		sound = MSound.gray_ooze;
 		traits = null;
-		skills = new MSkill[]{death.asLevel(1), spooky.asLevel(2), flame.asLevel(2)};
+		skills = new Skill[]{Skill.get(SkillType.Death).asLevel(1), Skill.get(SkillType.Spooky).asLevel(2), Skill.get(SkillType.Flame).asLevel(2)};
 		make();
 		
 		name = "Ghost";
@@ -217,7 +141,7 @@ public class MonsterFactory {
 		randomPool=1;
 		sound = MSound.ghost;
 		traits = new Trait[]{Trait.Tenacious};
-		skills = new MSkill[]{spooky.asLevel(4), death.asLevel(2)};
+		skills = new Skill[]{Skill.get(SkillType.Spooky).asLevel(4), Skill.get(SkillType.Death).asLevel(2)};
 		make();
 		
 		name = "Snake";
@@ -230,7 +154,7 @@ public class MonsterFactory {
 		health = 7;
 		randomPool=1;
 		traits = null;
-		skills = new MSkill[]{nature.asLevel(3), death.asLevel(1), feral.asLevel(4)};
+		skills = new Skill[]{Skill.get(SkillType.Nature).asLevel(3), Skill.get(SkillType.Death).asLevel(1), Skill.get(SkillType.Feral).asLevel(4)};
 		make();
 		
 		name = "Rat Man";
@@ -241,7 +165,7 @@ public class MonsterFactory {
 		health = 8;
 		randomPool=1;
 		traits = null;
-		skills = new MSkill[]{feral.asLevel(3), weapon.asLevel(3), rage.asLevel(3)};
+		skills = new Skill[]{Skill.get(SkillType.Feral).asLevel(3), Skill.get(SkillType.Weapon).asLevel(3), Skill.get(SkillType.Rage).asLevel(3)};
 		make();
 		
 		name = "Skeleton";
@@ -254,7 +178,7 @@ public class MonsterFactory {
 		randomPool=1;
 		sound = MSound.skeleton;;
 		traits = new Trait[]{Trait.Brittle};
-		skills = new MSkill[]{rage.asLevel(3), spooky.asLevel(3), weapon.asLevel(3)};
+		skills = new Skill[]{Skill.get(SkillType.Rage).asLevel(3), Skill.get(SkillType.Spooky).asLevel(3), Skill.get(SkillType.Weapon).asLevel(3)};
 		make();
 		
 		name = "Zombie";
@@ -266,7 +190,7 @@ public class MonsterFactory {
 		randomPool=1;
 		sound = MSound.giant_bat;
 		traits = new Trait[]{Trait.Meaty};
-		skills = new MSkill[]{death.asLevel(3), rage.asLevel(3), spooky.asLevel(3)};
+		skills = new Skill[]{Skill.get(SkillType.Death).asLevel(3), Skill.get(SkillType.Rage).asLevel(3), Skill.get(SkillType.Spooky).asLevel(3)};
 		make();
 		
 		
@@ -277,8 +201,8 @@ public class MonsterFactory {
 		level = 2;
 		health = 7;
 		randomPool=1;
-		traits = new Trait[]{Trait.Respite};
-		skills = new MSkill[]{nature.asLevel(3), weapon.asLevel(3), feral.asLevel(2)};
+		traits = new Trait[]{Trait.Fury};
+		skills = new Skill[]{Skill.get(SkillType.Nature).asLevel(2), Skill.get(SkillType.Weapon).asLevel(3), Skill.get(SkillType.Rage).asLevel(2)};
 		make();
 		
 		name = "Mummy";
@@ -291,10 +215,10 @@ public class MonsterFactory {
 		randomPool=1;
 		sound = MSound.mummy;
 		traits = new Trait[]{Trait.Brittle};
-		skills = new MSkill[]{spooky.asLevel(4), rage.asLevel(3), death.asLevel(3)};
+		skills = new Skill[]{Skill.get(SkillType.Spooky).asLevel(4), Skill.get(SkillType.Rage).asLevel(3), Skill.get(SkillType.Death).asLevel(3)};
 		make();
 		
-		name = "Bear-Owl";
+		name = "Bear Owl";
 		plural= "Bear-Owls";
 		description = "A bit top-heavy";
 		frameNumber = 36;
@@ -302,7 +226,7 @@ public class MonsterFactory {
 		health = 8;
 		randomPool=1;
 		traits = new Trait[]{Trait.Fury};
-		skills = new MSkill[]{nature.asLevel(3), feral.asLevel(2), weapon.asLevel(3)};
+		skills = new Skill[]{Skill.get(SkillType.Nature).asLevel(3), Skill.get(SkillType.Feral).asLevel(2), Skill.get(SkillType.Weapon).asLevel(3)};
 		make();
 		
 		name = "Shade";
@@ -314,7 +238,7 @@ public class MonsterFactory {
 		health = 8;
 		randomPool=1;
 		traits = new Trait[]{Trait.Tenacious};
-		skills = new MSkill[]{spooky.asLevel(4), death.asLevel(4)};
+		skills = new Skill[]{Skill.get(SkillType.Spooky).asLevel(4), Skill.get(SkillType.Death).asLevel(4)};
 		make();
 		
 		
@@ -327,7 +251,7 @@ public class MonsterFactory {
 		health = 10;
 		randomPool=1;
 		traits = new Trait[]{Trait.Burn};
-		skills = new MSkill[]{flame.asLevel(4), rage.asLevel(4)};
+		skills = new Skill[]{Skill.get(SkillType.Flame).asLevel(4), Skill.get(SkillType.Rage).asLevel(4)};
 		make();
 		
 		name = "Scorpion";
@@ -339,7 +263,7 @@ public class MonsterFactory {
 		health = 9;
 		randomPool=1;
 		traits = null;
-		skills = new MSkill[]{weapon.asLevel(4), nature.asLevel(4), feral.asLevel(4)};
+		skills = new Skill[]{Skill.get(SkillType.Weapon).asLevel(4), Skill.get(SkillType.Nature).asLevel(4), Skill.get(SkillType.Feral).asLevel(4)};
 		make();
 		
 		name = "Bandito";
@@ -350,7 +274,7 @@ public class MonsterFactory {
 		health = 7;
 		randomPool=1;
 		traits = null;
-		skills = new MSkill[]{weapon.asLevel(5)};
+		skills = new Skill[]{Skill.get(SkillType.Weapon).asLevel(5)};
 		make();
 		
 		name = "Fire Demon";
@@ -361,7 +285,7 @@ public class MonsterFactory {
 		health = 10;
 		randomPool=0;
 		traits = new Trait[]{Trait.Skilled};
-		skills = new MSkill[]{weapon.asLevel(5), flame.asLevel(5), rage.asLevel(5)};
+		skills = new Skill[]{Skill.get(SkillType.Weapon).asLevel(5), Skill.get(SkillType.Flame).asLevel(5), Skill.get(SkillType.Rage).asLevel(5)};
 		make();
 		
 //		name = "";
@@ -373,7 +297,7 @@ public class MonsterFactory {
 //		randomPool=1;
 //		sound = MSound.giant_bat;
 //		traits = null;
-//		skills = new MSkill[]{};
+//		skills = new Skill[]{Skill.get(SkillType.};
 //		make();
 		
 	}

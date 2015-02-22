@@ -1,7 +1,8 @@
 package fighter.monster;
 
+import java.util.ArrayList;
+
 import cards.Card;
-import cards.MSkill;
 import cards.Skill;
 import fighter.Fighter;
 import fighter.Fighter.Trait;
@@ -23,11 +24,10 @@ public class Monster extends Fighter{
 	private int health;
 	private int randomPool;
 	private MSound sound;
-	private MSkill[] skills;
-
+	private Skill[] skills;
 	public Monster(String name, String plural, Species species, String description, 
 			int frameNumber, int level, int health, int randomPool, 
-			MSound sound, Trait[] traits, MSkill[] skills){
+			MSound sound, Trait[] traits, Skill[] skills){
 		super(name);
 		this.plural=plural;
 		this.frameNumber=frameNumber;
@@ -47,12 +47,11 @@ public class Monster extends Fighter{
 
 
 	private void setupDeck() {
-		for(MSkill s:skills){
-			for(float f:s.getStrengths()){
-				//addCard(new Card(f));
+		for(Skill s:skills){
+			for(Card c:s.getCards()){
+				cards.add(c);
 			}
 		}
-
 	}
 
 
@@ -78,7 +77,7 @@ public class Monster extends Fighter{
 		if(skills!=null){
 			output+="\"Skills\" : {\n";
 			for(int i=0;i<skills.length;i++){
-				MSkill s = skills[i];
+				Skill s = skills[i];
 				output+=s.toJson();
 				if(skills.length>i+1)output+=",";
 				output+="\n";

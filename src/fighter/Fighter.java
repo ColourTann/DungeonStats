@@ -1,18 +1,15 @@
 package fighter;
 
-import java.text.BreakIterator;
 import java.util.ArrayList;
-
-import javax.swing.plaf.ActionMapUIResource;
 
 import cards.Card;
 
 public abstract class Fighter {
-	private ArrayList<Card> cards = new ArrayList<>();
+	protected ArrayList<Card> cards = new ArrayList<>();
 	protected String name;
 
 	public enum Trait{
-		Tenacious, Brittle, Meaty, Respite, Fury, Burn, BonusHP, Skilled;
+		Tenacious, Brittle, Meaty, Respite, Fury, Burn, Skilled;
 
 		public String toJson() {
 			return "\""+this+"\"";
@@ -31,8 +28,8 @@ public abstract class Fighter {
 		float totalStrength=0;
 		float numberOfCards=0;
 		for(Card c:cards){
-//			totalStrength+=c.getStrength();
-//			numberOfCards+=c.getBlock()?0:1;
+			totalStrength+=c.strength;
+			numberOfCards++;
 		}
 		float bonusHP=0;
 		float bonusAverageStrength=0;
