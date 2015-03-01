@@ -19,7 +19,6 @@ import fighter.monster.Monster;
 import fighter.monster.MonsterFactory;
 import fighter.monster.Monster.*;
 import fighter.player.Hero;
-import fighter.player.Wizard;
 
 
 public class DStats {
@@ -27,7 +26,6 @@ public class DStats {
 
 
 
-	public static Hero wizard= new Wizard();
 	
 	
 	
@@ -110,34 +108,26 @@ public class DStats {
 		
 		
 		
-		String s =CardFactory.jsonAllSkills(false);
-		System.out.println(s);
+
+		//System.out.println(CardFactory.jsonAllSkills(true));
+		//System.out.println(CardFactory.jsonAllClasses());
 		
-//		Item.setup();
-//		Item.printAll();
+		//Item.printAll();
 		//Item.printNumbers();
-		
 		//Item.analyseLevel(0);
-		
-//		for(int i=1;i<=5;i++){
-//		Item.analyseLevel(i);
-//		}
-		
+//		for(int i=1;i<=5;i++) Item.analyseLevel(i);
 		//Item.analyseLevel(2, true, true);
 		
-		
-		
-		
-	//	MonsterFactory.jsonAll();
+		MonsterFactory.jsonAll();
 		//MonsterFactory.printAll();
-		
 		//printStrengths(3);
 		
-		//CardFactory.makeAllCards();
+
 	}
 
 	public static void setup(){
 		Skill.setupMap();
+		Item.setup();
 		CardFactory.makeAllCards();
 		
 		MonsterFactory.setup();

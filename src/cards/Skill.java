@@ -5,6 +5,7 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 
+
 public class Skill {
 	public SkillType type;
 	public int level=-1;
@@ -12,12 +13,14 @@ public class Skill {
 	public enum SkillType{
 		Fire, Arcane, Holy, Growth, Armour, Blade, Crush, Swift,
 		
-		Feral, Spooky, Rage, Stupidity, Weapon, Flame, Nature, Death, Warrior, Ferocious, Demonic, Sorcery
+		Feral, Spooky, Rage, Stupidity, Weapon, Flame, Nature, Death, Ferocious, Demonic, Sorcery,
 		
+		Warrior, Wizard
 	}
 	
 	public static SkillType[] monsterSkills=new SkillType[]{SkillType.Feral, SkillType.Spooky, SkillType.Rage, SkillType.Stupidity, SkillType.Weapon, SkillType.Flame, SkillType.Nature, SkillType.Death};
 	public static SkillType[] playerSkills=new SkillType[]{SkillType.Fire, SkillType.Arcane, SkillType.Holy, SkillType.Armour, SkillType.Blade, SkillType.Crush, SkillType.Swift}; //add growth later
+	public static SkillType[] heroDecks = new SkillType[]{SkillType.Warrior, SkillType.Wizard};
 	
 	public static Skill fire= new Skill(SkillType.Fire);
 	public static Skill arcane= new Skill(SkillType.Arcane);
@@ -27,6 +30,15 @@ public class Skill {
 	public static Skill blade= new Skill(SkillType.Blade);
 	public static Skill crush= new Skill(SkillType.Crush);
 	public static Skill swift= new Skill(SkillType.Swift);
+	
+//	public static Skill mFeral= new Skill(SkillType.Feral);
+//	public static Skill mSpooky= new Skill(SkillType.Spooky);
+//	public static Skill mRage= new Skill(SkillType.Rage);
+//	public static Skill mStupid= new Skill(SkillType.Stupidity);
+//	public static Skill mWeapon= new Skill(SkillType.Weapon);
+//	public static Skill mFlame= new Skill(SkillType.Flame);
+//	public static Skill mNature= new Skill(SkillType.Nature);
+//	public static Skill mDeath= new Skill(SkillType.Death);
 	
 	private static HashMap<SkillType, Skill> skillMap = new HashMap<>();
 	
@@ -39,81 +51,7 @@ public class Skill {
 	public static Skill get(SkillType type){
 		return skillMap.get(type);
 	}
-	
-//	public static Skill feral = new Skill(SkillType.Feral, new float[]{
-//			1.2f,
-//			1.2f,
-//			2.3f,
-//			2.3f,
-//			3});
-//	
-//	public static Skill spooky = new Skill(SkillType.Spooky, new float[]{
-//			1.3f,
-//			1.8f,
-//			1.8f,
-//			2.6f,
-//			3.5f});
-//	
-//	public static Skill rage = new Skill(SkillType.Rage, new float[]{
-//			0.1f,
-//			1.3f,
-//			1.3f,
-//			2.3f,
-//			3.3f});
-//	
-//	public static Skill stupidity= new Skill(SkillType.Stupidity, new float[]{
-//			0,
-//			0,
-//			0,
-//			0,
-//			0});
-//	
-//	public static Skill weapon = new Skill(SkillType.Weapon, new float[]{
-//			1,
-//			1,
-//			2.3f,	
-//			2.3f,
-//			3.8f});
-//	
-//	public static Skill flame = new Skill(SkillType.Flame, new float[]{
-//			1,
-//			1.2f,
-//			2,
-//			2,
-//			3});
-//	
-//	public static Skill nature = new Skill(SkillType.Nature, new float[]{
-//			1,
-//			1.2f,
-//			2,
-//			3.5f,
-//			3.5f});
-//	
-//	public static Skill death= new Skill(SkillType.Death, new float[]{
-//			1,
-//			1.5f,
-//			2,
-//			2.8f,
-//			3});
-//	
-//	public static Skill ferocious = new Skill(SkillType.Ferocious, new float[]{
-//			2.5f,
-//			3.5f,
-//			4});
-//	
-//	public static Skill demonic = new Skill(SkillType.Demonic, new float[]{
-//			1.8f,
-//			2.8f,
-//			4});
-//	
-//	public static Skill sorcery = new Skill(SkillType.Sorcery, new float[]{
-//			2.2f,
-//			2.5f,
-//			4});
-	
-	
-	
-	
+
 	public Skill(SkillType type){
 		this.type=type;
 	}

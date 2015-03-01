@@ -9,7 +9,7 @@ public abstract class Fighter {
 	protected String name;
 
 	public enum Trait{
-		Tenacious, Brittle, Meaty, Respite, Fury, Burn, Skilled;
+		Tenacious, Brittle, Meaty, Respite, Fury, Burn, Skilled, Damp;
 
 		public String toJson() {
 			return "\""+this+"\"";
@@ -55,7 +55,7 @@ public abstract class Fighter {
 					bonusAverageStrength+=.4f;
 					break;
 				case Burn:
-					flatBonusStrength=1;
+					flatBonusStrength=1.5f;
 					
 					
 				}

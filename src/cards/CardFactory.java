@@ -54,7 +54,7 @@ public class CardFactory {
 
 	private static ArrayList<Card> cards=new ArrayList<>();
 
-	public enum HeroClass{Warrior}
+	
 
 	
 
@@ -68,11 +68,11 @@ public class CardFactory {
 
 			cName= "Force Shield";
 			cStrength=2;
-			cDescription = "Block 1 magic, +1 card per dmg blocked";
+			cDescription = "Block 1 dmg, +1 card per dmg blocked";
 			cDescSize=20;
 			cIcon=Icon.STAT_ARMOUR;
 			aActionType=ActionType.Block;
-			aDamageType=DamageType.Magical;
+			aDamageType=DamageType.Either;
 			aEffect=1;
 			addAction();
 			aActionType=ActionType.Draw;
@@ -169,7 +169,7 @@ public class CardFactory {
 			cName= "Dice";
 			cStrength=2.5f;
 			cDescription = "2 physical damage, +2 vs unblockable";
-			cDescSize=22;
+			cDescSize=20;
 			cIcon=Icon.STAT_STRENGTH;
 			aActionType=ActionType.Attack;
 			aDamageType=DamageType.Physical;
@@ -267,7 +267,7 @@ public class CardFactory {
 			cName= "Ignite";
 			cStrength=3;
 			cDescription = "1 magic damage: 1 magic damage each turn";
-			cDescSize=22;
+			cDescSize=19;
 			cIcon=Icon.STAT_MAGIC;
 			aActionType=ActionType.Attack;
 			aDamageType=DamageType.Magical;
@@ -302,17 +302,16 @@ public class CardFactory {
 
 			cName= "Smite";
 			cStrength=2.5f;
-			cDescription = "2 magic damage, +2 vs undead";
+			cDescription = "2 magic damage, block 1 magic dmg";
 			cDescSize=22;
 			cIcon=Icon.STAT_ARMOUR;
 			aActionType=ActionType.Attack;
 			aDamageType=DamageType.Magical;
 			aEffect=2;
 			addAction();
-			aActionType=ActionType.Attack;
+			aActionType=ActionType.Block;
 			aDamageType=DamageType.Magical;
-			aEffect=2;
-			aBonusSpecies=BonusVsSpecies.Undead;
+			aEffect=1;
 			addAction();
 			addCard(type);
 
@@ -980,6 +979,81 @@ public class CardFactory {
 			addCard(type);
 
 			break;
+			
+		case Wizard:
+			
+			cName= "Bolt";
+			cStrength=1f;
+			cDescription = "1 magic damage";
+			cDescSize=22;
+			cIcon=Icon.STAT_MAGIC;
+			aActionType=ActionType.Attack;
+			aDamageType=DamageType.Magical;
+			aEffect=1;
+			addAction();
+			addCard(type);
+
+			cName= "Bolt";
+			cStrength=1f;
+			cDescription = "1 magic damage";
+			cDescSize=22;
+			cIcon=Icon.STAT_MAGIC;
+			aActionType=ActionType.Attack;
+			aDamageType=DamageType.Magical;
+			aEffect=1;
+			addAction();
+			addCard(type);
+
+			cName= "Zap";
+			cStrength=1.5f;
+			cDescription = "1 magic damage, [quick]";
+			cDescSize=22;
+			cIcon=Icon.STAT_MAGIC;
+			aActionType=ActionType.Attack;
+			aDamageType=DamageType.Magical;
+			aEffect=1;
+			aQuick=true;
+			addAction();
+			addCard(type);
+
+			cName= "Stonefist";
+			cStrength=2f;
+			cDescription = "1 physical damage, block 1 physical";
+			cDescSize=22;
+			cIcon=Icon.STAT_STRENGTH;
+			aActionType=ActionType.Attack;
+			aDamageType=DamageType.Physical;
+			aEffect=1;
+			addAction();
+			aActionType=ActionType.Block;
+			aDamageType=DamageType.Physical;
+			aEffect=1;
+			addAction();
+			addCard(type);
+
+			cName= "Blast";
+			cStrength=2f;
+			cDescription = "2 magic damage";
+			cDescSize=24;
+			cIcon=Icon.STAT_MAGIC;
+			aActionType=ActionType.Attack;
+			aDamageType=DamageType.Magical;
+			aEffect=2;
+			addAction();
+			addCard(type);
+
+			cName= "Phase";
+			cStrength=1f;
+			cDescription = "Block 2 damage";
+			cDescSize=22;
+			cIcon=Icon.STAT_ARMOUR;
+			aActionType=ActionType.Block;
+			aDamageType=DamageType.Either;
+			aEffect=2;
+			addAction();
+			addCard(type);
+			
+			break;
 		default:
 			break;
 		}
@@ -1071,10 +1145,24 @@ public class CardFactory {
 		output=Json.removeComma(output);
 		return output;
 	}
+	
+	public static String jsonAllClasses(){
+		String output= "";
+		output+=Json.enclose();
+		output+=Json.startList("Classes");
+		for(SkillType type:Skill.heroDecks){
+			output+=jsonSkills(type);	
+		}
+		output=Json.removeComma(output);
+		output+=Json.endList();
+		output=Json.removeComma(output);
+		output+=Json.endEnclose();
+		output=Json.removeComma(output);
+		return output;
+	}
 
 	public static String jsonSkills(SkillType type){
 		String output="";
-
 		output+=Json.startArray(type.toString());
 		for(Card c:Skill.get(type).getCards()){
 			output+=Json.enclose();

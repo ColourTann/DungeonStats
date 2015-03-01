@@ -22,7 +22,7 @@ public class Monster extends Fighter{
 	private int frameNumber;
 	private int level;
 	private int health;
-	private int randomPool;
+	public int randomPool;
 	private MSound sound;
 	private Skill[] skills;
 	public Monster(String name, String plural, Species species, String description, 
@@ -69,7 +69,7 @@ public class Monster extends Fighter{
 		if(species!=null)output+="\"Species\" : \""+species+"\",\n";
 		output+="\"description\" : \""+description+"\",\n";
 		output+="\"frameNumber\" : "+frameNumber+",\n";
-		if(level>0) output+="\"dread\" : "+level+",\n";
+		if(level>-1) output+="\"dread\" : "+level+",\n";
 		output+="\"health\" : "+health+",\n";
 		output+="\"RandomPool\" : "+randomPool+",\n";
 		if(sound!=null) output+="\"sound\" : \""+sound+"\",\n";
