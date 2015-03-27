@@ -12,6 +12,8 @@ import java.util.ArrayList;
 
 
 
+
+import room.Room;
 import cards.CardFactory;
 import cards.Skill;
 import cards.Skill.SkillType;
@@ -112,15 +114,18 @@ public class DStats {
 		//System.out.println(CardFactory.jsonAllSkills(true));
 		//System.out.println(CardFactory.jsonAllClasses());
 		
-		//Item.printAll();
+		Item.printAll();
 		//Item.printNumbers();
 		//Item.analyseLevel(0);
 //		for(int i=1;i<=5;i++) Item.analyseLevel(i);
 		//Item.analyseLevel(2, true, true);
 		
-		MonsterFactory.jsonAll();
+		//MonsterFactory.jsonAll();
 		//MonsterFactory.printAll();
 		//printStrengths(3);
+		
+		//Room.setupRooms();
+		//System.out.println(Room.JsonAllRooms());
 		
 
 	}

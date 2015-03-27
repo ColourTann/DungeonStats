@@ -2,6 +2,7 @@ package item;
 
 import java.awt.event.TextEvent;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import json.Json;
 import cards.Skill;
@@ -13,7 +14,7 @@ public class Item {
 	static ArrayList<Item>[] levels = new ArrayList[6];
 	enum EquipmentType{armour, shield, helmet, weapon};
 	enum Sound{equip_coin_single, equip_coin_double, equip_robes, equip_coin_bag, equip_staff, bling, equip_coin_chest, equip_leather_helm, equip_horned_helm, equip_winged_helm, equip_scalemail, equip_chainmail, equip_platemail, equip_wooden_shield, equip_buckler, equip_club, equip_mace, equip_axe, equip_potion, equip_cloth_hat, equip_knife, equip_bow, equip_sword, equip_silver_shield, equip_great_shield, equip_leather_armour};
-	String name;
+	public String name;
 	String description;
 	int frameNumber;
 	int equipment;
@@ -152,9 +153,9 @@ public class Item {
 		aType=EquipmentType.helmet;
 		aLevel=3;
 		aEquipFrame=11;
-		aRandomPool=0;
+		aRandomPool=1;
 		aSound=Sound.equip_leather_helm;
-		aSkills=new Skill[]{Skill.armour.asLevel(2)};
+		aSkills=new Skill[]{Skill.armour.asLevel(2), Skill.crush.asLevel(1)};
 		add();
 
 		aName="Horned Helm";
@@ -194,7 +195,7 @@ public class Item {
 		aDesc="A shirt of linked rings. Seems comfortable";
 		aEquipment=1;
 		aType=EquipmentType.armour;
-		aLevel=3;
+		aLevel=2;
 		aEquipFrame=16;
 		aRandomPool=1;
 		aSound=Sound.equip_chainmail;
@@ -264,7 +265,7 @@ public class Item {
 		aType=EquipmentType.weapon;
 		aLevel=2;
 		aEquipFrame=22;
-		aRandomPool=0;
+		aRandomPool=1;
 		aSound=Sound.equip_club;
 		aSkills=new Skill[]{Skill.crush.asLevel(2)};
 		add();
@@ -320,16 +321,16 @@ public class Item {
 		aType=EquipmentType.armour;
 		aEquipFrame=30;
 		aLevel=3;
-		aRandomPool=0;
+		aRandomPool=1;
 		aSound=Sound.equip_robes;
-		aSkills=new Skill[]{Skill.arcane.asLevel(2)};
+		aSkills=new Skill[]{Skill.arcane.asLevel(2), Skill.fire.asLevel(1)};
 		add();
 
 		aName="Wizard's Hat";
 		aDesc="Is there a rabbit inside?";
 		aEquipment=1;
 		aType=EquipmentType.helmet;
-		aLevel=4;
+		aLevel=3;
 		aEquipFrame=32;
 		aRandomPool=0;
 		aSound=Sound.equip_cloth_hat;
@@ -364,7 +365,7 @@ public class Item {
 		aDesc="Poison? Elves sure can be MEAN.";
 		aEquipment=1;
 		aType=EquipmentType.weapon;
-		aLevel=4;
+		aLevel=3;
 		aEquipFrame=29;
 		aRandomPool=0;
 		aSound=Sound.equip_bow;
@@ -397,7 +398,7 @@ public class Item {
 		aDesc="Nasty, nasty thing";
 		aEquipment=1;
 		aType=EquipmentType.weapon;
-		aLevel=4;
+		aLevel=3;
 		aEquipFrame=35;
 		aRandomPool=0;
 		aSound=Sound.equip_mace;
@@ -479,9 +480,9 @@ public class Item {
 		aType=EquipmentType.shield;
 		aLevel=1;
 		aEquipFrame=42;
-		aRandomPool=0;
+		aRandomPool=1;
 		aSound=Sound.equip_great_shield;
-		aSkills=new Skill[]{Skill.arcane.asLevel(1)};
+		aSkills=new Skill[]{Skill.arcane.asLevel(1), Skill.holy.asLevel(1)};
 		add();
 
 		aName="Ruffled Shirt";
@@ -546,9 +547,9 @@ public class Item {
 		aType=EquipmentType.armour;
 		aLevel=3;
 		aEquipFrame=48;
-		aRandomPool=0;
+		aRandomPool=1;
 		aSound=Sound.equip_club;
-		aSkills=new Skill[]{Skill.arcane.asLevel(2)};
+		aSkills=new Skill[]{Skill.arcane.asLevel(1), Skill.swift.asLevel(1), Skill.holy.asLevel(1)};
 		add();
 
 		aName="Elven Plate";
@@ -577,9 +578,9 @@ public class Item {
 		aDesc="Chilly";
 		aEquipment=1;
 		aType=EquipmentType.armour;
-		aLevel=4;
+		aLevel=3;
 		aEquipFrame=51;
-		aRandomPool=0;
+		aRandomPool=1;
 		aSound=Sound.equip_leather_armour;
 		aSkills=new Skill[]{Skill.arcane.asLevel(2), Skill.armour.asLevel(1)};
 		add();
@@ -623,7 +624,7 @@ public class Item {
 		aDesc="Too cold!";
 		aEquipment=1;
 		aType=EquipmentType.helmet;
-		aLevel=3;
+		aLevel=2;
 		aEquipFrame=54;
 		aRandomPool=0;
 		aSound=Sound.equip_winged_helm;
@@ -638,7 +639,7 @@ public class Item {
 		aEquipFrame=55;
 		aRandomPool=1;
 		aSound=Sound.equip_horned_helm;
-		aSkills=new Skill[]{Skill.armour.asLevel(1), Skill.blade.asLevel(1)};
+		aSkills=new Skill[]{Skill.blade.asLevel(2)};
 		add();
 
 		aName="Solider's Helmet";
@@ -689,7 +690,7 @@ public class Item {
 		aDesc="Thank'y'ver'much!";
 		aEquipment=1;
 		aType=EquipmentType.helmet;
-		aLevel=2;
+		aLevel=1;
 		aEquipFrame=60;
 		aRandomPool=0;
 		aKeepHair=1;
@@ -727,7 +728,7 @@ public class Item {
 		aType=EquipmentType.helmet;
 		aLevel=1;
 		aEquipFrame=63;
-		aRandomPool=0;
+		aRandomPool=1;
 		aKeepHair=1;
 		aSound=Sound.equip_cloth_hat;
 		aSkills= new Skill[]{Skill.swift.asLevel(1), Skill.arcane.asLevel(1)};
@@ -795,7 +796,7 @@ public class Item {
 		aType=EquipmentType.weapon;
 		aLevel=4;
 		aEquipFrame=69;
-		aRandomPool=0;
+		aRandomPool=1;
 		aSound=Sound.equip_sword;
 		aSkills= new Skill[]{Skill.swift.asLevel(1), Skill.blade.asLevel(2)};
 		add();
@@ -832,12 +833,12 @@ public class Item {
 		aSound=Sound.equip_club;
 		aSkills= new Skill[]{Skill.blade.asLevel(2), Skill.crush.asLevel(2)};
 		add();
-
+		
 		aName="Brass Knuckles";
 		aDesc="Fighting dirty";
 		aEquipment=1;
 		aType=EquipmentType.weapon;
-		aLevel=2;
+		aLevel=1;
 		aEquipFrame=73;
 		aRandomPool=1;
 		aSound=Sound.equip_sword;
@@ -848,9 +849,9 @@ public class Item {
 		aDesc="Handy!";
 		aEquipment=1;
 		aType=EquipmentType.weapon;
-		aLevel=3;
+		aLevel=2;
 		aEquipFrame=74;
-		aRandomPool=0;
+		aRandomPool=1;
 		aSound=Sound.equip_axe;
 		aSkills= new Skill[]{Skill.blade.asLevel(2)};
 		add();
@@ -1263,7 +1264,8 @@ public class Item {
 		if(level>0) output+="\"hope\" : "+level+",\n";
 		if(glory>0) output+="\"glory\" : "+glory+",\n";
 		if(spawnCount>0) output+="\"spawnCount\" : "+spawnCount+",\n";
-		if(randomPool>0) output+="\"RandomPool\" : "+randomPool+",\n";
+		//if(randomPool>0) output+="\"RandomPool\" : "+randomPool+",\n";
+		output+="\"RandomPool\" : "+0+",\n";
 		if(keepHair>0) output+="\"keepHair\" : "+keepHair+",\n";
 		if(sound!=null) output+="\"sound\" : \""+sound+"\",\n";
 		if(skills!=null){

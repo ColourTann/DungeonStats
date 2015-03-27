@@ -7,6 +7,9 @@ public class Json {
 	public static String endList(){
 		return "},\n";
 	}
+	public static String startArray(String name, boolean newLine){
+		return "\""+name+"\": [";
+	}
 	public static String startArray(String name){
 		return "\""+name+"\": [\n";
 	}

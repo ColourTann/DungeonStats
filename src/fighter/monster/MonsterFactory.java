@@ -50,11 +50,11 @@ public class MonsterFactory {
 		description = "OK this doesn't look dangerous AT ALL";
 		frameNumber = 2;
 		level = 0;
-		health = 3;
+		health = 4;
 		randomPool=0;
 		sound = MSound.rubber_ducky;
 		traits = null;
-		skills = new Skill[]{Skill.get(SkillType.Rage).asLevel(2), Skill.get(SkillType.Stupidity).asLevel(1)};
+		skills = new Skill[]{Skill.get(SkillType.Rage).asLevel(2), Skill.get(SkillType.Stupidity).asLevel(2)};
 		make();
 		
 		name = "Giant Bat";
@@ -690,7 +690,7 @@ public class MonsterFactory {
 		
 		name = "Basilisk";
 		plural= "Basilisks";
-		description = "The most powerful of all lisks";
+		description = "Most powerful of all lisks";
 		frameNumber = 51;
 		level = 5 ;
 		health = 10;

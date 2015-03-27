@@ -15,12 +15,12 @@ public class Skill {
 		
 		Feral, Spooky, Rage, Stupidity, Weapon, Flame, Nature, Death, Ferocious, Demonic, Sorcery,
 		
-		Warrior, Wizard
+		Initiate, Chump, Warrior, Wizard, Rogue, Archer, SpellSword, Druid, Cleric, Magician
 	}
 	
 	public static SkillType[] monsterSkills=new SkillType[]{SkillType.Feral, SkillType.Spooky, SkillType.Rage, SkillType.Stupidity, SkillType.Weapon, SkillType.Flame, SkillType.Nature, SkillType.Death};
 	public static SkillType[] playerSkills=new SkillType[]{SkillType.Fire, SkillType.Arcane, SkillType.Holy, SkillType.Armour, SkillType.Blade, SkillType.Crush, SkillType.Swift}; //add growth later
-	public static SkillType[] heroDecks = new SkillType[]{SkillType.Warrior, SkillType.Wizard};
+	public static SkillType[] heroDecks = new SkillType[]{SkillType.Chump, SkillType.Initiate, SkillType.Warrior, SkillType.Wizard};
 	
 	public static Skill fire= new Skill(SkillType.Fire);
 	public static Skill arcane= new Skill(SkillType.Arcane);
