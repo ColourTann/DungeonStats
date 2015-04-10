@@ -95,7 +95,7 @@ public class Room {
 		aName="Rogue's Den";
 		aClasses.add(SkillType.Rogue);
 		aCost=100;
-		aFrame="guild_smithy_nesw";
+		aFrame="guild_storeroom_nesw";
 		addRoom();
 		
 		aName="Barracks";
@@ -112,7 +112,7 @@ public class Room {
 		
 		aName="Tavern";
 		aFrame="guild_tavern_nesw";
-		aClasses.add(SkillType.SpellSword);
+		aClasses.add(SkillType.SpellBlade);
 		aCost=400;
 		addRoom();
 		
@@ -148,20 +148,20 @@ public class Room {
 		aItems.add("Mail Coif");
 		aItems.add("Brass Knuckles");
 		aCost=100;
-		aFrame="guild_armory_nesw";
+		aFrame="guild_smithy_nesw";
 		addRoom();
 		
 		aName="Leatherworker";
 		aItems.add("Skull Cap");
 		aItems.add("Shimmering Cloak");
-		aFrame="guild_storeroom_nesw";
+		aFrame="guild_practiceyard_nesw";
 		aCost=100;
 		addRoom();
 		
 		aName="Armoury";
 		aItems.add("Red Mail");
 		aItems.add("Green Bow");
-		aFrame="guild_practiceyard_nesw";
+		aFrame="guild_armory_nesw";
 		aCost=400;
 		addRoom();
 		

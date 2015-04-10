@@ -1,12 +1,10 @@
 package fighter.monster;
 
-import java.util.ArrayList;
-
 import cards.Card;
 import cards.Skill;
 import fighter.Fighter;
-import fighter.Fighter.Trait;
 import fighter.monster.MonsterFactory.MSound;
+import fighter.monster.MonsterFactory.Region;
 
 
 public class Monster extends Fighter{
@@ -19,28 +17,28 @@ public class Monster extends Fighter{
 	private String plural;
 	private String description;
 	private Species species;
-	private int frameNumber;
+	public int frameNumber;
 	private int level;
-	private int health;
 	public int randomPool;
 	private MSound sound;
 	private Skill[] skills;
-	public Monster(String name, String plural, Species species, String description, 
+	public String name;
+	public Region region;
+	public Monster(String name, String plural, Region region, Species species, String description, 
 			int frameNumber, int level, int health, int randomPool, 
 			MSound sound, Trait[] traits, Skill[] skills){
-		super(name);
+		super(name, health, traits);
+		this.name=name;
 		this.plural=plural;
 		this.frameNumber=frameNumber;
 		this.level=level;
 		this.description=description;
 		this.frameNumber=frameNumber;
 		this.level=level;
-		this.health=health;
 		this.randomPool=randomPool;
 		this.sound=sound;
-		this.traits=traits;
 		this.skills=skills;
-
+		this.region=region;
 		setupDeck();
 	}
 
@@ -48,7 +46,7 @@ public class Monster extends Fighter{
 
 	private void setupDeck() {
 		for(Skill s:skills){
-			for(Card c:s.getCards()){
+			for(Card c:s.getCards(traits!=null&&traits.length>1&&traits[0]==Trait.Skilled)){
 				cards.add(c);
 			}
 		}
@@ -56,10 +54,6 @@ public class Monster extends Fighter{
 
 
 
-	@Override
-	public int getHP() {
-		return health;
-	}
 
 	public String toJson(){
 
@@ -67,10 +61,11 @@ public class Monster extends Fighter{
 		output+="\""+name+"\" : {\n";
 		output+="\"Plural\" : \""+plural+"\",\n";
 		if(species!=null)output+="\"Species\" : \""+species+"\",\n";
+		if(region!=null)output+="\"Region\" : ["+region+"],\n";
 		output+="\"description\" : \""+description+"\",\n";
 		output+="\"frameNumber\" : "+frameNumber+",\n";
 		if(level>-1) output+="\"dread\" : "+level+",\n";
-		output+="\"health\" : "+health+",\n";
+		output+="\"health\" : "+getHP()+",\n";
 		output+="\"RandomPool\" : "+randomPool+",\n";
 		if(sound!=null) output+="\"sound\" : \""+sound+"\",\n";
 				

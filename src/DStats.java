@@ -13,6 +13,7 @@ import java.util.ArrayList;
 
 
 
+
 import room.Room;
 import cards.CardFactory;
 import cards.Skill;
@@ -21,6 +22,7 @@ import fighter.monster.Monster;
 import fighter.monster.MonsterFactory;
 import fighter.monster.Monster.*;
 import fighter.player.Hero;
+import fighter.player.HeroFactory;
 
 
 public class DStats {
@@ -109,33 +111,35 @@ public class DStats {
 		setup();
 		
 		
-		
+
 
 		//System.out.println(CardFactory.jsonAllSkills(true));
-		//System.out.println(CardFactory.jsonAllClasses());
+
 		
-		Item.printAll();
+		//Item.printAll();
 		//Item.printNumbers();
 		//Item.analyseLevel(0);
 //		for(int i=1;i<=5;i++) Item.analyseLevel(i);
 		//Item.analyseLevel(2, true, true);
 		
 		//MonsterFactory.jsonAll();
-		//MonsterFactory.printAll();
+		MonsterFactory.printAll();
+		//MonsterFactory.sortMonsters();
 		//printStrengths(3);
 		
-		//Room.setupRooms();
-		//System.out.println(Room.JsonAllRooms());
 		
-
+		//System.out.println(Room.JsonAllRooms());
+		//System.out.println(HeroFactory.toJson());
+		//System.out.println(HeroFactory.analyseClasses());
 	}
 
 	public static void setup(){
 		Skill.setupMap();
 		Item.setup();
 		CardFactory.makeAllCards();
-		
 		MonsterFactory.setup();
+		Room.setupRooms();
+		HeroFactory.init();
 	}
 	
 	private static void printStrengths(int level) {

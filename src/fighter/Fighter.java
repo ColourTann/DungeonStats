@@ -1,15 +1,16 @@
 package fighter;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import cards.Card;
 
 public abstract class Fighter {
-	protected ArrayList<Card> cards = new ArrayList<>();
+	protected List<Card> cards = new ArrayList<>();
 	protected String name;
-
+	int hp;
 	public enum Trait{
-		Tenacious, Brittle, Meaty, Respite, Fury, Burn, Skilled, Damp;
+		Tenacious, Brittle, Meaty, Respite, Fury, Burn, Skilled, Damp, Blessed, Covetous, ArcaneBlade, Fast, Ranged;
 
 		public String toJson() {
 			return "\""+this+"\"";
@@ -17,8 +18,10 @@ public abstract class Fighter {
 	}
 
 	protected Trait[] traits;
-	public Fighter(String name){
+	public Fighter(String name, int hp, Trait[] traits){
 		this.name=name;
+		this.hp=hp;
+		this.traits=traits;
 	}
 	public void addCard(Card c){
 		cards.add(c);
@@ -27,10 +30,6 @@ public abstract class Fighter {
 		resetBonuses();
 		float totalStrength=0;
 		float numberOfCards=0;
-		for(Card c:cards){
-			totalStrength+=c.strength;
-			numberOfCards++;
-		}
 		float bonusHP=0;
 		float bonusAverageStrength=0;
 		float flatBonusStrength=0;
@@ -56,12 +55,21 @@ public abstract class Fighter {
 					break;
 				case Burn:
 					flatBonusStrength=1.5f;
+					break;
+				case Skilled:
 					
-					
+					break;
 				}
 			}
 			
 		}
+		
+		
+		for(Card c:cards){
+			totalStrength+=c.strength;
+			numberOfCards++;
+		}
+		
 		if(wordy){
 			startPrint();
 			print(name);
@@ -84,6 +92,9 @@ public abstract class Fighter {
 
 	}
 
+	public int getHP(){
+		return hp;
+	}
 
 
 	private void startPrint() {
@@ -104,6 +115,5 @@ public abstract class Fighter {
 		s+="|";
 		System.out.println(s);
 	}
-	public abstract int getHP();
 
 }
