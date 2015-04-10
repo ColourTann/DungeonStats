@@ -318,9 +318,9 @@ public class MonsterFactory {
 		region=Region.Stone;
 		description = "Squeak squeak!";
 		frameNumber = 42;
-		level = 3;
+		level = 2;
 		health = 7;
-		randomPool=1;
+		randomPool=0;
 		traits = null;
 		sound= MSound.giant_bat;
 		skills = new Skill[]{Skill.get(SkillType.Feral).asLevel(4), Skill.get(SkillType.Weapon).asLevel(4), Skill.get(SkillType.Rage).asLevel(4)};
@@ -332,7 +332,7 @@ public class MonsterFactory {
 		frameNumber = 37;
 		level = 3;
 		health = 7;
-		randomPool=1;
+		randomPool=0;
 		sound = MSound.giant_bat;
 		traits = null;
 		skills = new Skill[]{Skill.get(SkillType.Death).asLevel(4), Skill.get(SkillType.Feral).asLevel(4)};
@@ -344,10 +344,34 @@ public class MonsterFactory {
 		frameNumber = 19;
 		level = 3;
 		health = 6;
-		randomPool=1;
+		randomPool=0;
 		sound = MSound.giant_bat;
 		traits = new Trait[]{Trait.Skilled};
 		skills = new Skill[]{Skill.get(SkillType.Weapon).asLevel(5), Skill.get(SkillType.Rage).asLevel(5)};
+		make();
+		
+		name = "The Black Knight";
+		plural= "Black Knights";
+		description = "I'll bite you!";
+		frameNumber = 46;
+		level = 4 ;
+		health = 8;
+		randomPool=0;
+		sound = MSound.giant_bat;
+		traits = null;
+		skills = new Skill[]{Skill.get(SkillType.Weapon).asLevel(5), Skill.get(SkillType.Death).asLevel(4)};
+		make();
+		
+		name = "Lich";
+		plural= "Lichen";
+		description = "Don't let him cast Lich Itch on you!";
+		frameNumber = 29;
+		level = 4;
+		health = 12;
+		randomPool=0;
+		sound = MSound.giant_bat;
+		traits = null;
+		skills = new Skill[]{Skill.get(SkillType.Spooky).asLevel(5), Skill.get(SkillType.Death).asLevel(5)};
 		make();
 		
 		name = "Fire Demon";
@@ -356,14 +380,28 @@ public class MonsterFactory {
 		frameNumber = 8;
 		level = 4;
 		health = 7;
-		randomPool=1;
+		randomPool=0;
 		sound = MSound.skeleton;
 		traits = new Trait[]{Trait.Skilled, Trait.Damp};
 		skills = new Skill[]{Skill.get(SkillType.Weapon).asLevel(5), Skill.get(SkillType.Flame).asLevel(5), Skill.get(SkillType.Rage).asLevel(5)};
 		make();
 		
+		name = "Eye Beast";
+		plural= "Eye Beasts";
+		description = "Is it looking at me?";
+		frameNumber = 47;
+		level = 4 ;
+		health = 10;
+		randomPool=0;
+		sound = MSound.giant_bat;
+		traits = null;
+		skills = new Skill[]{Skill.get(SkillType.Death).asLevel(5)};
+		make();
+		
 		
 		//ZONE 2//
+		
+		
 		name= "Bloodstarved Bat";
 		plural= "Bloodstarved Bats";
 		region=Region.Jungle;
@@ -603,6 +641,69 @@ public class MonsterFactory {
 		skills = new Skill[]{Skill.get(SkillType.Feral).asLevel(5)};
 		make();
 		
+		//BOSSES//
+		
+		name = "Medusa";
+		plural= "Medusas";
+		description = "Likes to gorge on goujons";
+		frameNumber = 45;
+		level = 4;
+		health = 12;
+		randomPool=0;
+		sound = MSound.giant_bat;
+		traits = null;
+		skills = new Skill[]{Skill.get(SkillType.Death).asLevel(5)};
+		make();
+		
+		
+		name = "Ettin";
+		plural= "Ettins";
+		description = "You can't beat both of us!";
+		frameNumber = 24;
+		level = 4;
+		health = 14;
+		randomPool=0;
+		sound = MSound.giant_bat;
+		traits = null;
+		skills = new Skill[]{Skill.get(SkillType.Rage).asLevel(5)};
+		make();
+		
+		name = "Chimera";
+		plural= "Chimerae";
+		description = "Used to have a squirrel's head too";
+		frameNumber = 52;
+		level = 4 ;
+		health = 12;
+		randomPool=0;
+		sound = MSound.giant_bat;
+		traits = null;
+		skills = new Skill[]{Skill.get(SkillType.Feral).asLevel(5)};
+		make();
+		
+		name = "Ogre";
+		plural= "Ogres";
+		description = "Impossible to push over";
+		frameNumber = 50;
+		level = 4 ;
+		health = 13;
+		randomPool=0;
+		sound = MSound.giant_bat;
+		traits = null;
+		skills = new Skill[]{Skill.get(SkillType.Rage).asLevel(5), Skill.get(SkillType.Weapon).asLevel(5)};
+		make();
+		
+		name = "Dragon";
+		plural= "Dragons";
+		description = "Very grumpy in the morning";
+		frameNumber = 53;
+		level = 4;
+		health = 13;
+		randomPool=0;
+		sound = MSound.giant_bat;
+		traits = null;
+		skills = new Skill[]{Skill.get(SkillType.Flame).asLevel(5), Skill.get(SkillType.Feral).asLevel(5)};
+		make();
+		
 		//UNUSED MONSTERS//
 		
 		name = "Sorceress";
@@ -707,17 +808,7 @@ public class MonsterFactory {
 		skills = new Skill[]{Skill.get(SkillType.Nature).asLevel(5)};
 		make();
 		
-		name = "Ettin";
-		plural= "Ettins";
-		description = "You can't beat both of us!";
-		frameNumber = 24;
-		level = 4;
-		health = 7;
-		randomPool=0;
-		sound = MSound.giant_bat;
-		traits = null;
-		skills = new Skill[]{Skill.get(SkillType.Rage).asLevel(5)};
-		make();
+
 		
 	
 		
@@ -733,20 +824,7 @@ public class MonsterFactory {
 		skills = new Skill[]{Skill.get(SkillType.Spooky).asLevel(5)};
 		make();
 		
-		name = "Lich";
-		plural= "Lichen";
-		description = "Don't let him cast Lich Itch on you!";
-		frameNumber = 29;
-		level = 4;
-		health = 7;
-		randomPool=0;
-		sound = MSound.giant_bat;
-		traits = null;
-		skills = new Skill[]{Skill.get(SkillType.Spooky).asLevel(5)};
-		make();
-		
-		
-		
+				
 		name = "Nymph";
 		plural= "Nymphs";
 		description = "It takes years of meditation to grow these";
@@ -800,18 +878,7 @@ public class MonsterFactory {
 		make();
 		
 		
-		
-		name = "Ratman";
-		plural= "Ratmen";
-		description = "One day he hopes to be a Manrat";
-		frameNumber = 42;
-		level = 3;
-		health = 7;
-		randomPool=0;
-		sound = MSound.giant_bat;
-		traits = null;
-		skills = new Skill[]{Skill.get(SkillType.Feral).asLevel(5)};
-		make();
+
 		
 		name = "Angry Bunny";
 		plural= "Angry Bunnies";
@@ -825,41 +892,11 @@ public class MonsterFactory {
 		skills = new Skill[]{Skill.get(SkillType.Feral).asLevel(5)};
 		make();
 		
-		name = "Gorgon";
-		plural= "Gorgons";
-		description = "Likes to gorge on goujons";
-		frameNumber = 45;
-		level = 5 ;
-		health = 10;
-		randomPool=0;
-		sound = MSound.giant_bat;
-		traits = null;
-		skills = new Skill[]{Skill.get(SkillType.Death).asLevel(5)};
-		make();
 		
-		name = "The Black Knight";
-		plural= "Black Knights";
-		description = "I'll bite you!";
-		frameNumber = 46;
-		level = 5 ;
-		health = 10;
-		randomPool=0;
-		sound = MSound.giant_bat;
-		traits = null;
-		skills = new Skill[]{Skill.get(SkillType.Weapon).asLevel(5)};
-		make();
 		
-		name = "Eye Beast";
-		plural= "Eye Beasts";
-		description = "Is it looking at me?";
-		frameNumber = 47;
-		level = 5 ;
-		health = 10;
-		randomPool=0;
-		sound = MSound.giant_bat;
-		traits = null;
-		skills = new Skill[]{Skill.get(SkillType.Death).asLevel(5)};
-		make();
+		
+		
+		
 		
 		name = "Troll";
 		plural= "Trolls";
@@ -885,17 +922,7 @@ public class MonsterFactory {
 		skills = new Skill[]{Skill.get(SkillType.Death).asLevel(5)};
 		make();
 		
-		name = "Ogre";
-		plural= "Ogres";
-		description = "Impossible to push over";
-		frameNumber = 50;
-		level = 5 ;
-		health = 10;
-		randomPool=0;
-		sound = MSound.giant_bat;
-		traits = null;
-		skills = new Skill[]{Skill.get(SkillType.Rage).asLevel(5)};
-		make();
+		
 		
 		name = "Basilisk";
 		plural= "Basilisks";
@@ -909,29 +936,9 @@ public class MonsterFactory {
 		skills = new Skill[]{Skill.get(SkillType.Death).asLevel(5)};
 		make();
 		
-		name = "Chimera";
-		plural= "Chimerae";
-		description = "Used to have a squirrel's head too";
-		frameNumber = 52;
-		level = 5 ;
-		health = 5;
-		randomPool=0;
-		sound = MSound.giant_bat;
-		traits = null;
-		skills = new Skill[]{Skill.get(SkillType.Feral).asLevel(5)};
-		make();
 		
-		name = "Dragon";
-		plural= "Dragons";
-		description = "Very grumpy in the morning";
-		frameNumber = 53;
-		level = 5 ;
-		health = 10;
-		randomPool=0;
-		sound = MSound.giant_bat;
-		traits = null;
-		skills = new Skill[]{Skill.get(SkillType.Flame).asLevel(5)};
-		make();
+		
+	
 		
 //
 //		name = "";

@@ -123,12 +123,12 @@ public class DStats {
 		//Item.analyseLevel(2, true, true);
 		
 		//MonsterFactory.jsonAll();
-		MonsterFactory.printAll();
+		//MonsterFactory.printAll();
 		//MonsterFactory.sortMonsters();
 		//printStrengths(3);
 		
 		
-		//System.out.println(Room.JsonAllRooms());
+		System.out.println(Room.JsonAllRooms());
 		//System.out.println(HeroFactory.toJson());
 		//System.out.println(HeroFactory.analyseClasses());
 	}

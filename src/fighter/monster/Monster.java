@@ -61,7 +61,7 @@ public class Monster extends Fighter{
 		output+="\""+name+"\" : {\n";
 		output+="\"Plural\" : \""+plural+"\",\n";
 		if(species!=null)output+="\"Species\" : \""+species+"\",\n";
-		if(region!=null)output+="\"Region\" : ["+region+"],\n";
+		if(region!=null)output+="\"Region\" : [\""+region+"\"],\n";
 		output+="\"description\" : \""+description+"\",\n";
 		output+="\"frameNumber\" : "+frameNumber+",\n";
 		if(level>-1) output+="\"dread\" : "+level+",\n";

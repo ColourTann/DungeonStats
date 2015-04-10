@@ -106,14 +106,14 @@ public class Room {
 		
 		aName="Fletcher";
 		aClasses.add(SkillType.Archer);
-		aCost=400;
+		aCost=1000;
 		aFrame="guild_archery_range_nesw";
 		addRoom();
 		
 		aName="Tavern";
 		aFrame="guild_tavern_nesw";
 		aClasses.add(SkillType.SpellBlade);
-		aCost=400;
+		aCost=1000;
 		addRoom();
 		
 		//MAGICAL//
@@ -132,13 +132,13 @@ public class Room {
 
 		aName="Standing Stones";
 		aClasses.add(SkillType.Druid);
-		aCost=400;
+		aCost=1000;
 		aFrame="guild_garden_nesw";
 		addRoom();
 		
 		aName="Magic College";
 		aClasses.add(SkillType.Magician);
-		aCost=400;
+		aCost=1000;
 		aFrame="guild_magestower_nesw";
 		addRoom();
 		
@@ -162,14 +162,14 @@ public class Room {
 		aItems.add("Red Mail");
 		aItems.add("Green Bow");
 		aFrame="guild_armory_nesw";
-		aCost=400;
+		aCost=1000;
 		addRoom();
 		
 		aName="Apothecary";
 		aItems.add("Fez");
 		aItems.add("Toxic Bow");
 		aFrame="guild_apothecary_nesw";
-		aCost=100;
+		aCost=1000;
 		addRoom();
 	}
 	
