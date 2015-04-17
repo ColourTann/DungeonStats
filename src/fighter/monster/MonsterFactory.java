@@ -711,11 +711,11 @@ public class MonsterFactory {
 		description = "She's got a wand and she's not afraid to use it";
 		frameNumber = 0;
 		level = 3;
-		health = 8;
-		randomPool=0;
+		health = 5;
+		randomPool=1;
 		sound = MSound.giant_bat;
 		traits = null;
-		skills = new Skill[]{Skill.get(SkillType.Flame).asLevel(5)};
+		skills = new Skill[]{Skill.get(SkillType.Demonic).asLevel(3),Skill.get(SkillType.Rage).asLevel(4)};
 		make();
 		
 		name = "Cyclops";

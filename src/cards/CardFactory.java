@@ -909,6 +909,41 @@ public class CardFactory {
 
 			break;
 		case Demonic:
+			cName= "Clash";
+			cStrength=3.0f;
+			cDescription = "2 physical damage, [unblockable]";
+			cDescSize=22;
+			cIcon=Icon.STAT_STRENGTH;
+			aActionType=ActionType.Attack;
+			aDamageType=DamageType.Physical;
+			aEffect=2;
+			aUnblockable=true;
+			addAction();
+			addCard(type);
+			
+			cName= "Clash";
+			cStrength=3.5f;
+			cDescription = "2 physical damage, [unblockable]";
+			cDescSize=22;
+			cIcon=Icon.STAT_STRENGTH;
+			aActionType=ActionType.Attack;
+			aDamageType=DamageType.Physical;
+			aEffect=2;
+			aUnblockable=true;
+			addAction();
+			addCard(type);
+			
+			cName= "Clash";
+			cStrength=4.0f;
+			cDescription = "2 physical damage, [unblockable]";
+			cDescSize=22;
+			cIcon=Icon.STAT_STRENGTH;
+			aActionType=ActionType.Attack;
+			aDamageType=DamageType.Physical;
+			aEffect=2;
+			aUnblockable=true;
+			addAction();
+			addCard(type);
 			break;
 		case Ferocious:
 			break;

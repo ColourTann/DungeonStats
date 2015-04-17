@@ -10,9 +10,12 @@ import cards.Skill.SkillType;
 import fighter.Fighter.Trait;
 
 public class Item {
+
+	public enum UnlockedBy{Base, Leather, Smith, Curio, Wood}
+
 	static ArrayList<Item> items = new ArrayList<Item>();
 	static ArrayList<Item>[] levels = new ArrayList[6];
-	enum EquipmentType{armour, shield, helmet, weapon};
+	enum EquipmentType{armour, shield, helmet, weapon, other};
 	enum Sound{equip_coin_single, equip_coin_double, equip_robes, equip_coin_bag, equip_staff, bling, equip_coin_chest, equip_leather_helm, equip_horned_helm, equip_winged_helm, equip_scalemail, equip_chainmail, equip_platemail, equip_wooden_shield, equip_buckler, equip_club, equip_mace, equip_axe, equip_potion, equip_cloth_hat, equip_knife, equip_bow, equip_sword, equip_silver_shield, equip_great_shield, equip_leather_armour};
 	public String name;
 	String description;
@@ -21,6 +24,8 @@ public class Item {
 	EquipmentType type;
 	int equipFrame;
 	int level;
+	UnlockedBy unlockedBy;
+	int unlockLevel;
 	int glory;
 	int spawnCount;
 	int randomPool;
@@ -29,6 +34,7 @@ public class Item {
 	Trait[] traits;
 	Skill[] skills;
 	int health;
+
 	public Item(String name, 
 			String description, 
 			int frameNumber, 
@@ -36,6 +42,8 @@ public class Item {
 			EquipmentType type,
 			int equipFrame,
 			int level,
+			UnlockedBy unlockedBy,
+			int unlockLevel,
 			int glory,
 			int spawnCount,
 			int randomPool,
@@ -49,9 +57,11 @@ public class Item {
 		this.description=description;
 		this.frameNumber=frameNumber;
 		this.equipment=equipment;
-		this.type=type;
+		this.type=type==null?EquipmentType.other:type;
 		this.equipFrame=equipFrame;
 		this.level=level;
+		this.unlockedBy=unlockedBy;
+		this.unlockLevel=unlockLevel;
 		this.glory=glory;
 		this.spawnCount=spawnCount;
 		this.randomPool=randomPool;
@@ -69,6 +79,8 @@ public class Item {
 	static EquipmentType aType;
 	static int aEquipFrame;
 	static int aLevel;
+	static UnlockedBy aUnlock;
+	static int aUnlockLevel;
 	static int aGlory;
 	static int aSpawnCount;
 	static int aRandomPool;
@@ -153,9 +165,10 @@ public class Item {
 		aType=EquipmentType.helmet;
 		aLevel=3;
 		aEquipFrame=11;
+		aUnlockLevel=0;
 		aRandomPool=1;
 		aSound=Sound.equip_leather_helm;
-		aSkills=new Skill[]{Skill.armour.asLevel(2), Skill.crush.asLevel(1)};
+		aSkills=new Skill[]{Skill.armour.asLevel(2)};
 		add();
 
 		aName="Horned Helm";
@@ -164,6 +177,7 @@ public class Item {
 		aType=EquipmentType.helmet;
 		aLevel=5;
 		aEquipFrame=12;
+		aUnlockLevel=-5;
 		aRandomPool=0;
 		aSound=Sound.equip_horned_helm;
 		aSkills=new Skill[]{Skill.armour.asLevel(2), Skill.crush.asLevel(2)};
@@ -175,6 +189,7 @@ public class Item {
 		aType=EquipmentType.helmet;
 		aLevel=5;
 		aEquipFrame=13;
+		aUnlockLevel=-5;
 		aRandomPool=0;
 		aSound=Sound.equip_winged_helm;
 		aSkills=new Skill[]{Skill.armour.asLevel(2), Skill.swift.asLevel(2)};
@@ -186,20 +201,23 @@ public class Item {
 		aType=EquipmentType.armour;
 		aLevel=4;
 		aEquipFrame=15;
+		aUnlockLevel=-5;
 		aRandomPool=0;
 		aSound=Sound.equip_scalemail;
-		aSkills=new Skill[]{Skill.armour.asLevel(2), Skill.fire.asLevel(1)};
+		aSkills=new Skill[]{Skill.armour.asLevel(1)};
 		add();
 
 		aName="Red Mail";
 		aDesc="A shirt of linked rings. Seems comfortable";
 		aEquipment=1;
 		aType=EquipmentType.armour;
-		aLevel=2;
+		aLevel=3;
 		aEquipFrame=16;
+		aUnlockLevel=0;
 		aRandomPool=1;
 		aSound=Sound.equip_chainmail;
-		aSkills=new Skill[]{Skill.armour.asLevel(2)};
+		aSkills=new Skill[]{Skill.armour.asLevel(1)};
+		aHealth=1;
 		add();
 
 		aName="Doom Plate";
@@ -208,6 +226,7 @@ public class Item {
 		aType=EquipmentType.armour;
 		aLevel=5;
 		aEquipFrame=17;
+		aUnlockLevel=-5;
 		aRandomPool=0;
 		aSound=Sound.equip_platemail;
 		aSkills=new Skill[]{Skill.armour.asLevel(3)};
@@ -217,11 +236,12 @@ public class Item {
 		aDesc="Better than nothing!";
 		aEquipment=1;
 		aType=EquipmentType.shield;
-		aLevel=2;
+		aLevel=3;
 		aEquipFrame=18;
+		aUnlockLevel=0;
 		aRandomPool=0;
 		aSound=Sound.equip_wooden_shield;
-		aSkills=new Skill[]{Skill.armour.asLevel(1)};
+		aSkills=new Skill[]{Skill.armour.asLevel(2)};
 		add();
 
 		aName="Duelling Buckler";
@@ -230,6 +250,7 @@ public class Item {
 		aType=EquipmentType.shield;
 		aLevel=3;
 		aEquipFrame=19;
+		aUnlockLevel=-5;
 		aRandomPool=1;
 		aSound=Sound.equip_buckler;
 		aSkills=new Skill[]{Skill.armour.asLevel(1)};
@@ -242,6 +263,7 @@ public class Item {
 		aType=EquipmentType.shield;
 		aLevel=4;
 		aEquipFrame=20;
+		aUnlockLevel=-5;
 		aRandomPool=0;
 		aSound=Sound.equip_buckler;
 		aSkills=new Skill[]{Skill.armour.asLevel(2)};
@@ -254,6 +276,7 @@ public class Item {
 		aType=EquipmentType.shield;
 		aLevel=5;
 		aEquipFrame=21;
+		aUnlockLevel=-5;
 		aRandomPool=0;
 		aSound=Sound.equip_buckler;
 		aSkills=new Skill[]{Skill.armour.asLevel(3)};
@@ -265,9 +288,10 @@ public class Item {
 		aType=EquipmentType.weapon;
 		aLevel=2;
 		aEquipFrame=22;
+		aUnlockLevel=0;
 		aRandomPool=1;
 		aSound=Sound.equip_club;
-		aSkills=new Skill[]{Skill.crush.asLevel(2)};
+		aSkills=new Skill[]{Skill.crush.asLevel(1), Skill.growth.asLevel(1)};
 		add();
 
 		aName="Mace";
@@ -276,6 +300,7 @@ public class Item {
 		aType=EquipmentType.weapon;
 		aLevel=3;
 		aEquipFrame=23;
+		aUnlockLevel=-5;
 		aRandomPool=1;
 		aSound=Sound.equip_mace;
 		aSkills=new Skill[]{Skill.crush.asLevel(2)};
@@ -287,6 +312,7 @@ public class Item {
 		aType=EquipmentType.weapon;
 		aLevel=3;
 		aEquipFrame=24;
+		aUnlockLevel=0;
 		aRandomPool=1;
 		aSound=Sound.equip_sword;
 		aSkills=new Skill[]{Skill.blade.asLevel(2)};
@@ -298,6 +324,7 @@ public class Item {
 		aType=EquipmentType.weapon;
 		aLevel=5;
 		aEquipFrame=25;
+		aUnlockLevel=-5;
 		aRandomPool=0;
 		aSound=Sound.equip_axe;
 		aSkills=new Skill[]{Skill.blade.asLevel(2), Skill.crush.asLevel(2)};
@@ -305,12 +332,14 @@ public class Item {
 
 		aName="Elixir";
 		aDesc="Good for all that ails ya!";
+		aUnlockLevel=-5;
 		aRandomPool=0;
 		aSound=Sound.equip_potion;
 		add();
 
 		aName="Health Potion";
 		aDesc="Definitely not snake oil!";
+		aUnlockLevel=-5;
 		aRandomPool=0;
 		aSound=Sound.equip_potion;
 		add();
@@ -321,9 +350,10 @@ public class Item {
 		aType=EquipmentType.armour;
 		aEquipFrame=30;
 		aLevel=3;
+		aUnlockLevel=0;
 		aRandomPool=1;
 		aSound=Sound.equip_robes;
-		aSkills=new Skill[]{Skill.arcane.asLevel(2), Skill.fire.asLevel(1)};
+		aSkills=new Skill[]{Skill.arcane.asLevel(1), Skill.growth.asLevel(1), Skill.fire.asLevel(1)};
 		add();
 
 		aName="Wizard's Hat";
@@ -332,6 +362,7 @@ public class Item {
 		aType=EquipmentType.helmet;
 		aLevel=3;
 		aEquipFrame=32;
+		aUnlockLevel=-5;
 		aRandomPool=0;
 		aSound=Sound.equip_cloth_hat;
 		aSkills=new Skill[]{Skill.arcane.asLevel(2), Skill.fire.asLevel(1)};
@@ -343,6 +374,7 @@ public class Item {
 		aType=EquipmentType.helmet;
 		aLevel=4;
 		aEquipFrame=31;
+		aUnlockLevel=-5;
 		aRandomPool=0;
 		aKeepHair=1;
 		aSound=Sound.equip_cloth_hat;
@@ -356,6 +388,7 @@ public class Item {
 		aType=EquipmentType.weapon;
 		aLevel=2;
 		aEquipFrame=27;
+		aUnlockLevel=0;
 		aRandomPool=1;
 		aSound=Sound.equip_knife;
 		aSkills=new Skill[]{Skill.swift.asLevel(1), Skill.blade.asLevel(1)};
@@ -367,6 +400,7 @@ public class Item {
 		aType=EquipmentType.weapon;
 		aLevel=3;
 		aEquipFrame=29;
+		aUnlockLevel=-5;
 		aRandomPool=0;
 		aSound=Sound.equip_bow;
 		aSkills=new Skill[]{Skill.swift.asLevel(2), Skill.blade.asLevel(1)};
@@ -378,6 +412,7 @@ public class Item {
 		aType=EquipmentType.weapon;
 		aLevel=5;
 		aEquipFrame=28;
+		aUnlockLevel=-5;
 		aRandomPool=0;
 		aSound=Sound.equip_club;
 		aSkills=new Skill[]{Skill.arcane.asLevel(3)};
@@ -389,6 +424,7 @@ public class Item {
 		aType=EquipmentType.weapon;
 		aLevel=4;
 		aEquipFrame=34;
+		aUnlockLevel=-5;
 		aRandomPool=0;
 		aSound=Sound.equip_club;
 		aSkills=new Skill[]{Skill.crush.asLevel(1), Skill.arcane.asLevel(2)};
@@ -400,6 +436,7 @@ public class Item {
 		aType=EquipmentType.weapon;
 		aLevel=3;
 		aEquipFrame=35;
+		aUnlockLevel=-5;
 		aRandomPool=0;
 		aSound=Sound.equip_mace;
 		aSkills=new Skill[]{Skill.crush.asLevel(2), Skill.arcane.asLevel(1)};
@@ -411,6 +448,7 @@ public class Item {
 		aType=EquipmentType.weapon;
 		aLevel=1;
 		aEquipFrame=36;
+		aUnlockLevel=0;
 		aRandomPool=1;
 		aSound=Sound.equip_club;
 		aSkills=new Skill[]{Skill.crush.asLevel(1)};
@@ -422,6 +460,7 @@ public class Item {
 		aType=EquipmentType.weapon;
 		aLevel=1;
 		aEquipFrame=37;
+		aUnlockLevel=0;
 		aRandomPool=1;
 		aSound=Sound.equip_sword;
 		aSkills=new Skill[]{Skill.blade.asLevel(1)};
@@ -431,12 +470,13 @@ public class Item {
 		aDesc="SPARKLES!!";
 		aEquipment=1;
 		aType=EquipmentType.helmet;
-		aLevel=3;
+		aLevel=2;
 		aEquipFrame=38;
+		aUnlockLevel=0;
 		aRandomPool=1;
 		aKeepHair=1;
 		aSound=Sound.equip_leather_helm;
-		aSkills=new Skill[]{Skill.swift.asLevel(2)};
+		aSkills=new Skill[]{Skill.holy.asLevel(1), Skill.swift.asLevel(1)};
 		add();
 
 		aName="Voodoo Mask";
@@ -445,6 +485,7 @@ public class Item {
 		aType=EquipmentType.helmet;
 		aLevel=2;
 		aEquipFrame=39;
+		aUnlockLevel=-5;
 		aRandomPool=1;
 		aKeepHair=1;
 		aSound=Sound.equip_leather_helm;
@@ -457,6 +498,7 @@ public class Item {
 		aType=EquipmentType.helmet;
 		aLevel=1;
 		aEquipFrame=40;
+		aUnlockLevel=0;
 		aRandomPool=1;
 		aKeepHair=1;
 		aSound=Sound.equip_cloth_hat;
@@ -469,6 +511,7 @@ public class Item {
 		aType=EquipmentType.shield;
 		aLevel=5;
 		aEquipFrame=36;
+		aUnlockLevel=-5;
 		aRandomPool=0;
 		aSound=Sound.equip_silver_shield;
 		aSkills=new Skill[]{Skill.armour.asLevel(2), Skill.fire.asLevel(2)};
@@ -480,6 +523,7 @@ public class Item {
 		aType=EquipmentType.shield;
 		aLevel=1;
 		aEquipFrame=42;
+		aUnlockLevel=-5;
 		aRandomPool=1;
 		aSound=Sound.equip_great_shield;
 		aSkills=new Skill[]{Skill.arcane.asLevel(1), Skill.holy.asLevel(1)};
@@ -491,6 +535,7 @@ public class Item {
 		aType=EquipmentType.armour;
 		aLevel=1;
 		aEquipFrame=43;
+		aUnlockLevel=0;
 		aRandomPool=1;
 		aSound=Sound.equip_cloth_hat;
 		aSkills=new Skill[]{Skill.swift.asLevel(1)};
@@ -502,6 +547,7 @@ public class Item {
 		aType=EquipmentType.armour;
 		aLevel=1;
 		aEquipFrame=44;
+		aUnlockLevel=0;
 		aRandomPool=1;
 		aSound=Sound.equip_leather_armour;
 		aSkills=null;
@@ -514,6 +560,7 @@ public class Item {
 		aType=EquipmentType.armour;
 		aLevel=3;
 		aEquipFrame=46;
+		aUnlockLevel=-5;
 		aRandomPool=1;
 		aSound=Sound.equip_leather_armour;
 		aSkills=new Skill[]{Skill.swift.asLevel(2)};
@@ -525,6 +572,7 @@ public class Item {
 		aType=EquipmentType.armour;
 		aLevel=5;
 		aEquipFrame=47; 
+		aUnlockLevel=-5;
 		aRandomPool=0;
 		aSound=Sound.equip_chainmail;
 		aSkills=new Skill[]{Skill.armour.asLevel(3)};
@@ -536,20 +584,23 @@ public class Item {
 		aType=EquipmentType.armour;
 		aLevel=2;
 		aEquipFrame=98; 
+		aUnlockLevel=0;
 		aRandomPool=1;
 		aSound=Sound.equip_chainmail;
-		aSkills=new Skill[]{Skill.armour.asLevel(1), Skill.crush.asLevel(1)};
+		//aSkills=new Skill[]{Skill.armour.asLevel(1), Skill.crush.asLevel(1)};
+		aHealth=1;
 		add();
 
 		aName="Shimmering Cloak";
 		aDesc="Gleams like the night sky";
 		aEquipment=1;
 		aType=EquipmentType.armour;
-		aLevel=3;
+		aLevel=2;
 		aEquipFrame=48;
+		aUnlockLevel=0;
 		aRandomPool=1;
 		aSound=Sound.equip_club;
-		aSkills=new Skill[]{Skill.arcane.asLevel(1), Skill.swift.asLevel(1), Skill.holy.asLevel(1)};
+		aSkills=new Skill[]{Skill.arcane.asLevel(1), Skill.swift.asLevel(1)};
 		add();
 
 		aName="Elven Plate";
@@ -558,6 +609,7 @@ public class Item {
 		aType=EquipmentType.armour;
 		aLevel=5;
 		aEquipFrame=49;
+		aUnlockLevel=-5;
 		aRandomPool=0;
 		aSound=Sound.equip_chainmail;
 		aSkills=new Skill[]{Skill.armour.asLevel(2), Skill.swift.asLevel(1)};
@@ -569,6 +621,7 @@ public class Item {
 		aType=EquipmentType.armour;
 		aLevel=4;
 		aEquipFrame=50;
+		aUnlockLevel=-5;
 		aRandomPool=0;
 		aSound=Sound.equip_leather_armour;
 		aSkills=new Skill[]{Skill.growth.asLevel(1), Skill.armour.asLevel(2)};
@@ -580,6 +633,7 @@ public class Item {
 		aType=EquipmentType.armour;
 		aLevel=3;
 		aEquipFrame=51;
+		aUnlockLevel=-5;
 		aRandomPool=1;
 		aSound=Sound.equip_leather_armour;
 		aSkills=new Skill[]{Skill.arcane.asLevel(2), Skill.armour.asLevel(1)};
@@ -591,6 +645,7 @@ public class Item {
 		aType=EquipmentType.armour;
 		aLevel=2;
 		aEquipFrame=52;
+		aUnlockLevel=-5;
 		aRandomPool=0;
 		aSound=Sound.equip_leather_armour;
 		aSkills=new Skill[]{Skill.growth.asLevel(1), Skill.armour.asLevel(1)};
@@ -602,6 +657,7 @@ public class Item {
 		aType=EquipmentType.armour;
 		aLevel=2;
 		aEquipFrame=53;
+		aUnlockLevel=-5;
 		aRandomPool=1;
 		aSound=Sound.equip_club;
 		aSkills= new Skill[]{Skill.armour.asLevel(1), Skill.arcane.asLevel(1)};
@@ -614,6 +670,7 @@ public class Item {
 		aType=EquipmentType.helmet;
 		aLevel=3;
 		aEquipFrame=45;
+		aUnlockLevel=-5;
 		aRandomPool=0;
 		aKeepHair=1;
 		aSound=Sound.equip_leather_helm;
@@ -626,6 +683,7 @@ public class Item {
 		aType=EquipmentType.helmet;
 		aLevel=2;
 		aEquipFrame=54;
+		aUnlockLevel=-5;
 		aRandomPool=0;
 		aSound=Sound.equip_winged_helm;
 		aSkills= new Skill[]{Skill.armour.asLevel(2)};
@@ -637,6 +695,7 @@ public class Item {
 		aType=EquipmentType.helmet;
 		aLevel=2;
 		aEquipFrame=55;
+		aUnlockLevel=-5;
 		aRandomPool=1;
 		aSound=Sound.equip_horned_helm;
 		aSkills=new Skill[]{Skill.blade.asLevel(2)};
@@ -648,6 +707,7 @@ public class Item {
 		aType=EquipmentType.helmet;
 		aLevel=3;
 		aEquipFrame=56;
+		aUnlockLevel=-5;
 		aRandomPool=0;
 		aSound=Sound.equip_horned_helm;
 		aSkills= new Skill[]{Skill.armour.asLevel(2)};
@@ -659,6 +719,7 @@ public class Item {
 		aType=EquipmentType.helmet;
 		aLevel=4;
 		aEquipFrame=57;
+		aUnlockLevel=-5;
 		aRandomPool=0;
 		aSound=Sound.equip_horned_helm;
 		aSkills= new Skill[]{Skill.swift.asLevel(1), Skill.armour.asLevel(2)};
@@ -670,6 +731,7 @@ public class Item {
 		aType=EquipmentType.helmet;
 		aLevel=5;
 		aEquipFrame=58;
+		aUnlockLevel=-5;
 		aRandomPool=0;
 		aSound=Sound.equip_horned_helm;
 		aSkills= new Skill[]{Skill.armour.asLevel(2), Skill.growth.asLevel(2)};
@@ -679,11 +741,12 @@ public class Item {
 		aDesc="Lunkhead";
 		aEquipment=1;
 		aType=EquipmentType.helmet;
-		aLevel=1;
+		aLevel=2;
 		aEquipFrame=59;
+		aUnlockLevel=0;
 		aRandomPool=1;
 		aSound=Sound.equip_horned_helm;
-		aSkills= new Skill[]{Skill.fire.asLevel(1)};
+		aSkills= new Skill[]{Skill.fire.asLevel(1), Skill.crush.asLevel(1)};
 		add();
 
 		aName="Fez";
@@ -692,6 +755,7 @@ public class Item {
 		aType=EquipmentType.helmet;
 		aLevel=1;
 		aEquipFrame=60;
+		aUnlockLevel=-5;
 		aRandomPool=0;
 		aKeepHair=1;
 		aSound=Sound.equip_cloth_hat;
@@ -704,6 +768,7 @@ public class Item {
 		aType=EquipmentType.helmet;
 		aLevel=1;
 		aEquipFrame=61;
+		aUnlockLevel=0;
 		aRandomPool=0;
 		aKeepHair=1;
 		aSound=Sound.equip_cloth_hat;
@@ -716,6 +781,7 @@ public class Item {
 		aType=EquipmentType.helmet;
 		aLevel=2;
 		aEquipFrame=62;
+		aUnlockLevel=-5;
 		aRandomPool=0;
 		aKeepHair=1;
 		aSound=Sound.equip_cloth_hat;
@@ -728,6 +794,7 @@ public class Item {
 		aType=EquipmentType.helmet;
 		aLevel=1;
 		aEquipFrame=63;
+		aUnlockLevel=-5;
 		aRandomPool=1;
 		aKeepHair=1;
 		aSound=Sound.equip_cloth_hat;
@@ -740,6 +807,7 @@ public class Item {
 		aType=EquipmentType.helmet;
 		aLevel=3;
 		aEquipFrame=64;
+		aUnlockLevel=-5;
 		aRandomPool=1;
 		aSound=Sound.equip_cloth_hat;
 		aSkills=new Skill[]{Skill.holy.asLevel(2)};
@@ -749,12 +817,13 @@ public class Item {
 		aDesc="Makes you look scary!";
 		aEquipment=1;
 		aType=EquipmentType.helmet;
-		aLevel=2;
+		aLevel=3;
 		aEquipFrame=65;
+		aUnlockLevel=0;
 		aRandomPool=0;
 		aKeepHair=1;
 		aSound=Sound.equip_cloth_hat;
-		aSkills= new Skill[]{Skill.armour.asLevel(1), Skill.arcane.asLevel(1)};
+		aSkills= new Skill[]{Skill.fire.asLevel(1), Skill.arcane.asLevel(1)};
 		add();
 
 		aName="Heavy Visor";
@@ -763,6 +832,7 @@ public class Item {
 		aType=EquipmentType.helmet;
 		aLevel=4;
 		aEquipFrame=66;
+		aUnlockLevel=-5;
 		aRandomPool=0;
 		aSound=Sound.equip_horned_helm;
 		aSkills= new Skill[]{Skill.armour.asLevel(2)};
@@ -774,6 +844,7 @@ public class Item {
 		aType=EquipmentType.weapon;
 		aLevel=1;
 		aEquipFrame=67;
+		aUnlockLevel=-5;
 		aRandomPool=0;
 		aSound=Sound.equip_club;
 		aSkills= new Skill[]{Skill.crush.asLevel(1), Skill.growth.asLevel(1)};
@@ -785,6 +856,7 @@ public class Item {
 		aType=EquipmentType.weapon;
 		aLevel=4;
 		aEquipFrame=68;
+		aUnlockLevel=-5;
 		aRandomPool=0;
 		aSound=Sound.equip_sword;
 		aSkills= new Skill[]{Skill.blade.asLevel(1), Skill.swift.asLevel(2)};
@@ -796,6 +868,7 @@ public class Item {
 		aType=EquipmentType.weapon;
 		aLevel=4;
 		aEquipFrame=69;
+		aUnlockLevel=-5;
 		aRandomPool=1;
 		aSound=Sound.equip_sword;
 		aSkills= new Skill[]{Skill.swift.asLevel(1), Skill.blade.asLevel(2)};
@@ -807,6 +880,7 @@ public class Item {
 		aType=EquipmentType.weapon;
 		aLevel=4;
 		aEquipFrame=70;
+		aUnlockLevel=-5;
 		aRandomPool=0;
 		aSound=Sound.equip_sword;
 		aSkills= new Skill[]{Skill.armour.asLevel(1), Skill.blade.asLevel(2)};
@@ -818,6 +892,7 @@ public class Item {
 		aType=EquipmentType.weapon;
 		aLevel=3;
 		aEquipFrame=71;
+		aUnlockLevel=-5;
 		aRandomPool=0;
 		aSound=Sound.equip_axe;
 		aSkills= new Skill[]{Skill.blade.asLevel(2)};
@@ -829,17 +904,19 @@ public class Item {
 		aType=EquipmentType.weapon;
 		aLevel=5;
 		aEquipFrame=72;
+		aUnlockLevel=-5;
 		aRandomPool=0;
 		aSound=Sound.equip_club;
 		aSkills= new Skill[]{Skill.blade.asLevel(2), Skill.crush.asLevel(2)};
 		add();
-		
+
 		aName="Brass Knuckles";
 		aDesc="Fighting dirty";
 		aEquipment=1;
 		aType=EquipmentType.weapon;
 		aLevel=1;
 		aEquipFrame=73;
+		aUnlockLevel=-5;
 		aRandomPool=1;
 		aSound=Sound.equip_sword;
 		aSkills=new Skill[]{Skill.swift.asLevel(1), Skill.crush.asLevel(1)};
@@ -851,6 +928,7 @@ public class Item {
 		aType=EquipmentType.weapon;
 		aLevel=2;
 		aEquipFrame=74;
+		aUnlockLevel=-5;
 		aRandomPool=1;
 		aSound=Sound.equip_axe;
 		aSkills= new Skill[]{Skill.blade.asLevel(2)};
@@ -862,6 +940,7 @@ public class Item {
 		aType=EquipmentType.weapon;
 		aLevel=4;
 		aEquipFrame=75;
+		aUnlockLevel=-5;
 		aRandomPool=0;
 		aSound=Sound.equip_sword;
 		aSkills= new Skill[]{Skill.blade.asLevel(1), Skill.swift.asLevel(2)};
@@ -873,6 +952,7 @@ public class Item {
 		aType=EquipmentType.weapon;
 		aLevel=3;
 		aEquipFrame=76;
+		aUnlockLevel=-5;
 		aRandomPool=0;
 		aSound=Sound.equip_staff;
 		aSkills= new Skill[]{Skill.arcane.asLevel(2)};
@@ -884,6 +964,7 @@ public class Item {
 		aType=EquipmentType.weapon;
 		aLevel=4;
 		aEquipFrame=77;
+		aUnlockLevel=-5;
 		aRandomPool=0;
 		aSound=Sound.equip_staff;
 		aSkills= new Skill[]{Skill.arcane.asLevel(2), Skill.blade.asLevel(1)};
@@ -895,6 +976,7 @@ public class Item {
 		aType=EquipmentType.weapon;
 		aLevel=2;
 		aEquipFrame=78;
+		aUnlockLevel=-5;
 		aRandomPool=0;
 		aSound=Sound.equip_bow;
 		aSkills= new Skill[]{Skill.swift.asLevel(2)};
@@ -906,6 +988,7 @@ public class Item {
 		aType=EquipmentType.weapon;
 		aLevel=2;
 		aEquipFrame=79;
+		aUnlockLevel=-5;
 		aRandomPool=0;
 		aSound=Sound.equip_staff;
 		aSkills= new Skill[]{Skill.growth.asLevel(2)};
@@ -917,6 +1000,7 @@ public class Item {
 		aType=EquipmentType.weapon;
 		aLevel=4;
 		aEquipFrame=80;
+		aUnlockLevel=-5;
 		aRandomPool=0;
 		aSound=Sound.equip_staff;
 		aSkills= new Skill[]{Skill.blade.asLevel(2), Skill.armour.asLevel(1)};
@@ -926,11 +1010,12 @@ public class Item {
 		aDesc="Poke poke";
 		aEquipment=1;
 		aType=EquipmentType.weapon;
-		aLevel=2;
+		aLevel=3;
 		aEquipFrame=81;
+		aUnlockLevel=0;
 		aRandomPool=0;
 		aSound=Sound.equip_staff;
-		aSkills= new Skill[]{Skill.blade.asLevel(2)};
+		aSkills= new Skill[]{Skill.swift.asLevel(2)};
 		add();
 
 		aName="Fire Staff";
@@ -939,6 +1024,7 @@ public class Item {
 		aType=EquipmentType.weapon;
 		aLevel=4;
 		aEquipFrame=82;
+		aUnlockLevel=-5;
 		aRandomPool=0;
 		aSound=Sound.equip_staff;
 		aSkills= new Skill[]{Skill.fire.asLevel(2), Skill.crush.asLevel(1)};
@@ -950,6 +1036,7 @@ public class Item {
 		aType=EquipmentType.weapon;
 		aLevel=5;
 		aEquipFrame=83;
+		aUnlockLevel=-5;
 		aRandomPool=0;
 		aSound=Sound.equip_staff;
 		aSkills= new Skill[]{Skill.arcane.asLevel(1), Skill.blade.asLevel(2)};
@@ -961,6 +1048,7 @@ public class Item {
 		aType=EquipmentType.weapon;
 		aLevel=4;
 		aEquipFrame=84;
+		aUnlockLevel=-5;
 		aRandomPool=0;
 		aSound=Sound.equip_sword;
 		aSkills= new Skill[]{Skill.crush.asLevel(1), Skill.blade.asLevel(2)};
@@ -972,6 +1060,7 @@ public class Item {
 		aType=EquipmentType.shield;
 		aLevel=5;
 		aEquipFrame=85;
+		aUnlockLevel=-5;
 		aRandomPool=0;
 		aSound=Sound.equip_cloth_hat;
 		aSkills= new Skill[]{Skill.arcane.asLevel(2), Skill.holy.asLevel(2)};
@@ -983,6 +1072,7 @@ public class Item {
 		aType=EquipmentType.shield;
 		aLevel=5;
 		aEquipFrame=86;
+		aUnlockLevel=-5;
 		aRandomPool=0;
 		aSound=Sound.equip_cloth_hat;
 		aSkills= new Skill[]{Skill.holy.asLevel(2), Skill.crush.asLevel(1)};
@@ -994,9 +1084,10 @@ public class Item {
 		aType=EquipmentType.shield;
 		aLevel=2;
 		aEquipFrame=87;
+		aUnlockLevel=0;
 		aRandomPool=1;
 		aSound=Sound.equip_buckler;
-		aSkills=new Skill[]{Skill.fire.asLevel(1), Skill.arcane.asLevel(1)};
+		aSkills=new Skill[]{Skill.holy.asLevel(1), Skill.arcane.asLevel(1)};
 		add();
 
 		aName="Horseshoe";
@@ -1005,6 +1096,7 @@ public class Item {
 		aType=EquipmentType.shield;
 		aLevel=2;
 		aEquipFrame=88;
+		aUnlockLevel=-5;
 		aRandomPool=1;
 		aSound=Sound.equip_buckler;
 		aSkills=new Skill[]{Skill.arcane.asLevel(1), Skill.holy.asLevel(1)};
@@ -1014,11 +1106,12 @@ public class Item {
 		aDesc="drengskapr";
 		aEquipment=1;
 		aType=EquipmentType.shield;
-		aLevel=5;
+		aLevel=3;
 		aEquipFrame=89;
+		aUnlockLevel=0;
 		aRandomPool=0;
 		aSound=Sound.equip_buckler;
-		aSkills= new Skill[]{Skill.swift.asLevel(2), Skill.holy.asLevel(1)};
+		aSkills= new Skill[]{Skill.holy.asLevel(1), Skill.growth.asLevel(1), Skill.fire.asLevel(1)};
 		add();
 
 		aName="Spiked Shield";
@@ -1027,6 +1120,7 @@ public class Item {
 		aType=EquipmentType.shield;
 		aLevel=5;
 		aEquipFrame=90;
+		aUnlockLevel=-5;
 		aRandomPool=0;
 		aSound=Sound.equip_silver_shield;
 		aSkills= new Skill[]{Skill.armour.asLevel(2), Skill.blade.asLevel(1)};
@@ -1038,9 +1132,10 @@ public class Item {
 		aType=EquipmentType.shield;
 		aLevel=1;
 		aEquipFrame=91;
+		aUnlockLevel=0;
 		aRandomPool=1;
 		aSound=Sound.equip_wooden_shield;
-		aSkills=new Skill[]{Skill.armour.asLevel(1)};
+		aSkills=new Skill[]{Skill.armour.asLevel(1), Skill.crush.asLevel(1)};
 		add();
 
 		aName="Net";
@@ -1049,6 +1144,7 @@ public class Item {
 		aType=EquipmentType.shield;
 		aLevel=2;
 		aEquipFrame=92;
+		aUnlockLevel=-5;
 		aRandomPool=0;
 		aSound=Sound.equip_cloth_hat;
 		aSkills= new Skill[]{Skill.swift.asLevel(1)};
@@ -1060,6 +1156,7 @@ public class Item {
 		aType=EquipmentType.shield;
 		aLevel=3;
 		aEquipFrame=93;
+		aUnlockLevel=-5;
 		aRandomPool=1;
 		aSound=Sound.equip_coin_single;
 		aSkills=new Skill[]{Skill.fire.asLevel(2)};
@@ -1071,6 +1168,7 @@ public class Item {
 		aType=EquipmentType.shield;
 		aLevel=1;
 		aEquipFrame=94;
+		aUnlockLevel=-5;
 		aRandomPool=1;
 		aSound=Sound.equip_leather_helm;
 		aSkills=new Skill[]{Skill.arcane.asLevel(1)};
@@ -1082,6 +1180,7 @@ public class Item {
 		aType=EquipmentType.shield;
 		aLevel=2;
 		aEquipFrame=95;
+		aUnlockLevel=-5;
 		aRandomPool=0;
 		aSound=Sound.equip_cloth_hat;
 		aSkills= new Skill[]{Skill.arcane.asLevel(1), Skill.holy.asLevel(1)};
@@ -1093,9 +1192,10 @@ public class Item {
 		aType=EquipmentType.shield;
 		aLevel=1;
 		aEquipFrame=96;
+		aUnlockLevel=0;
 		aRandomPool=0;
 		aSound=Sound.equip_club;
-		aSkills= new Skill[]{Skill.arcane.asLevel(1)};
+		aSkills= new Skill[]{Skill.fire.asLevel(1)};
 		add();
 
 		aName="Wooden Stool";
@@ -1104,6 +1204,7 @@ public class Item {
 		aType=EquipmentType.weapon;
 		aLevel=1;
 		aEquipFrame=97;
+		aUnlockLevel=0;
 		aRandomPool=0;
 		aSound=Sound.equip_club;
 		aSkills= new Skill[]{Skill.crush.asLevel(1)};
@@ -1116,16 +1217,16 @@ public class Item {
 
 
 
-//		aName="placeholder";
-//		aDesc="";
-//		aEquipment=1;
-//		aType=EquipmentType.weapon;
-//		aLevel=1;
-//		aEquipFrame=36;
-//		aRandomPool=0;
-//		aSound=Sound.equip_club;
-//		aSkills=null;
-//		add();
+		//		aName="placeholder";
+		//		aDesc="";
+		//		aEquipment=1;
+		//		aType=EquipmentType.weapon;
+		//		aLevel=1;
+		//		aEquipFrame=36;
+		//		aRandomPool=0;
+		//		aSound=Sound.equip_club;
+		//		aSkills=null;
+		//		add();
 
 		setupLevels();
 	}
@@ -1142,7 +1243,24 @@ public class Item {
 
 	public static void add(){
 		if(aName=="placeholder")return;
-		items.add(new Item(aName, aDesc, aFrameNumber, aEquipment, aType, aEquipFrame, aLevel, aGlory, aSpawnCount, aRandomPool, aKeepHair, aSound, aSkills, aTraits, aHealth));
+		items.add(new Item(
+				aName, 
+				aDesc, 
+				aFrameNumber, 
+				aEquipment, 
+				aType, 
+				aEquipFrame, 
+				aLevel,
+				aUnlock,
+				aUnlockLevel,
+				aGlory, 
+				aSpawnCount, 
+				aRandomPool, 
+				aKeepHair, 
+				aSound, 
+				aSkills, 
+				aTraits, 
+				aHealth));
 		aFrameNumber++;
 		reset();
 	}
@@ -1154,6 +1272,8 @@ public class Item {
 		aType=null;
 		aEquipFrame=-1;
 		aLevel=-1;
+		aUnlock=null;
+		aUnlockLevel=-5;
 		aGlory=-1;
 		aRandomPool=-1;
 		aHealth=0;
@@ -1174,10 +1294,22 @@ public class Item {
 		System.out.println("}");
 	}
 
-	public static void printNumbers(){
+	public static void printItemTypeAmounts(){
 		for(int i=1;i<levels.length;i++){
 			System.out.println("Level "+(i)+": "+levels[i].size());
 		}
+		HashMap<EquipmentType, Integer> values = new HashMap<>();
+		for(EquipmentType ex:EquipmentType.values()){
+			values.put(ex, 0);
+		}
+
+		for(Item i:items){
+			EquipmentType ttt = i.type;
+			System.out.println(i.type);
+			values.put(ttt, values.get(ttt)+1);
+		}
+		System.out.println(values);
+
 	}
 
 	public static void printLevel(int level){
@@ -1214,15 +1346,15 @@ public class Item {
 			}
 		}
 		System.out.println("-------------");
-		
+
 
 	}
 
 	public static int countSkill(int level, Skill.SkillType type, boolean printAll, boolean onlyActive){
 		int result=0;
-		
-		
-		
+
+
+
 		for(Item i:levels[level]){
 			if(i.skills==null)continue;
 			if(onlyActive&&i.randomPool==0)continue;
@@ -1234,7 +1366,7 @@ public class Item {
 				}
 			}
 		}
-		
+
 		if(printAll&&result>0)System.out.println();
 		return result;
 	}
@@ -1317,6 +1449,35 @@ public class Item {
 			result = result.substring(0, result.length()-2);
 			result +=")";
 		}
+		return result;
+	}
+
+	public static String analyseTier(int tier) {
+		String result = "Tier "+tier+"\n";
+		
+		
+		ArrayList<Item> tierItems = new ArrayList<>();
+		for(Item i:items){
+			if(i.unlockLevel==tier){
+				tierItems.add(i);
+			}
+		}
+		result += "Total items: "+tierItems.size()+"\n";
+		
+		HashMap<SkillType, Integer> skillMap = new HashMap<>();
+		for(SkillType playerSkill:Skill.playerSkills){
+			skillMap.put(playerSkill, 0);
+		}
+		for(Item i:tierItems){
+			if(i.skills==null)continue;
+			for(Skill sk:i.skills){
+				
+				skillMap.put(sk.type, skillMap.get(sk.type)+sk.level);
+			}
+		}
+		result += tierItems+"\n";
+		result += skillMap.toString();
+		
 		return result;
 	}
 }
