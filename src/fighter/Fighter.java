@@ -10,7 +10,7 @@ public abstract class Fighter {
 	protected String name;
 	int hp;
 	public enum Trait{
-		Tenacious, Brittle, Meaty, Respite, Fury, Burn, Skilled, Damp, Blessed, Covetous, ArcaneBlade, Fast, Ranged;
+		Tenacious, Brittle, Meaty, Respite, Fury, Burn, Skilled, Damp, Blessed, Covetous, ArcaneBlade, Ranged, Ferocious, Bulwark, Accurate, Wise, Spikey, Deathwish;
 
 		public String toJson() {
 			return "\""+this+"\"";
@@ -55,6 +55,18 @@ public abstract class Fighter {
 					break;
 				case Burn:
 					flatBonusStrength=1.5f;
+					break;
+				case Covetous:
+					bonusHP=.1f;
+					break;
+				case Deathwish:
+					bonusHP=.3f;
+					break;
+				case Ranged:
+					bonusHP=1;
+					break;
+				case Blessed:
+					bonusHP=.3f;
 					break;
 				case Skilled:
 					

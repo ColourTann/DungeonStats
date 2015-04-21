@@ -13,14 +13,16 @@ public class Skill {
 	public enum SkillType{
 		Fire, Arcane, Holy, Growth, Armour, Blade, Crush, Swift,
 		
-		Feral, Spooky, Rage, Stupidity, Weapon, Flame, Nature, Death, Ferocious, Demonic, Sorcery,
+		Feral, Spooky, Rage, Stupidity, Weapon, Flame, Nature, Death, 
+		Ferocious, Demonic, Sorcery, Venom, Ghastly, Martial, Burly,
 		
-		Chump, Warrior, Wizard, Rogue, Archer, SpellBlade, Druid, Cleric, Magician
+		Chump, Henchman, CatBurglar, Apprentice, Mime, Ranger, Barbarian, Alchemist, Shapeshifter,  
 	}
 	
-	public static SkillType[] monsterSkills=new SkillType[]{SkillType.Feral, SkillType.Spooky, SkillType.Rage, SkillType.Stupidity, SkillType.Weapon, SkillType.Flame, SkillType.Nature, SkillType.Death};
+	public static SkillType[] monsterSkills=new SkillType[]{SkillType.Feral, SkillType.Spooky, SkillType.Rage, SkillType.Stupidity, SkillType.Weapon, SkillType.Flame, SkillType.Nature, SkillType.Death,
+		SkillType.Ferocious, SkillType.Demonic, SkillType.Sorcery, SkillType.Venom, SkillType.Ghastly, SkillType.Martial, SkillType.Burly};
 	public static SkillType[] playerSkills=new SkillType[]{SkillType.Fire, SkillType.Arcane, SkillType.Holy, SkillType.Armour, SkillType.Blade, SkillType.Crush, SkillType.Swift, SkillType.Growth};
-	public static SkillType[] heroDecks = new SkillType[]{SkillType.Chump, SkillType.Warrior, SkillType.Magician, SkillType.Cleric, SkillType.Rogue, SkillType.Wizard, SkillType.Druid, SkillType.Archer, SkillType.SpellBlade};
+	public static SkillType[] heroDecks = new SkillType[]{SkillType.Chump, SkillType.Henchman, SkillType.Apprentice, SkillType.Alchemist, SkillType.CatBurglar, SkillType.Shapeshifter, SkillType.Ranger, SkillType.Barbarian};
 	
 	public static Skill fire= new Skill(SkillType.Fire);
 	public static Skill arcane= new Skill(SkillType.Arcane);

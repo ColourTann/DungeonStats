@@ -21,45 +21,49 @@ public class HeroFactory {
 		traits=null;
 		addClass();
 		
-		heroName=SkillType.Warrior;
+		heroName=SkillType.Henchman;
 		aHP=5;
 		traits=null;
 		addClass();
 		
-		heroName=SkillType.Rogue;
+		heroName=SkillType.CatBurglar;
 		aHP=5;
 		traits=new Trait[]{Trait.Covetous};
 		addClass();
 		
-		heroName=SkillType.SpellBlade;
-		aHP=6;
-		traits=new Trait[]{Trait.ArcaneBlade};
+		heroName=SkillType.Mime;
+		aHP=5;
 		addClass();
 		
-		heroName=SkillType.Archer;
-		aHP=6;
-		traits=new Trait[]{Trait.Fast, Trait.Ranged};
-		addClass();
-		
-		heroName=SkillType.Magician;
+		heroName=SkillType.Apprentice;
 		aHP=5;
 		traits=null;
 		addClass();
 		
-		heroName=SkillType.Cleric;
-		aHP=4;
+		heroName=SkillType.Alchemist;
+		aHP=5;
 		traits=new Trait[]{Trait.Blessed};
 		addClass();
 		
-		heroName=SkillType.Druid;
+		heroName=SkillType.Shapeshifter;
 		aHP=6;
 		traits=null;
 		addClass();
 		
-		heroName=SkillType.Wizard;
+		heroName=SkillType.Barbarian;
 		aHP=6;
-		traits=null;
+		traits = new Trait[]{Trait.Deathwish};
 		addClass();
+		
+		heroName=SkillType.Ranger;
+		aHP=6;
+		traits=new Trait[]{Trait.Accurate, Trait.Ranged};
+		addClass();
+		
+//		heroName=SkillType.Shapeshifter;
+//		aHP=6;
+//		traits=null;
+//		addClass();
 		
 		
 		

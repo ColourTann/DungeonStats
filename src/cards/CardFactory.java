@@ -11,9 +11,6 @@ import cards.Skill.SkillType;
 
 public class CardFactory {
 
-	public enum Icon{
-		Default_icon, STAT_STRENGTH, STAT_MAGIC, STAT_DREAD, STAT_HEALTH, STAT_ARMOUR, STAT_SPEED
-	}
 
 	public enum BonusVsSpecies{
 		Undead
@@ -22,13 +19,13 @@ public class CardFactory {
 	public enum BonusVsMechanic{
 		unblockable
 	}
-	
+
 	public enum BonusVsSituation{
 		BelowHalf
 	}
 
-	
-	
+
+
 	public enum ActionEffectCondition{
 		damageDealt, damageBlocked
 	}
@@ -37,7 +34,6 @@ public class CardFactory {
 	private static float cStrength;
 	private static String cDescription;
 	private static int cDescSize;
-	private static Icon cIcon;
 	private static ArrayList<Action> cActions= new ArrayList<>();
 
 	private static ArrayList<ResultAction> resultActions= new ArrayList<>();
@@ -60,6 +56,7 @@ public class CardFactory {
 	private static int raEffect;
 
 	private static ArrayList<Card> cards=new ArrayList<>();
+	private static SkillType cImage;
 
 
 
@@ -77,7 +74,6 @@ public class CardFactory {
 			cStrength=2;
 			cDescription = "Block 1 dmg, +1 card per dmg blocked";
 			cDescSize=20;
-			cIcon=Icon.STAT_ARMOUR;
 			aActionType=ActionType.Block;
 			aDamageType=DamageType.Either;
 			aEffect=1;
@@ -91,7 +87,6 @@ public class CardFactory {
 			cStrength=2.5f;
 			cDescription = "+2 on next magic attack, +1 hp";
 			cDescSize=20;
-			cIcon=Icon.STAT_MAGIC;
 			aActionType=ActionType.NextAttack;
 			aDamageType=DamageType.Magical;
 			aEffect=2;
@@ -105,7 +100,6 @@ public class CardFactory {
 			cStrength=3;
 			cDescription = "3 magic damage, [unblockable]";
 			cDescSize=22;
-			cIcon=Icon.STAT_ARMOUR;
 			aActionType=ActionType.Attack;
 			aDamageType=DamageType.Magical;
 			aEffect=3;
@@ -120,7 +114,6 @@ public class CardFactory {
 			cStrength=2;
 			cDescription = "1 physical damage, block 1 damage";
 			cDescSize=20;
-			cIcon=Icon.STAT_STRENGTH;
 			aActionType=ActionType.Attack;
 			aDamageType=DamageType.Physical;
 			aEffect=1;
@@ -135,7 +128,6 @@ public class CardFactory {
 			cStrength=2.5f;
 			cDescription = "Block 2 physical dmg, +1 to next physical attack";
 			cDescSize=19;
-			cIcon=Icon.STAT_ARMOUR;
 			aActionType=ActionType.Block;
 			aDamageType=DamageType.Physical;
 			aEffect=2;
@@ -150,7 +142,6 @@ public class CardFactory {
 			cStrength=3;
 			cDescription = "Block all, +1 card";
 			cDescSize=24;
-			cIcon=Icon.STAT_ARMOUR;
 			aActionType=ActionType.Block;
 			aDamageType=DamageType.Either;
 			addAction();
@@ -166,7 +157,6 @@ public class CardFactory {
 			cStrength=2;
 			cDescription = "2 physical damage";
 			cDescSize=24;
-			cIcon=Icon.STAT_STRENGTH;
 			aActionType=ActionType.Attack;
 			aDamageType=DamageType.Physical;
 			aEffect=2;
@@ -177,7 +167,6 @@ public class CardFactory {
 			cStrength=2.5f;
 			cDescription = "2 physical damage, +2 vs unblockable";
 			cDescSize=20;
-			cIcon=Icon.STAT_STRENGTH;
 			aActionType=ActionType.Attack;
 			aDamageType=DamageType.Physical;
 			aEffect=2;
@@ -193,7 +182,6 @@ public class CardFactory {
 			cStrength=3;
 			cDescription = "3 physical damage, block 1 magic";
 			cDescSize=20;
-			cIcon=Icon.STAT_STRENGTH;
 			aActionType=ActionType.Attack;
 			aDamageType=DamageType.Physical;
 			aEffect=3;
@@ -211,7 +199,6 @@ public class CardFactory {
 			cStrength=2;
 			cDescription = "2 physical damage";
 			cDescSize=24;
-			cIcon=Icon.STAT_STRENGTH;
 			aActionType=ActionType.Attack;
 			aDamageType=DamageType.Physical;
 			aEffect=2;
@@ -222,7 +209,6 @@ public class CardFactory {
 			cStrength=2.5f;
 			cDescription = "2 physical damage, [unblockable]";
 			cDescSize=20;
-			cIcon=Icon.STAT_STRENGTH;
 			aActionType=ActionType.Attack;
 			aDamageType=DamageType.Physical;
 			aUnblockable=true;
@@ -234,7 +220,6 @@ public class CardFactory {
 			cStrength=3;
 			cDescription = "3 physical damage, block 1 physical";
 			cDescSize=20;
-			cIcon=Icon.STAT_STRENGTH;
 			aActionType=ActionType.Attack;
 			aDamageType=DamageType.Physical;
 			aEffect=3;
@@ -252,7 +237,6 @@ public class CardFactory {
 			cStrength=2;
 			cDescription = "2 magic damage";
 			cDescSize=24;
-			cIcon=Icon.STAT_MAGIC;
 			aActionType=ActionType.Attack;
 			aDamageType=DamageType.Magical;
 			aEffect=2;
@@ -263,7 +247,6 @@ public class CardFactory {
 			cStrength=2.5f;
 			cDescription = "2 magic damage [quick]";
 			cDescSize=24;
-			cIcon=Icon.STAT_MAGIC;
 			aActionType=ActionType.Attack;
 			aDamageType=DamageType.Magical;
 			aQuick=true;
@@ -275,7 +258,6 @@ public class CardFactory {
 			cStrength=3;
 			cDescription = "1 magic damage: 1 magic damage each turn";
 			cDescSize=19;
-			cIcon=Icon.STAT_MAGIC;
 			aActionType=ActionType.Attack;
 			aDamageType=DamageType.Magical;
 			aEffect=1;
@@ -290,14 +272,49 @@ public class CardFactory {
 
 			break;
 		case Growth:
+
+			cName= "Rekindle";
+			cStrength=2;
+			cDescription = "1 magic damage: +1 hp";
+			cDescSize=24;
+			aActionType=ActionType.Attack;
+			aDamageType=DamageType.Magical;
+			aEffect=1;
+			addAction();
+			aActionType=ActionType.Heal;
+			aEffect=1;
+			addAction();
+			addCard(type);
+
+			cName= "Storm";
+			cStrength=2.5f;
+			cDescription = "2 magic damage [fierce]";
+			cDescSize=24;
+			aActionType=ActionType.Attack;
+			aDamageType=DamageType.Magical;
+			aUnblockable=true;
+			aEffect=2;
+			addAction();
+			addCard(type);
+
+			cName= "Calm";
+			cStrength=2;
+			cDescription = "Your hp becomes 6 [quick]";
+			cDescSize=24;
+			aActionType=ActionType.SetHP;
+			aDamageType=DamageType.Magical;
+			aEffect=6;
+			aQuick=true;
+			addAction();
+			addCard(type);
 			break;
+
 		case Holy:
 
 			cName= "Holy Seal";
 			cStrength=2;
 			cDescription = "Block 1 damage, +1 hp per dmg blocked";
 			cDescSize=20;
-			cIcon=Icon.STAT_HEALTH;
 			aActionType=ActionType.Block;
 			aDamageType=DamageType.Either;
 			aEffect=1;
@@ -311,7 +328,6 @@ public class CardFactory {
 			cStrength=2.5f;
 			cDescription = "2 magic damage, block 1 magic dmg";
 			cDescSize=22;
-			cIcon=Icon.STAT_ARMOUR;
 			aActionType=ActionType.Attack;
 			aDamageType=DamageType.Magical;
 			aEffect=2;
@@ -326,7 +342,6 @@ public class CardFactory {
 			cStrength=3;
 			cDescription = "Block 2 damage, +1 hp per dmg blocked";
 			cDescSize=20;
-			cIcon=Icon.STAT_HEALTH;
 			aActionType=ActionType.Block;
 			aDamageType=DamageType.Either;
 			aEffect=2;
@@ -343,7 +358,6 @@ public class CardFactory {
 			cStrength=2;
 			cDescription = "1 physical damage, [quick], +1 vs unblockable";
 			cDescSize=19;
-			cIcon=Icon.STAT_SPEED;
 			aActionType=ActionType.Attack;
 			aDamageType=DamageType.Physical;
 			aQuick=true;
@@ -361,7 +375,6 @@ public class CardFactory {
 			cStrength=2.5f;
 			cDescription = "1 physical damage, [quick], block all magic";
 			cDescSize=20;
-			cIcon=Icon.STAT_SPEED;
 			aActionType=ActionType.Attack;
 			aDamageType=DamageType.Physical;
 			aQuick=true;
@@ -376,7 +389,6 @@ public class CardFactory {
 			cStrength=3;
 			cDescription = "2 physical damage, [quick], [unblockable]";
 			cDescSize=20;
-			cIcon=Icon.STAT_SPEED;
 			aActionType=ActionType.Attack;
 			aDamageType=DamageType.Physical;
 			aQuick=true;
@@ -392,7 +404,6 @@ public class CardFactory {
 			cStrength=1.2f;
 			cDescription = "1 physical damage, [unblockable]";
 			cDescSize=22;
-			cIcon=Icon.STAT_STRENGTH;
 			aActionType=ActionType.Attack;
 			aDamageType=DamageType.Physical;
 			aEffect=1;
@@ -404,7 +415,6 @@ public class CardFactory {
 			cStrength=1.2f;
 			cDescription = "1 physical damage, [unblockable]";
 			cDescSize=22;
-			cIcon=Icon.STAT_STRENGTH;
 			aActionType=ActionType.Attack;
 			aDamageType=DamageType.Physical;
 			aEffect=1;
@@ -416,7 +426,6 @@ public class CardFactory {
 			cStrength=2.3f;
 			cDescription = "2 physical damage, block 1 magic";
 			cDescSize=22;
-			cIcon=Icon.STAT_STRENGTH;
 			aActionType=ActionType.Attack;
 			aDamageType=DamageType.Physical;
 			aEffect=2;
@@ -431,7 +440,6 @@ public class CardFactory {
 			cStrength=2.3f;
 			cDescription = "2 physical damage, block 1 magic";
 			cDescSize=22;
-			cIcon=Icon.STAT_STRENGTH;
 			aActionType=ActionType.Attack;
 			aDamageType=DamageType.Physical;
 			aEffect=2;
@@ -446,7 +454,6 @@ public class CardFactory {
 			cStrength=3f;
 			cDescription = "3 physical damage";
 			cDescSize=22;
-			cIcon=Icon.STAT_STRENGTH;
 			aActionType=ActionType.Attack;
 			aDamageType=DamageType.Physical;
 			aEffect=3;
@@ -460,7 +467,6 @@ public class CardFactory {
 			cStrength=1f;
 			cDescription = "1 magic damage";
 			cDescSize=24;
-			cIcon=Icon.STAT_DREAD;
 			aActionType=ActionType.Attack;
 			aDamageType=DamageType.Magical;
 			aEffect=1;
@@ -471,7 +477,6 @@ public class CardFactory {
 			cStrength=1.3f;
 			cDescription = "1 magic damage, block 1 magical";
 			cDescSize=20;
-			cIcon=Icon.STAT_DREAD;
 			aActionType=ActionType.Attack;
 			aDamageType=DamageType.Magical;
 			aEffect=1;
@@ -486,7 +491,6 @@ public class CardFactory {
 			cStrength=2f;
 			cDescription = "1 magic damage, 1 physical damage";
 			cDescSize=22;
-			cIcon=Icon.STAT_DREAD;
 			aActionType=ActionType.Attack;
 			aDamageType=DamageType.Magical;
 			aEffect=1;
@@ -501,7 +505,6 @@ public class CardFactory {
 			cStrength=2.6f;
 			cDescription = "2 magic damage, [unblockable]";
 			cDescSize=22;
-			cIcon=Icon.STAT_DREAD;
 			aActionType=ActionType.Attack;
 			aDamageType=DamageType.Magical;
 			aEffect=2;
@@ -513,7 +516,6 @@ public class CardFactory {
 			cStrength=3f;
 			cDescription = "2 magic damage: enemy discards 1 card";
 			cDescSize=19;
-			cIcon=Icon.STAT_DREAD;
 			aActionType=ActionType.Attack;
 			aDamageType=DamageType.Magical;
 			aEffect=2;
@@ -530,7 +532,6 @@ public class CardFactory {
 			cStrength=1f;
 			cDescription = "1 magic damage";
 			cDescSize=24;
-			cIcon=Icon.STAT_MAGIC;
 			aActionType=ActionType.Attack;
 			aDamageType=DamageType.Magical;
 			aEffect=1;
@@ -541,7 +542,6 @@ public class CardFactory {
 			cStrength=1.2f;
 			cDescription = "1 magic damage, [unblockable]";
 			cDescSize=22;
-			cIcon=Icon.STAT_MAGIC;
 			aActionType=ActionType.Attack;
 			aDamageType=DamageType.Magical;
 			aEffect=1;
@@ -553,7 +553,6 @@ public class CardFactory {
 			cStrength=2f;
 			cDescription = "1 magic damage, 1 physical damage";
 			cDescSize=22;
-			cIcon=Icon.STAT_MAGIC;
 			aActionType=ActionType.Attack;
 			aDamageType=DamageType.Magical;
 			aEffect=1;
@@ -568,7 +567,6 @@ public class CardFactory {
 			cStrength=2f;
 			cDescription = "2 magic damage";
 			cDescSize=24;
-			cIcon=Icon.STAT_MAGIC;
 			aActionType=ActionType.Attack;
 			aDamageType=DamageType.Magical;
 			aEffect=2;
@@ -579,7 +577,6 @@ public class CardFactory {
 			cStrength=3f;
 			cDescription = "3 magic damage";
 			cDescSize=24;
-			cIcon=Icon.STAT_MAGIC;
 			aActionType=ActionType.Attack;
 			aDamageType=DamageType.Magical;
 			aEffect=3;
@@ -593,7 +590,6 @@ public class CardFactory {
 			cStrength=1f;
 			cDescription = "1 physical damage";
 			cDescSize=24;
-			cIcon=Icon.STAT_STRENGTH;
 			aActionType=ActionType.Attack;
 			aDamageType=DamageType.Physical;
 			aEffect=1;
@@ -604,7 +600,6 @@ public class CardFactory {
 			cStrength=1.2f;
 			cDescription = "1 magic damage: enemy discards 1 card";
 			cDescSize=20;
-			cIcon=Icon.STAT_MAGIC;
 			aActionType=ActionType.Attack;
 			aDamageType=DamageType.Magical;
 			aEffect=1;
@@ -618,7 +613,6 @@ public class CardFactory {
 			cStrength=2f;
 			cDescription = "1 magic damage: +2 hp";
 			cDescSize=24;
-			cIcon=Icon.STAT_HEALTH;
 			aActionType=ActionType.Attack;
 			aDamageType=DamageType.Magical;
 			aEffect=1;
@@ -633,7 +627,6 @@ public class CardFactory {
 			cStrength=3.5f;
 			cDescription = "2 magic damage, block 2 damage";
 			cDescSize=22;
-			cIcon=Icon.STAT_MAGIC;
 			aActionType=ActionType.Attack;
 			aDamageType=DamageType.Magical;
 			aEffect=2;
@@ -648,7 +641,6 @@ public class CardFactory {
 			cStrength=3.5f;
 			cDescription = "2 magic damage, block 2 damage";
 			cDescSize=22;
-			cIcon=Icon.STAT_MAGIC;
 			aActionType=ActionType.Attack;
 			aDamageType=DamageType.Magical;
 			aEffect=2;
@@ -665,7 +657,6 @@ public class CardFactory {
 			cStrength=0.1f;
 			cDescription = "1 physical damage, take 1 damage";
 			cDescSize=22;
-			cIcon=Icon.STAT_STRENGTH;
 			aActionType=ActionType.Attack;
 			aDamageType=DamageType.Physical;
 			aEffect=1;
@@ -680,7 +671,6 @@ public class CardFactory {
 			cStrength=1.3f;
 			cDescription = "2 physical damage, take 1 damage";
 			cDescSize=22;
-			cIcon=Icon.STAT_STRENGTH;
 			aActionType=ActionType.Attack;
 			aDamageType=DamageType.Physical;
 			aEffect=2;
@@ -695,7 +685,6 @@ public class CardFactory {
 			cStrength=1.3f;
 			cDescription = "2 physical damage, take 1 damage";
 			cDescSize=22;
-			cIcon=Icon.STAT_STRENGTH;
 			aActionType=ActionType.Attack;
 			aDamageType=DamageType.Physical;
 			aEffect=2;
@@ -710,7 +699,6 @@ public class CardFactory {
 			cStrength=2.3f;
 			cDescription = "2 physical damage, [unblockable]";
 			cDescSize=22;
-			cIcon=Icon.STAT_STRENGTH;
 			aActionType=ActionType.Attack;
 			aDamageType=DamageType.Physical;
 			aEffect=2;
@@ -722,7 +710,6 @@ public class CardFactory {
 			cStrength=3.3f;
 			cDescription = "3 physical damage, block 1 magic";
 			cDescSize=22;
-			cIcon=Icon.STAT_STRENGTH;
 			aActionType=ActionType.Attack;
 			aDamageType=DamageType.Physical;
 			aEffect=3;
@@ -740,7 +727,6 @@ public class CardFactory {
 			cStrength=1.3f;
 			cDescription = "1 magic damage, block 1 physical";
 			cDescSize=22;
-			cIcon=Icon.STAT_MAGIC;
 			aActionType=ActionType.Attack;
 			aDamageType=DamageType.Magical;
 			aEffect=1;
@@ -755,7 +741,6 @@ public class CardFactory {
 			cStrength=1.8f;
 			cDescription = "1 magic damage, +1 HP/damage dealt";
 			cDescSize=21;
-			cIcon=Icon.STAT_MAGIC;
 			aActionType=ActionType.Attack;
 			aDamageType=DamageType.Magical;
 			aEffect=1;
@@ -769,7 +754,6 @@ public class CardFactory {
 			cStrength=1.8f;
 			cDescription = "1 magic damage, +1 HP/damage dealt";
 			cDescSize=21;
-			cIcon=Icon.STAT_MAGIC;
 			aActionType=ActionType.Attack;
 			aDamageType=DamageType.Magical;
 			aEffect=1;
@@ -783,7 +767,6 @@ public class CardFactory {
 			cStrength=2.6f;
 			cDescription = "2 magic damage, block 2 physical";
 			cDescSize=22;
-			cIcon=Icon.STAT_MAGIC;
 			aActionType=ActionType.Attack;
 			aDamageType=DamageType.Magical;
 			aEffect=2;
@@ -798,7 +781,6 @@ public class CardFactory {
 			cStrength=3.5f;
 			cDescription = "2 magic damage, +1 HP/damage dealt";
 			cDescSize=22;
-			cIcon=Icon.STAT_MAGIC;
 			aActionType=ActionType.Attack;
 			aDamageType=DamageType.Magical;
 			aEffect=2;
@@ -814,31 +796,26 @@ public class CardFactory {
 			cName="Uhh..";
 			cDescription="You scratch your head";
 			cDescSize=24;
-			cIcon=Icon.STAT_DREAD;
 			addCard(type);
 
 			cName="Uhh..";
 			cDescription="You scratch your head";
 			cDescSize=24;
-			cIcon=Icon.STAT_DREAD;
 			addCard(type);
 
 			cName="Uhh..";
 			cDescription="You scratch your head";
 			cDescSize=24;
-			cIcon=Icon.STAT_DREAD;
 			addCard(type);
 
 			cName="Uhh..";
 			cDescription="You scratch your head";
 			cDescSize=24;
-			cIcon=Icon.STAT_DREAD;
 			addCard(type);
 
 			cName="Uhh..";
 			cDescription="You scratch your head";
 			cDescSize=24;
-			cIcon=Icon.STAT_DREAD;
 			addCard(type);
 
 			break;
@@ -847,7 +824,6 @@ public class CardFactory {
 			cStrength=1f;
 			cDescription = "1 physical damage";
 			cDescSize=24;
-			cIcon=Icon.STAT_STRENGTH;
 			aActionType=ActionType.Attack;
 			aDamageType=DamageType.Physical;
 			aEffect=1;
@@ -858,7 +834,6 @@ public class CardFactory {
 			cStrength=1f;
 			cDescription = "1 physical damage";
 			cDescSize=24;
-			cIcon=Icon.STAT_STRENGTH;
 			aActionType=ActionType.Attack;
 			aDamageType=DamageType.Physical;
 			aEffect=1;
@@ -869,7 +844,6 @@ public class CardFactory {
 			cStrength=2.3f;
 			cDescription = "2 physical damage, block 1 physical";
 			cDescSize=20;
-			cIcon=Icon.STAT_STRENGTH;
 			aActionType=ActionType.Attack;
 			aDamageType=DamageType.Physical;
 			aEffect=2;
@@ -884,7 +858,6 @@ public class CardFactory {
 			cStrength=2.3f;
 			cDescription = "2 physical damage, [unblockable]";
 			cDescSize=22;
-			cIcon=Icon.STAT_STRENGTH;
 			aActionType=ActionType.Attack;
 			aDamageType=DamageType.Physical;
 			aEffect=2;
@@ -896,7 +869,6 @@ public class CardFactory {
 			cStrength=3.8f;
 			cDescription = "3 physical damage, block 2 physical";
 			cDescSize=19;
-			cIcon=Icon.STAT_STRENGTH;
 			aActionType=ActionType.Attack;
 			aDamageType=DamageType.Physical;
 			aEffect=3;
@@ -908,86 +880,42 @@ public class CardFactory {
 			addCard(type);
 
 			break;
-		case Demonic:
-			cName= "Clash";
-			cStrength=3.0f;
-			cDescription = "2 physical damage, [unblockable]";
-			cDescSize=22;
-			cIcon=Icon.STAT_STRENGTH;
-			aActionType=ActionType.Attack;
-			aDamageType=DamageType.Physical;
-			aEffect=2;
-			aUnblockable=true;
-			addAction();
-			addCard(type);
-			
-			cName= "Clash";
-			cStrength=3.5f;
-			cDescription = "2 physical damage, [unblockable]";
-			cDescSize=22;
-			cIcon=Icon.STAT_STRENGTH;
-			aActionType=ActionType.Attack;
-			aDamageType=DamageType.Physical;
-			aEffect=2;
-			aUnblockable=true;
-			addAction();
-			addCard(type);
-			
-			cName= "Clash";
-			cStrength=4.0f;
-			cDescription = "2 physical damage, [unblockable]";
-			cDescSize=22;
-			cIcon=Icon.STAT_STRENGTH;
-			aActionType=ActionType.Attack;
-			aDamageType=DamageType.Physical;
-			aEffect=2;
-			aUnblockable=true;
-			addAction();
-			addCard(type);
-			break;
-		case Ferocious:
-			break;
-		case Sorcery:
-			break;
+
 		case Chump:
-			cName= "Hit";
+			cName= "Eyes closed punch";
 			cStrength=1f;
 			cDescription = "1 physical damage";
 			cDescSize=22;
-			cIcon=Icon.STAT_STRENGTH;
 			aActionType=ActionType.Attack;
 			aDamageType=DamageType.Physical;
 			aEffect=1;
 			addAction();
 			addCard(type);
 
-			cName= "Hit";
+			cName= "Eyes closed punch";
 			cStrength=1f;
 			cDescription = "1 physical damage";
 			cDescSize=22;
-			cIcon=Icon.STAT_STRENGTH;
 			aActionType=ActionType.Attack;
 			aDamageType=DamageType.Physical;
 			aEffect=1;
 			addAction();
 			addCard(type);
 
-			cName= "Hit";
+			cName= "Eyes closed punch";
 			cStrength=1f;
 			cDescription = "1 physical damage";
 			cDescSize=22;
-			cIcon=Icon.STAT_STRENGTH;
 			aActionType=ActionType.Attack;
 			aDamageType=DamageType.Physical;
 			aEffect=1;
 			addAction();
 			addCard(type);
 
-			cName= "Whack";
+			cName= "Lucky hit";
 			cStrength=2f;
 			cDescription = "2 physical damage";
 			cDescSize=24;
-			cIcon=Icon.STAT_STRENGTH;
 			aActionType=ActionType.Attack;
 			aDamageType=DamageType.Physical;
 			aEffect=2;
@@ -998,7 +926,6 @@ public class CardFactory {
 			cStrength=1f;
 			cDescription = "Block 1 damage";
 			cDescSize=22;
-			cIcon=Icon.STAT_STRENGTH;
 			aActionType=ActionType.Block;
 			aDamageType=DamageType.Either;
 			aEffect=1;
@@ -1009,7 +936,6 @@ public class CardFactory {
 			cStrength=1f;
 			cDescription = "Block 1 damage";
 			cDescSize=22;
-			cIcon=Icon.STAT_STRENGTH;
 			aActionType=ActionType.Block;
 			aDamageType=DamageType.Either;
 			aEffect=1;
@@ -1017,34 +943,31 @@ public class CardFactory {
 			addCard(type);
 			break;
 
-		case Warrior:
-			cName= "Hit";
+		case Henchman:
+			cName= "Oi!";
 			cStrength=1f;
 			cDescription = "1 physical damage";
 			cDescSize=22;
-			cIcon=Icon.STAT_STRENGTH;
 			aActionType=ActionType.Attack;
 			aDamageType=DamageType.Physical;
 			aEffect=1;
 			addAction();
 			addCard(type);
 
-			cName= "Hit";
+			cName= "Oi!";
 			cStrength=1f;
 			cDescription = "1 physical damage";
 			cDescSize=22;
-			cIcon=Icon.STAT_STRENGTH;
 			aActionType=ActionType.Attack;
 			aDamageType=DamageType.Physical;
 			aEffect=1;
 			addAction();
 			addCard(type);
 
-			cName= "Crack";
+			cName= "Get outta here";
 			cStrength=1.4f;
 			cDescription = "1 physical damage, [unblockable]";
 			cDescSize=22;
-			cIcon=Icon.STAT_STRENGTH;
 			aActionType=ActionType.Attack;
 			aDamageType=DamageType.Physical;
 			aEffect=1;
@@ -1052,11 +975,10 @@ public class CardFactory {
 			addAction();
 			addCard(type);
 
-			cName= "Rush";
+			cName= "Nice try, chump";
 			cStrength=1.5f;
 			cDescription = "1 physical damage, block 1 magical";
 			cDescSize=22;
-			cIcon=Icon.STAT_STRENGTH;
 			aActionType=ActionType.Attack;
 			aDamageType=DamageType.Physical;
 			aEffect=1;
@@ -1067,56 +989,51 @@ public class CardFactory {
 			addAction();
 			addCard(type);
 
-			cName= "Whack";
+			cName= "How do you like this?";
 			cStrength=2f;
 			cDescription = "2 physical damage";
 			cDescSize=24;
-			cIcon=Icon.STAT_STRENGTH;
 			aActionType=ActionType.Attack;
 			aDamageType=DamageType.Physical;
 			aEffect=2;
 			addAction();
 			addCard(type);
 
-			cName= "Clang!";
+			cName= "Is that all you got?";
 			cStrength=2f;
 			cDescription = "Block all physical damage";
 			cDescSize=22;
-			cIcon=Icon.STAT_STRENGTH;
 			aActionType=ActionType.Block;
 			aDamageType=DamageType.Physical;
 			addAction();
 			addCard(type);
 			break;
 
-		case Rogue:
-			cName= "Hit";
+		case CatBurglar:
+			cName= "Scratch";
 			cStrength=1f;
 			cDescription = "1 physical damage";
 			cDescSize=22;
-			cIcon=Icon.STAT_STRENGTH;
 			aActionType=ActionType.Attack;
 			aDamageType=DamageType.Physical;
 			aEffect=1;
 			addAction();
 			addCard(type);
 
-			cName= "Hit";
+			cName= "Scratch";
 			cStrength=1f;
 			cDescription = "1 physical damage";
 			cDescSize=22;
-			cIcon=Icon.STAT_STRENGTH;
 			aActionType=ActionType.Attack;
 			aDamageType=DamageType.Physical;
 			aEffect=1;
 			addAction();
 			addCard(type);
 
-			cName= "Slice";
-			cStrength=1.5f;
+			cName= "Throw cat";
+			cStrength=1.4f;
 			cDescription = "1 physical damage, [quick]";
 			cDescSize=22;
-			cIcon=Icon.STAT_STRENGTH;
 			aActionType=ActionType.Attack;
 			aDamageType=DamageType.Physical;
 			aQuick=true;
@@ -1124,33 +1041,30 @@ public class CardFactory {
 			addAction();
 			addCard(type);
 
-			cName= "Sidestep";
+			cName= "Reflexes";
 			cStrength=2f;
 			cDescription = "Block 2 damage";
 			cDescSize=22;
-			cIcon=Icon.STAT_STRENGTH;
 			aActionType=ActionType.Block;
 			aDamageType=DamageType.Either;
 			aEffect=2;
 			addAction();
 			addCard(type);
 
-			cName= "Whack";
+			cName= "Rip";
 			cStrength=2f;
 			cDescription = "2 physical damage";
 			cDescSize=24;
-			cIcon=Icon.STAT_STRENGTH;
 			aActionType=ActionType.Attack;
 			aDamageType=DamageType.Physical;
 			aEffect=2;
 			addAction();
 			addCard(type);
 
-			cName= "Stab";
+			cName= "Gouge";
 			cStrength=1.6f;
 			cDescription = "1 physical damage, +1 if enemy below half health";
 			cDescSize=22;
-			cIcon=Icon.STAT_STRENGTH;
 			aActionType=ActionType.Attack;
 			aDamageType=DamageType.Physical;
 			aEffect=1;
@@ -1163,13 +1077,12 @@ public class CardFactory {
 			addCard(type);
 			break;
 
-		case Archer:
+		case Ranger:
 
-			cName= "Hit";
+			cName= "Wooden arrow";
 			cStrength=1f;
 			cDescription = "1 physical damage";
 			cDescSize=22;
-			cIcon=Icon.STAT_STRENGTH;
 			aActionType=ActionType.Attack;
 			aDamageType=DamageType.Physical;
 			aEffect=1;
@@ -1177,10 +1090,9 @@ public class CardFactory {
 			addCard(type);
 
 			cName= "Pierce";
-			cStrength=1f;
+			cStrength=1.4f;
 			cDescription = "1 physical damage, [unblockable]";
 			cDescSize=22;
-			cIcon=Icon.STAT_STRENGTH;
 			aActionType=ActionType.Attack;
 			aDamageType=DamageType.Physical;
 			aUnblockable=true;
@@ -1188,33 +1100,30 @@ public class CardFactory {
 			addAction();
 			addCard(type);
 
-			cName= "Flame Arrow";
+			cName= "Flame arrow";
 			cStrength=2f;
 			cDescription = "2 magic damage";
 			cDescSize=24;
-			cIcon=Icon.STAT_MAGIC;
 			aActionType=ActionType.Attack;
 			aDamageType=DamageType.Magical;
 			aEffect=2;
 			addAction();
 			addCard(type);
 
-			cName= "Whack";
+			cName= "Steelhead arrow";
 			cStrength=2f;
 			cDescription = "2 physical damage";
 			cDescSize=24;
-			cIcon=Icon.STAT_STRENGTH;
 			aActionType=ActionType.Attack;
 			aDamageType=DamageType.Physical;
 			aEffect=2;
 			addAction();
 			addCard(type);
 
-			cName= "Whack";
+			cName= "Steelhead arrow";
 			cStrength=2f;
 			cDescription = "2 physical damage";
 			cDescSize=24;
-			cIcon=Icon.STAT_STRENGTH;
 			aActionType=ActionType.Attack;
 			aDamageType=DamageType.Physical;
 			aEffect=2;
@@ -1222,10 +1131,9 @@ public class CardFactory {
 			addCard(type);
 
 			cName= "Duck";
-			cStrength=2f;
+			cStrength=2.5f;
 			cDescription = "Block 3 damage";
 			cDescSize=22;
-			cIcon=Icon.STAT_ARMOUR;
 			aActionType=ActionType.Block;
 			aDamageType=DamageType.Either;
 			aEffect=3;
@@ -1233,99 +1141,89 @@ public class CardFactory {
 			addCard(type);
 			break;
 
-		case SpellBlade:
+		case Barbarian:
 
-			cName= "Arcane Bolt";
+			cName= "Slam";
 			cStrength=1f;
-			cDescription = "1 magic damage";
+			cDescription = "2 phsycial damage, -1 hp";
 			cDescSize=22;
-			cIcon=Icon.STAT_STRENGTH;
-			aActionType=ActionType.Attack;
-			aDamageType=DamageType.Magical;
-			aEffect=1;
-			addAction();
-			addCard(type);
-
-			cName= "Flurry";
-			cStrength=1f;
-			cDescription = "2 physical damage, [quick]";
-			cDescSize=22;
-			cIcon=Icon.STAT_STRENGTH;
 			aActionType=ActionType.Attack;
 			aDamageType=DamageType.Physical;
-			aQuick=true;
 			aEffect=2;
 			addAction();
+			aActionType=ActionType.Heal;
+			aEffect=-1;
+			addAction();
 			addCard(type);
 
-			cName= "Parry";
-			cStrength=1.5f;
-			cDescription = "1 physical damage, block 1 physical";
+			cName= "Slam";
+			cStrength=1f;
+			cDescription = "2 phsycial damage, -1 hp";
 			cDescSize=22;
-			cIcon=Icon.STAT_STRENGTH;
 			aActionType=ActionType.Attack;
 			aDamageType=DamageType.Physical;
-			aEffect=1;
+			aEffect=2;
 			addAction();
-			aActionType=ActionType.Block;
-			aDamageType=DamageType.Physical;
-			aEffect=1;
+			aActionType=ActionType.Heal;
+			aEffect=-1;
 			addAction();
 			addCard(type);
 			
-			cName= "Parry";
-			cStrength=1.5f;
-			cDescription = "1 physical damage, block 1 physical";
+			cName= "Howl";
+			cStrength=2f;
+			cDescription = "3 phsycial damage, -1 hp";
 			cDescSize=22;
-			cIcon=Icon.STAT_STRENGTH;
 			aActionType=ActionType.Attack;
 			aDamageType=DamageType.Physical;
-			aEffect=1;
+			aEffect=3;
+			addAction();
+			aActionType=ActionType.Heal;
+			aEffect=-1;
+			addAction();
+			addCard(type);
+
+			cName= "Assault";
+			cStrength=2.4f;
+			cDescription = "2 physical damage, block 1 magic";
+			cDescSize=22;
+			aActionType=ActionType.Attack;
+			aDamageType=DamageType.Physical;
+			aEffect=2;
 			addAction();
 			aActionType=ActionType.Block;
-			aDamageType=DamageType.Physical;
+			aDamageType=DamageType.Magical;
 			aEffect=1;
 			addAction();
 			addCard(type);
 
-			cName= "Arcane Strike";
-			cStrength=2f;
-			cDescription = "1 physical damage, 1 magic damage";
+			cName= "Overpower";
+			cStrength=2.4f;
+			cDescription = "2 phsycial damage [unblockable]";
+			cDescSize=22;
+			aActionType=ActionType.Attack;
+			aDamageType=DamageType.Physical;
+			aEffect=2;
+			aUnblockable=true;
+			addAction();
+			addCard(type);
+
+
+			cName= "Withstand";
+			cStrength=3f;
+			cDescription = "Cannot go below 1hp this turn or next";
 			cDescSize=24;
-			cIcon=Icon.STAT_STRENGTH;
-			aActionType=ActionType.Attack;
-			aDamageType=DamageType.Physical;
-			aEffect=1;
-			addAction();
-			aActionType=ActionType.Attack;
-			aDamageType=DamageType.Magical;
-			aEffect=1;
-			addAction();
-			addCard(type);
-
-			cName= "Stab";
-			cStrength=2f;
-			cDescription = "1 physical damage, block 1 magic";
-			cDescSize=22;
-			cIcon=Icon.STAT_ARMOUR;
-			aActionType=ActionType.Attack;
-			aDamageType=DamageType.Physical;
-			aEffect=1;
-			addAction();
-			aActionType=ActionType.Block;
-			aDamageType=DamageType.Magical;
-			aEffect=1;
+			aActionType=ActionType.StayAboveOne;
+			aEffect=2;
 			addAction();
 			addCard(type);
 			break;
 
-		case Magician:
+		case Apprentice:
 
 			cName= "Arcane Bolt";
 			cStrength=1f;
 			cDescription = "1 magic damage";
 			cDescSize=22;
-			cIcon=Icon.STAT_MAGIC;
 			aActionType=ActionType.Attack;
 			aDamageType=DamageType.Magical;
 			aEffect=1;
@@ -1336,7 +1234,6 @@ public class CardFactory {
 			cStrength=1f;
 			cDescription = "1 magic damage";
 			cDescSize=22;
-			cIcon=Icon.STAT_MAGIC;
 			aActionType=ActionType.Attack;
 			aDamageType=DamageType.Magical;
 			aEffect=1;
@@ -1347,7 +1244,6 @@ public class CardFactory {
 			cStrength=1.5f;
 			cDescription = "1 magic damage, [quick]";
 			cDescSize=22;
-			cIcon=Icon.STAT_MAGIC;
 			aActionType=ActionType.Attack;
 			aDamageType=DamageType.Magical;
 			aEffect=1;
@@ -1359,7 +1255,6 @@ public class CardFactory {
 			cStrength=1.5f;
 			cDescription = "1 physical damage, block 1 physical";
 			cDescSize=22;
-			cIcon=Icon.STAT_STRENGTH;
 			aActionType=ActionType.Attack;
 			aDamageType=DamageType.Physical;
 			aEffect=1;
@@ -1374,7 +1269,6 @@ public class CardFactory {
 			cStrength=2f;
 			cDescription = "2 magic damage";
 			cDescSize=24;
-			cIcon=Icon.STAT_MAGIC;
 			aActionType=ActionType.Attack;
 			aDamageType=DamageType.Magical;
 			aEffect=2;
@@ -1385,7 +1279,6 @@ public class CardFactory {
 			cStrength=2f;
 			cDescription = "Block 2 damage";
 			cDescSize=22;
-			cIcon=Icon.STAT_ARMOUR;
 			aActionType=ActionType.Block;
 			aDamageType=DamageType.Either;
 			aEffect=2;
@@ -1393,115 +1286,124 @@ public class CardFactory {
 			addCard(type);
 			break;
 
-		case Cleric:
-			cName= "Chastise";
+		case Mime:
+			
+			cName= "Imaginary Hammer";
 			cStrength=1f;
 			cDescription = "1 magic damage";
-			cDescSize=24;
-			cIcon=Icon.STAT_MAGIC;
+			cDescSize=22;
 			aActionType=ActionType.Attack;
 			aDamageType=DamageType.Magical;
 			aEffect=1;
 			addAction();
 			addCard(type);
-
-			cName= "Chastise";
+			
+			cName= "Imaginary Hammer";
 			cStrength=1f;
 			cDescription = "1 magic damage";
-			cDescSize=24;
-			cIcon=Icon.STAT_MAGIC;
+			cDescSize=22;
 			aActionType=ActionType.Attack;
 			aDamageType=DamageType.Magical;
 			aEffect=1;
 			addAction();
 			addCard(type);
 
-			cName= "Prayer";
-			cStrength=2f;
-			cDescription = "+1 HP";
-			cDescSize=24;
-			cIcon=Icon.STAT_MAGIC;
-			aActionType=ActionType.Heal;
-			aEffect=1;
-			addAction();
-			addCard(type);
-
-			cName= "Penitence";
-			cStrength=3f;
-			cDescription = "1 magic damage, +1 HP";
-			cDescSize=24;
-			cIcon=Icon.STAT_MAGIC;
-			aActionType=ActionType.Heal;
-			aEffect=1;
-			addAction();
-			aActionType=ActionType.Attack;
-			aDamageType=DamageType.Magical;
-			aEffect=1;
-			addAction();
-			addCard(type);
-
-			cName= "Smite";
+			cName= "Imaginary Cannon";
 			cStrength=2f;
 			cDescription = "2 magic damage";
-			cDescSize=24;
-			cIcon=Icon.STAT_MAGIC;
+			cDescSize=22;
 			aActionType=ActionType.Attack;
 			aDamageType=DamageType.Magical;
 			aEffect=2;
 			addAction();
 			addCard(type);
 
-			cName= "Protection";	
-			cDescription = "Block 2 magic";
-			cDescSize=22;
+			cName= "Copy";
 			cStrength=1.5f;
-			cIcon=Icon.STAT_STRENGTH;
-			aActionType=ActionType.Block;
+			cDescription = "1 magic damage: Copy top enemy card to your hand";
+			cDescSize=22;
+			aActionType=ActionType.Attack;
 			aDamageType=DamageType.Magical;
+			aEffect=1;
+			raType=ActionType.Effect;
+			raEffectType=ResultActionEffectType.Copy;
+			raEffect=1;
+			addResultAction();
+			addAction();
+			addCard(type);
+
+			cName= "Stage-presence";
+			cStrength=1.5f;
+			cDescription = "1 magic damage: discard one of your top 2 cards";
+			cDescSize=22;
+			aActionType=ActionType.Attack;
+			aDamageType=DamageType.Magical;
+			aEffect=1;
+			raType=ActionType.Effect;
+			raEffectType=ResultActionEffectType.Scry;
+			raEffect=1;
+			addResultAction();
+			addAction();
+			addCard(type);
+
+			cName= "Invisible box";
+			cStrength=2f;
+			cDescription = "Block 2 damage";
+			cDescSize=24;
+			aActionType=ActionType.Block;
+			aDamageType=DamageType.Either;
 			aEffect=2;
 			addAction();
 			addCard(type);
 			break;
-
-		case Wizard:
-
-			cName= "Meditate";
-			cStrength=1f;
-			cDescription = "+1 HP, +1 card, +1 to next magic attack";
-			cDescSize=22;
-			cIcon=Icon.STAT_MAGIC;
-			aActionType=ActionType.Heal;
-			aEffect=1;
-			addAction();
-			aActionType=ActionType.Draw;
-			aEffect=1;
-			addAction();
-			aActionType=ActionType.NextAttack;
-			aDamageType=DamageType.Magical;
-			aEffect=1;
-			addAction();
-			addCard(type);
-
-			cName= "Baffle";
-			cStrength=1f;
-			cDescription = "1 magic damage, block 2 magic";
-			cDescSize=22;
-			cIcon=Icon.STAT_MAGIC;
+			
+		case Alchemist:
+			cName= "Potion of acid";
+			cStrength=2f;
+			cDescription = "2 magic damage";
+			cDescSize=24;
 			aActionType=ActionType.Attack;
 			aDamageType=DamageType.Magical;
-			aEffect=1;
+			aEffect=2;
 			addAction();
-			aActionType=ActionType.Block;
+			addCard(type);
+			
+			cName= "Potion of acid";
+			cStrength=2f;
+			cDescription = "2 magic damage";
+			cDescSize=24;
+			aActionType=ActionType.Attack;
 			aDamageType=DamageType.Magical;
 			aEffect=2;
 			addAction();
 			addCard(type);
 
-			cName= "Zap";
-			cStrength=1.5f;
-			cDescription = "1 magic damage, [quick]";
-			cDescSize=22;
-			cIcon=Icon.STAT_MAGIC;
+			cName= "Potion of healing";
+			cStrength=3f;
+			cDescription = "+2 HP";
+			cDescSize=24;
+			aActionType=ActionType.Heal;
+			aEffect=2;
+			addAction();
+			addCard(type);
+
+			cName= "Potion of invigoration";
+			cStrength=3f;
+			cDescription = "1 magic damage, +1 HP";
+			cDescSize=24;
+			aActionType=ActionType.Heal;
+			aEffect=1;
+			addAction();
+			aActionType=ActionType.Attack;
+			aDamageType=DamageType.Magical;
+			aEffect=1;
+			addAction();
+			addCard(type);
+
+			cName= "Potion of sparks";
+			cStrength=1.4f;
+			cDescription = "1 magic damage [quick]";
+			cDescSize=24;
 			aActionType=ActionType.Attack;
 			aDamageType=DamageType.Magical;
 			aEffect=1;
@@ -1509,33 +1411,10 @@ public class CardFactory {
 			addAction();
 			addCard(type);
 
-			cName= "Blast";
-			cStrength=2f;
-			cDescription = "2 magic damage";
-			cDescSize=24;
-			cIcon=Icon.STAT_MAGIC;
-			aActionType=ActionType.Attack;
-			aDamageType=DamageType.Magical;
-			aEffect=2;
-			addAction();
-			addCard(type);
-			
-			cName= "Blast";
-			cStrength=2f;
-			cDescription = "2 magic damage";
-			cDescSize=24;
-			cIcon=Icon.STAT_MAGIC;
-			aActionType=ActionType.Attack;
-			aDamageType=DamageType.Magical;
-			aEffect=2;
-			addAction();
-			addCard(type);
-
-			cName= "Phase";
-			cStrength=2f;
+			cName= "Potion of rockskin";	
 			cDescription = "Block 3 damage";
 			cDescSize=22;
-			cIcon=Icon.STAT_ARMOUR;
+			cStrength=2.8f;
 			aActionType=ActionType.Block;
 			aDamageType=DamageType.Either;
 			aEffect=3;
@@ -1543,49 +1422,45 @@ public class CardFactory {
 			addCard(type);
 			break;
 
-		case Druid:
+		case Shapeshifter:
 
-			cName= "Restore";
-			cStrength=1f;
+			cName= "Regenerate";
+			cStrength=3f;
 			cDescription = "+3 HP";
 			cDescSize=22;
-			cIcon=Icon.STAT_MAGIC;
 			aActionType=ActionType.Heal;
 			aEffect=3;
 			addAction();
 			addCard(type);
 
-			cName= "Claw";
-			cStrength=1f;
-			cDescription = "1 physical damage, unblockable";
+			cName= "Aspect of the panther";
+			cStrength=1.3f;
+			cDescription = "1 magic damage [unblockable]";
 			cDescSize=22;
-			cIcon=Icon.STAT_MAGIC;
 			aActionType=ActionType.Attack;
-			aDamageType=DamageType.Physical;
-			aUnblockable=true;
+			aDamageType=DamageType.Magical;
 			aEffect=1;
+			aUnblockable=true;
 			addAction();
 			addCard(type);
 			
-			cName= "Claw";
-			cStrength=1f;
-			cDescription = "1 physical damage, unblockable";
+			cName= "Aspect of the panther";
+			cStrength=1.3f;
+			cDescription = "1 magic damage [unblockable]";
 			cDescSize=22;
-			cIcon=Icon.STAT_MAGIC;
 			aActionType=ActionType.Attack;
-			aDamageType=DamageType.Physical;
-			aUnblockable=true;
+			aDamageType=DamageType.Magical;
 			aEffect=1;
+			aUnblockable=true;
 			addAction();
 			addCard(type);
 
-			cName= "Grasping Roots";
-			cStrength=1f;
-			cDescription = "1 magic damage, block 2";
+			cName= "Aspect of the bull";
+			cStrength=2.5f;
+			cDescription = "1 physical damage, block 2 damage";
 			cDescSize=22;
-			cIcon=Icon.STAT_MAGIC;
 			aActionType=ActionType.Attack;
-			aDamageType=DamageType.Magical;
+			aDamageType=DamageType.Physical;
 			aEffect=1;
 			addAction();
 			aActionType=ActionType.Block;
@@ -1594,11 +1469,10 @@ public class CardFactory {
 			addAction();
 			addCard(type);
 
-			cName= "Fury";
+			cName= "Aspect of the dragon";
 			cStrength=2f;
 			cDescription = "2 magic damage";
 			cDescSize=24;
-			cIcon=Icon.STAT_MAGIC;
 			aActionType=ActionType.Attack;
 			aDamageType=DamageType.Magical;
 			aEffect=2;
@@ -1606,18 +1480,324 @@ public class CardFactory {
 			addCard(type);
 
 			cName= "Barkskin";
-			cStrength=2f;
-			cDescription = "Block all physical";
+			cStrength=2.8f;
+			cDescription = "Block all physical damage";
 			cDescSize=22;
-			cIcon=Icon.STAT_ARMOUR;
 			aActionType=ActionType.Block;
 			aDamageType=DamageType.Physical;
 			addAction();
 			addCard(type);
 			break;
 
+			//tier 2 enemy skills//
+		case Ferocious:
+			cName= "Thrash";
+			cStrength=2.5f;
+			cDescription = "3 physical damage, take 1 damage";
+			cDescSize=22;
+			aActionType=ActionType.Attack;
+			aDamageType=DamageType.Physical;
+			aEffect=3;
+			addAction();
+			aActionType=ActionType.TakeDamage;
+			aDamageType=DamageType.Physical;
+			aEffect=1;
+			addAction();
+			addCard(type);
+			
+			cName= "Thrash";
+			cStrength=2.5f;
+			cDescription = "3 physical damage, take 1 damage";
+			cDescSize=22;
+			aActionType=ActionType.Attack;
+			aDamageType=DamageType.Physical;
+			aEffect=3;
+			addAction();
+			aActionType=ActionType.TakeDamage;
+			aDamageType=DamageType.Physical;
+			aEffect=1;
+			addAction();
+			addCard(type);
+			
+			cName= "Thrash";
+			cStrength=4f;
+			cDescription = "4 physical damage";
+			cDescSize=22;
+			aActionType=ActionType.Attack;
+			aDamageType=DamageType.Physical;
+			aEffect=4;
+			addAction();
+			addCard(type);
 
+			break;
+		case Demonic:
+			cName= "Veiled Strike";
+			cStrength=2.3f;
+			cDescription = "2 magic damage: next card is hidden";
+			cDescSize=22;
+			aActionType=ActionType.Attack;
+			aDamageType=DamageType.Magical;
+			aEffect=2;
+			raType=ActionType.Effect;
+			raEffectType=ResultActionEffectType.Conceal;
+			addResultAction();
+			addAction();
+			addCard(type);
 
+			cName= "Veiled Strike";
+			cStrength=2.3f;
+			cDescription = "2 magic damage: next card is hidden";
+			cDescSize=22;
+			aActionType=ActionType.Attack;
+			aDamageType=DamageType.Magical;
+			aEffect=2;
+			raType=ActionType.Effect;
+			raEffectType=ResultActionEffectType.Conceal;
+			addResultAction();
+			addAction();
+			addCard(type);
+
+			cName= "Chaos";
+			cStrength=4.0f;
+			cDescription = "3 magic damage: player discards a card at random";
+			cDescSize=22;
+			aActionType=ActionType.Attack;
+			aDamageType=DamageType.Physical;
+			aEffect=3;
+			raType=ActionType.Discard;
+			raEffect=1;
+			addResultAction();
+			addAction();
+			addCard(type);
+			break;
+
+		case Sorcery:
+			
+			cName= "Force Strike";
+			cStrength=3f;
+			cDescription = "2 magic damage, 1 physical damage";
+			cDescSize=22;
+			aActionType=ActionType.Attack;
+			aDamageType=DamageType.Magical;
+			aEffect=2;
+			addAction();
+			aActionType=ActionType.Attack;
+			aDamageType=DamageType.Physical;
+			aEffect=1;
+			addAction();
+			addCard(type);
+			
+			cName= "Force Strike";
+			cStrength=3.5f;
+			cDescription = "3 magic damage, block 1 physical";
+			cDescSize=22;
+			aActionType=ActionType.Attack;
+			aDamageType=DamageType.Magical;
+			aEffect=3;
+			addAction();
+			aActionType=ActionType.Block;
+			aDamageType=DamageType.Physical;
+			aEffect=1;
+			addAction();
+			addCard(type);
+			
+			cName= "Sweeping Blast";
+			cStrength=4;
+			cDescription = "3 magic damage, block 2 magic";
+			cDescSize=22;
+			aActionType=ActionType.Attack;
+			aDamageType=DamageType.Magical;
+			aEffect=3;
+			addAction();
+			aActionType=ActionType.Block;
+			aDamageType=DamageType.Magical;
+			aEffect=2;
+			addAction();
+			addCard(type);
+			
+			break;
+			
+		case Venom:
+			
+			cName= "Force Strike";
+			cStrength=3f;
+			cDescription = "2 magic damage, 1 physical damage";
+			cDescSize=22;
+			aActionType=ActionType.Attack;
+			aDamageType=DamageType.Magical;
+			aEffect=2;
+			addAction();
+			aActionType=ActionType.Attack;
+			aDamageType=DamageType.Physical;
+			aEffect=1;
+			addAction();
+			addCard(type);
+			
+			cName= "Poison";
+			cStrength=4;
+			cDescription = "2 physical damage: 1 physical damage each turn";
+			cDescSize=19;
+			aActionType=ActionType.Attack;
+			aDamageType=DamageType.Physical;
+			aEffect=2;
+			raType=ActionType.Effect;
+			raEffectType=ResultActionEffectType.Fire;
+			raDamageType=DamageType.Physical;
+			raEffect=1;
+			raRounds=-1;
+			addResultAction();
+			addAction();
+			addCard(type);
+			
+			cName= "Poison";
+			cStrength=4;
+			cDescription = "2 physical damage: 1 physical damage each turn";
+			cDescSize=19;
+			aActionType=ActionType.Attack;
+			aDamageType=DamageType.Physical;
+			aEffect=2;
+			raType=ActionType.Effect;
+			raEffectType=ResultActionEffectType.Fire;
+			raDamageType=DamageType.Physical;
+			raEffect=1;
+			raRounds=-1;
+			addResultAction();
+			addAction();
+			addCard(type);
+			
+			break;
+			
+		case Ghastly:
+			
+			cName= "Cold Strike";
+			cStrength=3;
+			cDescription = "2 magic damage, block all physical";
+			cDescSize=22;
+			aActionType=ActionType.Attack;
+			aDamageType=DamageType.Magical;
+			aEffect=2;
+			addAction();
+			aActionType=ActionType.Block;
+			aDamageType=DamageType.Physical;
+			addAction();
+			addCard(type);
+			
+			cName= "Ice Blast";
+			cStrength=4;
+			cDescription = "2 magic damage, block all damage";
+			cDescSize=22;
+			aActionType=ActionType.Attack;
+			aDamageType=DamageType.Magical;
+			aEffect=2;
+			addAction();
+			aActionType=ActionType.Block;
+			aDamageType=DamageType.Either;
+			addAction();
+			addCard(type);
+			
+			cName= "Amnesia";
+			cStrength=5;
+			cDescription = "4 magic damage: player discards at random";
+			cDescSize=22;
+			aActionType=ActionType.Attack;
+			aDamageType=DamageType.Magical;
+			aEffect=4;
+			raType=ActionType.Discard;
+			raEffect=1;
+			addResultAction();
+			addAction();
+			addCard(type);
+			
+			break;
+			
+		case Martial:
+			
+			cName= "Concuss";
+			cStrength=2.3f;
+			cDescription = "3 physical damage, player's magical attacks are ineffective next turn";
+			cDescSize=22;
+			aActionType=ActionType.Attack;
+			aDamageType=DamageType.Physical;
+			aEffect=3;
+			raType=ActionType.Effect;
+			raEffectType=ResultActionEffectType.StopPlayerFromPlayingMagical;
+			addResultAction();
+			addAction();
+			addCard(type);			
+			
+			cName= "Kidney Shot";
+			cStrength=3.3f;
+			cDescription = "2 physical damage: player's physical attacks are ineffective next turn";
+			cDescSize=22;
+			aActionType=ActionType.Attack;
+			aDamageType=DamageType.Physical;
+			aEffect=2;
+			raType=ActionType.Effect;
+			raEffectType=ResultActionEffectType.StopPlayerFromPlayingPhysical;
+			addResultAction();
+			addAction();
+			addCard(type);			
+			
+			cName= "Unbalance";
+			cStrength=3.5f;
+			cDescription = "3 physical damage: player's blocks are ineffective next turn";
+			cDescSize=22;
+			aActionType=ActionType.Attack;
+			aDamageType=DamageType.Physical;
+			aEffect=3;
+			raType=ActionType.Effect;
+			raEffectType=ResultActionEffectType.StopPlayerFromPlayingBlocks;
+			addResultAction();
+			addAction();
+			addCard(type);			
+			
+			break;
+			
+		case Burly:
+			
+			cName= "Punch";
+			cStrength=3;
+			cDescription = "2 physical damage, block 2 physical";
+			cDescSize=22;
+			aActionType=ActionType.Attack;
+			aDamageType=DamageType.Physical;
+			aEffect=2;
+			addAction();
+			aActionType=ActionType.Block;
+			aDamageType=DamageType.Physical;
+			aEffect=2;
+			addAction();
+			addCard(type);
+			
+			cName= "Pummel";
+			cStrength=4;
+			cDescription = "2 physical damage, block 2 magic";
+			cDescSize=22;
+			aActionType=ActionType.Attack;
+			aDamageType=DamageType.Physical;
+			aEffect=2;
+			addAction();
+			aActionType=ActionType.Block;
+			aDamageType=DamageType.Magical;
+			aEffect=2;
+			addAction();
+			addCard(type);
+			
+			cName= "Pound";
+			cStrength=5;
+			cDescription = "3 physical damage: block 2 damage";
+			cDescSize=22;
+			aActionType=ActionType.Attack;
+			aDamageType=DamageType.Physical;
+			aEffect=3;
+			addAction();
+			aActionType=ActionType.Block;
+			aDamageType=DamageType.Either;
+			aEffect=2;
+			addAction();
+			addCard(type);
+			
+			break;
 		default:
 			break;
 		}
@@ -1658,19 +1838,20 @@ public class CardFactory {
 
 	static void resetCard(){
 		cName=null;
+		cImage=null;
 		cStrength=0;
 		cDescription=null;
 		cDescSize=0;
-		cIcon=null;
 		cActions.clear();
 	}
 
 	private static void addCard(SkillType type) {
+		if(type==SkillType.Flame)cImage=SkillType.Fire;
 		Skill.get(type).addCard(makeCard());
 	}
 
 	private static Card makeCard(){
-		Card c=new Card(cName, cStrength, cDescription, cDescSize, cIcon, cActions==null?null:(ArrayList<Action>) cActions.clone());
+		Card c=new Card(cName, cStrength, cDescription, cDescSize, cImage, cActions==null?null:(ArrayList<Action>)cActions.clone());
 		resetCard();
 		return c;
 	}
@@ -1711,7 +1892,7 @@ public class CardFactory {
 		return output;
 	}
 
-	
+
 
 	public static String jsonSkills(SkillType type){
 		String output="";
@@ -1757,7 +1938,7 @@ public class CardFactory {
 		}
 
 		public enum ActionType{
-			Attack, Heal, Block, Discard, TakeDamage, Draw, NextAttack, Effect
+			Attack, Heal, Block, Discard, TakeDamage, Draw, NextAttack, Effect, SetHP, StayAboveOne
 		}
 		public enum DamageType{
 			Physical("Physical"), Magical("Magical"), Either("Magical,Physical");
@@ -1818,7 +1999,7 @@ public class CardFactory {
 		DamageType damageType;
 		int rounds;
 		public enum ResultActionEffectType{
-			Fire
+			Fire, StopPlayerFromPlayingPhysical, StopPlayerFromPlayingMagical, StopPlayerFromPlayingBlocks, Conceal, Copy, Scry
 		}
 		public ResultAction(ActionType type, ResultActionEffectType effectType, DamageType raDamageType, int actionEffect, int raRounds){
 			this.type=type;

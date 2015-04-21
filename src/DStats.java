@@ -1,7 +1,9 @@
 import fighter.Fighter.*;
 import item.Item;
+import item.Item.UnlockedBy;
 
 import java.util.ArrayList;
+
 
 
 
@@ -111,12 +113,13 @@ public class DStats {
 		setup();
 		
 
-		//System.out.println(CardFactory.jsonAllSkills(true));
+		System.out.println(CardFactory.jsonAllSkills(true));
 
 		
 		//Item.printAll();
 		//Item.printItemTypeAmounts();
-		System.out.println(Item.analyseTier(0));
+		//System.out.println(Item.analyseTier(0));
+		//System.out.println(Item.analyseUnlock(UnlockedBy.Leather));
 		
 //		for(int i=1;i<=5;i++) Item.analyseLevel(i);
 		//Item.analyseLevel(2, true, true);

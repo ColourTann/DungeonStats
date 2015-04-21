@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 import json.Json;
 import cards.CardFactory.Action;
-import cards.CardFactory.Icon;
+import cards.Skill.SkillType;
 
 public class Card {
 
@@ -12,26 +12,23 @@ public class Card {
 	public float strength;
 	String description;
 	int descSize;
-	Icon icon;
 	ArrayList<Action> actions;
-	
-	public Card(String name, float strength, String description, int descSize, Icon icon, ArrayList<Action> actions){
+	SkillType image;
+	public Card(String name, float strength, String description, int descSize, SkillType image, ArrayList<Action> actions){
 		this.name=name;
 		this.strength=strength;
 		this.description=description;
 		this.descSize=descSize;
-		this.icon=icon;
+		this.image=image;
 		this.actions=actions;
 	}
 	
 	public String toJson(){
 		String output="";
-		
 		output+=Json.startList(name);
 		output+=Json.addKey("description", description);
 		output+=Json.addKey("descSize", descSize);
-		output+=Json.addKey("icon", icon.toString());
-		
+		if(image!=null)output+=Json.addKey("image", image.toString());
 		
 		if(actions.size()>0){
 			output+=Json.startArray("Actions");

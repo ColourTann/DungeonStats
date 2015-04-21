@@ -93,51 +93,51 @@ public class Room {
 		//PHYSICAL//
 		
 		aName="Rogue's Den";
-		aClasses.add(SkillType.Rogue);
+		aClasses.add(SkillType.CatBurglar);
 		aCost=100;
 		aFrame="guild_storeroom_nesw";
 		addRoom();
 		
 		aName="Barracks";
-		aClasses.add(SkillType.Warrior);
+		aClasses.add(SkillType.Henchman);
 		aCost=100;
 		aFrame="guild_barracks_nesw";
 		addRoom();
 		
 		aName="Fletcher";
-		aClasses.add(SkillType.Archer);
+		aClasses.add(SkillType.Ranger);
 		aCost=1000;
 		aFrame="guild_archery_range_nesw";
 		addRoom();
 		
 		aName="Tavern";
 		aFrame="guild_tavern_nesw";
-		aClasses.add(SkillType.SpellBlade);
+		aClasses.add(SkillType.Barbarian);
 		aCost=1000;
 		addRoom();
 		
 		//MAGICAL//
 		
 		aName="Library";
-		aClasses.add(SkillType.Wizard);
+		aClasses.add(SkillType.Shapeshifter);
 		aCost=100;
 		aFrame="guild_library_nesw";
 		addRoom();
 		
 		aName="Chapel";
-		aClasses.add(SkillType.Cleric);
+		aClasses.add(SkillType.Alchemist);
 		aCost=100;
 		aFrame="guild_graveyard_nesw";
 		addRoom();
 
 		aName="Standing Stones";
-		aClasses.add(SkillType.Druid);
+		aClasses.add(SkillType.Shapeshifter);
 		aCost=1000;
 		aFrame="guild_garden_nesw";
 		addRoom();
 		
 		aName="Magic College";
-		aClasses.add(SkillType.Magician);
+		aClasses.add(SkillType.Apprentice);
 		aCost=1000;
 		aFrame="guild_magestower_nesw";
 		addRoom();
