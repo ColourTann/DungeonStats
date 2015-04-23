@@ -16,10 +16,14 @@ import java.util.ArrayList;
 
 
 
+
+
 import room.Room;
 import cards.CardFactory;
 import cards.Skill;
 import cards.Skill.SkillType;
+import dungeon.Adventure;
+import dungeon.Dungeon;
 import fighter.monster.Monster;
 import fighter.monster.MonsterFactory;
 import fighter.monster.Monster.*;
@@ -113,7 +117,10 @@ public class DStats {
 		setup();
 		
 
-		System.out.println(CardFactory.jsonAllSkills(true));
+		
+		System.out.println(Adventure.jsonAdventures());
+		
+		//System.out.println(CardFactory.jsonAllSkills(true));
 
 		
 		//Item.printAll();
@@ -121,7 +128,7 @@ public class DStats {
 		//System.out.println(Item.analyseTier(0));
 		//System.out.println(Item.analyseUnlock(UnlockedBy.Leather));
 		
-//		for(int i=1;i<=5;i++) Item.analyseLevel(i);
+		//for(int i=1;i<=5;i++) Item.analyseLevel(i);
 		//Item.analyseLevel(2, true, true);
 		
 		//MonsterFactory.jsonAll();
@@ -142,6 +149,7 @@ public class DStats {
 		MonsterFactory.setup();
 		Room.setupRooms();
 		HeroFactory.init();
+		Adventure.setup();
 	}
 	
 	private static void printStrengths(int level) {

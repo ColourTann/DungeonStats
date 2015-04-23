@@ -302,7 +302,6 @@ public class CardFactory {
 			cDescription = "Your hp becomes 6 [quick]";
 			cDescSize=24;
 			aActionType=ActionType.SetHP;
-			aDamageType=DamageType.Magical;
 			aEffect=6;
 			aQuick=true;
 			addAction();
@@ -1151,8 +1150,8 @@ public class CardFactory {
 			aDamageType=DamageType.Physical;
 			aEffect=2;
 			addAction();
-			aActionType=ActionType.Heal;
-			aEffect=-1;
+			aActionType=ActionType.TakeDamage;
+			aEffect=1;
 			addAction();
 			addCard(type);
 
@@ -1164,8 +1163,8 @@ public class CardFactory {
 			aDamageType=DamageType.Physical;
 			aEffect=2;
 			addAction();
-			aActionType=ActionType.Heal;
-			aEffect=-1;
+			aActionType=ActionType.TakeDamage;
+			aEffect=1;
 			addAction();
 			addCard(type);
 			
@@ -1177,8 +1176,8 @@ public class CardFactory {
 			aDamageType=DamageType.Physical;
 			aEffect=3;
 			addAction();
-			aActionType=ActionType.Heal;
-			aEffect=-1;
+			aActionType=ActionType.TakeDamage;
+			aEffect=1;
 			addAction();
 			addCard(type);
 
@@ -1212,6 +1211,7 @@ public class CardFactory {
 			cStrength=3f;
 			cDescription = "Cannot go below 1hp this turn or next";
 			cDescSize=24;
+			aActionType=ActionType.Effect;
 			aActionType=ActionType.StayAboveOne;
 			aEffect=2;
 			addAction();
@@ -1533,7 +1533,7 @@ public class CardFactory {
 		case Demonic:
 			cName= "Veiled Strike";
 			cStrength=2.3f;
-			cDescription = "2 magic damage: next card is hidden";
+			cDescription = "2 magic damage: <next card is hidden>";
 			cDescSize=22;
 			aActionType=ActionType.Attack;
 			aDamageType=DamageType.Magical;
@@ -1546,7 +1546,7 @@ public class CardFactory {
 
 			cName= "Veiled Strike";
 			cStrength=2.3f;
-			cDescription = "2 magic damage: next card is hidden";
+			cDescription = "2 magic damage: <next card is hidden>";
 			cDescSize=22;
 			aActionType=ActionType.Attack;
 			aDamageType=DamageType.Magical;
@@ -1714,7 +1714,7 @@ public class CardFactory {
 			
 			cName= "Concuss";
 			cStrength=2.3f;
-			cDescription = "3 physical damage, player's magical attacks are ineffective next turn";
+			cDescription = "3 physical damage, <player's magical attacks are ineffective next turn>";
 			cDescSize=22;
 			aActionType=ActionType.Attack;
 			aDamageType=DamageType.Physical;
@@ -1727,7 +1727,7 @@ public class CardFactory {
 			
 			cName= "Kidney Shot";
 			cStrength=3.3f;
-			cDescription = "2 physical damage: player's physical attacks are ineffective next turn";
+			cDescription = "2 physical damage: <player's physical attacks are ineffective next turn>";
 			cDescSize=22;
 			aActionType=ActionType.Attack;
 			aDamageType=DamageType.Physical;
@@ -1740,7 +1740,7 @@ public class CardFactory {
 			
 			cName= "Unbalance";
 			cStrength=3.5f;
-			cDescription = "3 physical damage: player's blocks are ineffective next turn";
+			cDescription = "3 physical damage: <player's blocks are ineffective next turn>";
 			cDescSize=22;
 			aActionType=ActionType.Attack;
 			aDamageType=DamageType.Physical;
@@ -1883,11 +1883,11 @@ public class CardFactory {
 			output+=jsonSkills(type);	
 		}
 		output=Json.removeComma(output);
-		output+=Json.endList();
+		output+=Json.endList(true);
 		output=Json.removeComma(output);
-		output+=Json.endList();
+		output+=Json.endList(true);
 		output=Json.removeComma(output);
-		output+=Json.endEnclose();
+		output+=Json.endEnclose(true);
 		output=Json.removeComma(output);
 		return output;
 	}
@@ -1900,10 +1900,10 @@ public class CardFactory {
 		for(Card c:Skill.get(type).getCards(false)){
 			output+=Json.enclose();
 			output+=c.toJson();
-			output+=Json.endEnclose();
+			output+=Json.endEnclose(true);
 		}
 		output=Json.removeComma(output);
-		output+=Json.endArray();
+		output+=Json.endArray(true);
 		return output;
 	}
 
@@ -1953,8 +1953,8 @@ public class CardFactory {
 		public String toJson() {
 			String output="";
 
-			if(aType!=null)output+=Json.addKey("type", aType.toString());
-			if(dType!=null)output+=Json.addKey("damageType", dType.toString());
+			if(aType!=null)output+=Json.addKey("type", aType.toString(), true);
+			if(dType!=null)output+=Json.addKey("damageType", dType.toString(), true);
 			if(effect>0){
 				switch(aType){
 				case Attack:
@@ -1962,23 +1962,24 @@ public class CardFactory {
 				case NextAttack:
 				case Effect: 
 				case TakeDamage:
-					output+=Json.addKey("damage", effect);
+					output+=Json.addKey("damage", effect, true);
 					break;
 				case Discard:
 				case Draw:
 				case Heal:
-					output+=Json.addKey("quantity", effect);
+				case SetHP:
+					output+=Json.addKey("quantity", effect, true);
 					break;	
 				}
 			}
-			if(effectCondition!=null) output+=Json.addKey("quantityCondition", effectCondition.toString());
-			if(unblockable)output+=Json.addKey("unblockable", true);
-			if(quick)output+=Json.addKey("quick", true);
+			if(effectCondition!=null) output+=Json.addKey("quantityCondition", effectCondition.toString(), true);
+			if(unblockable)output+=Json.addKey("unblockable", true, true);
+			if(quick)output+=Json.addKey("quick", true, true);
 			if(bonusVsMechanic!=null||bonusVsSpecies!=null||bonusSituation!=null){
-				output+=Json.addKey("versesType", "ANY");
-				if(bonusVsMechanic!=null) output+=Json.addKey("versesKeyword", bonusVsMechanic.toString());
-				if(bonusVsSpecies!=null) output+=Json.addKey("versesClass", bonusVsSpecies.toString());
-				if(bonusSituation!=null) output+=Json.addKey("versusSituation", bonusSituation.toString());
+				output+=Json.addKey("versesType", "ANY", true);
+				if(bonusVsMechanic!=null) output+=Json.addKey("versesKeyword", bonusVsMechanic.toString(), true);
+				if(bonusVsSpecies!=null) output+=Json.addKey("versesClass", bonusVsSpecies.toString(), true);
+				if(bonusSituation!=null) output+=Json.addKey("versusSituation", bonusSituation.toString(), true);
 			}
 			if(resultActions.size()>0){
 				output+=Json.startArray("resultActions");
@@ -1986,7 +1987,7 @@ public class CardFactory {
 					output+=ra.toJson();
 				}
 				output=Json.removeComma(output);
-				output+=Json.endArray();
+				output+=Json.endArray(true);
 			}
 			return output;
 		}
@@ -2012,10 +2013,10 @@ public class CardFactory {
 		public String toJson(){
 			String output="";
 			output+=Json.enclose();
-			output+=Json.addKey("type", type.toString());
-			if(effectType!=null)output+=Json.addKey("effectType", effectType.toString());
-			if(damageType!=null)output+=Json.addKey("damageType", damageType.toString());
-			if(rounds!=0)output+=Json.addKey("rounds", rounds);
+			output+=Json.addKey("type", type.toString(), true);
+			if(effectType!=null)output+=Json.addKey("effectType", effectType.toString(), true);
+			if(damageType!=null)output+=Json.addKey("damageType", damageType.toString(), true);
+			if(rounds!=0)output+=Json.addKey("rounds", rounds, true);
 
 			if(actionEffect!=0){
 				switch(type){
@@ -2024,18 +2025,18 @@ public class CardFactory {
 				case NextAttack:
 				case Effect: 
 				case TakeDamage:
-					output+=Json.addKey("damage", actionEffect);
+					output+=Json.addKey("damage", actionEffect, true);
 					break;
 				case Discard:
 				case Draw:
 				case Heal:
-					output+=Json.addKey("quantity", actionEffect);
+					output+=Json.addKey("quantity", actionEffect, true);
 					break;
 				}
 			}
-			output+=Json.addKey("quantity", actionEffect);
+			output+=Json.addKey("quantity", actionEffect, true);
 			output=Json.removeComma(output);
-			output+=Json.endEnclose();
+			output+=Json.endEnclose(true);
 			return output;
 
 		}

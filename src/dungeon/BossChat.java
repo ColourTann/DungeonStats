@@ -1,0 +1,70 @@
+package dungeon;
+
+import json.Json;
+
+public class BossChat {
+	public enum Trigger{blah, first_kill, flib}
+	public enum PostFunc{FinishBossChat, StartingRoom}
+	public enum DelayEffect{APPEAR}
+	
+	Trigger trigger;
+	BossSpeech[] speeches;
+	PostFunc postFunc; 
+	int killed, turns; 
+	int delayType; DelayEffect delayEffect;
+	public BossChat(Trigger trigger, 
+			BossSpeech[] speeches, 
+			PostFunc postFunc, 
+			int killed, int turns, 
+			int delayType, DelayEffect delayEffect) {
+		this.trigger=trigger;
+		this.speeches=speeches;
+		this.postFunc=postFunc;
+		this.killed=killed; this.turns=turns;
+		this.delayType=delayType; this.delayEffect=delayEffect;		
+	}
+	
+	public String toJson(){
+		String result ="";
+		result += Json.startList(trigger.toString());
+		result += Json.startArray("lines");
+		for(int i=0;i<speeches.length;i++){
+			BossSpeech bs = speeches[i];
+			result += Json.enclose();
+			result += bs.toJson();
+			result += Json.endEnclose(i<speeches.length-1);
+		}
+		result += Json.endArray(true);
+		result += Json.addKey("postFunc", postFunc.toString(), true);
+		if(turns>-1) result += Json.addKey("turn", turns, true);
+		if(killed>-1) result += Json.addKey("killed", killed, true);
+		result += Json.addKey("delay"+delayType, delayEffect.toString(), false);
+		result += Json.endList(false);
+		return result;
+	}
+	
+	
+	public enum Func{emote}
+	public static class BossSpeech{
+		String text;
+		Func func;
+		boolean weirdArgs;
+		public BossSpeech(String text, Func func, boolean weirdArgs) {
+			this.text=text;
+			this.func=func;
+			this.weirdArgs=weirdArgs;
+		}
+		public String toJson(){
+			String result ="";
+			result += Json.addKey("TEXT", text, true);
+			result += Json.addKey("FUNC", func.toString(), false);
+			if(weirdArgs){
+				result += Json.startArray("ARGS", true);
+				result += "false\n";
+				result += "]\n";
+			}
+			
+			return result;
+		}
+	}
+}

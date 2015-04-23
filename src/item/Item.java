@@ -1459,10 +1459,9 @@ public class Item {
 		if(level>0) output+="\"hope\" : "+level+",\n";
 		if(glory>0) output+="\"glory\" : "+glory+",\n";
 		if(spawnCount>0) output+="\"spawnCount\" : "+spawnCount+",\n";
-		//if(randomPool>0) output+="\"RandomPool\" : "+randomPool+",\n";
 		output+="\"RandomPool\" : "+0+",\n";
-		if(unlockedBy!=null)output+=Json.addKey("UnlockedBy", unlockedBy.toString());
-		output+=Json.addKey("UnlockLevel", unlockLevel);
+		//if(unlockedBy!=null)output+=Json.addKey("UnlockedBy", unlockedBy.toString(), true);
+		//output+=Json.addKey("UnlockLevel", unlockLevel, true);
 		if(keepHair>0) output+="\"keepHair\" : "+keepHair+",\n";
 		if(sound!=null) output+="\"sound\" : \""+sound+"\",\n";
 		if(skills!=null){
@@ -1485,7 +1484,7 @@ public class Item {
 			}
 			output+="],\n";
 		}
-		if(health>0) output+=Json.addKey("bonusHP", health);
+		if(health>0) output+=Json.addKey("bonusHP", health, true);
 
 		output+="}";
 		StringBuilder sb = new StringBuilder(output);

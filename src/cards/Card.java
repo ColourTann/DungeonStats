@@ -26,9 +26,9 @@ public class Card {
 	public String toJson(){
 		String output="";
 		output+=Json.startList(name);
-		output+=Json.addKey("description", description);
-		output+=Json.addKey("descSize", descSize);
-		if(image!=null)output+=Json.addKey("image", image.toString());
+		output+=Json.addKey("description", description, true);
+		output+=Json.addKey("descSize", descSize, true);
+		if(image!=null)output+=Json.addKey("image", image.toString(), true);
 		
 		if(actions.size()>0){
 			output+=Json.startArray("Actions");
@@ -36,13 +36,13 @@ public class Card {
 				output+=Json.enclose();
 				output+=actions.get(i).toJson();
 				output=Json.removeComma(output);
-				output+=Json.endEnclose();
+				output+=Json.endEnclose(true);
 			}
 			output=Json.removeComma(output);
-			output+=Json.endArray();
+			output+=Json.endArray(true);
 		}
 		output=Json.removeComma(output);
-		output+=Json.endEnclose();
+		output+=Json.endEnclose(true);
 		output=Json.removeComma(output);
 		
 		return output;

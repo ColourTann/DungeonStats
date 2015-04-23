@@ -25,9 +25,9 @@ public class Room {
 	StringBuilder sb = new StringBuilder();
 	public String toJson(){
 		sb.append(Json.startList(name));
-		sb.append(Json.addKey("frame", frame));
-		if(cost!=0)sb.append(Json.addKey("cost", cost));
-		sb.append(Json.addKey("guild", true));
+		sb.append(Json.addKey("frame", frame, true));
+		if(cost!=0)sb.append(Json.addKey("cost", cost, true));
+		sb.append(Json.addKey("guild", true, true));
 		if(items.size()>0){
 			sb.append(Json.startArray("items", false));
 			for(int i=0;i<items.size();i++){
@@ -36,7 +36,7 @@ public class Room {
 					sb.append(",");
 				}
 			}
-			sb.append(Json.endArray());
+			sb.append(Json.endArray(true));
 		}
 		if(classes.size()>0){
 			sb.append(Json.startArray("classes", false));
@@ -47,9 +47,9 @@ public class Room {
 					sb.append(",");
 				}
 			}
-			sb.append(Json.endArray());
+			sb.append(Json.endArray(true));
 		}
-		sb.append(Json.endList());
+		sb.append(Json.endList(true));
 		return sb.toString();
 	}
 	
@@ -194,9 +194,9 @@ public class Room {
 		}
 		
 		sb.deleteCharAt(sb.length()-2);
-		sb.append(Json.endList());
+		sb.append(Json.endList(true));
 		sb.deleteCharAt(sb.length()-2);
-		sb.append(Json.endEnclose());
+		sb.append(Json.endEnclose(true));
 		sb.deleteCharAt(sb.length()-2);
 		return sb.toString();
 	}

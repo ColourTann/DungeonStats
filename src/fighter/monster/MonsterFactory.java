@@ -9,6 +9,8 @@ import fighter.monster.Monster.Species;
 
 public class MonsterFactory {
 	
+	public static ArrayList<Monster> stoneMonsters= new ArrayList<>();
+	
 	public static ArrayList<Monster> monsters= new ArrayList<Monster>();
 	
 	public enum Region{Stone, Jungle}
@@ -315,7 +317,6 @@ public class MonsterFactory {
 		
 		name = "Rat King Cole";
 		plural= "Rat Men";
-		region=Region.Stone;
 		description = "Squeak squeak!";
 		frameNumber = 42;
 		level = 2;
@@ -955,6 +956,20 @@ public class MonsterFactory {
 		
 		
 
+		for(Monster m :monsters){
+			if(m.region==null)continue;
+			switch(m.region){
+			case Jungle:
+				break;
+			case Stone:
+				stoneMonsters.add(m);
+				break;
+			default:
+				break;
+			
+			}
+		
+		}
 		
 	}
 	

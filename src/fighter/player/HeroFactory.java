@@ -87,9 +87,9 @@ public class HeroFactory {
 			}
 		}
 		
-		output+=Json.endList();
+		output+=Json.endList(true);
 		output=Json.removeComma(output);
-		output+=Json.endEnclose();
+		output+=Json.endEnclose(true);
 		output=Json.removeComma(output);
 
 		

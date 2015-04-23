@@ -14,6 +14,7 @@ public class Hero extends Fighter{
 	public Hero(String name, int health, Trait[] traits, List<Card> cards){
 		super(name, health, traits);
 		this.cards=cards;
+		
 		this.traits=traits;
 	}
 	
@@ -36,17 +37,17 @@ public class Hero extends Fighter{
 			for(int i=0;i<cards.size();i++){
 				output+=Json.enclose();
 				output+=cards.get(i).toJson();
-				output+=Json.endEnclose();
+				output+=Json.endEnclose(true);
 				if(i==cards.size()-1){
 					output=Json.removeComma(output);
 				}
 			}
-			output+=Json.endArray();
+			output+=Json.endArray(true);
 		}
 
 		output+="}";
 		output=Json.removeComma(output);
-		output+=Json.endEnclose();
+		output+=Json.endEnclose(true);
 		return output;
 	}
 }
