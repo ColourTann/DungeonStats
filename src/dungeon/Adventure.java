@@ -72,19 +72,19 @@ public class Adventure {
 	static boolean aTutorial;
 	static String aAdvName, aAdvDescription, aAdvIcon;
 	static int aAdvX, aAdvY;
-	
+
 
 	static ArrayList<Dungeon> aDungeons = new ArrayList<>();
-	
+
 	public static void setup(){	
 
 		// RAT ADVENTURE //
 
 		aAdvName="Rats? How original!";
-		aAdvDescription="Delve into the basement and defeat the mighty... rats";
-		aAdvIcon="stone_fire_cave";
+		//aAdvDescription="Delve into the basement and defeat the mighty... rats";
+		aAdvIcon="stone_hatch";
 		aAdvX=1;
-		aAdvY=1;
+		aAdvY=0;
 
 		aName="Squeak squeak";
 		aDescription="Everyone's gotta start somewhere";
@@ -112,10 +112,9 @@ public class Adventure {
 				new DungeonCard(DungeonCardType.TILE, ""),
 		});
 		aLayout= new DungeonLayout(new TileLocation[]{
+				new TileLocation(TileName.room_semicircle_nes, -2, -1, "Nasty Rat", ""),
 				new TileLocation(TileName.room_semicircle_nes, -1, -2, "Nasty Rat", ""),
-				new TileLocation(TileName.room_semicircle_nes, -1, -3, "Nasty Rat", ""),
 				new TileLocation(TileName.room_semicircle_nsw, 1, -2, "Nasty Rat", ""),
-				new TileLocation(TileName.room_semicircle_nsw, 1, -3, "Nasty Rat", "")
 		});
 		aObjectives = new Objective[]{
 				new Objective(ObjectiveType.Defeat, "Nasty Rat", 3),
@@ -140,9 +139,9 @@ public class Adventure {
 		aLayout= new DungeonLayout(new TileLocation[]{
 				new TileLocation(TileName.room_steps_nesw, 0, -2, "Nasty Rat", ""),
 				new TileLocation(TileName.room_semicircle_nsw, 1, -3, "Nasty Rat", ""),
-				new TileLocation(TileName.room_semicircle_esw, -1, -3, "Rat Man", ""),
+				new TileLocation(TileName.room_semicircle_nes, -1, -3, "Rat Man", ""),
 				new TileLocation(TileName.room_steps_nesw, 0, -4, "Rat Man", ""),
-				new TileLocation(TileName.room_round_s, 0, -5, "BOSS", "")
+				new TileLocation(TileName.room_round_s, -1, -5, "BOSS", "")
 		});
 		aObjectives = new Objective[]{
 				new Objective(ObjectiveType.Defeat, "BOSS", -1)
@@ -155,9 +154,9 @@ public class Adventure {
 		// EMBRO ADVENTURE //
 
 		aAdvName="Embro";
-		aAdvDescription="Defeat the evil demon, Embro";
+		//aAdvDescription="Defeat the evil demon, Embro";
 		aAdvIcon="stone_fire_cave";
-		aAdvX=2;
+		aAdvX=1;
 		aAdvY=1;
 
 		aName="Fiery Foray";
@@ -285,7 +284,200 @@ public class Adventure {
 		addDungeon();
 		createAdventure(); 
 
+		// MIMIC ADVENTURE //
 
+		aAdvName="Shiney treasure";
+		//aAdvDescription="Loot all the treasure";
+		aAdvIcon="stone_chest";
+		aAdvX=2;
+		aAdvY=0;
+
+		aName="Lovely loot";
+		aDescription="Chests full of treasure!";
+		aReward=100;
+		aTerrainType=TerrainType.stone;
+		aBoss="Mimic";
+		aBossName="Mimic";
+		aBossChats= new BossChat[]{};
+		aStartingTile=TileName.corr_grate_n;
+		aLayout= new DungeonLayout(new TileLocation[]{
+				new TileLocation(TileName.room_semicircle_nes, -1, -2, "Zombie", "MEGA CHEST"),
+				new TileLocation(TileName.room_semicircle_nsw, 1, -2, "Skeleton", "MEGA CHEST"),
+		});
+		aObjectives = new Objective[]{
+				new Objective(ObjectiveType.Collect, "MEGA CHEST", 2),
+		};
+		aTurnLimit=-1;
+		aMonsters=MonsterFactory.stoneMonsters;
+		addDungeon();
+
+		aName="Terrible Truth";
+		aDescription="Uhoh...";
+		aReward=100;
+		aTerrainType=TerrainType.stone;
+		aBoss="Mimic";
+		aBossName="Mimic";
+		aBossChats= new BossChat[]{
+				new BossChat(Trigger.blah, new BossSpeech[]{
+						new BossSpeech("You're the one who looted my grandparents!?", Func.emote, false),
+						new BossSpeech("DIE, evil adventurer!", Func.emote, false)
+				}, PostFunc.StartingRoom, 
+				-1, 1, 1, DelayEffect.APPEAR),
+		};
+		aStartingTile=TileName.corr_regular_ew;
+		aLayout= new DungeonLayout(new TileLocation[]{
+				new TileLocation(TileName.corr_regular_ew, -1, 0, "", ""),
+				new TileLocation(TileName.corr_regular_ew, -2, 0, "", ""),
+				new TileLocation(TileName.corr_regular_ew, -3, 0, "", ""),
+				new TileLocation(TileName.corr_regular_ew, -4, 0, "", ""),
+				new TileLocation(TileName.corr_rubble_e, -5, 0, "BOSS", ""),
+		});
+		aObjectives = new Objective[]{
+				new Objective(ObjectiveType.Defeat, "BOSS", -1)
+		};
+		aTurnLimit=-1;
+		aMonsters=MonsterFactory.stoneMonsters;
+		addDungeon();
+		createAdventure();
+
+		// GOBLIN ADVENTURE //
+
+		aAdvName="Goblins!";
+		//aAdvDescription="Loot all the treasure";
+		aAdvIcon="stone_skull_cave";
+		aAdvX=0;
+		aAdvY=1;
+
+		aName="Goblin Menace";
+		aDescription="Take out the goblins";
+		aReward=100;
+		aTerrainType=TerrainType.stone;
+		aBoss="Orc Grunt";
+		aBossName="Orc Grunt";
+		aBossChats= new BossChat[]{};
+		aStartingTile=TileName.room_collapse_esw;
+		aLayout= new DungeonLayout(new TileLocation[]{
+				new TileLocation(TileName.room_semicircle_nes, -2, 0, "Goblin", ""),
+				new TileLocation(TileName.room_steps_nesw, -1, 1, "Goblin", ""),
+				new TileLocation(TileName.room_collapse_new, 0, 2, "Goblin", ""),
+				new TileLocation(TileName.corr_crushed_ne, -2, 2, "Goblin", ""),
+		});
+		aObjectives = new Objective[]{
+				new Objective(ObjectiveType.Defeat, "Goblin", 3),
+		};
+		aTurnLimit=-1;
+		aMonsters=MonsterFactory.stoneMonsters;
+		addDungeon();
+
+		aName="Knives and Orcs";
+		aDescription="Defeat the big orc";
+		aReward=100;
+		aTerrainType=TerrainType.stone;
+		aBoss="Orc Grunt";
+		aBossName="Orc Grunt";
+		aBossChats= new BossChat[]{
+				new BossChat(Trigger.blah, new BossSpeech[]{
+						new BossSpeech("GRAK and GRIK! Defeat this interloper!", Func.emote, false)
+				}, PostFunc.StartingRoom, 
+				-1, 1, 1, DelayEffect.APPEAR)
+		};
+		aStartingTile=TileName.room_collapse_new;
+		aLayout= new DungeonLayout(new TileLocation[]{
+				new TileLocation(TileName.room_semicircle_nes, -1, -2, "Goblin", ""),
+				new TileLocation(TileName.room_semicircle_nsw, 1, -2, "Goblin", ""),
+				new TileLocation(TileName.room_semicircle_esw, 0, -3, "BOSS", "")
+		});
+		aObjectives = new Objective[]{
+				new Objective(ObjectiveType.Defeat, "BOSS", -1)
+		};
+		aTurnLimit=-1;
+		aMonsters=MonsterFactory.stoneMonsters;
+		addDungeon();
+		createAdventure();
+
+		// BLACK KNIGHT ADVENTURE //
+
+		aAdvName="Black Knight";
+		//aAdvDescription="Loot all the treasure";
+		aAdvIcon="stone_castle";
+		aAdvX=3;
+		aAdvY=0;
+
+		aName="Test your mettle";
+		aDescription="Defeat the combatants";
+		aReward=100;
+		aTerrainType=TerrainType.stone;
+		aBoss="The Black Knight";
+		aBossName="The Black Knight";
+		aBossChats= new BossChat[]{
+				new BossChat(Trigger.blah, new BossSpeech[]{
+						new BossSpeech("Let's see what you can do, adventurer!", Func.emote, false)
+				}, PostFunc.FinishBossChat, 
+				-1, 1, 1, DelayEffect.APPEAR)
+		};
+		aStartingTile=TileName.room_collapse_new;
+		aLayout= new DungeonLayout(new TileLocation[]{
+				new TileLocation(TileName.room_steps_nesw, -1, -2, "Zombie", ""),
+				new TileLocation(TileName.room_collapse_new, 1, -2, "Zombie", ""),
+		});
+		aObjectives = new Objective[]{
+				new Objective(ObjectiveType.Defeat, "Zombie", 2),
+		};
+		aTurnLimit=-1;
+		aMonsters=MonsterFactory.noMonsters;
+		addDungeon();
+
+		aName="In the thick of it";
+		aDescription="Defeat 2 banditos";
+		aReward=100;
+		aTerrainType=TerrainType.stone;
+		aBoss="The Black Knight";
+		aBossName="The Black Knight";
+		aBossChats= new BossChat[]{
+				new BossChat(Trigger.blah, new BossSpeech[]{
+						new BossSpeech("Try your luck with these!", Func.emote, false)
+				}, PostFunc.FinishBossChat, 
+				-1, 1, 1, DelayEffect.APPEAR)
+		};
+		aStartingTile=TileName.room_collapse_new;
+		aLayout= new DungeonLayout(new TileLocation[]{
+				new TileLocation(TileName.room_semicircle_nes, -1, -2, "Bandito", ""),
+				new TileLocation(TileName.room_semicircle_nsw, 1, -2, "Bandito", ""),
+				new TileLocation(TileName.corr_rubble_e, -2, -1, "", "MEGACHEST")
+		});
+		aObjectives = new Objective[]{
+				new Objective(ObjectiveType.Defeat, "Bandito", 2)
+		};
+		aTurnLimit=-1;
+		aMonsters=MonsterFactory.noMonsters;
+		addDungeon();
+		createAdventure();
+		
+		aName="Dark duel";
+		aDescription="Defeat the Black Knight!";
+		aReward=100;
+		aTerrainType=TerrainType.stone;
+		aBoss="The Black Knight";
+		aBossName="The Black Knight";
+		aBossChats= new BossChat[]{
+				new BossChat(Trigger.blah, new BossSpeech[]{
+						new BossSpeech("A worthy challenger at last!", Func.emote, false)
+				}, PostFunc.StartingRoom, 
+				-1, 1, 1, DelayEffect.APPEAR)
+		};
+		aStartingTile=TileName.room_collapse_new;
+		aLayout= new DungeonLayout(new TileLocation[]{
+				new TileLocation(TileName.room_collapse_esw, 0, -3, "BOSS", ""),
+				new TileLocation(TileName.room_round_s, 2, -3, "MEGACHEST", ""),
+				new TileLocation(TileName.room_round_s, -2, -3, "", "MEGACHEST")
+		});
+		aObjectives = new Objective[]{
+				new Objective(ObjectiveType.Defeat, "BOSS", -1)
+		};
+		aTurnLimit=-1;
+		aMonsters=MonsterFactory.stoneMonsters;
+		addDungeon();
+		createAdventure();
 
 
 	}

@@ -16,6 +16,9 @@ public class HeroFactory {
 	static int aHP=0;
 	static Trait[] traits= null;
 	public static void init(){
+		
+		//TODO Add in frame numbers
+		
 		heroName=SkillType.Chump;
 		aHP=5;
 		traits=null;
