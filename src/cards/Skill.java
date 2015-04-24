@@ -16,7 +16,7 @@ public class Skill {
 		Feral, Spooky, Rage, Stupidity, Weapon, Flame, Nature, Death, 
 		Ferocious, Demonic, Sorcery, Venom, Ghastly, Martial, Burly,
 		
-		Chump, Henchman, CatBurglar, Apprentice, Mime, Ranger, Barbarian, Alchemist, Shapeshifter,  
+		Chump, Henchman, CatBurglar, Apprentice, Mime, Ranger, Barbarian, Alchemist, Shapeshifter, Troubador, Templar, Cartomancer, Mathemagician, Artificer,  
 	}
 	
 	public static SkillType[] monsterSkills=new SkillType[]{SkillType.Feral, SkillType.Spooky, SkillType.Rage, SkillType.Stupidity, SkillType.Weapon, SkillType.Flame, SkillType.Nature, SkillType.Death,

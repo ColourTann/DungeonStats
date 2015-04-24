@@ -31,7 +31,11 @@ public class Json {
 				(comma?",":"")+"\n";
 	}
 	public static String addKey(String key, boolean value, boolean comma){
-		return addKey(key, ""+value, comma);
+		return "\""+
+				key+
+				"\" : "+
+				value+
+				(comma?",":"")+"\n";
 	}
 	public static String addKey(String key, int value, boolean comma){
 		return "\""+

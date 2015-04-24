@@ -122,7 +122,7 @@ public class DStats {
 		
 		//System.out.println(CardFactory.jsonAllSkills(true));
 
-		
+		//Item.printAllUnlocks();
 		//Item.printAll();
 		//Item.printItemTypeAmounts();
 		//System.out.println(Item.analyseTier(0));

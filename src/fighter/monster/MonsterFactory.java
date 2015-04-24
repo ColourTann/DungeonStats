@@ -10,6 +10,7 @@ import fighter.monster.Monster.Species;
 public class MonsterFactory {
 	
 	public static ArrayList<Monster> stoneMonsters= new ArrayList<>();
+	public static ArrayList<Monster> noMonsters= new ArrayList<>();
 	
 	public static ArrayList<Monster> monsters= new ArrayList<Monster>();
 	

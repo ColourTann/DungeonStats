@@ -13,7 +13,7 @@ import fighter.Fighter.Trait;
 
 public class Item {
 
-	public enum UnlockedBy{Base, Leather, Smith, Curio, Wood}
+	public enum UnlockedBy{Base, Smith, Leather, Wood, Curio}
 
 	static ArrayList<Item> items = new ArrayList<Item>();
 	static ArrayList<Item>[] levels = new ArrayList[6];
@@ -1596,5 +1596,21 @@ public class Item {
 		}
 
 		return result;
+	}
+
+	public static void printAllUnlocks() {
+		for(UnlockedBy ulb:UnlockedBy.values()){
+			for(int level=1;level<=3;level++){
+				System.out.println(ulb+": "+level);
+				System.out.println("[");
+				for(int i=0;i<items.size();i++){
+					Item item = items.get(i);
+					if(item.unlockedBy==ulb&&item.unlockLevel==level){
+						System.out.println("\""+item.name+"\""+ (i<items.size()-1?",":""));
+					}
+				}
+				System.out.println("]");
+			}
+		}
 	}
 }

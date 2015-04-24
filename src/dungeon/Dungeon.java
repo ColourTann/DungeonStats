@@ -14,12 +14,14 @@ public class Dungeon {
 	TileName startingTile; Hand startingHand; DungeonLayout layout;
 	Objective[] objectives; int turnLimit;
 	ArrayList<Monster> monsters;
+	boolean tutorial;
 	public Dungeon(String name, String description, int reward,
 			TerrainType terrainType, 
 			String boss, String bossName, BossChat[] bossChat,
 			TileName startingTile, Hand startingHand, DungeonLayout layout,
 			Objective[] objectives, int turnLimit,
-			ArrayList<Monster> monsters
+			ArrayList<Monster> monsters,
+			boolean tutorial
 			) {
 		this.name=name; this.description=description; this.reward=reward;
 		this.terrainType=terrainType;
@@ -27,6 +29,7 @@ public class Dungeon {
 		this.startingTile = startingTile; this.startingHand=startingHand; this.layout=layout;
 		this.objectives=objectives; this.turnLimit=turnLimit;
 		this.monsters=monsters;
+		this.tutorial=tutorial;
 	}
 	
 	public String toJson(){
@@ -47,8 +50,21 @@ public class Dungeon {
 			}
 		}
 		output += Json.endEnclose(true); //bosschat end
-		output += Json.addKey("TurnLimit", turnLimit, true);
+		if(turnLimit>0){
+			output += Json.addKey("TurnLimit", turnLimit, true);
+			output += Json.addKey("TurnLimitStart", 0, true);
+		}
 		output += Json.addKey("StartingTile", startingTile.toString(), true);
+		if(startingHand!=null) output += startingHand.toJson();
+		if(tutorial){
+			output += Json.startArray("AutoTurnSequence");
+			output+="0,\n1,\n0";
+			output += Json.endArray(true);
+			output += Json.startList("TurnMessages");
+			output += Json.addKey("turn 0", "I'll play your first turn. It's easy!", true);
+			output += Json.addKey("turn 1", "Now you have a go!", false);
+			output += Json.endList(true);
+		}
 		output += Json.startArray("Objectives");
 		for(int i=0;i<objectives.length;i++){
 			Objective o = objectives[i];
@@ -57,7 +73,6 @@ public class Dungeon {
 		}
 		output += Json.endArray(true);
 		output += layout.toJson();
-		if(startingHand!=null) output += startingHand.toJson();
 		output += Json.startArray("Monsters");
 		for(int i=0;i<monsters.size();i++){
 			Monster m = monsters.get(i);

@@ -15,8 +15,8 @@ public class Objective {
 		String output = "";
 		output += Json.enclose();
 		output += Json.addKey("type", type.toString(), true);
-		output += Json.addKey("target", target, true);
-		output += Json.addKey("quantity", quantity, false);
+		if(quantity>=0) output += Json.addKey("quantity", quantity, true);
+		output += Json.addKey("target", target, false);
 		output += Json.endEnclose(false);
 		return output;
 	}

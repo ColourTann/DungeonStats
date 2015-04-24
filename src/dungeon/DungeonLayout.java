@@ -35,7 +35,12 @@ public class DungeonLayout {
 			output+=Json.addKey("TILE", name.toString(), true);
 			output+=Json.addKey("x", x, true);
 			output+=Json.addKey("y", y, true);
-			output+=Json.addKey("MONSTER", monster, true);
+			if(monster.equals("BOSS")){
+				output += Json.addKey("BossRoom", true, true);
+			}
+			else{
+				output+=Json.addKey("MONSTER", monster, true);	
+			}
 			output+=Json.addKey("TREASURE", treasure, false);
 			output += Json.endEnclose(false);
 			return output;

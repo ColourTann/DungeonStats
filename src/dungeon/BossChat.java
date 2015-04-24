@@ -3,8 +3,8 @@ package dungeon;
 import json.Json;
 
 public class BossChat {
-	public enum Trigger{blah, first_kill, flib}
-	public enum PostFunc{FinishBossChat, StartingRoom}
+	public enum Trigger{blah, first_kill, flib, intruder, fifth_kill, second_turn, four_left, last_turn, coming_soon, attacked_early}
+	public enum PostFunc{FinishBossChat, StartingRoom, MoveToBoard, FireDemonMoveToBoard}
 	public enum DelayEffect{APPEAR}
 	
 	Trigger trigger;
@@ -27,6 +27,27 @@ public class BossChat {
 	public String toJson(){
 		String result ="";
 		result += Json.startList(trigger.toString());
+		
+		if(postFunc==PostFunc.FireDemonMoveToBoard){
+			result += Json.addKey("postFunc", PostFunc.MoveToBoard.toString(), true);
+			result += Json.addKey("block", true, true);
+			result += Json.startArray("traits");
+			result += Json.enclose();
+			result += Json.addKey("trait", "Damp", true);
+			result += Json.addKey("value", false, false);
+			result += Json.endEnclose(false);
+			result += Json.endArray(true);
+		}
+		else if(trigger==Trigger.attacked_early){
+			result += Json.addKey("block", true, true);
+		}
+		else if(postFunc!=null){
+			result += Json.addKey("postFunc", postFunc.toString(), true);
+		}
+
+		if(turns>-1) result += Json.addKey("turn", turns, true);
+		if(killed>-1) result += Json.addKey("killed", killed, true);
+		if(delayEffect!=null) result += Json.addKey("delay"+delayType, delayEffect.toString(), true);
 		result += Json.startArray("lines");
 		for(int i=0;i<speeches.length;i++){
 			BossSpeech bs = speeches[i];
@@ -34,11 +55,7 @@ public class BossChat {
 			result += bs.toJson();
 			result += Json.endEnclose(i<speeches.length-1);
 		}
-		result += Json.endArray(true);
-		result += Json.addKey("postFunc", postFunc.toString(), true);
-		if(turns>-1) result += Json.addKey("turn", turns, true);
-		if(killed>-1) result += Json.addKey("killed", killed, true);
-		result += Json.addKey("delay"+delayType, delayEffect.toString(), false);
+		result += Json.endArray(false);
 		result += Json.endList(false);
 		return result;
 	}

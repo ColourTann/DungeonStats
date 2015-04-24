@@ -60,6 +60,25 @@ public class HeroFactory {
 		traits=new Trait[]{Trait.Accurate, Trait.Ranged};
 		addClass();
 		
+		heroName=SkillType.Troubador;
+		aHP=1;
+		addClass();
+		
+		heroName=SkillType.Templar;
+		aHP=1;
+		addClass();
+		
+		heroName=SkillType.Cartomancer;
+		aHP=1;
+		addClass();
+		
+		heroName=SkillType.Mathemagician;
+		aHP=1;
+		addClass();
+		
+		heroName=SkillType.Artificer;
+		aHP=1;
+		addClass();
 //		heroName=SkillType.Shapeshifter;
 //		aHP=6;
 //		traits=null;

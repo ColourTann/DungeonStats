@@ -880,6 +880,11 @@ public class CardFactory {
 
 			break;
 
+		case Troubador:
+		case Templar:
+		case Cartomancer:
+		case Mathemagician:
+		case Artificer:
 		case Chump:
 			cName= "Eyes closed punch";
 			cStrength=1f;
