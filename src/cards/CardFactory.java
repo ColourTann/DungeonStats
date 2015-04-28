@@ -650,7 +650,7 @@ public class CardFactory {
 			addAction();
 			addCard(type);
 			break;
-		case Rage:
+		case Irritable:
 
 			cName= "Anger";
 			cStrength=0.1f;
@@ -818,7 +818,7 @@ public class CardFactory {
 			addCard(type);
 
 			break;
-		case Weapon:
+		case Armed:
 			cName= "Strike";
 			cStrength=1f;
 			cDescription = "1 physical damage";
@@ -1495,7 +1495,7 @@ public class CardFactory {
 			break;
 
 			//tier 2 enemy skills//
-		case Ferocious:
+		case Rage:
 			cName= "Thrash";
 			cStrength=2.5f;
 			cDescription = "3 physical damage, take 1 damage";
@@ -1672,7 +1672,7 @@ public class CardFactory {
 			
 			break;
 			
-		case Ghastly:
+		case Ghoulish:
 			
 			cName= "Cold Strike";
 			cStrength=3;

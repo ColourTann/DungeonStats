@@ -13,6 +13,17 @@ import fighter.Fighter.Trait;
 
 public class Item {
 
+	public enum TreasureType{MEGA_CHEST("MEGA CHEST"), GOLD_COIN("Gold Coin"), Large_Chest("Large Chest");
+		String nice;
+		TreasureType(String nice){
+		this.nice=nice;
+	}
+		
+		public String toString(){
+		return nice;
+	}
+	}
+	
 	public enum UnlockedBy{Base, Smith, Leather, Wood, Curio}
 
 	static ArrayList<Item> items = new ArrayList<Item>();
@@ -101,6 +112,7 @@ public class Item {
 		aDesc="A single coin lying in the dirt";
 		aGlory=1;
 		aLevel=1;
+		aUnlockLevel=0;
 		aRandomPool=1;
 		aSound=Sound.equip_coin_single;
 		add();
@@ -109,6 +121,7 @@ public class Item {
 		aDesc="A handful of silver scattered around";
 		aGlory=2;
 		aLevel=2;
+		aUnlockLevel=0;
 		aRandomPool=1;
 		aSound=Sound.equip_coin_double;
 		add();
@@ -1256,7 +1269,7 @@ public class Item {
 		aName="Wooden Stool";
 		aDesc="What's this supposed to be for?";
 		aEquipment=1;
-		aType=EquipmentType.weapon;
+		aType=EquipmentType.shield;
 		aLevel=1;
 		aEquipFrame=97;
 		aUnlockLevel=0;
@@ -1314,7 +1327,7 @@ public class Item {
 				aType, 
 				aEquipFrame, 
 				aLevel,
-				aUnlock,
+				aUnlock==null?UnlockedBy.Base:aUnlock,
 				aUnlockLevel,
 				aGlory, 
 				aSpawnCount, 
@@ -1600,7 +1613,7 @@ public class Item {
 
 	public static void printAllUnlocks() {
 		for(UnlockedBy ulb:UnlockedBy.values()){
-			for(int level=1;level<=3;level++){
+			for(int level=0;level<=3;level++){
 				System.out.println(ulb+": "+level);
 				System.out.println("[");
 				for(int i=0;i<items.size();i++){

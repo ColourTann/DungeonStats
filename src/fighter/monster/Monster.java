@@ -1,5 +1,6 @@
 package fighter.monster;
 
+import json.Json;
 import cards.Card;
 import cards.Skill;
 import fighter.Fighter;
@@ -24,9 +25,11 @@ public class Monster extends Fighter{
 	private Skill[] skills;
 	public String name;
 	public Region region;
+	BoardChat[] boardChat;
 	public Monster(String name, String plural, Region region, Species species, String description, 
 			int frameNumber, int level, int health, int randomPool, 
-			MSound sound, Trait[] traits, Skill[] skills){
+			MSound sound, Trait[] traits, Skill[] skills,
+			BoardChat[] boardChat){
 		super(name, health, traits);
 		this.name=name;
 		this.plural=plural;
@@ -39,6 +42,7 @@ public class Monster extends Fighter{
 		this.sound=sound;
 		this.skills=skills;
 		this.region=region;
+		this.boardChat=boardChat;
 		setupDeck();
 	}
 
@@ -68,7 +72,14 @@ public class Monster extends Fighter{
 		output+="\"health\" : "+getHP()+",\n";
 		output+="\"RandomPool\" : "+randomPool+",\n";
 		if(sound!=null) output+="\"sound\" : \""+sound+"\",\n";
-				
+		if(boardChat!=null){
+			output+=Json.startList("BoardChat");
+			for(int i=0;i<boardChat.length;i++){
+				output+=boardChat[i].toJson();
+				if(i<boardChat.length-1) output=Json.addComma(output);
+			}
+			output+=Json.endList(true);
+		}
 		if(skills!=null){
 			output+="\"Skills\" : {\n";
 			for(int i=0;i<skills.length;i++){

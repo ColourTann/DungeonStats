@@ -1,5 +1,6 @@
 package dungeon;
 
+import item.Item.TreasureType;
 import json.Json;
 import dungeon.Tile.TileName;
 
@@ -22,12 +23,12 @@ public class DungeonLayout {
 	
 	public static class TileLocation{
 		TileName name; int x, y; String monster, treasure;
-		public TileLocation(TileName name, int x, int y, String monster, String treasure) {
+		public TileLocation(TileName name, int x, int y, String monster, TreasureType treasure) {
 			this.name=name;
 			this.x=x;
 			this.y=y;
 			this.monster=monster;
-			this.treasure=treasure;
+			if(treasure!=null)this.treasure=treasure.toString();
 		}
 		public String toJson(){
 			String output="";
@@ -41,7 +42,7 @@ public class DungeonLayout {
 			else{
 				output+=Json.addKey("MONSTER", monster, true);	
 			}
-			output+=Json.addKey("TREASURE", treasure, false);
+			output+=Json.addKey("TREASURE", treasure==null?"":treasure, false);
 			output += Json.endEnclose(false);
 			return output;
 		}

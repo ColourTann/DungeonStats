@@ -4,7 +4,7 @@ import json.Json;
 
 public class BossChat {
 	public enum Trigger{blah, first_kill, flib, intruder, fifth_kill, second_turn, four_left, last_turn, coming_soon, attacked_early}
-	public enum PostFunc{FinishBossChat, StartingRoom, MoveToBoard, FireDemonMoveToBoard}
+	public enum PostFunc{FinishBossChat, StartingRoom, MoveToBoard, FireDemonMoveToBoard, Chase}
 	public enum DelayEffect{APPEAR}
 	
 	Trigger trigger;
@@ -37,6 +37,10 @@ public class BossChat {
 			result += Json.addKey("value", false, false);
 			result += Json.endEnclose(false);
 			result += Json.endArray(true);
+		}
+		else if(postFunc==PostFunc.Chase){
+			result += Json.addKey("postFunc", PostFunc.StartingRoom.toString(), true);
+			result += Json.addKey("postArgs", "[true]", true);
 		}
 		else if(trigger==Trigger.attacked_early){
 			result += Json.addKey("block", true, true);
