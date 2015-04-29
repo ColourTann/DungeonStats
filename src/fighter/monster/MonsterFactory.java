@@ -343,7 +343,6 @@ public class MonsterFactory {
 				new BoardChat(ChatType.Random, new String[]{
 						"Chitter chitter", 
 						})
-
 		};
 		make();
 		
@@ -357,6 +356,25 @@ public class MonsterFactory {
 		sound = MSound.giant_bat;
 		traits = null;
 		skills = new Skill[]{Skill.get(SkillType.Death).asLevel(4), Skill.get(SkillType.Feral).asLevel(4)};
+		boardChat=new BoardChat[]{
+				new BoardChat(ChatType.Monster, new String[]{
+						"Grahh! Get outta my way!", 
+						}),
+
+				new BoardChat(ChatType.Treasure, new String[]{
+						"Chomp chomp", 
+						}),
+
+				new BoardChat(ChatType.Hero, new String[]{
+						"Vengeance is mine!"}),
+
+				new BoardChat(ChatType.Random, new String[]{
+						"I'm coming for you, murderer!",
+						"You can run but you can't hide",
+						"I know exactly where you might be",
+						"I can move two spaces every turn, you can't escape me!"
+						})
+		};
 		make();
 
 		name = "Orc Grunt";

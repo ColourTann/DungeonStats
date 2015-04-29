@@ -12,14 +12,14 @@ public class Dungeon {
 	TerrainType terrainType;
 	String boss, bossName; BossChat[] bossChats;
 	TileName startingTile; Hand startingHand; DungeonLayout layout;
-	Objective[] objectives; int turnLimit;
+	Objective[] objectives; int turnLimit; TurnLimitAction[] turnLimitActions;
 	ArrayList<Monster> monsters;
 	boolean tutorial;
 	public Dungeon(String name, String description, int reward,
 			TerrainType terrainType, 
 			String boss, String bossName, BossChat[] bossChat,
 			TileName startingTile, Hand startingHand, DungeonLayout layout,
-			Objective[] objectives, int turnLimit,
+			Objective[] objectives, int turnLimit, TurnLimitAction[] turnLimitActions,
 			ArrayList<Monster> monsters,
 			boolean tutorial
 			) {
@@ -27,7 +27,7 @@ public class Dungeon {
 		this.terrainType=terrainType;
 		this.boss=boss; this.bossName=bossName; this.bossChats=bossChat;
 		this.startingTile = startingTile; this.startingHand=startingHand; this.layout=layout;
-		this.objectives=objectives; this.turnLimit=turnLimit;
+		this.objectives=objectives; this.turnLimit=turnLimit; this.turnLimitActions=turnLimitActions;
 		this.monsters=monsters;
 		this.tutorial=tutorial;
 	}
@@ -53,6 +53,15 @@ public class Dungeon {
 		if(turnLimit>0){
 			output += Json.addKey("TurnLimit", turnLimit, true);
 			output += Json.addKey("TurnLimitStart", 0, true);
+		}
+		if(turnLimitActions!=null){
+			output+=Json.startArray("TurnLimitActions");
+			for(int i=0;i<turnLimitActions.length;i++){
+				output+=Json.enclose();
+				output+=turnLimitActions[i].toJson();
+				output+=Json.endEnclose(i<turnLimitActions.length-1);
+			}
+			output+=Json.endArray(true);
 		}
 		output += Json.addKey("StartingTile", startingTile.toString(), true);
 		if(startingHand!=null) output += startingHand.toJson();
@@ -83,17 +92,5 @@ public class Dungeon {
 		output += Json.endEnclose(false); //this dungeon
 		output += Json.endEnclose(false); //main enclose
 		return output;
-	}
-	
-	static Dungeon testDungeon;
-	
-	/*
-	 * String name, String description, int reward,
-			TerrainType terrainType, 
-			String boss, String bossName, BossChat[] bossChat,
-			TileName startingTile, Hand startingHand, DungeonLayout layout,
-			Objective[] objectives, int turnLimit,
-			ArrayList<Monster> monsters
-	 */
-	
+	}	
 }

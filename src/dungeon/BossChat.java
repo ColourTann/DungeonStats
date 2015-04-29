@@ -3,7 +3,7 @@ package dungeon;
 import json.Json;
 
 public class BossChat {
-	public enum Trigger{blah, first_kill, flib, intruder, fifth_kill, second_turn, four_left, last_turn, coming_soon, attacked_early}
+	public enum Trigger{blah, first_kill, flib, intruder, fifth_kill, second_turn, four_left, last_turn, coming_soon, attacked_early, kill}
 	public enum PostFunc{FinishBossChat, StartingRoom, MoveToBoard, FireDemonMoveToBoard, Chase}
 	public enum DelayEffect{APPEAR}
 	
@@ -40,7 +40,9 @@ public class BossChat {
 		}
 		else if(postFunc==PostFunc.Chase){
 			result += Json.addKey("postFunc", PostFunc.StartingRoom.toString(), true);
-			result += Json.addKey("postArgs", "[true]", true);
+			result += Json.startArray("postArgs");
+			result += "true\n";
+			result += Json.endArray(true);
 		}
 		else if(trigger==Trigger.attacked_early){
 			result += Json.addKey("block", true, true);

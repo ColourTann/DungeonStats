@@ -161,7 +161,8 @@ public class Item {
 		aName="Large Chest";
 		aDesc="A heavy wooden chest. What could be inside?";
 		aRandomPool=0;
-		aLevel=5;
+		aSpawnCount=3;
+		aLevel=2;
 		aSound=Sound.equip_coin_chest;
 		add();
 
@@ -170,7 +171,7 @@ public class Item {
 		aDesc="Ohh! What's in the box?!";
 		aRandomPool=0;
 		aSpawnCount=3;
-		aLevel=5;
+		aLevel=3;
 		aSound=Sound.equip_coin_chest;
 		add();
 
@@ -870,7 +871,7 @@ public class Item {
 		aRandomPool=0;
 		aKeepHair=1;
 		aSound=Sound.equip_cloth_hat;
-		aSkills= new Skill[]{Skill.fire.asLevel(1), Skill.arcane.asLevel(1)};
+		aSkills= new Skill[]{Skill.arcane.asLevel(2)};
 		add();
 
 		aName="Heavy Visor";
@@ -1199,7 +1200,7 @@ public class Item {
 		aUnlockLevel=0;
 		aRandomPool=1;
 		aSound=Sound.equip_wooden_shield;
-		aSkills=new Skill[]{Skill.armour.asLevel(1), Skill.crush.asLevel(1)};
+		aSkills=new Skill[]{Skill.armour.asLevel(1)};
 		add();
 
 		aName="Net";
