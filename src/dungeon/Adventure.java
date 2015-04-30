@@ -50,6 +50,7 @@ public class Adventure {
 			numUnlocks=3;
 		}
 		output += Json.addKey("numUnlocks", numUnlocks, true);
+		output+=Json.addKey("BossDoubleMoveChance", 1, true);
 		output+= Json.startArray("Quests"); 
 		for(int i=0;i<dungeons.size();i++){
 			Dungeon d = dungeons.get(i);
@@ -165,10 +166,10 @@ public class Adventure {
 		};
 		aStartingTile=TileName.room_steps_nesw;
 		aLayout= new DungeonLayout(new TileLocation[]{
-				new TileLocation(Tile.get("s"), -1, -5, "BOSS", null, new TileDetails(true, true, true, 0, -3)),
+				new TileLocation(Tile.get("nes"), -1, -3, "Rat Man", null, new TileDetails(true, true, true, -1, -3)),
+				new TileLocation(Tile.get("s"), -1, -5, "BOSS", null, new TileDetails(true, true, false, 0, 0)),
 				new TileLocation(Tile.get("nesw"), 0, -2, "Nasty Rat", null, new TileDetails(true, true, false, 0, 0)),
 				new TileLocation(Tile.get("nws"), 1, -3, "Nasty Rat", null, new TileDetails(true, true, false, 0, 0)),
-				new TileLocation(Tile.get("nes"), -1, -3, "Rat Man", null, new TileDetails(true, true, false, 0, 0)),
 				new TileLocation(Tile.get("nesw"), 0, -4, "Rat Man", null, new TileDetails(true, true, false, 0, 0)),
 		});
 		aObjectives = new Objective[]{
@@ -630,7 +631,7 @@ public class Adventure {
 
 		aAdvName="The Eye Beast";
 		//aAdvDescription="Loot all the treasure";
-		aAdvIcon="stone_skull_cave";
+		aAdvIcon="stone_temple";
 		aAdvX=3;
 		aAdvY=1;
 
@@ -680,7 +681,7 @@ public class Adventure {
 						new BossSpeech("Oops, uhh...", Func.emote, false),
 						new BossSpeech("Ah this should be it", Func.emote, false),
 						new BossSpeech("*STAAAARE*", Func.emote, false)
-				}, PostFunc.FinishBossChat, 
+				}, PostFunc.FailDungeon, 
 				-1, -1, 1, DelayEffect.APPEAR, null),
 				new BossChat(Trigger.attacked_early, new BossSpeech[]{
 						new BossSpeech("Hey!", Func.emote, false)
@@ -697,7 +698,7 @@ public class Adventure {
 		aObjectives = new Objective[]{
 				new Objective(ObjectiveType.Defeat, "BOSS", -1)
 		};
-		aTurnLimit=10;
+		aTurnLimit=3;
 		aTurnLimitActions= new TurnLimitAction[]{
 				new TurnLimitAction(ActionType.BossChat, new String[]{"\""+Trigger.kill.toString()+"\""}, "Petrified"),
 				};
@@ -718,7 +719,7 @@ public class Adventure {
 
 		aAdvName="The Sapphire of Tlaloc";
 		//aAdvDescription="Loot all the treasure";
-		aAdvIcon="stone_skull_cave";
+		aAdvIcon="jungle_gem";
 		aAdvX=-1;
 		aAdvY=0;
 
@@ -731,8 +732,8 @@ public class Adventure {
 		aBossChats= new BossChat[]{};
 		aStartingTile=Tile.get("jn");
 		aLayout= new DungeonLayout(new TileLocation[]{
-				new TileLocation(Tile.get("js"), 0, -3, "", TreasureType.Massive_Gem, null),
-				new TileLocation(Tile.get("jsnew"), 0, -2, "Gargoyle", null, null),
+				new TileLocation(Tile.get("js"), 0, -4, "", TreasureType.Massive_Gem, null),
+				new TileLocation(Tile.get("jsnew"), 0, -3, "Gargoyle", null, null),
 		});
 		aObjectives = new Objective[]{
 				new Objective(ObjectiveType.Collect, TreasureType.Massive_Gem.toString(), 1),
@@ -756,14 +757,17 @@ public class Adventure {
 				};*/
 		aStartingTile=Tile.get("jnew");
 		aLayout= new DungeonLayout(new TileLocation[]{
-				new TileLocation(Tile.get("js"), -2, -1, "", TreasureType.MEGA_CHEST, null),
-				new TileLocation(Tile.get("jns"), 0, -2, "HARPY", null, null),
-				new TileLocation(Tile.get("js"), -1, -3, "", null, null)
+				new TileLocation(Tile.get("js"), -1, -3, "Owl Bear", null, new TileDetails(true, false, false, 0, 0)),
+				new TileLocation(Tile.get("judlr"), -1, -2, "Harpy", null, new TileDetails(true, false, false, 0, 0)),
+				new TileLocation(Tile.get("jdr"), -2, -1, "", TreasureType.MEGA_CHEST, null),
 		});
 		aObjectives = new Objective[]{
-				new Objective(ObjectiveType.Defeat, "HARPY", 1)
+				new Objective(ObjectiveType.Defeat, "Owl Bear", 1)
 		};
 		aTurnLimit=7;
+		aTurnLimitActions= new TurnLimitAction[]{
+				new TurnLimitAction(ActionType.FailDungeon, new String[]{}, "Cave collapse")
+		};
 		aMonsters=MonsterFactory.jungleMonsters;
 		addDungeon();
 		createAdventure();
@@ -788,7 +792,7 @@ public class Adventure {
 		aLayout= new DungeonLayout(new TileLocation[]{
 				new TileLocation(Tile.get("jne"), -2, 0, "Poisonous Snake", null, null),
 				new TileLocation(Tile.get("jes"), -1, -2, "Poisonous Snake", null, null),
-				new TileLocation(Tile.get("jnw"), 1, 2, "Poisonous Snake", null, null),
+				new TileLocation(Tile.get("jnw"), 1, -2, "Poisonous Snake", null, null),
 				new TileLocation(Tile.get("js"), 0, -2, "Poisonous Snake", null, null),
 				new TileLocation(Tile.get("jsw"), -2, -2, "Poisonous Snake", null, null),
 		});

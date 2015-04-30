@@ -15,6 +15,7 @@ public class HeroFactory {
 	static SkillType heroName;
 	static int aHP=0;
 	static Trait[] traits= null;
+	static int aFrame=102;
 	public static void init(){
 		
 		//TODO Add in frame numbers
@@ -24,14 +25,14 @@ public class HeroFactory {
 		traits=null;
 		addClass();
 		
+		heroName=SkillType.Cat_Burglar;
+		aHP=5;
+		traits=new Trait[]{Trait.Covetous};
+		addClass();
+		
 		heroName=SkillType.Henchman;
 		aHP=5;
 		traits=null;
-		addClass();
-		
-		heroName=SkillType.CatBurglar;
-		aHP=5;
-		traits=new Trait[]{Trait.Covetous};
 		addClass();
 		
 		heroName=SkillType.Mime;
@@ -43,14 +44,9 @@ public class HeroFactory {
 		traits=null;
 		addClass();
 		
-		heroName=SkillType.Alchemist;
-		aHP=5;
-		traits=new Trait[]{Trait.Blessed};
-		addClass();
-		
-		heroName=SkillType.Shapeshifter;
+		heroName=SkillType.Ranger;
 		aHP=6;
-		traits=null;
+		traits=new Trait[]{Trait.Accurate, Trait.Ranged};
 		addClass();
 		
 		heroName=SkillType.Barbarian;
@@ -58,16 +54,21 @@ public class HeroFactory {
 		traits = new Trait[]{Trait.Deathwish};
 		addClass();
 		
-		heroName=SkillType.Ranger;
+		heroName=SkillType.Shapeshifter;
 		aHP=6;
-		traits=new Trait[]{Trait.Accurate, Trait.Ranged};
+		traits=null;
 		addClass();
 		
-		heroName=SkillType.Troubador;
+		heroName=SkillType.Alchemist;
+		aHP=5;
+		traits=new Trait[]{Trait.Blessed};
+		addClass();
+		
+		heroName=SkillType.Most_Holy_Knight_Templar;
 		aHP=1;
 		addClass();
 		
-		heroName=SkillType.Templar;
+		heroName=SkillType.Troubador;
 		aHP=1;
 		addClass();
 		
@@ -92,7 +93,8 @@ public class HeroFactory {
 	}
 	
 	public static void addClass(){
-		heroes.add(new Hero(heroName.toString(), aHP, traits, Skill.get(heroName).getCards(false)));
+		heroes.add(new Hero(heroName.toString(), aHP, traits, Skill.get(heroName).getCards(false), aFrame));
+		aFrame++;
 		heroName=null;
 		aHP=0;
 		traits=null;

@@ -5,7 +5,7 @@ import json.Json;
 
 public class BossChat {
 	public enum Trigger{blah, FirstKill, flib, intruder, FifthKill, Second_Turn, four_left, last_turn, ComingToAttack, attacked_early, kill, Entrance, SecondKill, FourthKill, SixthTurn, EleventhTurn, ThirdKill, FirstTurn, NinthTurn, ThirdTurn}
-	public enum PostFunc{FinishBossChat, StartingRoom, MoveToBoard, FireDemonMoveToBoard, Chase}
+	public enum PostFunc{FinishBossChat, StartingRoom, MoveToBoard, FireDemonMoveToBoard, Chase, FailDungeon}
 	public enum DelayEffect{APPEAR}
 	
 	Trigger trigger;

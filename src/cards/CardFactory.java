@@ -881,7 +881,7 @@ public class CardFactory {
 			break;
 
 		case Troubador:
-		case Templar:
+		case Most_Holy_Knight_Templar:
 		case Cartomancer:
 		case Mathemagician:
 		case Artificer:
@@ -1013,7 +1013,7 @@ public class CardFactory {
 			addCard(type);
 			break;
 
-		case CatBurglar:
+		case Cat_Burglar:
 			cName= "Scratch";
 			cStrength=1f;
 			cDescription = "1 physical damage";

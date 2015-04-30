@@ -79,7 +79,6 @@ public class Monster extends Fighter{
 				if(i<boardChat.length-1) output=Json.addComma(output);
 			}
 			output+=Json.endList(true);
-			output+=Json.addKey("BossDoubleMoveChance", 1, true);
 		}
 		if(skills!=null){
 			output+="\"Skills\" : {\n";

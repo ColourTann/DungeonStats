@@ -65,10 +65,10 @@ public class Tile {
 			directions=directions.toLowerCase();
 			byte b = 0b0;
 			if(directions.contains("j")) b|=0b10000;
-			if(directions.contains("n")) b|=0b0001;
-			if(directions.contains("e")) b|=0b0010;
-			if(directions.contains("s")) b|=0b0100;
-			if(directions.contains("w")) b|=0b1000;
+			if(directions.contains("n")||directions.contains("u")) b|=0b0001;
+			if(directions.contains("e")||directions.contains("r")) b|=0b0010;
+			if(directions.contains("s")||directions.contains("d")) b|=0b0100;
+			if(directions.contains("w")||directions.contains("l")) b|=0b1000;
 			return tiles.get(b);
 		}
 }

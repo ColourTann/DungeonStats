@@ -36,7 +36,7 @@ public class DStats {
 		
 		
 		//System.out.println(Room.JsonAllRooms());
-//		System.out.println(HeroFactory.toJson());
+		//System.out.println(HeroFactory.toJson());
 		//System.out.println(HeroFactory.analyseClasses());
 	}
 

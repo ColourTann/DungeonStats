@@ -93,7 +93,7 @@ public class Room {
 		//PHYSICAL//
 		
 		aName="Rogue's Den";
-		aClasses.add(SkillType.CatBurglar);
+		aClasses.add(SkillType.Cat_Burglar);
 		aCost=100;
 		aFrame="guild_storeroom_nesw";
 		addRoom();
