@@ -4,6 +4,7 @@ import java.util.HashMap;
 
 import cards.Skill;
 import cards.Skill.SkillType;
+import dungeon.Dungeon.TerrainType;
 import fighter.Fighter.*;
 import fighter.monster.BoardChat.ChatType;
 import fighter.monster.Monster.Species;
@@ -406,10 +407,10 @@ public class MonsterFactory {
 		description = "Don't let him cast Lich Itch on you!";
 		frameNumber = 29;
 		level = 4;
-		health = 12;
+		health = 8;
 		randomPool=0;
 		sound = MSound.giant_bat;
-		traits = null;
+		traits = new Trait[]{Trait.Halfbaked};
 		skills = new Skill[]{Skill.get(SkillType.Spooky).asLevel(5), Skill.get(SkillType.Death).asLevel(5)};
 		make();
 
@@ -800,7 +801,7 @@ public class MonsterFactory {
 		randomPool=1;
 		sound = MSound.giant_bat;
 		traits = null;
-		skills = new Skill[]{Skill.get(SkillType.Demonic).asLevel(3),Skill.get(SkillType.Irritable).asLevel(4)};
+		skills = new Skill[]{Skill.get(SkillType.Death).asLevel(3),Skill.get(SkillType.Flame).asLevel(4)};
 		make();
 
 		name = "Cyclops";
@@ -1122,5 +1123,15 @@ public class MonsterFactory {
 		}
 		System.out.println("}");
 		System.out.println("}");
+	}
+	
+	public static ArrayList<Monster> getMonsters(Region region, int maxLevel){
+		ArrayList<Monster> result = new ArrayList<>();
+		for(Monster m:MonsterFactory.monsters){
+			if(m.region==region&&m.level<=maxLevel){
+				result.add(m);
+			}
+		}
+		return result;
 	}
 }

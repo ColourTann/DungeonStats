@@ -8,20 +8,26 @@ import dungeon.BossChat.BossSpeech;
 import dungeon.BossChat.DelayEffect;
 import dungeon.BossChat.Func;
 import dungeon.BossChat.PostFunc;
-import dungeon.BossChat.Trigger;
+import dungeon.BossChat.*;
+import dungeon.Dungeon.CardType;
 import dungeon.Dungeon.TerrainType;
+import dungeon.DungeonLayout.TileDetails;
 import dungeon.DungeonLayout.TileLocation;
 import dungeon.Hand.DungeonCard;
 import dungeon.Hand.DungeonCardType;
 import dungeon.Objective.ObjectiveType;
 import dungeon.Tile.TileName;
 import dungeon.TurnLimitAction.ActionType;
+import fighter.Fighter.Trait;
 import fighter.monster.Monster;
 import fighter.monster.MonsterFactory;
+import fighter.monster.MonsterFactory.Region;
 import json.Json;
 
 public class Adventure {
 
+	static CardType[] exploreTemplate = new CardType[]{CardType.TILE, CardType.TILE, CardType.TILE, CardType.TILE, CardType.TREASURE};
+	
 	String name, description, icon;
 	int mapX, mapY;
 	ArrayList<Dungeon> dungeons;
@@ -88,6 +94,7 @@ public class Adventure {
 
 
 	static ArrayList<Dungeon> aDungeons = new ArrayList<>();
+	private static CardType[] aDrawRate;
 
 	public static void setup(){	
 
@@ -107,14 +114,14 @@ public class Adventure {
 		aBoss="Rat Man";
 		aBossName="Rat King Cole";
 		aBossChats= new BossChat[]{
-				new BossChat(Trigger.blah, new BossSpeech[]{
+				new BossChat(Trigger.Second_Turn, new BossSpeech[]{
 						new BossSpeech("Squeak squeak squeak", Func.emote, false),
 				}, PostFunc.FinishBossChat, 
-				-1, 2, 1, DelayEffect.APPEAR),
-				new BossChat(Trigger.flib, new BossSpeech[]{
+				-1, 2, 1, DelayEffect.APPEAR, null),
+				new BossChat(Trigger.SecondKill, new BossSpeech[]{
 						new BossSpeech("Squeak!", Func.emote, false),	
 				}, PostFunc.FinishBossChat, 
-				2, -1, 1, DelayEffect.APPEAR),
+				2, -1, 1, DelayEffect.APPEAR, null),
 		};
 		aStartingTile=Tile.get("n");
 		aStartingHand = new Hand(new DungeonCard[]{
@@ -125,9 +132,9 @@ public class Adventure {
 				new DungeonCard(DungeonCardType.TILE, ""),
 		});
 		aLayout= new DungeonLayout(new TileLocation[]{
-				new TileLocation(Tile.get("nes"), -2, -1, "Nasty Rat", null),
-				new TileLocation(Tile.get("nes"), -1, -2, "Nasty Rat", null),
-				new TileLocation(Tile.get("nsw"), 1, -2, "Nasty Rat", null),
+				new TileLocation(Tile.get("nes"), -2, -1, "Nasty Rat", null, null),
+				new TileLocation(Tile.get("nes"), -1, -2, "Nasty Rat", null, null),
+				new TileLocation(Tile.get("nsw"), 1, -2, "Nasty Rat", null, null),
 		});
 		aObjectives = new Objective[]{
 				new Objective(ObjectiveType.Defeat, "Nasty Rat", 3),
@@ -143,18 +150,26 @@ public class Adventure {
 		aBoss="Rat King Cole";
 		aBossName="Rat King Cole";
 		aBossChats= new BossChat[]{
-				new BossChat(Trigger.blah, new BossSpeech[]{
-						new BossSpeech("SQUEAK!!", Func.emote, false),
+				new BossChat(Trigger.Entrance, new BossSpeech[]{
+						new BossSpeech("Squeak!!", Func.emote, false),
 				}, PostFunc.StartingRoom, 
-				-1, 0, 1, DelayEffect.APPEAR),
+				-1, 0, 1, DelayEffect.APPEAR, null),
+				new BossChat(Trigger.SecondKill, new BossSpeech[]{
+						new BossSpeech("*chitter chitter*", Func.emote, false),
+				}, PostFunc.FinishBossChat, 
+				2, -1, 1, DelayEffect.APPEAR, null),
+				new BossChat(Trigger.FourthKill, new BossSpeech[]{
+						new BossSpeech("SQUEAK!!", Func.emote, false),
+				}, PostFunc.FinishBossChat, 
+				4, -1, 1, DelayEffect.APPEAR, null),
 		};
 		aStartingTile=TileName.room_steps_nesw;
 		aLayout= new DungeonLayout(new TileLocation[]{
-				new TileLocation(Tile.get("nesw"), 0, -2, "Nasty Rat", null),
-				new TileLocation(Tile.get("nws"), 1, -3, "Nasty Rat", null),
-				new TileLocation(Tile.get("nes"), -1, -3, "Rat Man", null),
-				new TileLocation(Tile.get("nesw"), 0, -4, "Rat Man", null),
-				new TileLocation(Tile.get("s"), -1, -5, "BOSS", null)
+				new TileLocation(Tile.get("s"), -1, -5, "BOSS", null, new TileDetails(true, true, true, 0, -3)),
+				new TileLocation(Tile.get("nesw"), 0, -2, "Nasty Rat", null, new TileDetails(true, true, false, 0, 0)),
+				new TileLocation(Tile.get("nws"), 1, -3, "Nasty Rat", null, new TileDetails(true, true, false, 0, 0)),
+				new TileLocation(Tile.get("nes"), -1, -3, "Rat Man", null, new TileDetails(true, true, false, 0, 0)),
+				new TileLocation(Tile.get("nesw"), 0, -4, "Rat Man", null, new TileDetails(true, true, false, 0, 0)),
 		});
 		aObjectives = new Objective[]{
 				new Objective(ObjectiveType.Defeat, "BOSS", -1)
@@ -179,22 +194,22 @@ public class Adventure {
 		aBoss="Fire Demon";
 		aBossName="Embro";
 		aBossChats= new BossChat[]{
-				new BossChat(Trigger.blah, new BossSpeech[]{
+				new BossChat(Trigger.Entrance, new BossSpeech[]{
 						new BossSpeech("HEY! What are you doing in my Evil Entrance Hall?", Func.emote, false),
 						new BossSpeech("Oh well, my imps will make short work of you!", Func.emote, false),
 				}, PostFunc.FinishBossChat, 
-				-1, 1, 1, DelayEffect.APPEAR),
-				new BossChat(Trigger.flib, new BossSpeech[]{
+				-1, 1, 1, DelayEffect.APPEAR, null),
+				new BossChat(Trigger.SecondKill, new BossSpeech[]{
 						new BossSpeech("You're not supposed to be able to beat them!", Func.emote, false),
 						new BossSpeech("I should have invested in some better security...", Func.emote, false),	
 				}, PostFunc.FinishBossChat, 
-				2, -1, 1, DelayEffect.APPEAR),
+				2, -1, 1, DelayEffect.APPEAR, null),
 		};
 		aStartingTile=TileName.corr_grate_n;
 		aLayout= new DungeonLayout(new TileLocation[]{
-				new TileLocation(TileName.room_semicircle_nes, -1, -2, "Fire Imp", null),
-				new TileLocation(TileName.room_semicircle_nsw, 1, -2, "Fire Imp", null),
-				new TileLocation(TileName.room_semicircle_esw, 0, -3, "Gnoll", null)
+				new TileLocation(TileName.room_semicircle_nes, -1, -2, "Fire Imp", null, null),
+				new TileLocation(TileName.room_semicircle_nsw, 1, -2, "Fire Imp", null, null),
+				new TileLocation(TileName.room_semicircle_esw, 0, -3, "Gnoll", null, null)
 		});
 		aObjectives = new Objective[]{
 				new Objective(ObjectiveType.Defeat, "Fire Imp", 2),
@@ -211,16 +226,16 @@ public class Adventure {
 		aBoss="Fire Demon";
 		aBossName="Embro";
 		aBossChats= new BossChat[]{
-				new BossChat(Trigger.blah, new BossSpeech[]{
+				new BossChat(Trigger.Entrance, new BossSpeech[]{
 						new BossSpeech("HEY! Get out of my treasure chamber!", Func.emote, false),
 				}, PostFunc.FinishBossChat, 
-				-1, 1, 1, DelayEffect.APPEAR),
+				-1, 1, 1, DelayEffect.APPEAR, null),
 		};
 		aStartingTile=TileName.room_steps_nesw;
 		aLayout= new DungeonLayout(new TileLocation[]{
-				new TileLocation(TileName.room_semicircle_nes, -2, 0, "Fire Imp", TreasureType.Large_Chest),
-				new TileLocation(TileName.room_collapse_esw, 0, -2, "Zombie", TreasureType.Large_Chest),
-				new TileLocation(TileName.room_semicircle_nsw, 2, 0, "Fire Elemental", TreasureType.Large_Chest)
+				new TileLocation(TileName.room_semicircle_nes, -2, 0, "Fire Imp", TreasureType.Large_Chest, null),
+				new TileLocation(TileName.room_collapse_esw, 0, -2, "Zombie", TreasureType.Large_Chest, null),
+				new TileLocation(TileName.room_semicircle_nsw, 2, 0, "Fire Elemental", TreasureType.Large_Chest, null)
 		});
 		aObjectives = new Objective[]{
 				new Objective(ObjectiveType.Collect, TreasureType.Large_Chest.toString(), 3)
@@ -236,66 +251,68 @@ public class Adventure {
 		aBoss="Fire Demon";
 		aBossName="Embro";
 		aBossChats= new BossChat[]{
-				new BossChat(Trigger.intruder, new BossSpeech[]{
+				new BossChat(Trigger.Entrance, new BossSpeech[]{
 						new BossSpeech("WHO DARES INVADE THE HOT, HOT LAIR OF EMBRO, LORD OF FLAME?!", Func.emote, false),
 						new BossSpeech("Right in the middle of bath-time too. Look at this puddle!", Func.emote, false),
 						new BossSpeech("MINIONS! DESTROY THEM! BRING ME THEIR BONES!", Func.emote, false),
 				}, PostFunc.StartingRoom, 
-				-1, 0, 1, DelayEffect.APPEAR),
+				-1, 0, 1, DelayEffect.APPEAR, null),
 
-				new BossChat(Trigger.second_turn, new BossSpeech[]{
+				new BossChat(Trigger.Second_Turn, new BossSpeech[]{
 						new BossSpeech("Argh, I have to dry off or I won't be my fiery best.", Func.emote, false),
 						new BossSpeech("You'd better wait {TURNS_LEFT} more turns before fighting me or it won't be fair!", Func.emote, false),
 				}, PostFunc.FinishBossChat, 
-				-1, 2, 1, DelayEffect.APPEAR),
+				-1, 2, 1, DelayEffect.APPEAR, null),
 
-				new BossChat(Trigger.four_left, new BossSpeech[]{
+				new BossChat(Trigger.SixthTurn, new BossSpeech[]{
 						new BossSpeech("MINIONS! Bring me more towels!.", Func.emote, false),
 						new BossSpeech("I need to be ready for my big fight in 6 turns", Func.emote, false),
 				}, PostFunc.FinishBossChat, 
-				-1, 6, 1, DelayEffect.APPEAR),
+				-1, 6, 1, DelayEffect.APPEAR, null),
 
-				new BossChat(Trigger.last_turn, new BossSpeech[]{
+				new BossChat(Trigger.EleventhTurn, new BossSpeech[]{
 						new BossSpeech("Almost dry now! I'm coming for you next turn!", Func.emote, false),
 				}, PostFunc.FinishBossChat, 
-				-1, 11, 1, DelayEffect.APPEAR),
+				-1, 11, 1, DelayEffect.APPEAR, null),
 
-				new BossChat(Trigger.coming_soon, new BossSpeech[]{
+				new BossChat(Trigger.ComingToAttack, new BossSpeech[]{
 						new BossSpeech("**WHOOSH** Finally dry! Now I'm going to get you!", Func.emote, false),
 				}, PostFunc.FireDemonMoveToBoard, 
-				-1, -1, 1, DelayEffect.APPEAR),
+				-1, -1, 1, DelayEffect.APPEAR, new PostEffect[]{
+						new PostEffect(Trait.Damp, false)
+				}),
 
 				new BossChat(Trigger.attacked_early, new BossSpeech[]{
 						new BossSpeech("Hey! I'm not ready yet!", Func.emote, false),
 				}, null, 
-				-1, -1, 1, null),
+				-1, -1, 1, null, null),
 
-				new BossChat(Trigger.first_kill, new BossSpeech[]{
+				new BossChat(Trigger.ThirdKill, new BossSpeech[]{
 						new BossSpeech("HAR HAR! YOU THINK I'LL MISS THAT {LAST_KILL_TYPE}?", Func.emote, false),
 						new BossSpeech("NO! HE WAS MY LEAST FAVORITE MINION!", Func.emote, false),
 				}, PostFunc.FinishBossChat, 
-				3, -1, 1, DelayEffect.APPEAR),
+				3, -1, 1, DelayEffect.APPEAR, null),
 
-				new BossChat(Trigger.fifth_kill, new BossSpeech[]{
+				new BossChat(Trigger.FifthKill, new BossSpeech[]{
 						new BossSpeech("*sigh* As usual my minions are bumbling fools..", Func.emote, false),
 						new BossSpeech("If only those sharks with spears attached to their heads had arrived.", Func.emote, false),
 						new BossSpeech("Oh well. SEND MORE RUBBER DUCKIES!", Func.emote, false),
 				}, PostFunc.FinishBossChat, 
-				5, -1, 1, DelayEffect.APPEAR),
+				5, -1, 1, DelayEffect.APPEAR, null),
 		};
 		aStartingTile=TileName.corr_grate_n;
 		aTurnLimitActions= new TurnLimitAction[]{(
-				new TurnLimitAction(ActionType.BossChat, new Trigger[]{Trigger.coming_soon}, "Embro attacks")
+				new TurnLimitAction(ActionType.BossChat, new String[]{"\""+Trigger.ComingToAttack.toString()+"\""}, "Embro attacks")
 				)};
 		aLayout= new DungeonLayout(new TileLocation[]{
-				new TileLocation(TileName.room_torture_s, 0, -5, "BOSS", null),
-				new TileLocation(TileName.room_round_s, 2, -3, "", TreasureType.MEGA_CHEST),
+				new TileLocation(TileName.room_torture_s, 0, -5, "BOSS", null, null),
+				new TileLocation(TileName.room_round_s, 2, -3, "", TreasureType.MEGA_CHEST, null),
 		});
 		aObjectives = new Objective[]{
 				new Objective(ObjectiveType.Defeat, "BOSS", -1)
 		};
 		aTurnLimit=12;
-		aMonsters=MonsterFactory.stoneMonsters;
+		aMonsters=MonsterFactory.getMonsters(Region.Stone, 3);
 		addDungeon();
 		createAdventure(); 
 
@@ -314,10 +331,10 @@ public class Adventure {
 		aBoss="Mimic";
 		aBossName="Mimic";
 		aBossChats= new BossChat[]{};
-		aStartingTile=TileName.corr_grate_n;
+		aStartingTile=Tile.get("esn");
 		aLayout= new DungeonLayout(new TileLocation[]{
-				new TileLocation(TileName.room_semicircle_nes, -1, -2, "Zombie", TreasureType.Large_Chest),
-				new TileLocation(TileName.room_semicircle_nsw, 1, -2, "Bear Owl", TreasureType.Large_Chest),
+				new TileLocation(TileName.room_semicircle_nes, -1, -2, "Zombie", TreasureType.Large_Chest, null),
+				new TileLocation(TileName.room_semicircle_nsw, 1, -2, "Bear Owl", TreasureType.Large_Chest, null),
 		});
 		aObjectives = new Objective[]{
 				new Objective(ObjectiveType.Collect, "Large Chest", 2),
@@ -333,25 +350,25 @@ public class Adventure {
 		aBoss="Mimic";
 		aBossName="Mimic";
 		aBossChats= new BossChat[]{
-				new BossChat(Trigger.blah, new BossSpeech[]{
+				new BossChat(Trigger.Entrance, new BossSpeech[]{
 						new BossSpeech("You're the one who looted my grandparents!?", Func.emote, false),
 						new BossSpeech("DIE, evil adventurer!", Func.emote, false)
 				}, PostFunc.Chase, 
-				-1, 0, 1, DelayEffect.APPEAR),
+				-1, 0, 1, DelayEffect.APPEAR, null),
 		};
 		aStartingTile=Tile.get("news");
 		aLayout= new DungeonLayout(new TileLocation[]{
-				new TileLocation(Tile.get("ew"), -1, 0, "", null),
-				new TileLocation(Tile.get("ew"), -2, 0, "", null),
-				new TileLocation(Tile.get("ew"), -3, 0, "", null),
-				new TileLocation(Tile.get("ew"), -4, 0, "", null),
-				new TileLocation(TileName.corr_rubble_e, -5, 0, "BOSS", null),
+				new TileLocation(Tile.get("ew"), -1, 0, "", null, new TileDetails(true, true, true, -5, 0)),
+				new TileLocation(Tile.get("ew"), -2, 0, "", null, new TileDetails(true, true, false, 0, 0)),
+				new TileLocation(Tile.get("ew"), -3, 0, "", null, new TileDetails(true, true, false, 0, 0)),
+				new TileLocation(Tile.get("ew"), -4, 0, "", null, new TileDetails(true, true, false, 0, 0)),
+				new TileLocation(TileName.corr_rubble_e, -5, 0, "BOSS", null, new TileDetails(true, true, false, 0, 0)),
 		});
 		aObjectives = new Objective[]{
 				new Objective(ObjectiveType.Defeat, "BOSS", -1)
 		};
 		aTurnLimit=-1;
-		aMonsters=MonsterFactory.stoneMonsters;
+		aMonsters=MonsterFactory.getMonsters(Region.Stone, 3);
 		addDungeon();
 		createAdventure();
 
@@ -372,16 +389,19 @@ public class Adventure {
 		aBossChats= new BossChat[]{};
 		aStartingTile=TileName.room_collapse_esw;
 		aLayout= new DungeonLayout(new TileLocation[]{
-				new TileLocation(TileName.room_semicircle_nes, -2, 0, "Goblin", null),
-				new TileLocation(TileName.room_steps_nesw, -1, 1, "Goblin", null),
-				new TileLocation(TileName.room_collapse_new, 0, 2, "Goblin", null),
-				new TileLocation(TileName.corr_crushed_ne, -2, 2, "Goblin", null),
+				new TileLocation(TileName.room_semicircle_nes, -2, 0, "Goblin", null, new TileDetails(false, true, true, -1, 1)),
+				new TileLocation(TileName.room_steps_nesw, -1, 1, "Goblin", null, new TileDetails(false, true, false, 0, 0)),
+				new TileLocation(TileName.room_collapse_new, 0, 2, "Goblin", null, new TileDetails(false, true, false, 0, 0)),
+				new TileLocation(TileName.corr_crushed_ne, -2, 2, "Goblin", null, new TileDetails(false, true, false, 0, 0)),
 		});
 		aObjectives = new Objective[]{
 				new Objective(ObjectiveType.Defeat, "Goblin", 3),
 		};
-		aTurnLimit=-1;
-		aMonsters=MonsterFactory.stoneMonsters;
+		aTurnLimit=7;
+		aTurnLimitActions= new TurnLimitAction[]{(
+				new TurnLimitAction(ActionType.HeroHealth, new String[]{"-2"}, "Lunchtime")
+				)};
+		aMonsters=MonsterFactory.noMonsters;
 		addDungeon();
 
 		aName="Knives and Orcs";
@@ -391,22 +411,37 @@ public class Adventure {
 		aBoss="Orc Grunt";
 		aBossName="Orc Grunt";
 		aBossChats= new BossChat[]{
-				new BossChat(Trigger.blah, new BossSpeech[]{
+				new BossChat(Trigger.Entrance, new BossSpeech[]{
 						new BossSpeech("GRAK and GRIK! Defeat this interloper!", Func.emote, false)
 				}, PostFunc.StartingRoom, 
-				-1, 0, 1, DelayEffect.APPEAR)
+				-1, 0, 1, DelayEffect.APPEAR, null),
+				new BossChat(Trigger.SecondKill, new BossSpeech[]{
+						new BossSpeech("Stop killing my monsters!", Func.emote, false)
+				}, PostFunc.FinishBossChat, 
+				2, -1, 1, DelayEffect.APPEAR, null),
+				new BossChat(Trigger.FourthKill, new BossSpeech[]{
+						new BossSpeech("Stop it! I mean it!", Func.emote, false)
+				}, PostFunc.FinishBossChat, 
+				4, -1, 1, DelayEffect.APPEAR, null),
+				new BossChat(Trigger.attacked_early, new BossSpeech[]{
+						new BossSpeech("This'll be over quick, human!", Func.emote, false)
+				}, PostFunc.FinishBossChat, 
+				4, -1, 1, DelayEffect.APPEAR, null),
 		};
 		aStartingTile=TileName.room_collapse_new;
 		aLayout= new DungeonLayout(new TileLocation[]{
-				new TileLocation(TileName.room_semicircle_nes, -1, -2, "Goblin", null),
-				new TileLocation(TileName.room_semicircle_nsw, 1, -2, "Goblin", null),
-				new TileLocation(TileName.room_semicircle_esw, 0, -3, "BOSS", null)
+				new TileLocation(TileName.room_semicircle_nes, -1, -2, "Goblin", null, new TileDetails(false, true, true, 0, -3)),
+				new TileLocation(TileName.room_semicircle_nsw, 1, -2, "Goblin", null, new TileDetails(false, true, false, 0, 0)),
+				new TileLocation(TileName.room_semicircle_esw, 0, -3, "BOSS", null, new TileDetails(false, true, false, 0, 0))
 		});
 		aObjectives = new Objective[]{
 				new Objective(ObjectiveType.Defeat, "BOSS", -1)
 		};
-		aTurnLimit=-1;
-		aMonsters=MonsterFactory.stoneMonsters;
+		aTurnLimit=7;
+		aTurnLimitActions= new TurnLimitAction[]{(
+				new TurnLimitAction(ActionType.HeroHealth, new String[]{"-2"}, "Lunchtime")
+				)};
+		aMonsters=MonsterFactory.getMonsters(Region.Stone, 2);
 		addDungeon();
 		createAdventure();
 
@@ -425,22 +460,22 @@ public class Adventure {
 		aBoss="The Black Knight";
 		aBossName="The Black Knight";
 		aBossChats= new BossChat[]{
-				new BossChat(Trigger.blah, new BossSpeech[]{
+				new BossChat(Trigger.FirstTurn, new BossSpeech[]{
 						new BossSpeech("Let's see what you can do, adventurer!", Func.emote, false)
 				}, PostFunc.FinishBossChat, 
-				-1, 0, 1, DelayEffect.APPEAR)
+				-1, 0, 1, DelayEffect.APPEAR, null)
 		};
 		aStartingTile=TileName.room_collapse_new;
 		aLayout= new DungeonLayout(new TileLocation[]{
-				new TileLocation(Tile.get("sew"), -1, -2, "Zombie", null),
-				new TileLocation(Tile.get("sew"), 1, -2, "Skeleton", null),
+				new TileLocation(Tile.get("sew"), -1, -2, "Zombie", null, null),
+				new TileLocation(Tile.get("sew"), 1, -2, "Skeleton", null, null),
 		});
 		aObjectives = new Objective[]{
 				new Objective(ObjectiveType.Defeat, "Zombie", 1),
 				new Objective(ObjectiveType.Defeat, "Skeleton", 1),
 		};
 		aTurnLimit=-1;
-		aMonsters=MonsterFactory.stoneMonsters;
+		aMonsters=MonsterFactory.getMonsters(Region.Stone, 1);
 		addDungeon();
 
 		aName="In the thick of it";
@@ -450,23 +485,23 @@ public class Adventure {
 		aBoss="The Black Knight";
 		aBossName="The Black Knight";
 		aBossChats= new BossChat[]{
-				new BossChat(Trigger.blah, new BossSpeech[]{
+				new BossChat(Trigger.FirstTurn, new BossSpeech[]{
 						new BossSpeech("Try your luck with these!", Func.emote, false)
 				}, PostFunc.FinishBossChat, 
-				-1, 0, 1, DelayEffect.APPEAR)
+				-1, 0, 1, DelayEffect.APPEAR, null)
 		};
 		aStartingTile=TileName.room_collapse_new;
 		aLayout= new DungeonLayout(new TileLocation[]{
-				new TileLocation(TileName.room_semicircle_nes, -1, -2, "Bandito", null),
-				new TileLocation(TileName.room_semicircle_nsw, 1, -2, "Mummy", null),
-				new TileLocation(TileName.corr_rubble_e, -2, -1, "", TreasureType.MEGA_CHEST)
+				new TileLocation(TileName.room_semicircle_nes, -1, -2, "Bandito", null, null),
+				new TileLocation(TileName.room_semicircle_nsw, 1, -2, "Mummy", null, null),
+				new TileLocation(TileName.corr_rubble_e, -2, -1, "", TreasureType.MEGA_CHEST, null)
 		});
 		aObjectives = new Objective[]{
 				new Objective(ObjectiveType.Defeat, "Bandito", 1),
 				new Objective(ObjectiveType.Defeat, "Mummy", 1),
 		};
 		aTurnLimit=-1;
-		aMonsters=MonsterFactory.stoneMonsters;
+		aMonsters=MonsterFactory.getMonsters(Region.Stone, 2);
 		addDungeon();
 
 		aName="Dark duel";
@@ -476,53 +511,49 @@ public class Adventure {
 		aBoss="The Black Knight";
 		aBossName="The Black Knight";
 		aBossChats= new BossChat[]{
-				new BossChat(Trigger.blah, new BossSpeech[]{
+				new BossChat(Trigger.Entrance, new BossSpeech[]{
 						new BossSpeech("A worthy challenger at last!", Func.emote, false)
 				}, PostFunc.StartingRoom, 
-				-1, 0, 1, DelayEffect.APPEAR),
-				new BossChat(Trigger.blah, new BossSpeech[]{
+				-1, 0, 1, DelayEffect.APPEAR, null),
+				new BossChat(Trigger.FirstKill, new BossSpeech[]{
 						new BossSpeech("Good technique!", Func.emote, false)
 				}, PostFunc.FinishBossChat, 
-				1, -1, 1, DelayEffect.APPEAR),
-				new BossChat(Trigger.blah, new BossSpeech[]{
+				1, -1, 1, DelayEffect.APPEAR, null),
+				new BossChat(Trigger.SecondKill, new BossSpeech[]{
 						new BossSpeech("Impressive form!", Func.emote, false)
 				}, PostFunc.FinishBossChat, 
-				1, -1, 1, DelayEffect.APPEAR),
-				new BossChat(Trigger.blah, new BossSpeech[]{
+				2, -1, 1, DelayEffect.APPEAR, null),
+				new BossChat(Trigger.ThirdKill, new BossSpeech[]{
 						new BossSpeech("Getting some last minute practice in?", Func.emote, false)
 				}, PostFunc.FinishBossChat, 
-				4, -1, 1, DelayEffect.APPEAR),
-				new BossChat(Trigger.blah, new BossSpeech[]{
+				3, -1, 1, DelayEffect.APPEAR, null),
+				new BossChat(Trigger.NinthTurn, new BossSpeech[]{
 						new BossSpeech("Come on, I'm getting impatient!", Func.emote, false)
 				}, PostFunc.FinishBossChat, 
-				-1, 4, 1, DelayEffect.APPEAR),
-				new BossChat(Trigger.blah, new BossSpeech[]{
-						new BossSpeech("I'll give you one last turn to prepare", Func.emote, false)
-				}, PostFunc.FinishBossChat, 
-				-1, 9, 1, DelayEffect.APPEAR),
-				new BossChat(Trigger.coming_soon, new BossSpeech[]{
+				-1, 9, 1, DelayEffect.APPEAR, null),
+				new BossChat(Trigger.ComingToAttack, new BossSpeech[]{
 						new BossSpeech("Here I come, worthy challenger", Func.emote, false)
 				}, PostFunc.FireDemonMoveToBoard, 
-				-1, -1, 1, DelayEffect.APPEAR),
+				-1, -1, 1, DelayEffect.APPEAR, null),
 				new BossChat(Trigger.attacked_early, new BossSpeech[]{
 						new BossSpeech("You're eager, I like it!", Func.emote, false),
 				}, null, 
-				-1, -1, 1, null),
+				-1, -1, 1, null, null),
 		};
 		aStartingTile=TileName.room_collapse_new;
 		aLayout= new DungeonLayout(new TileLocation[]{
-				new TileLocation(TileName.room_collapse_esw, 0, -3, "BOSS", null),
-				new TileLocation(TileName.room_round_s, 2, -3, "", TreasureType.MEGA_CHEST),
-				new TileLocation(TileName.room_round_s, -2, -3, "", TreasureType.MEGA_CHEST)
+				new TileLocation(TileName.room_collapse_esw, 0, -3, "BOSS", null, null),
+				new TileLocation(TileName.room_round_s, 2, -3, "", TreasureType.MEGA_CHEST, null),
+				new TileLocation(TileName.room_round_s, -2, -3, "", TreasureType.MEGA_CHEST, null)
 		});
 		aObjectives = new Objective[]{
 				new Objective(ObjectiveType.Defeat, "BOSS", -1)
 		};
 		aTurnLimitActions= new TurnLimitAction[]{(
-				new TurnLimitAction(ActionType.BossChat, new Trigger[]{Trigger.coming_soon}, "the duel")
+				new TurnLimitAction(ActionType.BossChat, new String[]{"\""+Trigger.ComingToAttack.toString()+"\""}, "Duel")
 				)};
 		aTurnLimit=8;
-		aMonsters=MonsterFactory.stoneMonsters;
+		aMonsters=MonsterFactory.getMonsters(Region.Stone, 3);
 		addDungeon();
 		createAdventure();
 
@@ -542,29 +573,56 @@ public class Adventure {
 		aBossChats= new BossChat[]{};
 		aStartingTile=TileName.corr_crushed_ne;
 		aLayout= new DungeonLayout(new TileLocation[]{
-				new TileLocation(TileName.room_cavern_nw, 2, 0, "", TreasureType.MEGA_CHEST),
-				new TileLocation(TileName.room_steps_nesw, 2, -2, "Sorceress", null),
-				new TileLocation(TileName.room_steps_nesw, 3, -2, "Sorceress", null),
-				new TileLocation(TileName.room_steps_nesw, 4, -2, "Sorceress", null),
-				new TileLocation(TileName.room_steps_nesw, 2, -3, "Sorceress", null),
-				new TileLocation(TileName.room_steps_nesw, 4, -3, "Sorceress", null),
-				new TileLocation(TileName.room_steps_nesw, 3, -4, "", TreasureType.MEGA_CHEST),
-				new TileLocation(TileName.room_steps_nesw, 3, -3, "BOSS", null),
+				new TileLocation(TileName.room_steps_nesw, 3, -3, "BOSS", null, new TileDetails(true, true, true, 3, -3)),
+				new TileLocation(TileName.room_cavern_nw, 2, 0, "", TreasureType.MEGA_CHEST, new TileDetails(true, true, false, 0, 0)),
+				new TileLocation(TileName.room_steps_nesw, 2, -2, "Sorceress", null, new TileDetails(true, true, false, 0, 0)),
+				new TileLocation(TileName.room_steps_nesw, 3, -2, "Sorceress", null, new TileDetails(true, true, false, 0, 0)),
+				new TileLocation(TileName.room_steps_nesw, 4, -2, "Sorceress", null, new TileDetails(true, true, false, 0, 0)),
+				new TileLocation(TileName.room_steps_nesw, 2, -3, "Sorceress", null, new TileDetails(true, true, false, 0, 0)),
+				new TileLocation(TileName.room_steps_nesw, 4, -3, "Sorceress", null, new TileDetails(true, true, false, 0, 0)),
+				new TileLocation(TileName.room_steps_nesw, 3, -4, "", TreasureType.MEGA_CHEST, new TileDetails(true, true, false, 0, 0)),
+				
 		});
-		//I only burned down one orphanage
-
-		//HAHA NOW I AM SUMMONED IT WAS TWO ORPHANAGES!
+		
+//		half-baked trait/
+		
 		aBossChats= new BossChat[]{
-				new BossChat(Trigger.blah, new BossSpeech[]{
+				new BossChat(Trigger.Entrance, new BossSpeech[]{
 						new BossSpeech("Hey! I'm not that evil!", Func.emote, false)
 				}, PostFunc.StartingRoom, 
-				-1, 1, 1, DelayEffect.APPEAR)
+				-1, 0, 1, DelayEffect.APPEAR, null),
+				new BossChat(Trigger.FifthKill, new BossSpeech[]{
+						new BossSpeech("What're you doing!? You're the evil one!", Func.emote, false)
+				}, PostFunc.FinishBossChat, 
+				1, -1, 1, DelayEffect.APPEAR, null),
+				new BossChat(Trigger.ThirdKill, new BossSpeech[]{
+						new BossSpeech("Look it was just one orphanage, everyone makes mistakes!", Func.emote, false)
+				}, PostFunc.FinishBossChat, 
+				-1, 3, 1, DelayEffect.APPEAR, null),
+				new BossChat(Trigger.SixthTurn, new BossSpeech[]{
+						new BossSpeech("Come on, I deserve a second chance.", Func.emote, false)
+				}, PostFunc.FinishBossChat, 
+				-1, 6, 1, DelayEffect.APPEAR, null),
+				new BossChat(Trigger.attacked_early, new BossSpeech[]{
+						new BossSpeech("No fair, the ritual was almost complete!", Func.emote, false)
+				}, PostFunc.FinishBossChat, 
+				-1, -1, 1, DelayEffect.APPEAR, null),
+				new BossChat(Trigger.ComingToAttack, new BossSpeech[]{
+						new BossSpeech("Aha! Now the ritual is complete.", Func.emote, false),
+						new BossSpeech("And by the way it was actually TWO orphanages muahahaha", Func.emote, false)
+				}, PostFunc.FireDemonMoveToBoard, 
+				-1, -1, 1, DelayEffect.APPEAR, new PostEffect[]{
+						new PostEffect(Trait.Halfbaked, false)
+				})
 		};
 		aObjectives = new Objective[]{
 				new Objective(ObjectiveType.Defeat, "BOSS", -1),
 		};
-		aTurnLimit=-1;
-		aMonsters=MonsterFactory.stoneMonsters;
+		aTurnLimitActions= new TurnLimitAction[]{(
+				new TurnLimitAction(ActionType.BossChat, new String[]{"\""+Trigger.ComingToAttack+"\""}, "the ritual is complete")
+				)};
+		aTurnLimit=10;
+		aMonsters=MonsterFactory.getMonsters(Region.Stone, 3);
 		addDungeon();
 		createAdventure();
 
@@ -583,16 +641,16 @@ public class Adventure {
 		aBoss="Eye Beast";
 		aBossName="Eye Beast";
 		aBossChats= new BossChat[]{};
-		aStartingTile=TileName.corr_crushed_ne;
+		aStartingTile=Tile.get("n");
 		aLayout= new DungeonLayout(new TileLocation[]{
-				new TileLocation(TileName.room_round_s, 0, -4, "", null),
-				new TileLocation(TileName.room_steps_nesw, 0, -3, "Shade", null),
+				new TileLocation(TileName.room_round_s, 0, -4, "", null, null),
+				new TileLocation(TileName.room_steps_nesw, 0, -3, "Shade", null, null),
 		});
 		aObjectives = new Objective[]{
 				new Objective(ObjectiveType.Defeat, "Shade", 1),
 		};
 		aTurnLimit=-1;
-		aMonsters=MonsterFactory.stoneMonsters;
+		aMonsters=MonsterFactory.getMonsters(Region.Stone, 2);
 		addDungeon();
 
 		aName="Staring match";
@@ -602,18 +660,18 @@ public class Adventure {
 		aBoss="Eye Beast";
 		aBossName="Eye Beast";
 		aBossChats= new BossChat[]{
-				new BossChat(Trigger.blah, new BossSpeech[]{
+				new BossChat(Trigger.Entrance, new BossSpeech[]{
 						new BossSpeech("I seeeeee youuuu", Func.emote, false)
 				}, PostFunc.StartingRoom, 
-				-1, 0, 1, DelayEffect.APPEAR),
-				new BossChat(Trigger.blah, new BossSpeech[]{
+				-1, 0, 1, DelayEffect.APPEAR, null),
+				new BossChat(Trigger.ThirdTurn, new BossSpeech[]{
 						new BossSpeech("Tiiick tooock herooo", Func.emote, false)
 				}, PostFunc.FinishBossChat, 
-				-1, 3, 1, DelayEffect.APPEAR),
-				new BossChat(Trigger.blah, new BossSpeech[]{
+				-1, 3, 1, DelayEffect.APPEAR, null),
+				new BossChat(Trigger.SixthTurn, new BossSpeech[]{
 						new BossSpeech("Sssoooonnn", Func.emote, false)
 				}, PostFunc.FinishBossChat, 
-				-1, 6, 1, DelayEffect.APPEAR),
+				-1, 6, 1, DelayEffect.APPEAR, null),
 				new BossChat(Trigger.kill, new BossSpeech[]{
 						new BossSpeech("Out of tiiime", Func.emote, false),
 						new BossSpeech("*stare*", Func.emote, false),
@@ -622,23 +680,28 @@ public class Adventure {
 						new BossSpeech("Oops, uhh...", Func.emote, false),
 						new BossSpeech("Ah this should be it", Func.emote, false),
 						new BossSpeech("*STAAAARE*", Func.emote, false)
-				}, PostFunc.FireDemonMoveToBoard, 
-				-1, 6, 1, DelayEffect.APPEAR),
+				}, PostFunc.FinishBossChat, 
+				-1, -1, 1, DelayEffect.APPEAR, null),
+				new BossChat(Trigger.attacked_early, new BossSpeech[]{
+						new BossSpeech("Hey!", Func.emote, false)
+				}, PostFunc.FinishBossChat, 
+				-1, -1, 1, DelayEffect.APPEAR, null)
 		};
 		aStartingTile=TileName.room_collapse_new;
 		aLayout= new DungeonLayout(new TileLocation[]{
-				new TileLocation(TileName.room_round_s, 1, -3, "", TreasureType.Large_Chest),
-				new TileLocation(TileName.corr_rubble_e, -2, -1, "", TreasureType.MEGA_CHEST),
-				new TileLocation(TileName.room_torture_s, -1, -3, "BOSS", null)
+				new TileLocation(TileName.room_torture_s, -1, -3, "BOSS", null, new TileDetails(true, true, true, -1, -3)),
+				new TileLocation(TileName.room_round_s, 1, -3, "", TreasureType.Large_Chest, new TileDetails(false, true, false, 0, 0)),
+				new TileLocation(TileName.corr_rubble_e, -2, -1, "", TreasureType.MEGA_CHEST, new TileDetails(false, true, false, 0, 0)),
+				
 		});
 		aObjectives = new Objective[]{
 				new Objective(ObjectiveType.Defeat, "BOSS", -1)
 		};
 		aTurnLimit=10;
-		aTurnLimitActions= new TurnLimitAction[]{(
-				new TurnLimitAction(ActionType.BossChat, new Trigger[]{Trigger.kill}, "the duel")
-				)};
-		aMonsters=MonsterFactory.stoneMonsters;
+		aTurnLimitActions= new TurnLimitAction[]{
+				new TurnLimitAction(ActionType.BossChat, new String[]{"\""+Trigger.kill.toString()+"\""}, "Petrified"),
+				};
+		aMonsters=MonsterFactory.getMonsters(Region.Stone, 3);
 		addDungeon();
 		createAdventure();
 
@@ -668,11 +731,11 @@ public class Adventure {
 		aBossChats= new BossChat[]{};
 		aStartingTile=Tile.get("jn");
 		aLayout= new DungeonLayout(new TileLocation[]{
-				new TileLocation(Tile.get("js"), 0, -3, "", TreasureType.MEGA_CHEST),
-				new TileLocation(Tile.get("jsnew"), 0, -2, "Gargoyle", null),
+				new TileLocation(Tile.get("js"), 0, -3, "", TreasureType.Massive_Gem, null),
+				new TileLocation(Tile.get("jsnew"), 0, -2, "Gargoyle", null, null),
 		});
 		aObjectives = new Objective[]{
-				new Objective(ObjectiveType.Collect, "MEGA CHEST", 1),
+				new Objective(ObjectiveType.Collect, TreasureType.Massive_Gem.toString(), 1),
 		};
 		aTurnLimit=-1;
 		aMonsters=MonsterFactory.jungleMonsters;
@@ -689,13 +752,13 @@ public class Adventure {
 						new BossChat(Trigger.blah, new BossSpeech[]{
 								new BossSpeech("Szssszzzzssszch", Func.emote, false)
 						}, PostFunc.StartingRoom, 
-						-1, 1, 1, DelayEffect.APPEAR)
+						-1, 1, 1, DelayEffect.APPEAR, null)
 				};*/
 		aStartingTile=Tile.get("jnew");
 		aLayout= new DungeonLayout(new TileLocation[]{
-				new TileLocation(Tile.get("js"), -2, -1, "", TreasureType.MEGA_CHEST),
-				new TileLocation(Tile.get("jns"), 0, -2, "HARPY", null),
-				new TileLocation(Tile.get("js"), -1, -3, "", null)
+				new TileLocation(Tile.get("js"), -2, -1, "", TreasureType.MEGA_CHEST, null),
+				new TileLocation(Tile.get("jns"), 0, -2, "HARPY", null, null),
+				new TileLocation(Tile.get("js"), -1, -3, "", null, null)
 		});
 		aObjectives = new Objective[]{
 				new Objective(ObjectiveType.Defeat, "HARPY", 1)
@@ -723,11 +786,11 @@ public class Adventure {
 		aBossChats= new BossChat[]{};
 		aStartingTile=Tile.get("jnw");
 		aLayout= new DungeonLayout(new TileLocation[]{
-				new TileLocation(Tile.get("jne"), -2, 0, "Poisonous Snake", null),
-				new TileLocation(Tile.get("jes"), -1, -2, "Poisonous Snake", null),
-				new TileLocation(Tile.get("jnw"), 1, 2, "Poisonous Snake", null),
-				new TileLocation(Tile.get("js"), 0, -2, "Poisonous Snake", null),
-				new TileLocation(Tile.get("jsw"), -2, -2, "Poisonous Snake", null),
+				new TileLocation(Tile.get("jne"), -2, 0, "Poisonous Snake", null, null),
+				new TileLocation(Tile.get("jes"), -1, -2, "Poisonous Snake", null, null),
+				new TileLocation(Tile.get("jnw"), 1, 2, "Poisonous Snake", null, null),
+				new TileLocation(Tile.get("js"), 0, -2, "Poisonous Snake", null, null),
+				new TileLocation(Tile.get("jsw"), -2, -2, "Poisonous Snake", null, null),
 		});
 		aObjectives = new Objective[]{
 				new Objective(ObjectiveType.Defeat, "Poisonous Snake", 3),
@@ -746,14 +809,14 @@ public class Adventure {
 				new BossChat(Trigger.blah, new BossSpeech[]{
 						new BossSpeech("Something about snakes", Func.emote, false)
 				}, PostFunc.StartingRoom, 
-				-1, 1, 1, DelayEffect.APPEAR)
+				-1, 1, 1, DelayEffect.APPEAR, null)
 		};
 		aStartingTile=Tile.get("jnew");
 		aLayout= new DungeonLayout(new TileLocation[]{
-				new TileLocation(Tile.get("je"), -2, 0, "", TreasureType.MEGA_CHEST),
-				new TileLocation(Tile.get("js"), -2, -3, "", TreasureType.MEGA_CHEST),
-				new TileLocation(Tile.get("js"), 2, -3, "", TreasureType.MEGA_CHEST),
-				new TileLocation(Tile.get("jsew"), 0, -3, "BOSS", null)
+				new TileLocation(Tile.get("je"), -2, 0, "", TreasureType.MEGA_CHEST, null),
+				new TileLocation(Tile.get("js"), -2, -3, "", TreasureType.MEGA_CHEST, null),
+				new TileLocation(Tile.get("js"), 2, -3, "", TreasureType.MEGA_CHEST, null),
+				new TileLocation(Tile.get("jsew"), 0, -3, "BOSS", null, null)
 		});
 		aObjectives = new Objective[]{
 				new Objective(ObjectiveType.Defeat, "BOSS", -1)
@@ -781,13 +844,13 @@ public class Adventure {
 				new BossChat(Trigger.blah, new BossSpeech[]{
 						new BossSpeech("Something about ettins", Func.emote, false)
 				}, PostFunc.StartingRoom, 
-				-1, 1, 1, DelayEffect.APPEAR)
+				-1, 1, 1, DelayEffect.APPEAR, null)
 		};
 		aStartingTile=Tile.get("jne");
 		aLayout= new DungeonLayout(new TileLocation[]{
-				new TileLocation(Tile.get("jw"), 2, 0, "", TreasureType.MEGA_CHEST),
-				new TileLocation(Tile.get("js"), 0, -2, "", TreasureType.MEGA_CHEST),
-				new TileLocation(Tile.get("jnw"), 2, -2, "BOSS", null),
+				new TileLocation(Tile.get("jw"), 2, 0, "", TreasureType.MEGA_CHEST, null),
+				new TileLocation(Tile.get("js"), 0, -2, "", TreasureType.MEGA_CHEST, null),
+				new TileLocation(Tile.get("jnw"), 2, -2, "BOSS", null, null),
 		});
 		aObjectives = new Objective[]{
 				new Objective(ObjectiveType.Defeat, "BOSS", -1),
@@ -814,9 +877,9 @@ public class Adventure {
 		aBossChats= new BossChat[]{};
 		aStartingTile=Tile.get("jnwe");
 		aLayout= new DungeonLayout(new TileLocation[]{
-				new TileLocation(Tile.get("jne"), -2, 0, "Poisonous Snake", null),
-				new TileLocation(Tile.get("jwn"), 2, 0, "Plague Rat", null),
-				new TileLocation(Tile.get("js"), 1, 2, "Dire Scorpion", null),
+				new TileLocation(Tile.get("jne"), -2, 0, "Poisonous Snake", null, null),
+				new TileLocation(Tile.get("jwn"), 2, 0, "Plague Rat", null, null),
+				new TileLocation(Tile.get("js"), 1, 2, "Dire Scorpion", null, null),
 		});
 		aObjectives = new Objective[]{
 				new Objective(ObjectiveType.Defeat, "Plague Rat", 1),
@@ -837,15 +900,15 @@ public class Adventure {
 				new BossChat(Trigger.blah, new BossSpeech[]{
 						new BossSpeech("Something about chimeras", Func.emote, false)
 				}, PostFunc.StartingRoom, 
-				-1, 1, 1, DelayEffect.APPEAR)
+				-1, 1, 1, DelayEffect.APPEAR, null)
 		};
 		aStartingTile=Tile.get("js");
 		aLayout= new DungeonLayout(new TileLocation[]{
-				new TileLocation(Tile.get("jns"), -1, 0, "", null),
-				new TileLocation(Tile.get("jns"), -2, 0, "", null),
-				new TileLocation(Tile.get("jns"), -3, 0, "", null),
-				new TileLocation(Tile.get("jns"), -4, 0, "", null),
-				new TileLocation(Tile.get("jns"), -5, 0, "BOSS", TreasureType.MEGA_CHEST),
+				new TileLocation(Tile.get("jns"), -1, 0, "", null, null),
+				new TileLocation(Tile.get("jns"), -2, 0, "", null, null),
+				new TileLocation(Tile.get("jns"), -3, 0, "", null, null),
+				new TileLocation(Tile.get("jns"), -4, 0, "", null, null),
+				new TileLocation(Tile.get("jns"), -5, 0, "BOSS", TreasureType.MEGA_CHEST, null),
 		});
 		aObjectives = new Objective[]{
 				new Objective(ObjectiveType.Defeat, "BOSS", -1)
@@ -873,13 +936,13 @@ public class Adventure {
 				new BossChat(Trigger.blah, new BossSpeech[]{
 						new BossSpeech("Something about ogres", Func.emote, false)
 				}, PostFunc.StartingRoom, 
-				-1, 1, 1, DelayEffect.APPEAR)
+				-1, 1, 1, DelayEffect.APPEAR, null)
 		};
 		aStartingTile=Tile.get("jnwe");
 		aLayout= new DungeonLayout(new TileLocation[]{
-				new TileLocation(Tile.get("jw"), 2, -1, "", TreasureType.MEGA_CHEST),
-				new TileLocation(Tile.get("je"), -2, -1, "", TreasureType.MEGA_CHEST),
-				new TileLocation(Tile.get("sew"), 0, -3, "BOSS", null),
+				new TileLocation(Tile.get("jw"), 2, -1, "", TreasureType.MEGA_CHEST, null),
+				new TileLocation(Tile.get("je"), -2, -1, "", TreasureType.MEGA_CHEST, null),
+				new TileLocation(Tile.get("sew"), 0, -3, "BOSS", null, null),
 		});
 		aObjectives = new Objective[]{
 				new Objective(ObjectiveType.Defeat, "BOSS", -1),
@@ -907,11 +970,11 @@ public class Adventure {
 		aBossChats= new BossChat[]{};
 		aStartingTile=Tile.get("jew");
 		aLayout= new DungeonLayout(new TileLocation[]{
-				new TileLocation(Tile.get("jw"), 2, -1, "Jungle Warrior", TreasureType.MEGA_CHEST),
-				new TileLocation(Tile.get("jw"), -2, -1, "Pixies", TreasureType.MEGA_CHEST),
-				new TileLocation(Tile.get("jw"), 0, -2, "Man-Eating Plant", TreasureType.MEGA_CHEST),
-				new TileLocation(Tile.get("jw"), 0, -3, "Gargoyle", TreasureType.MEGA_CHEST),
-				new TileLocation(Tile.get("jnw"), 0, -3, "BOSS", null),
+				new TileLocation(Tile.get("jw"), 2, -1, "Jungle Warrior", TreasureType.MEGA_CHEST, null),
+				new TileLocation(Tile.get("jw"), -2, -1, "Pixies", TreasureType.MEGA_CHEST, null),
+				new TileLocation(Tile.get("jw"), 0, -2, "Man-Eating Plant", TreasureType.MEGA_CHEST, null),
+				new TileLocation(Tile.get("jw"), 0, -3, "Gargoyle", TreasureType.MEGA_CHEST, null),
+				new TileLocation(Tile.get("jnw"), 0, -3, "BOSS", null, null),
 		});
 		aObjectives = new Objective[]{
 				new Objective(ObjectiveType.Collect, "MEGA CHEST", -1),
@@ -930,20 +993,20 @@ public class Adventure {
 				new BossChat(Trigger.blah, new BossSpeech[]{
 						new BossSpeech("Something about dragons", Func.emote, false)
 				}, PostFunc.StartingRoom, 
-				-1, 1, 1, DelayEffect.APPEAR)
+				-1, 1, 1, DelayEffect.APPEAR, null)
 		};
 		aStartingTile=Tile.get("jnews");
 		aLayout= new DungeonLayout(new TileLocation[]{
-				new TileLocation(Tile.get("jw"), 6, 0, "BOSS", null),
-				new TileLocation(Tile.get("js"), 5, -1, "", TreasureType.GOLD_COIN),
-				new TileLocation(Tile.get("jwen"), 5, 0, "", null),
-				new TileLocation(Tile.get("jwe"), 4, 0, "", null),
-				new TileLocation(Tile.get("jn"), 3, 1, "", TreasureType.GOLD_COIN),
-				new TileLocation(Tile.get("jwes"), 3, 0, "", null),
-				new TileLocation(Tile.get("jwe"), 2, 0, "", null),
-				new TileLocation(Tile.get("js"), 5, -1, "", TreasureType.GOLD_COIN),
-				new TileLocation(Tile.get("jwen"), 1, 0, "", null),
-				new TileLocation(Tile.get("jnews"), -3, -1, "", TreasureType.MEGA_CHEST),
+				new TileLocation(Tile.get("jw"), 6, 0, "BOSS", null, null),
+				new TileLocation(Tile.get("js"), 5, -1, "", TreasureType.GOLD_COIN, null),
+				new TileLocation(Tile.get("jwen"), 5, 0, "", null, null),
+				new TileLocation(Tile.get("jwe"), 4, 0, "", null, null),
+				new TileLocation(Tile.get("jn"), 3, 1, "", TreasureType.GOLD_COIN, null),
+				new TileLocation(Tile.get("jwes"), 3, 0, "", null, null),
+				new TileLocation(Tile.get("jwe"), 2, 0, "", null, null),
+				new TileLocation(Tile.get("js"), 5, -1, "", TreasureType.GOLD_COIN, null),
+				new TileLocation(Tile.get("jwen"), 1, 0, "", null, null),
+				new TileLocation(Tile.get("jnews"), -3, -1, "", TreasureType.MEGA_CHEST, null),
 		});
 		aObjectives = new Objective[]{
 				new Objective(ObjectiveType.Defeat, "BOSS", -1),
@@ -968,7 +1031,7 @@ public class Adventure {
 				aBoss,aBossName, aBossChats,
 				aStartingTile, aStartingHand, aLayout,
 				aObjectives, aTurnLimit, aTurnLimitActions,
-				aMonsters,
+				aMonsters, aDrawRate,
 				aTutorial
 				));
 		resetDungeon();		
@@ -980,7 +1043,7 @@ public class Adventure {
 		aBoss=""; aBossName=""; aBossChats=null;
 		aStartingTile=null; aStartingHand=null; aLayout=null;
 		aObjectives=null; aTurnLimit=0; aTurnLimitActions=null;
-		aMonsters=null;
+		aMonsters=null; aDrawRate=new CardType[]{CardType.TILE, CardType.TILE, CardType.TILE, CardType.MONSTER, CardType.MONSTER, CardType.MONSTER, CardType.TREASURE};
 		aTutorial=false;
 	}
 

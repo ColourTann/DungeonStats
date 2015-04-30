@@ -1,12 +1,11 @@
 package dungeon;
 
-import dungeon.BossChat.Trigger;
 import json.Json;
 
 public class TurnLimitAction {
-	public enum ActionType{BossChat}
-	ActionType action; Trigger[] args; String description;
-	public TurnLimitAction(ActionType action, Trigger[] args, String description){
+	public enum ActionType{BossChat, HeroHealth, FailDungeon}
+	ActionType action; String[] args; String description;
+	public TurnLimitAction(ActionType action, String[] args, String description){
 		this.action=action; this.args=args; this.description=description;
 	}
 	public String toJson(){
@@ -14,7 +13,7 @@ public class TurnLimitAction {
 		output+=Json.addKey("action", action.toString(), true);
 		output+=Json.startArray("args");
 		for(int i=0;i<args.length;i++){
-			output+="\""+args[i].toString()+"\"";
+			output+=args[i];
 			if(i<args.length-1) output+=",";
 			output+="\n";
 		}

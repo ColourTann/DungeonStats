@@ -7,20 +7,21 @@ import dungeon.Tile.TileName;
 import fighter.monster.Monster;
 
 public class Dungeon {
+	public enum CardType{TILE, TREASURE, MONSTER}
 	public enum TerrainType{stone, jungle, mines}
 	String name, description; int reward;
 	TerrainType terrainType;
 	String boss, bossName; BossChat[] bossChats;
 	TileName startingTile; Hand startingHand; DungeonLayout layout;
 	Objective[] objectives; int turnLimit; TurnLimitAction[] turnLimitActions;
-	ArrayList<Monster> monsters;
+	ArrayList<Monster> monsters; CardType[] drawRate;
 	boolean tutorial;
 	public Dungeon(String name, String description, int reward,
 			TerrainType terrainType, 
 			String boss, String bossName, BossChat[] bossChat,
 			TileName startingTile, Hand startingHand, DungeonLayout layout,
 			Objective[] objectives, int turnLimit, TurnLimitAction[] turnLimitActions,
-			ArrayList<Monster> monsters,
+			ArrayList<Monster> monsters, CardType[] drawRate,
 			boolean tutorial
 			) {
 		this.name=name; this.description=description; this.reward=reward;
@@ -28,7 +29,7 @@ public class Dungeon {
 		this.boss=boss; this.bossName=bossName; this.bossChats=bossChat;
 		this.startingTile = startingTile; this.startingHand=startingHand; this.layout=layout;
 		this.objectives=objectives; this.turnLimit=turnLimit; this.turnLimitActions=turnLimitActions;
-		this.monsters=monsters;
+		this.monsters=monsters; this.drawRate=drawRate;
 		this.tutorial=tutorial;
 	}
 	
