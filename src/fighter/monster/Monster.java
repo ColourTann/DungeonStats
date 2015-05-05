@@ -46,8 +46,6 @@ public class Monster extends Fighter{
 		setupDeck();
 	}
 
-
-
 	private void setupDeck() {
 		for(Skill s:skills){
 			for(Card c:s.getCards(traits!=null&&traits.length>1&&traits[0]==Trait.Skilled)){
@@ -55,9 +53,6 @@ public class Monster extends Fighter{
 			}
 		}
 	}
-
-
-
 
 	public String toJson(){
 

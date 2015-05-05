@@ -1803,8 +1803,55 @@ public class CardFactory {
 			addCard(type);
 			
 			break;
+			
+			
+		case Crone:
+			cName="Crone's Wrath";
+			cStrength=4.5f;
+			cDescription = "4 magic damage [unblockable]";
+			cDescSize=22;
+			aActionType=ActionType.Attack;
+			aDamageType=DamageType.Magical;
+			aEffect=4;
+			aUnblockable=true;
+			addAction();
+			addCard(type);
+			break;
+		case HealAid:
+			cName="Phlogis Tonic";
+			cStrength=3f;
+			cDescription = "+3 hp";
+			cDescSize=22;
+			aActionType=ActionType.Heal;
+			aEffect=3;
+			addAction();
+			addCard(type);
+			break;
+		case Trickster:
+			cName="Trickster's Skill";
+			cStrength=2.5f;
+			cDescription = "2 physical damage [quick]";
+			cDescSize=22;
+			aActionType=ActionType.Attack;
+			aDamageType=DamageType.Magical;
+			aEffect=2;
+			aQuick=true;
+			addAction();
+			addCard(type);
+			break;
+		case Warrior:
+			cName="Warrior's Guidance";
+			cStrength=2f;
+			cDescription = "Block all";
+			cDescSize=22;
+			aActionType=ActionType.Block;
+			aDamageType=DamageType.Either;
+			addAction();
+			addCard(type);
+			break;
 		default:
 			break;
+
 		}
 	}
 

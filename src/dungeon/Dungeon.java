@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 import json.Json;
 import dungeon.Tile.TileName;
-import fighter.monster.Monster;
+import fighter.monster.Monster ;
 
 public class Dungeon {
 	public enum CardType{TILE, TREASURE, MONSTER}
@@ -42,6 +42,7 @@ public class Dungeon {
 		output += Json.addKey("Reward", reward, true);
 		output += Json.addKey("Boss", boss, true);
 		output += Json.addKey("BossName", bossName, true);
+		output += Json.addKey("BossDoubleMoveChance", 1, true);
 		output += Json.startList("BossChat");
 		for(int i=0;i<bossChats.length;i++){
 			BossChat bc = bossChats[i];

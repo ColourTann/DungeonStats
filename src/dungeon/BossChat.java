@@ -31,21 +31,8 @@ public class BossChat {
 	public String toJson(){
 		String output ="";
 		output += Json.startList(trigger.toString());
-		
-		
-		
-//		if(traitsToRemove!=null){
-//			result += Json.startArray("traits");
-//			for(int i=0;i<traitsToRemove.length;i++){
-//				result += Json.enclose();
-//				result += Json.addKey("trait", traitsToRemove[i].toString(), true);
-//				result += Json.addKey("value", false, false);
-//				result += Json.endEnclose(i<traitsToRemove.length-1);
-//			}			
-//			result += Json.endArray(true);
-//		}
 		if(postEffects!=null){
-			output+=Json.startArray("Traits");
+			output+=Json.startArray("traits");
 			for(int i=0;i<postEffects.length;i++){
 				output+=postEffects[i].toJson();
 				if(i==postEffects.length-1){
@@ -64,12 +51,13 @@ public class BossChat {
 			output += "true\n";
 			output += Json.endArray(true);
 		}
-		else if(trigger==Trigger.attacked_early){
-			output += Json.addKey("block", true, true);
-		}
 		else if(postFunc!=null){
 			output += Json.addKey("postFunc", postFunc.toString(), true);
 		}
+		if(trigger==Trigger.attacked_early){
+			output += Json.addKey("block", true, true);
+		}
+		
 
 		if(turns>-1) output += Json.addKey("turn", turns, true);
 		if(killed>-1) output += Json.addKey("killed", killed, true);

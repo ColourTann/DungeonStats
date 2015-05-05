@@ -35,7 +35,7 @@ public class Item {
 	int frameNumber;
 	int equipment;
 	EquipmentType type;
-	int equipFrame;
+	int equipFrame; int equipBackFrame;
 	int level;
 	UnlockedBy unlockedBy;
 	int unlockLevel;
@@ -53,7 +53,7 @@ public class Item {
 			int frameNumber, 
 			int equipment, 
 			EquipmentType type,
-			int equipFrame,
+			int equipFrame, int equipBackFrame,
 			int level,
 			UnlockedBy unlockedBy,
 			int unlockLevel,
@@ -71,7 +71,7 @@ public class Item {
 		this.frameNumber=frameNumber;
 		this.equipment=equipment;
 		this.type=type==null?EquipmentType.other:type;
-		this.equipFrame=equipFrame;
+		this.equipFrame=equipFrame; this.equipBackFrame= equipBackFrame;
 		this.level=level;
 		this.unlockedBy=unlockedBy;
 		this.unlockLevel=unlockLevel;
@@ -91,6 +91,7 @@ public class Item {
 	static int aEquipment;
 	static EquipmentType aType;
 	static int aEquipFrame;
+	static int aEquipBackFrame;
 	static int aLevel;
 	static UnlockedBy aUnlock;
 	static int aUnlockLevel;
@@ -593,6 +594,7 @@ public class Item {
 		aType=EquipmentType.armour;
 		aLevel=3;
 		aEquipFrame=46;
+		aEquipBackFrame=100;
 		aUnlockLevel=1;
 		aUnlock=UnlockedBy.Leather;
 		aRandomPool=1;
@@ -631,6 +633,7 @@ public class Item {
 		aType=EquipmentType.armour;
 		aLevel=2;
 		aEquipFrame=48;
+		aEquipBackFrame=99;
 		aUnlockLevel=0;
 		aRandomPool=1;
 		aSound=Sound.equip_club;
@@ -721,6 +724,7 @@ public class Item {
 		aType=EquipmentType.helmet;
 		aLevel=2;
 		aEquipFrame=54;
+		aEquipBackFrame=101;
 		aUnlockLevel=-5;
 		aRandomPool=0;
 		aSound=Sound.equip_winged_helm;
@@ -854,6 +858,7 @@ public class Item {
 		aType=EquipmentType.helmet;
 		aLevel=2;
 		aEquipFrame=64;
+		aEquipBackFrame=102;
 		aUnlockLevel=2;
 		aUnlock=UnlockedBy.Curio;
 		aRandomPool=1;
@@ -1326,7 +1331,7 @@ public class Item {
 				aFrameNumber, 
 				aEquipment, 
 				aType, 
-				aEquipFrame, 
+				aEquipFrame, aEquipBackFrame,
 				aLevel,
 				aUnlock==null?UnlockedBy.Base:aUnlock,
 				aUnlockLevel,
@@ -1347,7 +1352,7 @@ public class Item {
 		aDesc="";
 		aEquipment=-1;
 		aType=null;
-		aEquipFrame=-1;
+		aEquipFrame=-1; aEquipBackFrame=-1;
 		aLevel=-1;
 		aUnlock=null;
 		aUnlockLevel=-5;
@@ -1470,6 +1475,7 @@ public class Item {
 		if(equipment>0) output+="\"isEquipment\" : "+equipment+",\n";
 		if(type!=null) output+="\"equipType\" : \""+type+"\",\n";
 		if(equipFrame>=0) output+="\"equipFrame\" : "+equipFrame+",\n";
+		if(equipBackFrame>0) output += Json.addKey("equipBackFrame", equipBackFrame, true);
 		if(level>0) output+="\"hope\" : "+level+",\n";
 		if(glory>0) output+="\"glory\" : "+glory+",\n";
 		if(spawnCount>0) output+="\"spawnCount\" : "+spawnCount+",\n";

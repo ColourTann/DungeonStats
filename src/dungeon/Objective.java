@@ -3,7 +3,7 @@ package dungeon;
 import json.Json;
 
 public class Objective {
-	public enum ObjectiveType{Defeat, Collect}
+	public enum ObjectiveType{Defeat, Collect, Arrive}
 	ObjectiveType type; String target; int quantity;
 	public Objective(ObjectiveType type, String target, int quantity){
 		this.type=type;

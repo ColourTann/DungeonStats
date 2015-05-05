@@ -62,13 +62,16 @@ public class DungeonLayout {
 		boolean camCoords;
 		int x;
 		int y;
-		 public TileDetails(boolean explored, boolean ignoreCamera, boolean camCoords, int x, int y) {
+		boolean objective;
+		 public TileDetails(boolean explored, boolean ignoreCamera, boolean camCoords, int x, int y, boolean objective) {
+			 this.objective=objective;
 			 this.explored=explored;
 			 this.ignoreCamera=ignoreCamera;
 			 this.camCoords=camCoords; this.x=x; this.y=y;
 		}
 		 public String toJson(){
 			 String output="";
+			 if(objective) output += Json.addKey("Name", "objective", true);
 			 if(explored) output+=Json.addKey("explored", true, true);
 			 if(ignoreCamera) output+=Json.addKey("ignoreCamera", true, true);
 			 if(camCoords){
