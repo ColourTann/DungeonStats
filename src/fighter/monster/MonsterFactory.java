@@ -734,11 +734,11 @@ public class MonsterFactory {
 		description = "Likes to gorge on goujons";
 		frameNumber = 45;
 		level = 4;
-		health = 12;
+		health = 8;
 		randomPool=0;
 		sound = MSound.giant_bat;
 		traits = null;
-		skills = new Skill[]{Skill.get(SkillType.Death).asLevel(5)};
+		skills = new Skill[]{Skill.get(SkillType.Demonic).asLevel(2), Skill.get(SkillType.Venom).asLevel(3), Skill.get(SkillType.Ghoulish).asLevel(2)};
 		make();
 
 
@@ -747,11 +747,11 @@ public class MonsterFactory {
 		description = "You can't beat both of us!";
 		frameNumber = 24;
 		level = 4;
-		health = 14;
+		health = 11;
 		randomPool=0;
 		sound = MSound.giant_bat;
 		traits = null;
-		skills = new Skill[]{Skill.get(SkillType.Irritable).asLevel(5)};
+		skills = new Skill[]{Skill.get(SkillType.Rage).asLevel(3), Skill.get(SkillType.Demonic).asLevel(2), Skill.get(SkillType.Stupidity).asLevel(1)};
 		make();
 
 		name = "Chimera";
@@ -759,11 +759,29 @@ public class MonsterFactory {
 		description = "Used to have a squirrel's head too";
 		frameNumber = 52;
 		level = 4 ;
-		health = 12;
+		health = 10;
 		randomPool=0;
 		sound = MSound.giant_bat;
 		traits = null;
-		skills = new Skill[]{Skill.get(SkillType.Feral).asLevel(5)};
+		skills = new Skill[]{Skill.get(SkillType.Venom).asLevel(2), Skill.get(SkillType.Rage).asLevel(2), Skill.get(SkillType.Feral).asLevel(2)};
+		boardChat=new BoardChat[]{
+				new BoardChat(ChatType.Monster, new String[]{
+						"*MUNCH MUNCH*", 
+						}),
+
+				new BoardChat(ChatType.Treasure, new String[]{
+						"Craww!", 
+						}),
+
+				new BoardChat(ChatType.Hero, new String[]{
+						"*ROARRR!"}),
+
+				new BoardChat(ChatType.Random, new String[]{
+						"Bleat bleat!",
+						"Sssssss!",
+						"Roar!"
+						})
+		};
 		make();
 
 		name = "Ogre";
@@ -771,11 +789,11 @@ public class MonsterFactory {
 		description = "Impossible to push over";
 		frameNumber = 50;
 		level = 4 ;
-		health = 13;
+		health = 10;
 		randomPool=0;
 		sound = MSound.giant_bat;
-		traits = null;
-		skills = new Skill[]{Skill.get(SkillType.Irritable).asLevel(5), Skill.get(SkillType.Armed).asLevel(5)};
+		traits = new Trait[]{Trait.Sleepy};
+		skills = new Skill[]{Skill.get(SkillType.Rage).asLevel(2), Skill.get(SkillType.Burly).asLevel(3), Skill.get(SkillType.Stupidity).asLevel(2)};
 		make();
 
 		name = "Dragon";
@@ -783,14 +801,35 @@ public class MonsterFactory {
 		description = "Very grumpy in the morning";
 		frameNumber = 53;
 		level = 4;
-		health = 13;
+		health = 11;
 		randomPool=0;
 		sound = MSound.giant_bat;
 		traits = null;
-		skills = new Skill[]{Skill.get(SkillType.Flame).asLevel(5), Skill.get(SkillType.Feral).asLevel(5)};
+		skills = new Skill[]{Skill.get(SkillType.Flame).asLevel(5), Skill.get(SkillType.Demonic).asLevel(2), Skill.get(SkillType.Sorcery).asLevel(2)};
+		boardChat=new BoardChat[]{
+				new BoardChat(ChatType.Monster, new String[]{
+						"Tasty!", 
+						}),
+
+				new BoardChat(ChatType.Treasure, new String[]{
+						"Mine! All MINE!", 
+						}),
+
+				new BoardChat(ChatType.Hero, new String[]{
+						"Now I have you!"}),
+
+				new BoardChat(ChatType.Random, new String[]{
+						"Stupid adventurer",
+						"You think you can come here and steal me treasure?",
+						"You will pay for you greed!",
+						"I'm coming for you",
+						"You can't escape",
+						"I almost know my way around",
+						})
+		};
 		make();
 
-		//UNUSED MONSTERS//
+		//MISC MONSTERS//
 
 		name = "Sorceress";
 		plural= "Sorceresses";
@@ -804,6 +843,9 @@ public class MonsterFactory {
 		skills = new Skill[]{Skill.get(SkillType.Death).asLevel(3),Skill.get(SkillType.Flame).asLevel(4)};
 		make();
 
+		//UNUSED MONSTERS//
+		/*
+		
 		name = "Cyclops";
 		plural= "Cyclopseses";
 		description = "I spy with my little eye.. FOOD";
@@ -1022,7 +1064,7 @@ public class MonsterFactory {
 		skills = new Skill[]{Skill.get(SkillType.Death).asLevel(5)};
 		make();
 
-
+		*/
 
 
 
@@ -1086,7 +1128,7 @@ public class MonsterFactory {
 
 	public static void printAll(){
 		for(Monster m: monsters) {
-			if(m.randomPool==0)continue;
+			//if(m.randomPool==0)continue;
 			m.getStrength(true);
 		}
 	}
