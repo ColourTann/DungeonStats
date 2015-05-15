@@ -106,6 +106,36 @@ public class Adventure {
 		aAdvX=1;
 		aAdvY=0;
 
+		aName="Traversal test";
+		aDescription="Hope it 's fun";
+		aReward=100;
+		aTerrainType=TerrainType.stone;
+		aBoss="Rat King Cole";
+		aBossName="Rat King Cole";
+		aBossChats= new BossChat[]{
+		};
+		aStartingTile=Tile.get("udr");
+		aLayout= new DungeonLayout(new TileLocation[]{
+				new TileLocation(Tile.get("l"), 7, 0, "", null, new TileDetails(true, true, true, 5, 0, true)),
+				new TileLocation(Tile.get("udrl"), 6, 0, "Angry Bunny", null, new TileDetails(true, true, false, 0, 0, false)),
+				new TileLocation(Tile.get("lr"), 1, 1, "Gnoll", null, new TileDetails(true, true, false, 0, 0, false)),
+				new TileLocation(Tile.get("udlr"), 2, 0, "Ghost", null, new TileDetails(true, true, false, 0, 0, false)),
+				new TileLocation(Tile.get("ulr"), 3, 1, "Shade", null, new TileDetails(true, true, false, 0, 0, false)),
+				new TileLocation(Tile.get("lr"), 3, -1, "Sorceress", null, new TileDetails(true, true, false, 0, 0, false)),
+				new TileLocation(Tile.get("udlr"), 4, 0, "Bear Owl", null, new TileDetails(true, true, false, 0, 0, false)),
+				new TileLocation(Tile.get("dlr"), 5, -1, "Bandito", null, new TileDetails(true, true, false, 0, 0, false)),
+		});
+		aObjectives = new Objective[]{
+				new Objective(ObjectiveType.Arrive, "objective", -1)
+		};
+		aTurnLimit=10;
+		aTurnLimitActions= new TurnLimitAction[]{(
+				new TurnLimitAction(ActionType.FailDungeon, new String[]{}, "Trapped")
+				)};
+		aMonsters=MonsterFactory.stoneMonsters;
+		addDungeon();
+		createAdventure();
+		
 		aName="Squeak squeak";
 		aDescription="Everyone's gotta start somewhere";
 		aReward=100;
@@ -389,10 +419,10 @@ public class Adventure {
 		aBossChats= new BossChat[]{};
 		aStartingTile=TileName.room_collapse_esw;
 		aLayout= new DungeonLayout(new TileLocation[]{
-				new TileLocation(TileName.room_semicircle_nes, -2, 0, "Goblin", null, new TileDetails(false, true, true, -1, 1, false)),
-				new TileLocation(TileName.room_steps_nesw, -1, 1, "Goblin", null, new TileDetails(false, true, false, 0, 0, false)),
-				new TileLocation(TileName.room_collapse_new, 0, 2, "Goblin", null, new TileDetails(false, true, false, 0, 0, false)),
-				new TileLocation(TileName.corr_crushed_ne, -2, 2, "Goblin", null, new TileDetails(false, true, false, 0, 0, false)),
+				new TileLocation(TileName.room_semicircle_nes, -2, 0, "Goblin", null, new TileDetails(true, true, true, -1, 1, false)),
+				new TileLocation(TileName.room_steps_nesw, -1, 1, "Goblin", null, new TileDetails(true, true, false, 0, 0, false)),
+				new TileLocation(TileName.room_collapse_new, 0, 2, "Goblin", null, new TileDetails(true, true, false, 0, 0, false)),
+				new TileLocation(TileName.corr_crushed_ne, -2, 2, "Goblin", null, new TileDetails(true, true, false, 0, 0, false)),
 		});
 		aObjectives = new Objective[]{
 				new Objective(ObjectiveType.Defeat, "Goblin", 3),
@@ -430,9 +460,9 @@ public class Adventure {
 		};
 		aStartingTile=TileName.room_collapse_new;
 		aLayout= new DungeonLayout(new TileLocation[]{
-				new TileLocation(TileName.room_semicircle_nes, -1, -2, "Goblin", null, new TileDetails(false, true, true, 0, -3, false)),
-				new TileLocation(TileName.room_semicircle_nsw, 1, -2, "Goblin", null, new TileDetails(false, true, false, 0, 0, false)),
-				new TileLocation(TileName.room_semicircle_esw, 0, -3, "BOSS", null, new TileDetails(false, true, false, 0, 0, false))
+				new TileLocation(TileName.room_semicircle_nes, -1, -2, "Goblin", null, new TileDetails(true, true, true, 0, -3, false)),
+				new TileLocation(TileName.room_semicircle_nsw, 1, -2, "Goblin", null, new TileDetails(true, true, false, 0, 0, false)),
+				new TileLocation(TileName.room_semicircle_esw, 0, -3, "BOSS", null, new TileDetails(true, true, false, 0, 0, false))
 		});
 		aObjectives = new Objective[]{
 				new Objective(ObjectiveType.Defeat, "BOSS", -1)
@@ -643,7 +673,7 @@ public class Adventure {
 		aBossChats= new BossChat[]{};
 		aStartingTile=Tile.get("n");
 		aLayout= new DungeonLayout(new TileLocation[]{
-				new TileLocation(TileName.room_round_s, 0, -4, "", null, new TileDetails(false, false, false, 0, 0, true)),
+				new TileLocation(TileName.room_round_s, 0, -4, "", null, new TileDetails(true, false, false, 0, 0, true)),
 				new TileLocation(TileName.room_steps_nesw, 0, -3, "Shade", null, null),
 		});
 		aObjectives = new Objective[]{
@@ -690,8 +720,8 @@ public class Adventure {
 		aStartingTile=TileName.room_collapse_new;
 		aLayout= new DungeonLayout(new TileLocation[]{
 				new TileLocation(TileName.room_torture_s, -1, -3, "BOSS", null, new TileDetails(true, true, true, -1, -3, false)),
-				new TileLocation(TileName.room_round_s, 1, -3, "", TreasureType.Large_Chest, new TileDetails(false, true, false, 0, 0, false)),
-				new TileLocation(TileName.corr_rubble_e, -2, -1, "", TreasureType.MEGA_CHEST, new TileDetails(false, true, false, 0, 0, false)),
+				new TileLocation(TileName.room_round_s, 1, -3, "", TreasureType.Large_Chest, new TileDetails(true, true, false, 0, 0, false)),
+				new TileLocation(TileName.corr_rubble_e, -2, -1, "", TreasureType.MEGA_CHEST, new TileDetails(true, true, false, 0, 0, false)),
 				
 		});
 		aObjectives = new Objective[]{
@@ -750,7 +780,7 @@ public class Adventure {
 		aBossChats= new BossChat[]{};
 		aStartingTile=Tile.get("jnew");
 		aLayout= new DungeonLayout(new TileLocation[]{
-				new TileLocation(Tile.get("js"), -1, -3, "", null, new TileDetails(false, false, false, 0, 0, true)),
+				new TileLocation(Tile.get("js"), -1, -3, "", null, new TileDetails(true, false, false, 0, 0, true)),
 				new TileLocation(Tile.get("judlr"), -1, -2, "Owl Bear", null, new TileDetails(true, false, false, 0, 0, false)),
 				new TileLocation(Tile.get("jdr"), -2, -1, "", TreasureType.MEGA_CHEST, null),
 		});
@@ -787,11 +817,11 @@ public class Adventure {
 		};
 		aStartingTile=Tile.get("jnw");
 		aLayout= new DungeonLayout(new TileLocation[]{
-				new TileLocation(Tile.get("jur"), -2, 0, "Poisonous Snake", null, new TileDetails(false, true, true, 0, -2, false)),
-				new TileLocation(Tile.get("jlr"), -1, -2, "Poisonous Snake", null, new TileDetails(false, true, false, 0, 0, false)),
-				new TileLocation(Tile.get("jd"), 1, -2, "Poisonous Snake", null, new TileDetails(false, true, false, 0, 0, false)),
-				new TileLocation(Tile.get("jdl"), 0, -2, "Poisonous Snake", null, new TileDetails(false, true, false, 0, 0, false)),
-				new TileLocation(Tile.get("jrd"), -2, -2, "Poisonous Snake", null, new TileDetails(false, true, false, 0, 0, false)),
+				new TileLocation(Tile.get("jur"), -2, 0, "Poisonous Snake", null, new TileDetails(true, true, true, 0, -2, false)),
+				new TileLocation(Tile.get("jlr"), -1, -2, "Poisonous Snake", null, new TileDetails(true, true, false, 0, 0, false)),
+				new TileLocation(Tile.get("jd"), 1, -2, "Poisonous Snake", null, new TileDetails(true, true, false, 0, 0, false)),
+				new TileLocation(Tile.get("jdl"), 0, -2, "Poisonous Snake", null, new TileDetails(true, true, false, 0, 0, false)),
+				new TileLocation(Tile.get("jrd"), -2, -2, "Poisonous Snake", null, new TileDetails(true, true, false, 0, 0, false)),
 		});
 		aObjectives = new Objective[]{
 				new Objective(ObjectiveType.Defeat, "Poisonous Snake", 3),
@@ -831,9 +861,9 @@ public class Adventure {
 		aStartingTile=Tile.get("jnew");
 		aLayout= new DungeonLayout(new TileLocation[]{
 				new TileLocation(Tile.get("jsew"), 0, -3, "BOSS", null, new TileDetails(true, true, true, 0, -3, false)),
-				new TileLocation(Tile.get("je"), -2, 0, "", TreasureType.MEGA_CHEST, new TileDetails(false, true, false, 0, 0, false)),
-				new TileLocation(Tile.get("jdr"), -2, -3, "", TreasureType.MEGA_CHEST, new TileDetails(false, true, false, 0, 0, false)),
-				new TileLocation(Tile.get("jdl"), 2, -3, "", TreasureType.MEGA_CHEST, new TileDetails(false, true, false, 0, 0, false)),
+				new TileLocation(Tile.get("je"), -2, 0, "", TreasureType.MEGA_CHEST, new TileDetails(true, true, false, 0, 0, false)),
+				new TileLocation(Tile.get("jdr"), -2, -3, "", TreasureType.MEGA_CHEST, new TileDetails(true, true, false, 0, 0, false)),
+				new TileLocation(Tile.get("jdl"), 2, -3, "", TreasureType.MEGA_CHEST, new TileDetails(true, true, false, 0, 0, false)),
 		});
 		aObjectives = new Objective[]{
 				new Objective(ObjectiveType.Defeat, "BOSS", -1)

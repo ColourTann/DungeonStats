@@ -566,7 +566,7 @@ public class MonsterFactory {
 		randomPool=1;
 		sound = MSound.giant_bat;
 		traits = null;
-		skills = new Skill[]{Skill.get(SkillType.Martial).asLevel(2), Skill.get(SkillType.Nature).asLevel(3)};
+		skills = new Skill[]{Skill.get(SkillType.Burly).asLevel(2), Skill.get(SkillType.Nature).asLevel(3)};
 		make();
 
 		name = "Poisonous Snake";
@@ -619,7 +619,7 @@ public class MonsterFactory {
 		randomPool=1;
 		sound = MSound.giant_bat;
 		traits = null;
-		skills = new Skill[]{Skill.get(SkillType.Nature).asLevel(3), Skill.get(SkillType.Martial).asLevel(2)};
+		skills = new Skill[]{Skill.get(SkillType.Nature).asLevel(3), Skill.get(SkillType.Burly).asLevel(2)};
 		make();
 
 		name = "Harpy";
@@ -843,6 +843,19 @@ public class MonsterFactory {
 		skills = new Skill[]{Skill.get(SkillType.Death).asLevel(3),Skill.get(SkillType.Flame).asLevel(4)};
 		make();
 
+		
+		name = "Angry Bunny";
+		plural= "Angry Bunnies";
+		description = "Vicious!";
+		frameNumber = 44;
+		level = 4 ;
+		health = 8;
+		randomPool=0;
+		sound = MSound.giant_bat;
+		traits = null;
+		skills = new Skill[]{Skill.get(SkillType.Feral).asLevel(5)};
+		make();
+		
 		//UNUSED MONSTERS//
 		/*
 		
