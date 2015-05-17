@@ -10,7 +10,7 @@ public abstract class Fighter {
 	protected String name;
 	int hp;
 	public enum Trait{
-		Tenacious, Brittle, Meaty, Respite, Fury, Burn, Skilled, Damp, Blessed, Covetous, ArcaneBlade, Ranged, Ferocious, Bulwark, Accurate, Wise, Spikey, Deathwish, Halfbaked, Sleepy;
+		Tenacious, Brittle, Meaty, Respite, Fury, Burn, Skilled, Damp, Blessed, Covetous, ArcaneBlade, Ranged, Ferocious, Bulwark, Accurate, Wise, Spikey, Deathwish, Halfbaked, Sleepy, SpellSword, Retribution, Cunning, VitaSuit;
 
 		public String toJson() {
 			return "\""+this+"\"";
@@ -70,6 +70,38 @@ public abstract class Fighter {
 					break;
 				case Skilled:
 					
+					break;
+				case Accurate:
+					break;
+				case ArcaneBlade:
+					break;
+				case Bulwark:
+					break;
+				case Cunning:
+					bonusHP+=.5f;
+					break;
+				case Damp:
+					break;
+				case Ferocious:
+					break;
+				case Halfbaked:
+					break;
+				case Retribution:
+					bonusHP+=2.5f;
+					break;
+				case Sleepy:
+					break;
+				case SpellSword:
+					bonusHP+=1;
+					break;
+				case Spikey:
+					break;
+				case VitaSuit:
+					bonusHP+=1;
+					break;
+				case Wise:
+					break;
+				default:
 					break;
 				}
 			}

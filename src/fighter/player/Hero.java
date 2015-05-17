@@ -12,11 +12,13 @@ import fighter.Fighter.Trait;
 
 public class Hero extends Fighter{
 	int frame;
-	public Hero(String name, int health, Trait[] traits, List<Card> cards, int aFrame){
+	HeroChat[] chats;
+	public Hero(String name, int health, Trait[] traits, List<Card> cards, int aFrame, HeroChat[] chats){
 		super(name, health, traits);
 		this.cards=cards;
 		this.frame=aFrame;
 		this.traits=traits;
+		this.chats=chats;
 	}
 	
 	public String toJson(){
@@ -46,7 +48,17 @@ public class Hero extends Fighter{
 			}
 			output+=Json.endArray(true);
 		}
-
+		if(chats!=null){
+			output+=Json.startList("Chat");
+			for(int i=0;i<chats.length;i++){
+				HeroChat ch = chats[i];
+				output+=ch.toJson();
+				if(i<chats.length-1){
+					output=Json.addComma(output);
+				}
+			}
+			output+=Json.endList(true);
+		}
 		output+="}";
 		output=Json.removeComma(output);
 		output+=Json.endEnclose(true);

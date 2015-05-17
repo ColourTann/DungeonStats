@@ -18,7 +18,7 @@ public class MonsterFactory {
 
 	public static ArrayList<Monster> monsters= new ArrayList<Monster>();
 
-	public enum Region{Stone, Jungle}
+	public enum Region{Stone, Jungle, Mines}
 
 	public enum MSound{
 		giant_bat, goblin, scary_spider, gray_ooze, ghost, skeleton, mummy, rubber_ducky
@@ -829,6 +829,69 @@ public class MonsterFactory {
 		};
 		make();
 
+		//ZONE 3//
+		/*
+		 * 	Miners, slime, goblin, fire imp, dwarvern minibot, rust monster,
+			worm, zombie, ghost, skeleton, mummy, dwarvern sentry
+			cave troll, golem, minotaur,  earth elemental, genii, gelaticube
+		 */
+		
+		name = "Miner";
+		plural= "Miners";
+		region=Region.Mines;
+		description = "";
+		frameNumber = 58;
+		level = 1;
+		health = 7;
+		randomPool=1;
+		sound = MSound.giant_bat;
+		traits = new Trait[]{Trait.Fury};
+		skills = new Skill[]{Skill.get(SkillType.Burly).asLevel(3), Skill.get(SkillType.Rage).asLevel(2)};
+		make();
+		
+		name = "Infected Slime";
+		plural= "Infected Slimes";
+		region=Region.Mines;
+		description = "";
+		frameNumber = 3;
+		level = 1;
+		health = 7;
+		randomPool=1;
+		sound = MSound.giant_bat;
+		traits = new Trait[]{Trait.Tenacious};
+		skills = new Skill[]{Skill.get(SkillType.Ghoulish).asLevel(2), Skill.get(SkillType.Venom).asLevel(2)};
+		make();
+		
+		name = "Albino Goblin";
+		plural= "Albino Goblin";
+		region=Region.Mines;
+		description = "";
+		frameNumber = 15;
+		level = 1;
+		health = 8;
+		randomPool=1;
+		sound = MSound.giant_bat;
+		traits = new Trait[]{Trait.Tenacious};
+		skills = new Skill[]{Skill.get(SkillType.Rage).asLevel(2), Skill.get(SkillType.Ghoulish).asLevel(2)};
+		make();
+		
+		name = "Sizzling Imp";
+		plural= "Sizzling Imps";
+		region=Region.Mines;
+		species= Species.demonic;
+		description = "You may feel a burning sensation.";
+		frameNumber = 40;
+		level = 1;
+		health = 8;
+		randomPool=1;
+		sound = MSound.goblin;
+		traits = null;
+		skills = new Skill[]{Skill.get(SkillType.Demonic).asLevel(2), Skill.get(SkillType.Sorcery).asLevel(2)};
+		make();
+		
+		
+		
+		
 		//MISC MONSTERS//
 
 		name = "Sorceress";

@@ -407,8 +407,7 @@ public class CardFactory {
 			cStrength=3f;
 			cDescription = "Cannot go below 1hp this turn or next";
 			cDescSize=24;
-			aActionType=ActionType.Effect;
-			aActionType=ActionType.StayAboveOne;
+			aActionType=ActionType.Withstand;
 			aEffect=2;
 			addAction();
 			addCard(type);
@@ -521,8 +520,7 @@ public class CardFactory {
 			aActionType=ActionType.Attack;
 			aDamageType=DamageType.Magical;
 			aEffect=1;
-			raType=ActionType.Effect;
-			raEffectType=ResultActionEffectType.Copy;
+			raType=ActionType.Copy;
 			raEffect=1;
 			addResultAction();
 			addAction();
@@ -535,9 +533,8 @@ public class CardFactory {
 			aActionType=ActionType.Attack;
 			aDamageType=DamageType.Magical;
 			aEffect=1;
-			raType=ActionType.Effect;
-			raEffectType=ResultActionEffectType.Scry;
-			raEffect=1;
+			raType=ActionType.Scry;
+			raEffect=2;
 			addResultAction();
 			addAction();
 			addCard(type);
@@ -769,40 +766,40 @@ public class CardFactory {
 		case Most_Holy_Knight_Templar:
 			
 			cName= "Holy Fervor";
-			cStrength=2.7f;
-			cDescription = "1 physical damage: +2 hp";
+			cStrength=1.7f;
+			cDescription = "1 physical damage: +1 hp";
 			cDescSize=22;
 			aActionType=ActionType.Attack;
 			aDamageType=DamageType.Physical;
 			aEffect=1;
 			raType=ActionType.Heal;
-			raEffect=2;
+			raEffect=1;
 			addResultAction();
 			addAction();
 			addCard(type);
 			
 			cName= "Holy Fervor";
-			cStrength=2.7f;
-			cDescription = "1 physical damage: +2 hp";
+			cStrength=1.7f;
+			cDescription = "1 physical damage: +1 hp";
 			cDescSize=22;
 			aActionType=ActionType.Attack;
 			aDamageType=DamageType.Physical;
 			aEffect=1;
 			raType=ActionType.Heal;
-			raEffect=2;
+			raEffect=1;
 			addResultAction();
 			addAction();
 			addCard(type);
 			
 			cName= "Absolution";
-			cStrength=2.7f;
-			cDescription = "1 magic damage: +2 hp";
+			cStrength=1.7f;
+			cDescription = "1 magic damage: +1 hp";
 			cDescSize=22;
 			aActionType=ActionType.Attack;
 			aDamageType=DamageType.Magical;
 			aEffect=1;
 			raType=ActionType.Heal;
-			raEffect=2;
+			raEffect=1;
 			addResultAction();
 			addAction();
 			addCard(type);
@@ -927,26 +924,26 @@ public class CardFactory {
 			addCard(type);
 			
 			cName= "Card Counting";
-			cStrength=2f;
+			cStrength=3f;
 			cDescription = "2 magic damage: look at top 3 enemy cards, discard 1";
 			cDescSize=22;
 			aActionType=ActionType.Attack;
 			aDamageType=DamageType.Magical;
 			aEffect=2;
-			raEffectType=ResultActionEffectType.Scry;
+			raType=ActionType.Scry;
 			raEffect=3;
 			addResultAction();
 			addAction();
 			addCard(type);
 			
 			cName= "Card Counting";
-			cStrength=2f;
+			cStrength=3f;
 			cDescription = "2 magic damage: look at top 3 enemy cards, discard 1";
 			cDescSize=22;
 			aActionType=ActionType.Attack;
 			aDamageType=DamageType.Magical;
 			aEffect=2;
-			raEffectType=ResultActionEffectType.Scry;
+			raType=ActionType.Scry;
 			raEffect=3;
 			addResultAction();
 			addAction();
@@ -956,12 +953,19 @@ public class CardFactory {
 			cStrength=3f;
 			cDescription = "Block 1, +1 card, +1 hp, +1 next magic damage";
 			cDescSize=22;
-			aActionType=ActionType.Attack;
+			aActionType=ActionType.Block;
+			aDamageType=DamageType.Either;
+			aEffect=1;
+			addAction();
+			aActionType=ActionType.Draw;
+			aEffect=1;
+			addAction();
+			aActionType=ActionType.Heal;
+			aEffect=1;
+			addAction();
+			aActionType=ActionType.NextAttack;
 			aDamageType=DamageType.Magical;
-			aEffect=2;
-			raEffectType=ResultActionEffectType.Scry;
-			raEffect=3;
-			addResultAction();
+			aEffect=1;
 			addAction();
 			addCard(type);
 			
@@ -972,7 +976,7 @@ public class CardFactory {
 			aActionType=ActionType.Attack;
 			aDamageType=DamageType.Magical;
 			aEffect=2;
-			raEffectType=ResultActionEffectType.Stupidity;
+			raType=ActionType.Stupidity;
 			raEffect=1;
 			addResultAction();
 			addAction();
@@ -988,8 +992,6 @@ public class CardFactory {
 			aUnblockable=true;
 			addAction();
 			addCard(type);
-			
-			
 			
 			break;
 			
@@ -1063,8 +1065,7 @@ public class CardFactory {
 			aActionType=ActionType.Attack;
 			aDamageType=DamageType.Magical;
 			aEffect=2;
-			raType=ActionType.Effect;
-			raEffectType=ResultActionEffectType.Copy;
+			raType=ActionType.Copy;
 			raEffect=1;
 			addResultAction();
 			addAction();
@@ -2468,7 +2469,7 @@ public class CardFactory {
 		}
 
 		public enum ActionType{
-			Attack, Heal, Block, Discard, TakeDamage, Draw, NextAttack, Effect, SetHP, StayAboveOne
+			Attack, Heal, Block, Discard, TakeDamage, Draw, NextAttack, Effect, SetHP, Withstand, Copy, Scry, Stupidity
 		}
 		public enum DamageType{
 			Physical("Physical"), Magical("Magical"), Either("Magical,Physical");
@@ -2482,8 +2483,15 @@ public class CardFactory {
 		}
 		public String toJson() {
 			String output="";
-
-			if(aType!=null)output+=Json.addKey("type", aType.toString(), true);
+			
+			if(aType==ActionType.Withstand){
+				output+=Json.addKey("type", "Effect", true);
+				output+=Json.addKey("effectType", "Trait", true);
+				output+=Json.addKey("effectTrait", ActionType.Withstand.toString(), true);
+				output+=Json.addKey("target", "self", true);
+			}
+			
+			else if(aType!=null)output+=Json.addKey("type", aType.toString(), true);
 			if(dType!=null)output+=Json.addKey("damageType", dType.toString(), true);
 			if(effect>0){
 				switch(aType){
@@ -2500,6 +2508,10 @@ public class CardFactory {
 				case SetHP:
 					output+=Json.addKey("quantity", effect, true);
 					break;	
+				case Withstand:
+					output+=Json.addKey("rounds", effect, true);
+					break;
+				
 				}
 			}
 			if(effectCondition!=null) output+=Json.addKey("quantityCondition", effectCondition.toString(), true);
@@ -2530,7 +2542,7 @@ public class CardFactory {
 		DamageType damageType;
 		int rounds;
 		public enum ResultActionEffectType{
-			Fire, StopPlayerFromPlayingPhysical, StopPlayerFromPlayingMagical, StopPlayerFromPlayingBlocks, Conceal, Copy, Scry, Stupidity
+			Fire, StopPlayerFromPlayingPhysical, StopPlayerFromPlayingMagical, StopPlayerFromPlayingBlocks, Conceal, Stupidity
 		}
 		public ResultAction(ActionType type, ResultActionEffectType effectType, DamageType raDamageType, int actionEffect, int raRounds){
 			this.type=type;
@@ -2543,36 +2555,20 @@ public class CardFactory {
 		public String toJson(){
 			String output="";
 			output+=Json.enclose();
-			output+=Json.addKey("type", type.toString(), true);
+			if(type==ActionType.Scry){
+				output+=Json.addKey("type", "Discard", true);
+			}
+			else output+=Json.addKey("type", type.toString(), true);
 			if(effectType!=null)output+=Json.addKey("effectType", effectType.toString(), true);
 			if(damageType!=null)output+=Json.addKey("damageType", damageType.toString(), true);
 			if(rounds!=0)output+=Json.addKey("rounds", rounds, true);
-			if(actionEffect!=0){
-				switch(type){
-				case Attack:
-				case Block:
-				case NextAttack:
-				case TakeDamage:
-					output+=Json.addKey("damage", actionEffect, true);
-					break;
-				case Discard:
-				case Draw:
-				case Heal:
-					output+=Json.addKey("quantity", actionEffect, true);
-					break;
-				}
-			}
 			
 			if(type==ActionType.Effect){
 				switch(effectType){
 				case Conceal:
 					break;
-				case Copy:
-					break;
 				case Fire:
 					output+=Json.addKey("damage", actionEffect, true);
-					break;
-				case Scry:
 					break;
 				case StopPlayerFromPlayingBlocks:
 					break;
@@ -2585,8 +2581,34 @@ public class CardFactory {
 				
 				}
 			}
+			if(actionEffect!=0){
+				switch(type){
+				case Attack:
+				case Block:
+				case NextAttack:
+				case TakeDamage:
+					output+=Json.addKey("damage", actionEffect, true);
+					break;
+				case Scry:
+					output+=Json.addKey("target", "Deck", true);
+					output+=Json.addKey("quantity", 1, true);
+					output+=Json.addKey("range", actionEffect, true);
+					break;
+				case Copy:
+					output+=Json.addKey("target", "Deck", true);
+					output+=Json.addKey("quantity", actionEffect, true);
+					break;
+				case Discard:
+				case Draw:
+				case Heal:
+				case Stupidity:
+					output+=Json.addKey("quantity", actionEffect, true);
+					break;
+				}
+			}
 			
-			output+=Json.addKey("quantity", actionEffect, true);
+			
+			
 			output=Json.removeComma(output);
 			output+=Json.endEnclose(true);
 			return output;
