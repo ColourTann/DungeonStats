@@ -889,9 +889,31 @@ public class MonsterFactory {
 		skills = new Skill[]{Skill.get(SkillType.Demonic).asLevel(2), Skill.get(SkillType.Sorcery).asLevel(2)};
 		make();
 		
+		name = "Rust Monster";
+		plural= "Rust Monsters";
+		region=Region.Mines;
+		description = "Rusts the iron right out of your blood!";
+		frameNumber = 33;
+		level = 1;
+		health = 8;
+		randomPool=0;
+		sound = MSound.giant_bat;
+		traits = null;
+		skills = new Skill[]{Skill.get(SkillType.Venom).asLevel(3), Skill.get(SkillType.Burly).asLevel(1)};
+		make();
 		
-		
-		
+		name = "Dwarvern Minibot";
+		plural= "Dwarvern Minibots";
+		region=Region.Mines;
+		description = "Rusts the iron right out of your blood!";
+		frameNumber = 70;
+		level = 1;
+		health = 10;
+		randomPool=0;
+		sound = MSound.giant_bat;
+		traits = new Trait[]{Trait.Meaty};
+		skills = new Skill[]{Skill.get(SkillType.Venom).asLevel(3), Skill.get(SkillType.Burly).asLevel(1)};
+		make();
 		//MISC MONSTERS//
 
 		name = "Sorceress";
@@ -918,6 +940,7 @@ public class MonsterFactory {
 		traits = null;
 		skills = new Skill[]{Skill.get(SkillType.Feral).asLevel(5)};
 		make();
+		
 		
 		//UNUSED MONSTERS//
 		/*
