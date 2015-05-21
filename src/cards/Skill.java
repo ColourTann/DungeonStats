@@ -16,7 +16,7 @@ public class Skill {
 		Feral, Spooky, Irritable, Stupidity, Armed, Flame, Nature, Death, 
 		Rage, Demonic, Sorcery, Venom, Ghoulish, Burly,
 		
-		Chump, Henchman, Cat_Burglar, Apprentice, Mime, Ranger, Barbarian, Alchemist, Shapeshifter, Troubador, Most_Holy_Knight_Templar, Cartomancer, Mathemagician, Artificer,  
+		Chump, Brusier, Cat_Burglar, Apprentice, Mime, Ranger, Barbarian, Alchemist, Shapeshifter, Troubador, Most_Holy_Grail_Knight, Cartomancer, Mathemagician, Artificer,  
 		
 		Trickster, Warrior, Crone, HealAid
 	}
@@ -25,7 +25,7 @@ public class Skill {
 		SkillType.Rage, SkillType.Demonic, SkillType.Sorcery, SkillType.Venom, SkillType.Ghoulish, SkillType.Burly};
 	public static SkillType[] playerSkills=new SkillType[]{SkillType.Fire, SkillType.Arcane, SkillType.Holy, SkillType.Armour, SkillType.Blade, SkillType.Crush, SkillType.Swift, SkillType.Growth,
 		SkillType.Trickster, SkillType.Warrior, SkillType.Crone, SkillType.HealAid};
-	public static SkillType[] heroDecks = new SkillType[]{SkillType.Chump, SkillType.Henchman, SkillType.Apprentice, SkillType.Alchemist, SkillType.Cat_Burglar, SkillType.Shapeshifter, SkillType.Ranger, SkillType.Barbarian};
+	public static SkillType[] heroDecks = new SkillType[]{SkillType.Chump, SkillType.Brusier, SkillType.Apprentice, SkillType.Alchemist, SkillType.Cat_Burglar, SkillType.Shapeshifter, SkillType.Ranger, SkillType.Barbarian};
 	
 	public static Skill fire= new Skill(SkillType.Fire);
 	public static Skill arcane= new Skill(SkillType.Arcane);

@@ -18,8 +18,8 @@ import fighter.player.HeroFactory;
 public class DStats {
 	public static void main(String[] args) {
 		setup();
-		//		System.out.println(Adventure.jsonAdventures());
-		//		System.out.println(CardFactory.jsonAllSkills(true));
+//				System.out.println(Adventure.jsonAdventures());
+//				System.out.println(CardFactory.jsonAllSkills(false));
 		//		Item.printAllUnlocks();
 		//		Item.printAll();
 		//		Item.printItemTypeAmounts();

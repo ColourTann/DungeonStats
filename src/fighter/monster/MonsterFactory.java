@@ -839,7 +839,7 @@ public class MonsterFactory {
 		name = "Miner";
 		plural= "Miners";
 		region=Region.Mines;
-		description = "";
+		description = "needs description";
 		frameNumber = 58;
 		level = 1;
 		health = 7;
@@ -852,7 +852,7 @@ public class MonsterFactory {
 		name = "Infected Slime";
 		plural= "Infected Slimes";
 		region=Region.Mines;
-		description = "";
+		description = "needs description";
 		frameNumber = 3;
 		level = 1;
 		health = 7;
@@ -865,7 +865,7 @@ public class MonsterFactory {
 		name = "Albino Goblin";
 		plural= "Albino Goblin";
 		region=Region.Mines;
-		description = "";
+		description = "needs description";
 		frameNumber = 15;
 		level = 1;
 		health = 8;
@@ -879,7 +879,7 @@ public class MonsterFactory {
 		plural= "Sizzling Imps";
 		region=Region.Mines;
 		species= Species.demonic;
-		description = "You may feel a burning sensation.";
+		description = "needs description";
 		frameNumber = 40;
 		level = 1;
 		health = 8;
@@ -905,7 +905,7 @@ public class MonsterFactory {
 		name = "Dwarvern Minibot";
 		plural= "Dwarvern Minibots";
 		region=Region.Mines;
-		description = "Rusts the iron right out of your blood!";
+		description = "needs description";
 		frameNumber = 70;
 		level = 1;
 		health = 10;
@@ -914,6 +914,106 @@ public class MonsterFactory {
 		traits = new Trait[]{Trait.Meaty};
 		skills = new Skill[]{Skill.get(SkillType.Venom).asLevel(3), Skill.get(SkillType.Burly).asLevel(1)};
 		make();
+		
+		//L2//
+		
+
+		name = "Blind Worm";
+		plural= "Blind Worms";
+		region=Region.Mines;
+		description = "needs description";
+		frameNumber = 14;
+		level = 2;
+		health = 9;
+		randomPool=1;
+		sound = MSound.giant_bat;
+		traits = null;
+		skills = new Skill[]{Skill.get(SkillType.Spooky).asLevel(2), Skill.get(SkillType.Ghoulish).asLevel(3), Skill.get(SkillType.Stupidity).asLevel(1)};
+		make();
+		
+		name = "Rotting Corpse";
+		plural= "Rotting Corpse";
+		region=Region.Mines;
+		description = "*needs description";
+		frameNumber = 5;
+		level = 2;
+		health = 9;
+		randomPool=1;
+		sound = MSound.skeleton;
+		traits = new Trait[]{Trait.Meaty};
+		skills = new Skill[]{Skill.get(SkillType.Burly).asLevel(2), Skill.get(SkillType.Ghoulish).asLevel(2), Skill.get(SkillType.Rage).asLevel(2)};
+		make();
+		
+		name = "Wailing Ghost";
+		plural= "Wailing Ghosts";
+		region=Region.Mines;
+		species=Species.undead;
+		description = "needs description";
+		frameNumber = 11;
+		level = 2;
+		health = 8;
+		randomPool=1;
+		sound = MSound.ghost;
+		traits = new Trait[]{Trait.Tenacious};
+		skills = new Skill[]{Skill.get(SkillType.Spooky).asLevel(4), Skill.get(SkillType.Ghoulish).asLevel(2), Skill.get(SkillType.Sorcery).asLevel(2)};
+		make();
+		
+		name = "Clattering Bones";
+		plural= "Clattering Bones";
+		region=Region.Mines;
+		species=Species.undead;
+		description = "needs description";
+		frameNumber = 1;
+		level = 2;
+		health = 7;
+		randomPool=1;
+		sound = MSound.skeleton;;
+		traits = new Trait[]{Trait.Brittle};
+		skills = new Skill[]{Skill.get(SkillType.Irritable).asLevel(2), Skill.get(SkillType.Spooky).asLevel(3), Skill.get(SkillType.Armed).asLevel(3)};
+		make();
+		
+		name = "Dwarvern Minibot";
+		plural= "Dwarvern Minibots";
+		region=Region.Mines;
+		description = "needs description";
+		frameNumber = 70;
+		level = 2;
+		health = 10;
+		randomPool=0;
+		sound = MSound.giant_bat;
+		traits = new Trait[]{Trait.Meaty};
+		skills = new Skill[]{Skill.get(SkillType.Sorcery).asLevel(3), Skill.get(SkillType.Burly).asLevel(1)};
+		make();
+		
+		name = "Gelatinous Cube";
+		plural= "Gelatinous Cubes";
+		region=Region.Mines;
+		description = "Lemon flavour";
+		frameNumber = 34;
+		level = 2;
+		health = 8;
+		randomPool=0;
+		sound = MSound.giant_bat;
+		traits = new Trait[]{Trait.Tenacious};
+		skills = new Skill[]{Skill.get(SkillType.Venom).asLevel(3), Skill.get(SkillType.Demonic).asLevel(2)};
+		make();
+		
+		//L3//
+		
+		name = "Cursed Mummy";
+		plural= "Cursed Mummies";
+		region=Region.Mines;
+		species=Species.undead;
+		description = "needs description";
+		frameNumber = 4;
+		level = 3;
+		health = 9;
+		randomPool=1;
+		sound = MSound.mummy;
+		traits = new Trait[]{Trait.Brittle};
+		skills = new Skill[]{Skill.get(SkillType.Ghoulish).asLevel(4), Skill.get(SkillType.Irritable).asLevel(3), Skill.get(SkillType.Death).asLevel(3)};
+		make();
+		
 		//MISC MONSTERS//
 
 		name = "Sorceress";

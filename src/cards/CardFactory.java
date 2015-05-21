@@ -27,7 +27,7 @@ public class CardFactory {
 
 
 	public enum ActionEffectCondition{
-		damageDealt, damageBlocked, Cards, damageTaken
+		damageDealt, damageBlocked, Hand, damageTaken
 	}
 
 	private static String cName;
@@ -138,7 +138,7 @@ public class CardFactory {
 			addCard(type);
 			break;
 
-		case Henchman:
+		case Brusier:
 			cName= "Oi!";
 			cStrength=1f;
 			cDescription = "1 physical damage";
@@ -763,7 +763,7 @@ public class CardFactory {
 			addCard(type);			
 			
 			break;
-		case Most_Holy_Knight_Templar:
+		case Most_Holy_Grail_Knight:
 			
 			cName= "Holy Fervor";
 			cStrength=1.7f;
@@ -851,7 +851,7 @@ public class CardFactory {
 			cDescSize=22;
 			aActionType=ActionType.Attack;
 			aDamageType=DamageType.Magical;
-			aEffectCondition=ActionEffectCondition.Cards;
+			aEffectCondition=ActionEffectCondition.Hand;
 			addAction();
 			addCard(type);
 		
@@ -861,7 +861,7 @@ public class CardFactory {
 			cDescSize=22;
 			aActionType=ActionType.Attack;
 			aDamageType=DamageType.Magical;
-			aEffectCondition=ActionEffectCondition.Cards;
+			aEffectCondition=ActionEffectCondition.Hand;
 			addAction();
 			addCard(type);
 			
@@ -871,7 +871,7 @@ public class CardFactory {
 			cDescSize=22;
 			aActionType=ActionType.Block;
 			aDamageType=DamageType.Either;
-			aEffectCondition=ActionEffectCondition.Cards;
+			aEffectCondition=ActionEffectCondition.Hand;
 			addAction();
 			addCard(type);
 			
@@ -2112,12 +2112,12 @@ public class CardFactory {
 			cStrength=3.2f;
 			cDescription = "Block all, +2 hp";
 			cDescSize=22;
-			aActionType=ActionType.Attack;
-			aDamageType=DamageType.Magical;
+			aActionType=ActionType.Block;
+			aDamageType=DamageType.Either;
+			aEffect=-1;
+			addAction();
+			aActionType=ActionType.Heal;
 			aEffect=2;
-			raType=ActionType.Effect;
-			raEffectType=ResultActionEffectType.Conceal;
-			addResultAction();
 			addAction();
 			addCard(type);
 
@@ -2173,7 +2173,7 @@ public class CardFactory {
 			aDamageType=DamageType.Physical;
 			aEffect=2;
 			raType=ActionType.Effect;
-			raEffectType=ResultActionEffectType.Fire;
+			raEffectType=ResultActionEffectType.Poison;
 			raDamageType=DamageType.Physical;
 			raEffect=1;
 			raRounds=-1;
@@ -2203,7 +2203,7 @@ public class CardFactory {
 			aDamageType=DamageType.Physical;
 			aEffect=3;
 			raType=ActionType.Effect;
-			raEffectType=ResultActionEffectType.Fire;
+			raEffectType=ResultActionEffectType.Poison;
 			raDamageType=DamageType.Physical;
 			raEffect=1;
 			raRounds=-1;
@@ -2542,7 +2542,7 @@ public class CardFactory {
 		DamageType damageType;
 		int rounds;
 		public enum ResultActionEffectType{
-			Fire, StopPlayerFromPlayingPhysical, StopPlayerFromPlayingMagical, StopPlayerFromPlayingBlocks, Conceal, Stupidity
+			Fire, StopPlayerFromPlayingPhysical, StopPlayerFromPlayingMagical, StopPlayerFromPlayingBlocks, Conceal, Stupidity, Poison
 		}
 		public ResultAction(ActionType type, ResultActionEffectType effectType, DamageType raDamageType, int actionEffect, int raRounds){
 			this.type=type;
@@ -2556,18 +2556,25 @@ public class CardFactory {
 			String output="";
 			output+=Json.enclose();
 			if(type==ActionType.Scry){
-				output+=Json.addKey("type", "Discard", true);
+				output+=Json.addKey("type", "PickDiscard", true);
 			}
-			else output+=Json.addKey("type", type.toString(), true);
-			if(effectType!=null)output+=Json.addKey("effectType", effectType.toString(), true);
+			else if (type!=ActionType.Stupidity)output+=Json.addKey("type", type.toString(), true);
+			if(effectType!=null&&
+					effectType!=ResultActionEffectType.Conceal&&
+					effectType!=ResultActionEffectType.Stupidity)output+=Json.addKey("effectType", effectType.toString(), true);
 			if(damageType!=null)output+=Json.addKey("damageType", damageType.toString(), true);
 			if(rounds!=0)output+=Json.addKey("rounds", rounds, true);
 			
 			if(type==ActionType.Effect){
 				switch(effectType){
 				case Conceal:
+					output += Json.addKey("effectType", "Trait", true);
+					output += Json.addKey("effectTrait", "Conceal", true);
+					output += Json.addKey("target", "self", true);
+					output += Json.addKey("rounds", 1, true);
+					output += Json.addKey("ignoreFirstTick", true, true);
 					break;
-				case Fire:
+				case Fire: case Poison:
 					output+=Json.addKey("damage", actionEffect, true);
 					break;
 				case StopPlayerFromPlayingBlocks:
@@ -2601,7 +2608,12 @@ public class CardFactory {
 				case Discard:
 				case Draw:
 				case Heal:
+					output+=Json.addKey("quantity", actionEffect, true);
+					break;
 				case Stupidity:
+					output+=Json.addKey("type", "Skill", true);
+					output+=Json.addKey("damageType", "Stupidity", true);
+					output+=Json.addKey("target", "enemy", true);
 					output+=Json.addKey("quantity", actionEffect, true);
 					break;
 				}

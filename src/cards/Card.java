@@ -27,6 +27,9 @@ public class Card {
 		String output="";
 		output+=Json.startList(name);
 		output+=Json.addKey("description", description, true);
+		if(actions.size()==4){
+			output += Json.addKey("firstRow", 3, true);
+		}
 		output+=Json.addKey("descSize", descSize, true);
 		if(image!=null)output+=Json.addKey("image", image.toString(), true);
 		

@@ -29,12 +29,12 @@ public class Adventure {
 	static CardType[] exploreTemplate = new CardType[]{CardType.TILE, CardType.TILE, CardType.TILE, CardType.TILE, CardType.TREASURE};
 	
 	String name, description, icon;
-	int mapX, mapY;
+	float mapX, mapY;
 	ArrayList<Dungeon> dungeons;
 	@SuppressWarnings("unchecked")
-	public Adventure(String name, String description, String icon, int mapX, int mapY, ArrayList<Dungeon> dungeons) {
+	public Adventure(String name, String description, String icon, float aAdvX2, float aAdvY2, ArrayList<Dungeon> dungeons) {
 		this.name=name; this.description=description; this.icon=icon;
-		this.mapX=mapX; this.mapY=mapY;
+		this.mapX=aAdvX2; this.mapY=aAdvY2;
 		this.dungeons=(ArrayList<Dungeon>) dungeons.clone();
 	}
 
@@ -43,8 +43,8 @@ public class Adventure {
 		output+= Json.startList(name);
 		output+= Json.addKey("Description", description, true);
 		output+= Json.addKey("Icon", icon, true);
-		output+= Json.addKey("mapX", mapX, true);
-		output+= Json.addKey("mapY", mapY, true);
+		output+= Json.addKey("mapX", mapX+"", true);
+		output+= Json.addKey("mapY", mapY+"", true);
 		int numUnlocks = 1;
 		if(name.equals("Rats? How original!")){
 			numUnlocks=3;
@@ -90,7 +90,7 @@ public class Adventure {
 	static ArrayList<Monster> aMonsters; 
 	static boolean aTutorial;
 	static String aAdvName, aAdvDescription, aAdvIcon;
-	static int aAdvX, aAdvY;
+	static float aAdvX, aAdvY;
 
 
 	static ArrayList<Dungeon> aDungeons = new ArrayList<>();
@@ -104,37 +104,37 @@ public class Adventure {
 		//aAdvDescription="Delve into the basement and defeat the mighty... rats";
 		aAdvIcon="stone_hatch";
 		aAdvX=1;
-		aAdvY=0;
+		aAdvY=-.5f;
 
-		aName="Traversal test";
-		aDescription="Hope it 's fun";
-		aReward=100;
-		aTerrainType=TerrainType.stone;
-		aBoss="Rat King Cole";
-		aBossName="Rat King Cole";
-		aBossChats= new BossChat[]{
-		};
-		aStartingTile=Tile.get("udr");
-		aLayout= new DungeonLayout(new TileLocation[]{
-				new TileLocation(Tile.get("l"), 7, 0, "", null, new TileDetails(true, true, true, 5, 0, true)),
-				new TileLocation(Tile.get("udrl"), 6, 0, "Angry Bunny", null, new TileDetails(true, true, false, 0, 0, false)),
-				new TileLocation(Tile.get("lr"), 1, 1, "Gnoll", null, new TileDetails(true, true, false, 0, 0, false)),
-				new TileLocation(Tile.get("udlr"), 2, 0, "Ghost", null, new TileDetails(true, true, false, 0, 0, false)),
-				new TileLocation(Tile.get("ulr"), 3, 1, "Shade", null, new TileDetails(true, true, false, 0, 0, false)),
-				new TileLocation(Tile.get("lr"), 3, -1, "Sorceress", null, new TileDetails(true, true, false, 0, 0, false)),
-				new TileLocation(Tile.get("udlr"), 4, 0, "Bear Owl", null, new TileDetails(true, true, false, 0, 0, false)),
-				new TileLocation(Tile.get("dlr"), 5, -1, "Bandito", null, new TileDetails(true, true, false, 0, 0, false)),
-		});
-		aObjectives = new Objective[]{
-				new Objective(ObjectiveType.Arrive, "objective", -1)
-		};
-		aTurnLimit=10;
-		aTurnLimitActions= new TurnLimitAction[]{(
-				new TurnLimitAction(ActionType.FailDungeon, new String[]{}, "Trapped")
-				)};
-		aMonsters=MonsterFactory.stoneMonsters;
-		addDungeon();
-		createAdventure();
+//		aName="Traversal test";
+//		aDescription="Hope it 's fun";
+//		aReward=100;
+//		aTerrainType=TerrainType.stone;
+//		aBoss="Rat King Cole";
+//		aBossName="Rat King Cole";
+//		aBossChats= new BossChat[]{
+//		};
+//		aStartingTile=Tile.get("udr");
+//		aLayout= new DungeonLayout(new TileLocation[]{
+//				new TileLocation(Tile.get("l"), 7, 0, "", null, new TileDetails(true, true, true, 5, 0, true)),
+//				new TileLocation(Tile.get("udrl"), 6, 0, "Angry Bunny", null, new TileDetails(true, true, false, 0, 0, false)),
+//				new TileLocation(Tile.get("lr"), 1, 1, "Gnoll", null, new TileDetails(true, true, false, 0, 0, false)),
+//				new TileLocation(Tile.get("udlr"), 2, 0, "Ghost", null, new TileDetails(true, true, false, 0, 0, false)),
+//				new TileLocation(Tile.get("ulr"), 3, 1, "Shade", null, new TileDetails(true, true, false, 0, 0, false)),
+//				new TileLocation(Tile.get("lr"), 3, -1, "Sorceress", null, new TileDetails(true, true, false, 0, 0, false)),
+//				new TileLocation(Tile.get("udlr"), 4, 0, "Bear Owl", null, new TileDetails(true, true, false, 0, 0, false)),
+//				new TileLocation(Tile.get("dlr"), 5, -1, "Bandito", null, new TileDetails(true, true, false, 0, 0, false)),
+//		});
+//		aObjectives = new Objective[]{
+//				new Objective(ObjectiveType.Arrive, "objective", -1)
+//		};
+//		aTurnLimit=10;
+//		aTurnLimitActions= new TurnLimitAction[]{(
+//				new TurnLimitAction(ActionType.FailDungeon, new String[]{}, "Trapped")
+//				)};
+//		aMonsters=MonsterFactory.stoneMonsters;
+//		addDungeon();
+//		createAdventure();
 		
 		aName="Squeak squeak";
 		aDescription="Everyone's gotta start somewhere";
@@ -215,7 +215,7 @@ public class Adventure {
 		//aAdvDescription="Defeat the evil demon, Embro";
 		aAdvIcon="stone_fire_cave";
 		aAdvX=1;
-		aAdvY=1;
+		aAdvY=.5f;
 
 		aName="Fiery Foray";
 		aDescription="Scope out Embro's defences";
@@ -480,8 +480,8 @@ public class Adventure {
 		aAdvName="Black Knight";
 		//aAdvDescription="Loot all the treasure";
 		aAdvIcon="stone_castle";
-		aAdvX=3;
-		aAdvY=0;
+		aAdvX=2.5f;
+		aAdvY=-1;
 
 		aName="Test your mettle";
 		aDescription="Defeat the combatants";
@@ -661,8 +661,8 @@ public class Adventure {
 		aAdvName="The Eye Beast";
 		//aAdvDescription="Loot all the treasure";
 		aAdvIcon="stone_temple";
-		aAdvX=3;
-		aAdvY=1;
+		aAdvX=1.25f;
+		aAdvY=1.5f;
 
 		aName="Curious Crypt";
 		aDescription="Get to the crypt";

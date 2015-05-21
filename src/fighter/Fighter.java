@@ -42,7 +42,7 @@ public abstract class Fighter {
 					bonusHP+=.5f;
 					break;
 				case Brittle:
-					bonusHP-=.15f;
+					bonusHP-=getHP()/6f;
 					break;
 				case Meaty:
 					bonusHP-=getHP()/3.5f;
