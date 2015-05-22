@@ -322,7 +322,7 @@ public class MonsterFactory {
 		name = "Rat King Cole";
 		plural= "Rat Men";
 		description = "Squeak squeak!";
-		frameNumber = 42;
+		frameNumber = 62;
 		level = 2;
 		health = 7;
 		randomPool=0;
@@ -350,7 +350,7 @@ public class MonsterFactory {
 		name = "Mimic";
 		plural= "Mimics";
 		description = "Maybe it still has treasure inside";
-		frameNumber = 37;
+		frameNumber = 64;
 		level = 3;
 		health = 7;
 		randomPool=0;
@@ -507,7 +507,7 @@ public class MonsterFactory {
 		region=Region.Jungle;
 		species=Species.beast;
 		description = "Not just a rat, oh no, this one's nasty.";
-		frameNumber = 39;
+		frameNumber = 43;
 		level = 1;
 		health = 5;
 		randomPool=1;
