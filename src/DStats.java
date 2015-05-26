@@ -19,9 +19,9 @@ public class DStats {
 	public static void main(String[] args) {
 		setup();
 //				System.out.println(Adventure.jsonAdventures());
-//				System.out.println(CardFactory.jsonAllSkills(false));
+//				System.out.println(CardFactory.jsonAllSkills(true));
 		//		Item.printAllUnlocks();
-		//		Item.printAll();
+//				Item.printAll();
 		//		Item.printItemTypeAmounts();
 		//		System.out.println(Item.analyseTier(0));
 		//		System.out.println(Item.analyseUnlock(UnlockedBy.Leather));

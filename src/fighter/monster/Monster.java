@@ -19,7 +19,7 @@ public class Monster extends Fighter{
 	private String description;
 	private Species species;
 	public int frameNumber;
-	public int level;
+
 	public int randomPool;
 	private MSound sound;
 	private Skill[] skills;

@@ -2,12 +2,14 @@ package fighter;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
 
 import cards.Card;
 
 public abstract class Fighter {
 	protected List<Card> cards = new ArrayList<>();
 	protected String name;
+	public int level;
 	int hp;
 	public enum Trait{
 		Tenacious, Brittle, Meaty, Respite, Fury, Burn, Skilled, Damp, Blessed, Covetous, ArcaneBlade, Ranged, Ferocious, Bulwark, Accurate, Wise, Spikey, Deathwish, Halfbaked, Sleepy, SpellSword, Retribution, Cunning, VitaSuit;
@@ -116,7 +118,7 @@ public abstract class Fighter {
 		
 		if(wordy){
 			startPrint();
-			print(name);
+			print(name +" ["+level+"]");
 			print("Power: "+getStrength(false)+(flatBonusStrength>0?(" ["+flatBonusStrength+"]"):("")));
 			print("HP: "+getHP()+(bonusHP>0?("("+bonusHP+")"):""));
 			print("Total power: "+truncate(totalStrength));

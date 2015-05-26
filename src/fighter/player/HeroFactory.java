@@ -1,5 +1,6 @@
 package fighter.player;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 import json.Json;
