@@ -2126,7 +2126,7 @@ public class CardFactory {
 			cDescription = "3 magic damage: player discards a card at random";
 			cDescSize=22;
 			aActionType=ActionType.Attack;
-			aDamageType=DamageType.Physical;
+			aDamageType=DamageType.Magical;
 			aEffect=3;
 			raType=ActionType.Discard;
 			raEffect=1;
@@ -2305,7 +2305,7 @@ public class CardFactory {
 			cDescSize=20;
 			aActionType=ActionType.Attack;
 			aDamageType=DamageType.Physical;
-			aEffect=1;
+			aEffect=3;
 			raType=ActionType.Discard;
 			raEffect=1;
 			addResultAction();

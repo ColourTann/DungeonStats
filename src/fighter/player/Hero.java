@@ -36,6 +36,17 @@ public class Hero extends Fighter{
 			}
 			output+="],\n";
 		}
+		if(chats!=null){
+			output+=Json.startList("Chat");
+			for(int i=0;i<chats.length;i++){
+				HeroChat ch = chats[i];
+				output+=ch.toJson();
+				if(i<chats.length-1){
+					output=Json.addComma(output);
+				}
+			}
+			output+=Json.endList(true);
+		}
 		if(cards!=null){
 			output+=Json.startArray("BattleCards");
 			for(int i=0;i<cards.size();i++){
@@ -48,17 +59,7 @@ public class Hero extends Fighter{
 			}
 			output+=Json.endArray(true);
 		}
-		if(chats!=null){
-			output+=Json.startList("Chat");
-			for(int i=0;i<chats.length;i++){
-				HeroChat ch = chats[i];
-				output+=ch.toJson();
-				if(i<chats.length-1){
-					output=Json.addComma(output);
-				}
-			}
-			output+=Json.endList(true);
-		}
+		
 		output+="}";
 		output=Json.removeComma(output);
 		output+=Json.endEnclose(true);

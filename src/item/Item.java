@@ -14,16 +14,16 @@ import fighter.Fighter.Trait;
 public class Item {
 
 	public enum TreasureType{MEGA_CHEST("MEGA CHEST"), GOLD_COIN("Gold Coin"), Large_Chest("Large Chest"), Massive_Gem("Massive Gem");
-		String nice;
-		TreasureType(String nice){
+	String nice;
+	TreasureType(String nice){
 		this.nice=nice;
 	}
-		
-		public String toString(){
+
+	public String toString(){
 		return nice;
 	}
 	}
-	
+
 	public enum UnlockedBy{Base, Smith, Leather, Wood, Curio}
 
 	static ArrayList<Item> items = new ArrayList<Item>();
@@ -1325,24 +1325,26 @@ public class Item {
 
 	public static void add(){
 		if(aName=="placeholder")return;
-		items.add(new Item(
-				aName, 
-				aDesc, 
-				aFrameNumber, 
-				aEquipment, 
-				aType, 
-				aEquipFrame, aEquipBackFrame,
-				aLevel,
-				aUnlock==null?UnlockedBy.Base:aUnlock,
-				aUnlockLevel,
-				aGlory, 
-				aSpawnCount, 
-				aRandomPool, 
-				aKeepHair, 
-				aSound, 
-				aSkills, 
-				aTraits, 
-				aHealth));
+
+			items.add(new Item(
+					aName, 
+					aDesc, 
+					aFrameNumber, 
+					aEquipment, 
+					aType, 
+					aEquipFrame, aEquipBackFrame,
+					aLevel,
+					aUnlock==null?UnlockedBy.Base:aUnlock,
+							aUnlockLevel,
+							aGlory, 
+							aSpawnCount, 
+							aRandomPool, 
+							aKeepHair, 
+							aSound, 
+							aSkills, 
+							aTraits, 
+							aHealth));
+		
 		aFrameNumber++;
 		reset();
 	}
@@ -1472,7 +1474,11 @@ public class Item {
 		output+="\""+name+"\" : {\n";
 		output+="\"description\" : \""+description+"\",\n";
 		output+="\"frameNumber\" : "+frameNumber+",\n";
-		if(equipment>0) output+="\"isEquipment\" : "+equipment+",\n";
+		if(equipment>0){
+			output+="\"isEquipment\" : "+equipment+",\n";
+			
+		}
+		output+=Json.addKey("rarity", unlockLevel, true);
 		if(type!=null) output+="\"equipType\" : \""+type+"\",\n";
 		if(equipFrame>=0) output+="\"equipFrame\" : "+equipFrame+",\n";
 		if(equipBackFrame>0) output += Json.addKey("equipBackFrame", equipBackFrame, true);

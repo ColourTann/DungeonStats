@@ -332,21 +332,21 @@ public class MonsterFactory {
 		boardChat=new BoardChat[]{
 				new BoardChat(ChatType.Monster, new String[]{
 						"Squeak squeak!", 
-						}),
+				}),
 
 				new BoardChat(ChatType.Treasure, new String[]{
 						"Squeeeak", 
-						}),
+				}),
 
 				new BoardChat(ChatType.Hero, new String[]{
-						"SQUEAK!"}),
+				"SQUEAK!"}),
 
 				new BoardChat(ChatType.Random, new String[]{
 						"Chitter chitter", 
-						})
+				})
 		};
 		make();
-		
+
 		name = "Mimic";
 		plural= "Mimics";
 		description = "Maybe it still has treasure inside";
@@ -360,21 +360,21 @@ public class MonsterFactory {
 		boardChat=new BoardChat[]{
 				new BoardChat(ChatType.Monster, new String[]{
 						"Grahh! Get outta my way!", 
-						}),
+				}),
 
 				new BoardChat(ChatType.Treasure, new String[]{
 						"Chomp chomp", 
-						}),
+				}),
 
 				new BoardChat(ChatType.Hero, new String[]{
-						"Vengeance is mine!"}),
+				"Vengeance is mine!"}),
 
 				new BoardChat(ChatType.Random, new String[]{
 						"I'm coming for you, murderer!",
 						"You can run but you can't hide",
 						"I know exactly where you might be",
 						"I can move two spaces every turn, you can't escape me!"
-						})
+				})
 		};
 		make();
 
@@ -451,12 +451,12 @@ public class MonsterFactory {
 						"{TREASURE}? Where did that come from?",
 						"{TREASURE}! Back into my loot box with you!", 
 						"Look at this clutter!", 
-						"Just as I get peckish.. a {TREASURE}! *om nyom*"}),
+				"Just as I get peckish.. a {TREASURE}! *om nyom*"}),
 
 				new BoardChat(ChatType.Hero, new String[]{
 						"THERE YOU ARE! I HOPE YOU LIKE BURNING", 
 						"TIME TO BURN!!!", 
-						"NOW I HAVE YOU"}),
+				"NOW I HAVE YOU"}),
 
 				new BoardChat(ChatType.Random, new String[]{
 						"Does this make me a wandering monster?", 
@@ -570,7 +570,7 @@ public class MonsterFactory {
 		make();
 
 		name = "Poisonous Snake";
-		plural= "Snakes";
+		plural= "Poisonous Snakes";
 		region=Region.Jungle;
 		species=Species.beast;
 		description = "SSSsssssssss";
@@ -584,7 +584,7 @@ public class MonsterFactory {
 		make();
 
 		name = "Rat Berserker";
-		plural= "Rat Men";
+		plural= "Rat Berserkers";
 		region=Region.Jungle;
 		description = "Squeak squeak!";
 		frameNumber = 42;
@@ -597,7 +597,7 @@ public class MonsterFactory {
 		make();
 
 		name = "Hilly Gnoll";
-		plural= "Gnolls";
+		plural= "Hilly Gnolls";
 		region=Region.Jungle;
 		description = "What are you looking at??";
 		frameNumber = 31;
@@ -767,20 +767,20 @@ public class MonsterFactory {
 		boardChat=new BoardChat[]{
 				new BoardChat(ChatType.Monster, new String[]{
 						"*MUNCH MUNCH*", 
-						}),
+				}),
 
 				new BoardChat(ChatType.Treasure, new String[]{
 						"Craww!", 
-						}),
+				}),
 
 				new BoardChat(ChatType.Hero, new String[]{
-						"*ROARRR!"}),
+				"*ROARRR!"}),
 
 				new BoardChat(ChatType.Random, new String[]{
 						"Bleat bleat!",
 						"Sssssss!",
 						"Roar!"
-						})
+				})
 		};
 		make();
 
@@ -809,14 +809,14 @@ public class MonsterFactory {
 		boardChat=new BoardChat[]{
 				new BoardChat(ChatType.Monster, new String[]{
 						"Tasty!", 
-						}),
+				}),
 
 				new BoardChat(ChatType.Treasure, new String[]{
 						"Mine! All MINE!", 
-						}),
+				}),
 
 				new BoardChat(ChatType.Hero, new String[]{
-						"Now I have you!"}),
+				"Now I have you!"}),
 
 				new BoardChat(ChatType.Random, new String[]{
 						"Stupid adventurer",
@@ -825,7 +825,7 @@ public class MonsterFactory {
 						"I'm coming for you",
 						"You can't escape",
 						"I almost know my way around",
-						})
+				})
 		};
 		make();
 
@@ -835,7 +835,7 @@ public class MonsterFactory {
 			worm, zombie, ghost, skeleton, mummy, dwarvern sentry
 			cave troll, golem, minotaur,  earth elemental, genii, gelaticube
 		 */
-		
+
 		name = "Miner";
 		plural= "Miners";
 		region=Region.Mines;
@@ -848,20 +848,20 @@ public class MonsterFactory {
 		traits = new Trait[]{Trait.Fury};
 		skills = new Skill[]{Skill.get(SkillType.Burly).asLevel(3), Skill.get(SkillType.Rage).asLevel(2)};
 		make();
-		
+
 		name = "Infected Slime";
 		plural= "Infected Slimes";
 		region=Region.Mines;
 		description = "needs description";
 		frameNumber = 3;
 		level = 1;
-		health = 6;
+		health = 9;
 		randomPool=1;
 		sound = MSound.giant_bat;
-		traits = new Trait[]{Trait.Tenacious};
+		traits = new Trait[]{Trait.Meaty};
 		skills = new Skill[]{Skill.get(SkillType.Ghoulish).asLevel(2), Skill.get(SkillType.Venom).asLevel(3)};
 		make();
-		
+
 		name = "Albino Goblin";
 		plural= "Albino Goblin";
 		region=Region.Mines;
@@ -874,7 +874,7 @@ public class MonsterFactory {
 		traits = new Trait[]{Trait.Tenacious};
 		skills = new Skill[]{Skill.get(SkillType.Rage).asLevel(2), Skill.get(SkillType.Irritable).asLevel(1), Skill.get(SkillType.Ghoulish).asLevel(2)};
 		make();
-		
+
 		name = "Sizzling Imp";
 		plural= "Sizzling Imps";
 		region=Region.Mines;
@@ -888,7 +888,7 @@ public class MonsterFactory {
 		traits = null;
 		skills = new Skill[]{Skill.get(SkillType.Demonic).asLevel(2), Skill.get(SkillType.Sorcery).asLevel(1)};
 		make();
-		
+
 		name = "Rust Monster";
 		plural= "Rust Monsters";
 		region=Region.Mines;
@@ -901,22 +901,22 @@ public class MonsterFactory {
 		traits = null;
 		skills = new Skill[]{Skill.get(SkillType.Venom).asLevel(2), Skill.get(SkillType.Burly).asLevel(1)};
 		make();
-		
-		name = "Dwarvern Minibot";
-		plural= "Dwarvern Minibots";
+
+		name = "Digger";
+		plural= "Diggers";
 		region=Region.Mines;
 		description = "needs description";
-		frameNumber = 61;
+		frameNumber = 59;
 		level = 1;
-		health = 10;
-		randomPool=0;
+		health = 9;
+		randomPool=1;
 		sound = MSound.giant_bat;
-		traits = new Trait[]{Trait.Meaty};
-		skills = new Skill[]{Skill.get(SkillType.Sorcery).asLevel(3), Skill.get(SkillType.Burly).asLevel(2)};
+		traits = new Trait[]{Trait.Brittle};
+		skills = new Skill[]{Skill.get(SkillType.Burly).asLevel(3), Skill.get(SkillType.Rage).asLevel(2)};
 		make();
-		
+
 		//L2//
-		
+
 
 		name = "Blind Worm";
 		plural= "Blind Worms";
@@ -930,7 +930,7 @@ public class MonsterFactory {
 		traits = null;
 		skills = new Skill[]{Skill.get(SkillType.Demonic).asLevel(2), Skill.get(SkillType.Ghoulish).asLevel(3), Skill.get(SkillType.Stupidity).asLevel(1)};
 		make();
-		
+
 		name = "Rotting Corpse";
 		plural= "Rotting Corpse";
 		region=Region.Mines;
@@ -943,7 +943,7 @@ public class MonsterFactory {
 		traits = new Trait[]{Trait.Meaty};
 		skills = new Skill[]{Skill.get(SkillType.Burly).asLevel(2), Skill.get(SkillType.Ghoulish).asLevel(2), Skill.get(SkillType.Rage).asLevel(2)};
 		make();
-		
+
 		name = "Wailing Ghost";
 		plural= "Wailing Ghosts";
 		region=Region.Mines;
@@ -957,7 +957,7 @@ public class MonsterFactory {
 		traits = new Trait[]{Trait.Tenacious};
 		skills = new Skill[]{Skill.get(SkillType.Ghoulish).asLevel(3), Skill.get(SkillType.Demonic).asLevel(2), Skill.get(SkillType.Sorcery).asLevel(2)};
 		make();
-		
+
 		name = "Clattering Bones";
 		plural= "Clattering Bones";
 		region=Region.Mines;
@@ -971,12 +971,12 @@ public class MonsterFactory {
 		traits = new Trait[]{Trait.Brittle};
 		skills = new Skill[]{Skill.get(SkillType.Demonic).asLevel(2), Skill.get(SkillType.Ghoulish).asLevel(3), Skill.get(SkillType.Burly).asLevel(2)};
 		make();
-		
-		name = "Dwarvern Sentry";
-		plural= "Dwarvern Sentries";
+
+		name = "Water Elemental";
+		plural= "Water Elementals";
 		region=Region.Mines;
 		description = "needs description";
-		frameNumber = 61;
+		frameNumber = 21;
 		level = 2;
 		health = 11;
 		randomPool=0;
@@ -984,7 +984,7 @@ public class MonsterFactory {
 		traits = new Trait[]{Trait.Meaty};
 		skills = new Skill[]{Skill.get(SkillType.Sorcery).asLevel(3), Skill.get(SkillType.Burly).asLevel(2)};
 		make();
-		
+
 		name = "Gelatinous Cube";
 		plural= "Gelatinous Cubes";
 		region=Region.Mines;
@@ -997,9 +997,9 @@ public class MonsterFactory {
 		traits = new Trait[]{Trait.Tenacious};
 		skills = new Skill[]{Skill.get(SkillType.Venom).asLevel(2), Skill.get(SkillType.Demonic).asLevel(2)};
 		make();
-		
+
 		//L3//
-		
+
 		name = "Cursed Mummy";
 		plural= "Cursed Mummies";
 		region=Region.Mines;
@@ -1013,7 +1013,7 @@ public class MonsterFactory {
 		traits = new Trait[]{Trait.Brittle};
 		skills = new Skill[]{Skill.get(SkillType.Ghoulish).asLevel(4), Skill.get(SkillType.Irritable).asLevel(3), Skill.get(SkillType.Demonic).asLevel(1)};
 		make();
-		
+
 		name = "Cave Troll";
 		plural= "Cave Trolls";
 		region=Region.Mines;
@@ -1027,7 +1027,7 @@ public class MonsterFactory {
 		traits = new Trait[]{Trait.Fury};
 		skills = new Skill[]{Skill.get(SkillType.Rage).asLevel(4), Skill.get(SkillType.Irritable).asLevel(2), Skill.get(SkillType.Burly).asLevel(3)};
 		make();
-		
+
 		name = "Earth Elemental";
 		plural= "Earth Elementals";
 		description = "needs description";
@@ -1040,7 +1040,7 @@ public class MonsterFactory {
 		traits = null;
 		skills = new Skill[]{Skill.get(SkillType.Burly).asLevel(3), Skill.get(SkillType.Demonic).asLevel(2)};
 		make();
-		
+
 		name = "Genii";
 		plural= "Genies";
 		description = "Something something deathwish";
@@ -1053,7 +1053,7 @@ public class MonsterFactory {
 		traits = null;
 		skills = new Skill[]{Skill.get(SkillType.Sorcery).asLevel(3), Skill.get(SkillType.Demonic).asLevel(2)};
 		make();
-		
+
 		name = "Vampire";
 		plural= "Vampires";
 		description = "You can't kill me!";
@@ -1066,7 +1066,7 @@ public class MonsterFactory {
 		traits = null;
 		skills = new Skill[]{Skill.get(SkillType.Ghoulish).asLevel(3), Skill.get(SkillType.Demonic).asLevel(3)};
 		make();
-		
+
 		name = "Nymph";
 		plural= "Nymphs";
 		description = "It takes years of meditation to grow these";
@@ -1079,22 +1079,118 @@ public class MonsterFactory {
 		traits = null;
 		skills = new Skill[]{Skill.get(SkillType.Sorcery).asLevel(3), Skill.get(SkillType.Venom).asLevel(3)};
 		make();
-		
+
 		//BOSSES//
-		
+
 		name = "Cyclops";
 		plural= "Cyclopseses";
 		description = "I spy with my little eye.. FOOD";
 		frameNumber = 7;
-		level = 3;
+		level = 4;
 		health = 10;
 		randomPool=0;
 		sound = MSound.giant_bat;
 		traits = new Trait[]{Trait.Bulwark, Trait.Fury};
 		skills = new Skill[]{Skill.get(SkillType.Burly).asLevel(4), Skill.get(SkillType.Demonic).asLevel(2)};
 		make();
-		
-		
+
+		name = "Dwarf Sentry";
+		plural= "Dwarf Sentries";
+		description = "needs description";
+		frameNumber = 67;
+		level = 4;
+		health = 10;
+		randomPool=0;
+		sound = MSound.giant_bat;
+		traits = new Trait[]{Trait.Bulwark, Trait.Fury};
+		skills = new Skill[]{Skill.get(SkillType.Burly).asLevel(4), Skill.get(SkillType.Demonic).asLevel(2)};
+		make();
+
+		name = "Dwarf Masterpiece";
+		plural= "Dwarf Masterpieces";
+		description = "needs description";
+		frameNumber = 65;
+		level = 4;
+		health = 10;
+		randomPool=0;
+		sound = MSound.giant_bat;
+		traits = new Trait[]{Trait.Bulwark, Trait.Fury};
+		skills = new Skill[]{Skill.get(SkillType.Burly).asLevel(4), Skill.get(SkillType.Demonic).asLevel(2)};
+		make();
+
+		name = "Dwarf Mecha";
+		plural= "Dwarf Mecha";
+		description = "needs description";
+		frameNumber = 61;
+		level = 4;
+		health = 10;
+		randomPool=0;
+		sound = MSound.giant_bat;
+		traits = new Trait[]{Trait.Bulwark, Trait.Fury};
+		skills = new Skill[]{Skill.get(SkillType.Burly).asLevel(4), Skill.get(SkillType.Demonic).asLevel(2)};
+		boardChat=new BoardChat[]{
+				new BoardChat(ChatType.Monster, new String[]{
+						"Bzzzt!", 
+				}),
+
+				new BoardChat(ChatType.Treasure, new String[]{
+						"Czch-czch-czch!", 
+				}),
+
+				new BoardChat(ChatType.Hero, new String[]{
+				"You're mine now!"}),
+
+				new BoardChat(ChatType.Random, new String[]{
+						"Krssssss",
+						"Thunk Thunk",
+						"Clomp",
+						"Hooonk",
+				})
+		};
+		make();
+
+
+		name = "Troll";
+		plural= "Trolls";
+		description = "Really rude to people who go over his bridge";
+		frameNumber = 48;
+		level = 5 ;
+		health = 10;
+		randomPool=0;
+		sound = MSound.giant_bat;
+		traits = null;
+		skills = new Skill[]{Skill.get(SkillType.Irritable).asLevel(5)};
+		boardChat=new BoardChat[]{
+				new BoardChat(ChatType.Monster, new String[]{
+						"Smash everything", 
+				}),
+
+				new BoardChat(ChatType.Treasure, new String[]{
+						"Smash treasure", 
+				}),
+
+				new BoardChat(ChatType.Hero, new String[]{
+				"Smash hero!"}),
+
+				new BoardChat(ChatType.Random, new String[]{
+						"Smash nothing",
+						"Smash something soon!",
+				})
+		};
+		make();
+
+		name = "Dwarf Magnate";
+		plural= "Dwarf Magnate";
+		description = "needs description";
+		frameNumber = 66;
+		level = 4;
+		health = 10;
+		randomPool=0;
+		sound = MSound.giant_bat;
+		traits = new Trait[]{Trait.Bulwark, Trait.Fury};
+		skills = new Skill[]{Skill.get(SkillType.Burly).asLevel(4), Skill.get(SkillType.Demonic).asLevel(2)};
+		make();
+
 		//MISC MONSTERS//
 
 		name = "Sorceress";
@@ -1109,7 +1205,7 @@ public class MonsterFactory {
 		skills = new Skill[]{Skill.get(SkillType.Death).asLevel(3),Skill.get(SkillType.Flame).asLevel(4)};
 		make();
 
-		
+
 		name = "Angry Bunny";
 		plural= "Angry Bunnies";
 		description = "Vicious!";
@@ -1121,8 +1217,8 @@ public class MonsterFactory {
 		traits = null;
 		skills = new Skill[]{Skill.get(SkillType.Feral).asLevel(5)};
 		make();
-		
-		
+
+
 		//UNUSED MONSTERS//
 		/*
 		 * 
@@ -1138,7 +1234,7 @@ public class MonsterFactory {
 		traits = new Trait[]{Trait.Brittle};
 		skills = new Skill[]{Skill.get(SkillType.Burly).asLevel(4), Skill.get(SkillType.Sorcery).asLevel(2), Skill.get(SkillType.Stupidity).asLevel(1)};
 		make();
-		
+
 		name = "Minotaur";
 		plural= "Minotaurs";
 		region=Region.Mines;
@@ -1152,7 +1248,7 @@ public class MonsterFactory {
 		traits = new Trait[]{Trait.Brittle};
 		skills = new Skill[]{Skill.get(SkillType.Burly).asLevel(3), Skill.get(SkillType.Rage).asLevel(2)};
 		make();
-		
+
 		name = "Cyclops";
 		plural= "Cyclopseses";
 		description = "I spy with my little eye.. FOOD";
@@ -1333,17 +1429,7 @@ public class MonsterFactory {
 
 
 
-		name = "Troll";
-		plural= "Trolls";
-		description = "Really rude to people who go over his bridge";
-		frameNumber = 48;
-		level = 5 ;
-		health = 10;
-		randomPool=0;
-		sound = MSound.giant_bat;
-		traits = null;
-		skills = new Skill[]{Skill.get(SkillType.Irritable).asLevel(5)};
-		make();
+
 
 		name = "Cockatrice";
 		plural= "Cockatrixen";
@@ -1371,7 +1457,7 @@ public class MonsterFactory {
 		skills = new Skill[]{Skill.get(SkillType.Death).asLevel(5)};
 		make();
 
-		*/
+		 */
 
 
 
@@ -1473,7 +1559,7 @@ public class MonsterFactory {
 		System.out.println("}");
 		System.out.println("}");
 	}
-	
+
 	public static ArrayList<Monster> getMonsters(Region region, int maxLevel){
 		ArrayList<Monster> result = new ArrayList<>();
 		for(Monster m:MonsterFactory.monsters){
@@ -1483,4 +1569,17 @@ public class MonsterFactory {
 		}
 		return result;
 	}
+
+	public static ArrayList<Monster> getMonsters(String[] names){
+		ArrayList<Monster> result = new ArrayList<>();
+		for(Monster m:MonsterFactory.monsters){
+			for(String s:names){
+				if(m.name.equals(s))
+					result.add(m);
+			}
+		}
+		return result;
+	}
+
+
 }
