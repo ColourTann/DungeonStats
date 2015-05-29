@@ -1090,8 +1090,8 @@ public class MonsterFactory {
 		health = 10;
 		randomPool=0;
 		sound = MSound.giant_bat;
-		traits = new Trait[]{Trait.Bulwark, Trait.Fury};
-		skills = new Skill[]{Skill.get(SkillType.Burly).asLevel(4), Skill.get(SkillType.Demonic).asLevel(2)};
+//		traits = new Trait[]{Trait.Bulwark, Trait.Fury};
+		skills = new Skill[]{Skill.get(SkillType.Burly).asLevel(4), Skill.get(SkillType.Venom).asLevel(2)};
 		make();
 
 		name = "Dwarf Sentry";
@@ -1102,8 +1102,8 @@ public class MonsterFactory {
 		health = 10;
 		randomPool=0;
 		sound = MSound.giant_bat;
-		traits = new Trait[]{Trait.Bulwark, Trait.Fury};
-		skills = new Skill[]{Skill.get(SkillType.Burly).asLevel(4), Skill.get(SkillType.Demonic).asLevel(2)};
+//		traits = new Trait[]{Trait.Bulwark, Trait.Fury};
+		skills = new Skill[]{Skill.get(SkillType.Burly).asLevel(3), Skill.get(SkillType.Ghoulish).asLevel(2)};
 		make();
 
 		name = "Dwarf Masterpiece";
@@ -1114,8 +1114,8 @@ public class MonsterFactory {
 		health = 10;
 		randomPool=0;
 		sound = MSound.giant_bat;
-		traits = new Trait[]{Trait.Bulwark, Trait.Fury};
-		skills = new Skill[]{Skill.get(SkillType.Burly).asLevel(4), Skill.get(SkillType.Demonic).asLevel(2)};
+//		traits = new Trait[]{Trait.Bulwark, Trait.Fury};
+		skills = new Skill[]{Skill.get(SkillType.Burly).asLevel(3), Skill.get(SkillType.Sorcery).asLevel(3)};
 		make();
 
 		name = "Dwarf Mecha";
@@ -1126,8 +1126,8 @@ public class MonsterFactory {
 		health = 10;
 		randomPool=0;
 		sound = MSound.giant_bat;
-		traits = new Trait[]{Trait.Bulwark, Trait.Fury};
-		skills = new Skill[]{Skill.get(SkillType.Burly).asLevel(4), Skill.get(SkillType.Demonic).asLevel(2)};
+//		traits = new Trait[]{Trait.Bulwark, Trait.Fury};
+		skills = new Skill[]{Skill.get(SkillType.Rage).asLevel(3), Skill.get(SkillType.Burly).asLevel(2)};
 		boardChat=new BoardChat[]{
 				new BoardChat(ChatType.Monster, new String[]{
 						"Bzzzt!", 
@@ -1188,7 +1188,7 @@ public class MonsterFactory {
 		randomPool=0;
 		sound = MSound.giant_bat;
 		traits = new Trait[]{Trait.Bulwark, Trait.Fury};
-		skills = new Skill[]{Skill.get(SkillType.Burly).asLevel(4), Skill.get(SkillType.Demonic).asLevel(2)};
+		skills = new Skill[]{Skill.get(SkillType.Sorcery).asLevel(4), Skill.get(SkillType.Demonic).asLevel(2)};
 		make();
 
 		//MISC MONSTERS//

@@ -44,6 +44,13 @@ public class Json {
 				value+
 				(comma?",":"")+"\n";
 	}
+	public static String addKey(String key, float value, boolean comma){
+		return "\""+
+				key+
+				"\" : "+
+				value+
+				(comma?",":"")+"\n";
+	}
 	
 	public static String removeComma(String input){
 		StringBuilder sb=new StringBuilder(input);

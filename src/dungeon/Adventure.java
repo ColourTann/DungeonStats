@@ -30,11 +30,14 @@ public class Adventure {
 
 	String name, description, icon;
 	float mapX, mapY;
+	float trophyX, trophyY;
+	String trophyName;
 	ArrayList<Dungeon> dungeons;
 	@SuppressWarnings("unchecked")
-	public Adventure(String name, String description, String icon, float aAdvX2, float aAdvY2, ArrayList<Dungeon> dungeons) {
+	public Adventure(String name, String description, String icon, float aAdvX2, float aAdvY2, float trophyX, float trophyY, String trophyName, ArrayList<Dungeon> dungeons) {
 		this.name=name; this.description=description; this.icon=icon;
 		this.mapX=aAdvX2; this.mapY=aAdvY2;
+		this.trophyX=trophyX; this.trophyY=trophyY; this.trophyName=trophyName;
 		this.dungeons=(ArrayList<Dungeon>) dungeons.clone();
 	}
 
@@ -50,6 +53,9 @@ public class Adventure {
 			numUnlocks=3;
 		}
 		output += Json.addKey("numUnlocks", numUnlocks, true);
+		output+=Json.addKey("trophy", trophyName, true);
+		output+=Json.addKey("trophyX", trophyX, true);
+		output+=Json.addKey("trophyY", trophyY, true);
 		output+= Json.startArray("Quests"); 
 		for(int i=0;i<dungeons.size();i++){
 			Dungeon d = dungeons.get(i);
@@ -71,6 +77,29 @@ public class Adventure {
 			output+="\""+a.name+"\""+((i<adventures.size()-1)?", ":" ");
 		}
 		output+=Json.endArray(true);
+		
+		output+=Json.startArray("Regions");
+		
+		output+=Json.enclose();
+		output+=Json.addKey("name", "Stone", true);
+		output+=Json.addKey("x", 0, true);
+		output+=Json.addKey("y", 0, false);
+		output+=Json.endEnclose(true);
+		
+		output+=Json.enclose();
+		output+=Json.addKey("name", "Jungle", true);
+		output+=Json.addKey("x", -1157, true);
+		output+=Json.addKey("y", 0, false);
+		output+=Json.endEnclose(true);
+		
+		output+=Json.enclose();
+		output+=Json.addKey("name", "Mines", true);
+		output+=Json.addKey("x", 0, true);
+		output+=Json.addKey("y", -684, false);
+		output+=Json.endEnclose(false);
+		
+		output+=Json.endArray(true);
+
 		output+=Json.startList("QuestLines");
 		for(int i=0;i<adventures.size();i++){
 			Adventure a = adventures.get(i);
@@ -79,6 +108,16 @@ public class Adventure {
 		}
 		output+=Json.endList(false);
 		output+=Json.endEnclose(false);
+		return output;
+	}
+	
+	public static String trophyLocations(){
+		String output="";
+		
+		for(Adventure a:adventures){
+			System.out.println(a.trophyX+":"+a.trophyY);
+		}
+		
 		return output;
 	}
 
@@ -91,6 +130,8 @@ public class Adventure {
 	static boolean aTutorial;
 	static String aAdvName, aAdvDescription, aAdvIcon;
 	static float aAdvX, aAdvY;
+	static float aTrophyX, aTrophyY;
+	static String aTrophyName; 
 
 
 	static ArrayList<Dungeon> aDungeons = new ArrayList<>();
@@ -104,38 +145,10 @@ public class Adventure {
 		//aAdvDescription="Delve into the basement and defeat the mighty... rats";
 		aAdvIcon="stone_hatch";
 		aAdvX=1;
-		aAdvY=-.5f;
-
-		//		aName="Traversal test";
-		//		aDescription="Hope it 's fun";
-		//		aReward=100;
-		//		aTerrainType=TerrainType.stone;
-		//		aBoss="Rat King Cole";
-		//		aBossName="Rat King Cole";
-		//		aBossChats= new BossChat[]{
-		//		};
-		//		aStartingTile=Tile.get("udr");
-		//		aLayout= new DungeonLayout(new TileLocation[]{
-		//				new TileLocation(Tile.get("l"), 7, 0, "", null, new TileDetails(false, true, true, 5, 0, true)),
-		//				new TileLocation(Tile.get("udrl"), 6, 0, "Angry Bunny", null, new TileDetails(false, true, false, 0, 0, false)),
-		//				new TileLocation(Tile.get("lr"), 1, 1, "Gnoll", null, new TileDetails(false, true, false, 0, 0, false)),
-		//				new TileLocation(Tile.get("udlr"), 2, 0, "Ghost", null, new TileDetails(false, true, false, 0, 0, false)),
-		//				new TileLocation(Tile.get("ulr"), 3, 1, "Shade", null, new TileDetails(false, true, false, 0, 0, false)),
-		//				new TileLocation(Tile.get("lr"), 3, -1, "Sorceress", null, new TileDetails(false, true, false, 0, 0, false)),
-		//				new TileLocation(Tile.get("udlr"), 4, 0, "Bear Owl", null, new TileDetails(false, true, false, 0, 0, false)),
-		//				new TileLocation(Tile.get("dlr"), 5, -1, "Bandito", null, new TileDetails(false, true, false, 0, 0, false)),
-		//		});
-		//		aObjectives = new Objective[]{
-		//				new Objective(ObjectiveType.Arrive, "objective", -1)
-		//		};
-		//		aTurnLimit=10;
-		//		aTurnLimitActions= new TurnLimitAction[]{(
-		//				new TurnLimitAction(ActionType.FailDungeon, new String[]{}, "Trapped")
-		//				)};
-		//		aMonsters=MonsterFactory.stoneMonsters;
-		//		addDungeon();
-		//		createAdventure();
-
+		aAdvY=.25f;
+		aTrophyName="Rat King's Tail";
+		aTrophyX= -2;
+		aTrophyY= -1;
 		aName="Squeak squeak";
 		aDescription="Everyone's gotta start somewhere";
 		aReward=100;
@@ -214,9 +227,11 @@ public class Adventure {
 		aAdvName="Embro";
 		//aAdvDescription="Defeat the evil demon, Embro";
 		aAdvIcon="stone_fire_cave";
-		aAdvX=1;
-		aAdvY=.5f;
-
+		aAdvX=.2f;
+		aAdvY=.8f;
+		aTrophyName="Embro's Towel";
+		aTrophyX=0.5f;
+		aTrophyY=0;
 		aName="Fiery Foray";
 		aDescription="Scope out Embro's defences";
 		aReward=100;
@@ -351,9 +366,11 @@ public class Adventure {
 		aAdvName="Shiny treasure";
 		//aAdvDescription="Loot all the treasure";
 		aAdvIcon="stone_chest";
-		aAdvX=2;
-		aAdvY=0;
-
+		aAdvX=1.25f;
+		aAdvY=1.2f;
+		aTrophyName= "Mimic Splinters";
+		aTrophyX= -1;
+		aTrophyY= -1;
 		aName="Lovely loot";
 		aDescription="Chests full of treasure!";
 		aReward=100;
@@ -407,9 +424,11 @@ public class Adventure {
 		aAdvName="Goblins!";
 		//aAdvDescription="Loot all the treasure";
 		aAdvIcon="stone_skull_cave";
-		aAdvX=0;
-		aAdvY=1;
-
+		aAdvX=2;
+		aAdvY=.25f;
+		aTrophyName="Goblin Teeth";
+		aTrophyX=-1.5f;
+		aTrophyY=0;
 		aName="Goblin Menace";
 		aDescription="Take out the goblins";
 		aReward=100;
@@ -480,9 +499,11 @@ public class Adventure {
 		aAdvName="Black Knight";
 		//aAdvDescription="Loot all the treasure";
 		aAdvIcon="stone_castle";
-		aAdvX=2.5f;
-		aAdvY=-1;
-
+		aAdvX=2.15f;
+		aAdvY=1;
+		aTrophyName="Black Knight's Helm";
+		aTrophyX= 0;
+		aTrophyY= -1;
 		aName="Test your mettle";
 		aDescription="Defeat the combatants";
 		aReward=100;
@@ -593,7 +614,10 @@ public class Adventure {
 		//aAdvDescription="Loot all the treasure";
 		aAdvIcon="stone_skull_tomb";
 		aAdvX=2;
-		aAdvY=1;
+		aAdvY=2;
+		aTrophyName="Ashes of the Lich";
+		aTrophyX= -0.5f;
+		aTrophyY= 0;
 		aName="The summoning";
 		aDescription="Destroy the Evil Lich";
 		aReward=100;
@@ -661,9 +685,11 @@ public class Adventure {
 		aAdvName="The Eye Beast";
 		//aAdvDescription="Loot all the treasure";
 		aAdvIcon="stone_temple";
-		aAdvX=1.25f;
-		aAdvY=1.5f;
-
+		aAdvX=3f;
+		aAdvY=1.25f;
+		aTrophyName= "Jar of Eyeballs";
+		aTrophyX= 1;
+		aTrophyY=-1;
 		aName="Curious Crypt";
 		aDescription="Get to the crypt";
 		aReward=100;
@@ -749,9 +775,11 @@ public class Adventure {
 		aAdvName="The Sapphire of Tlaloc";
 		//aAdvDescription="Loot all the treasure";
 		aAdvIcon="jungle_gem";
-		aAdvX=-1;
-		aAdvY=0;
-
+		aAdvX=-.75f;
+		aAdvY=1.2f;
+		aTrophyName= "Sapphire";
+		aTrophyX= 1.5f;
+		aTrophyY= 0;
 		aName="Grab";
 		aDescription="Steal the sapphire";
 		aReward=100;
@@ -800,9 +828,11 @@ public class Adventure {
 
 		aAdvName="Medusa Adventure";
 		aAdvIcon="jungle_snake";
-		aAdvX=-2;
-		aAdvY=0;
-
+		aAdvX=-1.5f;
+		aAdvY=.5f;
+		aTrophyName= "Snakeskin Belt";
+		aTrophyX= 2.25f;
+		aTrophyY= -1;
 		aName="Snakes";
 		aDescription="I hate snakes";
 		aReward=100;
@@ -881,9 +911,11 @@ public class Adventure {
 		aAdvName="Ettin Adventure";
 		//aAdvDescription="Loot all the treasure";
 		aAdvIcon="jungle_mailbox";
-		aAdvX=-3;
-		aAdvY=0;
-
+		aAdvX=-1.75f;
+		aAdvY=1.5f;
+		aTrophyName="Ettin Shampoo";
+		aTrophyX=-2.5f;
+		aTrophyY= 0;
 		aName="Ettin Troubles";
 		aDescription="He's ganging up on you!";
 		aReward=100;
@@ -924,9 +956,11 @@ public class Adventure {
 		aAdvName="Chimera Adventure";
 		//aAdvDescription="Loot all the treasure";
 		aAdvIcon="jungle_temple";
-		aAdvX=-1;
-		aAdvY=-1;
-
+		aAdvX=-2;
+		aAdvY=2;
+		aTrophyName= "Chimera Venom";
+		aTrophyX= -3;
+		aTrophyY= -1;
 		aName="Wild Life";
 		aDescription="Defend yourself!";
 		aReward=100;
@@ -982,9 +1016,11 @@ public class Adventure {
 		aAdvName="Ogre Adventure";
 		//aAdvDescription="Loot all the treasure";
 		aAdvIcon="jungle_keepout";
-		aAdvX=-2;
-		aAdvY=-1;
-
+		aAdvX=-2.5f;
+		aAdvY=1;
+		aTrophyName= "Ogre's Favourite Rock";
+		aTrophyX= 2.5f;
+		aTrophyY= 0;
 		aName="Assassination";
 		aDescription="Defeat the ogre while he's still sleepy";
 		aReward=100;
@@ -1039,8 +1075,10 @@ public class Adventure {
 		//aAdvDescription="Loot all the treasure";
 		aAdvIcon="jungle_volcano";
 		aAdvX=-3;
-		aAdvY=-1;
-
+		aAdvY=2;
+		aTrophyName= "Dragon Claw";
+		aTrophyX= -3.5f;
+		aTrophyY= 0;
 		aName="Heist";
 		aDescription="Steal 4 chests";
 		aReward=100;
@@ -1099,19 +1137,25 @@ public class Adventure {
 
 		//MINES//
 
+		
+		
 		// TROLL ADVENTURE //
 
 		aAdvName="Troll Adventure";
-		aAdvIcon="stone_hatch";
-		aAdvX=-4f;
-		aAdvY=.5f;
+		aAdvIcon="mines_rope_shaft";
+		aAdvX=1f;
+		aAdvY=-.5f;
+		aTrophyName="Troll's Tankard";
+		aTrophyX=-2f;
+		aTrophyY=1;
 		aName="Tools down";
 		aDescription="Disrupt the mining operation";
 		aReward=100;
 		aTerrainType=TerrainType.mines;
 		aBoss="Troll";
 		aBossName="Troll";
-		aStartingTile=Tile.get("muld");
+		aStartingTile=Tile.get("murd");
+		aBossChats= new BossChat[]{};
 		aLayout= new DungeonLayout(new TileLocation[]{
 				new TileLocation(Tile.get("mulr"), 0, 2, "Miner", null, new TileDetails(false, true, true, 0, 2, false)),
 				new TileLocation(Tile.get("mlud"), 2, 0, "Miner", null, new TileDetails(false, true, false, 0, 0, false)),				
@@ -1123,33 +1167,29 @@ public class Adventure {
 		aMonsters=MonsterFactory.getMonsters(new String[]{"Miner"});
 		addDungeon();
 
-		aAdvName="Troll Adventure";
-		aAdvIcon="stone_hatch";
-		aAdvX=-4f;
-		aAdvY=.5f;
 		aName="Troll attack!";
 		aDescription="The miner's set a troll on you";
 		aReward=100;
 		aTerrainType=TerrainType.mines;
 		aBoss="Troll";
 		aBossName="Troll";
-		aStartingTile=Tile.get("muld");
+		aStartingTile=Tile.get("muldr");
 		aBossChats= new BossChat[]{
 				new BossChat(Trigger.Entrance, new BossSpeech[]{
 						new BossSpeech("Troll smash!", Func.emote, false),
 				}, PostFunc.Chase,
-				0, -1, 1, DelayEffect.APPEAR, null),
+				-1, 0, 1, DelayEffect.APPEAR, null),
 		};
 		aLayout= new DungeonLayout(new TileLocation[]{
-				new TileLocation(Tile.get("mlr"), 6, 0, "", null, new TileDetails(false, true, true, 6, 0, false)),
+				new TileLocation(Tile.get("ml"), 6, 0, "BOSS", null, new TileDetails(false, true, true, 6, 0, false)),
 				new TileLocation(Tile.get("mlr"), 5, 0, "", null, new TileDetails(false, true, false, 0, 0, false)),				
 				new TileLocation(Tile.get("mlr"), 4, 0, "", null, new TileDetails(false, true, false, 0, 0, false)),
 				new TileLocation(Tile.get("mlr"), 3, 0, "", null, new TileDetails(false, true, false, 0, 0, false)),
 				new TileLocation(Tile.get("mlr"), 2, 0, "", null, new TileDetails(false, true, false, 0, 0, false)),
-				new TileLocation(Tile.get("ml"), 1, 0, "", null, new TileDetails(false, true, false, 0, 0, false)),
+				new TileLocation(Tile.get("mlr"), 1, 0, "", null, new TileDetails(false, true, false, 0, 0, false)),
 		});
 		aObjectives = new Objective[]{
-				new Objective(ObjectiveType.Defeat, "Miner", 4),
+				new Objective(ObjectiveType.Defeat, "BOSS", 1),
 		};
 		aTurnLimit=-1;
 		aMonsters=MonsterFactory.getMonsters(new String[]{"Miner"});
@@ -1159,9 +1199,12 @@ public class Adventure {
 		// CYCLOPS ADVENTURE //
 
 		aAdvName="Cyclops Adventure";
-		aAdvIcon="stone_hatch";
-		aAdvX=-1.5f;
-		aAdvY=1.5f;
+		aAdvIcon="mines_cave";
+		aAdvX=2f;
+		aAdvY=-.5f;
+		aTrophyName="Cyclops' Monocle";
+		aTrophyX=-1.5f;
+		aTrophyY=-2f;
 		aName="Mine Patrol";
 		aDescription="Defeat the Cyclops";
 		aReward=100;
@@ -1193,19 +1236,22 @@ public class Adventure {
 		// SENTRY ADVENTURE //
 
 		aAdvName="Sentry Adventure";
-		aAdvIcon="stone_hatch";
-		aAdvX=-2.5f;
-		aAdvY=1.5f;
+		aAdvIcon="mines_hut";
+		aAdvX=1.5f;
+		aAdvY=-1f;
+		aTrophyName="The Sentry's Gunpowder";
+		aTrophyX=-1f;
+		aTrophyY=1f;
 		aName="Steal it all!";
 		aDescription="Grab some piles of gold";
 		aReward=100;
 		aTerrainType=TerrainType.mines;
 		aBoss="Dwarf Sentry";
 		aBossName="Dwarf Sentry";
-		aStartingTile=Tile.get("muld");
+		aStartingTile=Tile.get("muldr");
 		aBossChats= new BossChat[]{
 				new BossChat(Trigger.FirstKill, new BossSpeech[]{
-						new BossSpeech("INTRUDER DETECTED", Func.emote, false),
+						new BossSpeech("INTRUDER DAlriETECTED", Func.emote, false),
 						new BossSpeech("SETTING UP SECONDARY PERIMETER", Func.emote, false)
 				}, PostFunc.FinishBossChat,
 				1, -1, 1, DelayEffect.APPEAR, null)
@@ -1213,7 +1259,7 @@ public class Adventure {
 		aLayout= new DungeonLayout(new TileLocation[]{
 				new TileLocation(Tile.get("mu"), 0, 2, "", TreasureType.GOLD_COIN, new TileDetails(false, true, true, 0, 2, false)),
 				new TileLocation(Tile.get("mu"), 1, 2, "Rust Monster", TreasureType.GOLD_COIN, new TileDetails(false, true, false, 0, 0, false)),
-				new TileLocation(Tile.get("mu"), -1, 2, "Gelationus Cube", TreasureType.GOLD_COIN, new TileDetails(false, true, false, 0, 0, false)),
+				new TileLocation(Tile.get("mu"), -1, 2, "Gelatinous Cube", TreasureType.GOLD_COIN, new TileDetails(false, true, false, 0, 0, false)),
 				new TileLocation(Tile.get("mudlr"), -1, 1, "Clattering Bones", TreasureType.GOLD_COIN, new TileDetails(false, true, false, 0, 0, false)),
 		});
 		aObjectives = new Objective[]{
@@ -1240,17 +1286,21 @@ public class Adventure {
 						new BossSpeech("YOU ARE ONLY MAKING IT WORSE FOR YOURSELF!", Func.emote, false)
 				}, PostFunc.FinishBossChat,
 				2, -1, 1, DelayEffect.APPEAR, null),
+				new BossChat(Trigger.attacked_early, new BossSpeech[]{
+						new BossSpeech("SERVOS NOT CHARGED!", Func.emote, false),
+				}, null, 
+				-1, -1, 1, null, null),
 				new BossChat(Trigger.kill, new BossSpeech[]{
 						new BossSpeech("TARGET ACQUIRED, FIRING!", Func.emote, false)
 				}, PostFunc.FailDungeon,
-				2, -1, 1, DelayEffect.APPEAR, null)
+				-1, -1, 1, DelayEffect.APPEAR, null)
 
 		};
 		aLayout= new DungeonLayout(new TileLocation[]{
-				new TileLocation(Tile.get("mu"), -3, 0, "BOSS", null, new TileDetails(false, true, true, -3, 0, false)),
-				new TileLocation(Tile.get("mulr"), 0, -2, "", TreasureType.GOLD_COIN, new TileDetails(false, true, false, 0, 0, false)),
-				new TileLocation(Tile.get("mdlr"), 0, 2, "Digger", TreasureType.Large_Chest, new TileDetails(false, true, false, 0, 0, false)),
-				new TileLocation(Tile.get("mudlr"), -1, 1, "Wailing Ghosts", TreasureType.MEGA_CHEST, new TileDetails(false, true, false, 0, 0, false)),
+				new TileLocation(Tile.get("mdr"), -3, 0, "BOSS", null, new TileDetails(false, true, true, -3, 0, false)),
+				new TileLocation(Tile.get("mdlr"), 0, -2, "", TreasureType.GOLD_COIN, new TileDetails(false, true, false, 0, 0, false)),
+				new TileLocation(Tile.get("mulr"), 0, 2, "Digger", TreasureType.Large_Chest, new TileDetails(false, true, false, 0, 0, false)),
+				new TileLocation(Tile.get("mudlr"), -1, 1, "Wailing Ghost", TreasureType.MEGA_CHEST, new TileDetails(false, true, false, 0, 0, false)),
 		});
 		aObjectives = new Objective[]{
 				new Objective(ObjectiveType.Defeat, "BOSS", 1),
@@ -1266,9 +1316,12 @@ public class Adventure {
 		// MECHA ADVENTURE //
 
 		aAdvName="Mecha Adventure";
-		aAdvIcon="stone_hatch";
-		aAdvX=-2f;
-		aAdvY=.5f;
+		aAdvIcon="mines_cart";
+		aAdvX=2.5f;
+		aAdvY=-1f;
+		aTrophyName="Mecha's Spring";
+		aTrophyX=-0.5f;
+		aTrophyY=-2;
 		aName="Caught!";
 		aDescription="";
 		aReward=100;
@@ -1281,7 +1334,7 @@ public class Adventure {
 						new BossSpeech("Get out of here", Func.emote, false),
 						new BossSpeech("You've been causing loads of trouble!", Func.emote, false)
 				}, PostFunc.Chase,
-				0, -1, 1, DelayEffect.APPEAR, null),
+				-1, 0, 1, DelayEffect.APPEAR, null),
 		};
 		aLayout= new DungeonLayout(new TileLocation[]{
 				new TileLocation(Tile.get("md"), 1, -4, "BOSS", null, new TileDetails(false, true, true, 1, -3, false)),
@@ -1302,16 +1355,19 @@ public class Adventure {
 		//DWARF MASTERPIECE ADVENTURE//
 
 		aAdvName="Masterpiece Adventure";
-		aAdvIcon="stone_hatch";
-		aAdvX=-3.5f;
-		aAdvY=1.5f;
+		aAdvIcon="mines_factory";
+		aAdvX=1f;
+		aAdvY=-1.5f;
+		aTrophyName="MegaDrill Cog";
+		aTrophyX=0;
+		aTrophyY=1;
 		aName="Workshop infiltration";
 		aDescription="Get into the secret workshop";
 		aReward=100;
 		aTerrainType=TerrainType.mines;
 		aBoss="Dwarf Masterpiece";
 		aBossName="Dwarf Masterpiece";
-		aStartingTile=Tile.get("muld");
+		aStartingTile=Tile.get("murd");
 		aBossChats= new BossChat[]{
 				new BossChat(Trigger.FirstKill, new BossSpeech[]{
 						new BossSpeech("They're trying to get in!", Func.emote, false),
@@ -1325,7 +1381,7 @@ public class Adventure {
 		};
 		aLayout= new DungeonLayout(new TileLocation[]{
 				new TileLocation(Tile.get("mudr"), 2, 0, "", TreasureType.Large_Chest, new TileDetails(false, true, true, 2, 0, false)),
-				new TileLocation(Tile.get("mudlr"), 2, -1, "Gelationus Cube", null, new TileDetails(false, true, false, 0, 0, false)),
+				new TileLocation(Tile.get("mudlr"), 2, -1, "Gelatinous Cube", null, new TileDetails(false, true, false, 0, 0, false)),
 				new TileLocation(Tile.get("mudlr"), 2, 1, "Clattering Bones", null, new TileDetails(false, true, false, 0, 0, false)),
 				new TileLocation(Tile.get("mlr"), 3, 0, "Earth Elemental", null, new TileDetails(false, true, false, 0, 0, false)),
 				new TileLocation(Tile.get("ml"), 4, 0, "", null, new TileDetails(false, true, false, 0, 0, true)),
@@ -1350,23 +1406,27 @@ public class Adventure {
 						new BossSpeech("They're here!", Func.emote, false),
 						new BossSpeech("Destroy them before they get to me!", Func.emote, false)
 				}, PostFunc.StartingRoom,
-				0, -1, 1, DelayEffect.APPEAR, null),
+				-1, 0, 1, DelayEffect.APPEAR, null),
 				new BossChat(Trigger.ThirdTurn, new BossSpeech[]{
 						new BossSpeech("Their torch is running out!", Func.emote, false),
 						new BossSpeech("Once they're out of light they're screwed!", Func.emote, false)
 				}, PostFunc.FinishBossChat,
-				3, -1, 1, DelayEffect.APPEAR, null),
+				-1, 3, 1, DelayEffect.APPEAR, null),
 				new BossChat(Trigger.SixthTurn, new BossSpeech[]{
 						new BossSpeech("Just delay them a little more", Func.emote, false),
 				}, PostFunc.FinishBossChat,
-				6, -1, 1, DelayEffect.APPEAR, null),
+				-1, 6, 1, DelayEffect.APPEAR, null),
+				new BossChat(Trigger.attacked_early, new BossSpeech[]{
+						new BossSpeech("Now you die!", Func.emote, false),
+				}, null, 
+				-1, -1, 1, null, null),
 				new BossChat(Trigger.kill, new BossSpeech[]{
 						new BossSpeech("Out of time, adventurer. You have no choice in the dark.", Func.emote, false),
 				}, PostFunc.FailDungeon,
 				-1, -1, 1, DelayEffect.APPEAR, null)
 		};
 		aLayout= new DungeonLayout(new TileLocation[]{
-				new TileLocation(Tile.get("mr"), -3, 0, "BOSS", null, new TileDetails(false, true, true, -3, 0, false)),
+				new TileLocation(Tile.get("mudr"), -3, 0, "BOSS", null, new TileDetails(false, true, true, -3, 0, false)),
 				new TileLocation(Tile.get("mudlr"), -2, -1, "Blind Worm", TreasureType.Large_Chest, new TileDetails(false, true, false, 0, 0, false)),
 				new TileLocation(Tile.get("mudlr"), -2, 1, "Cave Troll", TreasureType.MEGA_CHEST, new TileDetails(false, true, false, 0, 0, false)),
 		});
@@ -1383,32 +1443,60 @@ public class Adventure {
 
 		//DWARF MAGNATE ADVENTURE//
 
-		aName="Traversal test";
-		aDescription="Hope it 's fun";
+		aAdvName="Magnate Adventure";
+		aAdvIcon="mines_office";
+		aAdvX=2f;
+		aAdvY=-1.5f;
+		aTrophyName="Magante's Stock Cert";
+		aTrophyX=-.5f;
+		aTrophyY=-2;
+		aName="Final quest";
+		aDescription="Kill the dwarf leader before you get trapped!";
 		aReward=100;
-		aTerrainType=TerrainType.stone;
+		aTerrainType=TerrainType.mines;
 		aBoss="Dwarf Magnate";
 		aBossName="Dwarf Magnate";
 		aBossChats= new BossChat[]{
+				new BossChat(Trigger.FirstTurn, new BossSpeech[]{
+						new BossSpeech("You will never stop us!", Func.emote, false),
+						new BossSpeech("We will take over the world and you are too weak to stand against us!", Func.emote, false)
+				}, PostFunc.StartingRoom,
+				-1, 0, 1, DelayEffect.APPEAR, null),
+				new BossChat(Trigger.ThirdTurn, new BossSpeech[]{
+						new BossSpeech("Once the death ray is complete, we will be unstoppable", Func.emote, false),
+				}, PostFunc.FinishBossChat,
+				-1, 3, 1, DelayEffect.APPEAR, null),
+				new BossChat(Trigger.SixthTurn, new BossSpeech[]{
+						new BossSpeech("Tertiary subsystems coming online...", Func.emote, false),
+				}, PostFunc.FinishBossChat,
+				-1, 6, 1, DelayEffect.APPEAR, null),
+				new BossChat(Trigger.attacked_early, new BossSpeech[]{
+						new BossSpeech("But I never got to use my death-ray", Func.emote, false),
+				}, null, 
+				-1, -1, 1, null, null),
+				new BossChat(Trigger.kill, new BossSpeech[]{
+						new BossSpeech("Fire the death ray! Muahahaha!", Func.emote, false),
+				}, PostFunc.FailDungeon,
+				-1, -1, 1, DelayEffect.APPEAR, null)
 		};
-		aStartingTile=Tile.get("udr");
+		aStartingTile=Tile.get("mudr");
 		aLayout= new DungeonLayout(new TileLocation[]{
-				new TileLocation(Tile.get("udrl"), 6, 0, "Angry Bunny", null, new TileDetails(false, true, false, 0, 0, false)),
-				new TileLocation(Tile.get("lr"), 1, 1, "Gnoll", null, new TileDetails(false, true, false, 0, 0, false)),
-				new TileLocation(Tile.get("udlr"), 2, 0, "Ghost", null, new TileDetails(false, true, false, 0, 0, false)),
-				new TileLocation(Tile.get("ulr"), 3, 1, "Shade", null, new TileDetails(false, true, false, 0, 0, false)),
-				new TileLocation(Tile.get("lr"), 3, -1, "Sorceress", null, new TileDetails(false, true, false, 0, 0, false)),
-				new TileLocation(Tile.get("udlr"), 4, 0, "Bear Owl", null, new TileDetails(false, true, false, 0, 0, false)),
-				new TileLocation(Tile.get("dlr"), 5, -1, "Bandito", null, new TileDetails(false, true, false, 0, 0, false)),
+				new TileLocation(Tile.get("mudrl"), 6, 0, "BOSS", null, new TileDetails(false, true, true, 6, 0, false)),
+				new TileLocation(Tile.get("mlr"), 1, 1, "Miner", null, new TileDetails(false, true, false, 0, 0, false)),
+				new TileLocation(Tile.get("mudlr"), 2, 0, "Digger", null, new TileDetails(false, true, false, 0, 0, false)),
+				new TileLocation(Tile.get("mulr"), 3, 1, "Blind Worm", null, new TileDetails(false, true, false, 0, 0, false)),
+				new TileLocation(Tile.get("mlr"), 3, -1, "Gelatinous Cube", null, new TileDetails(false, true, false, 0, 0, false)),
+				new TileLocation(Tile.get("mudlr"), 4, 0, "Cave Troll", null, new TileDetails(false, true, false, 0, 0, false)),
+				new TileLocation(Tile.get("mdlr"), 5, -1, "Earth Elemental", null, new TileDetails(false, true, false, 0, 0, false)),
 		});
 		aObjectives = new Objective[]{
-				new Objective(ObjectiveType.Arrive, "objective", -1)
+				new Objective(ObjectiveType.Defeat, "BOSS", -1)
 		};
 		aTurnLimit=10;
 		aTurnLimitActions= new TurnLimitAction[]{(
-				new TurnLimitAction(ActionType.FailDungeon, new String[]{}, "Trapped")
+				new TurnLimitAction(ActionType.BossChat, new String[]{"\""+Trigger.kill.toString()+"\""}, "Death ray ")
 				)};
-		aMonsters=MonsterFactory.stoneMonsters;
+		aMonsters=MonsterFactory.getMonsters(Region.Mines, 3);
 		addDungeon();
 		createAdventure();
 
@@ -1444,11 +1532,11 @@ public class Adventure {
 
 	private static ArrayList<Adventure> adventures = new ArrayList<>();
 	private static void createAdventure(){
-		adventures.add(new Adventure(aAdvName, aAdvDescription, aAdvIcon, aAdvX, aAdvY, aDungeons));
+		adventures.add(new Adventure(aAdvName, aAdvDescription, aAdvIcon, aAdvX, aAdvY, aTrophyX, aTrophyY, aTrophyName, aDungeons));
 		resetAdventure();
 	}
 
 	private static void resetAdventure() {
-		aAdvName=""; aAdvDescription=""; aAdvIcon=""; aAdvX=0; aAdvY=0; aDungeons.clear();
+		aAdvName=""; aAdvDescription=""; aAdvIcon=""; aAdvX=0; aAdvY=0; aTrophyName="unset"; aTrophyX=0; aTrophyY=0; aDungeons.clear();
 	}	
 }

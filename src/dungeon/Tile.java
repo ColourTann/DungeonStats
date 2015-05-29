@@ -11,7 +11,7 @@ public class Tile {
 		corr_deadend1_n, corr_deadend1_e, corr_corner1_ne, room_deadend2_s, corr_bridgeflip_ns, corr_corner2_es, corr_tee1_nes, 
 		room_deadend3_w, corr_corner3_nw, corr_regular2_ew, corr_tee4_new, corr_corner4_sw, corr_tee5_nsw, 
 		corr_tee6_esw, corr_cross16_nesw, corr_boulders_n, room_pits_e, corr_boxcorner_ne, room_tavern_s, corr_bucket_ns, 
-		room_mess_es, corr_barrowrail_nes, room_pits_w, corr_railcorner_nw, corr_pittee_new, corr_pitgear_sw, corr_bouldertee_nsw, corr_regulartee_esw, corr_pillar4_nesw};
+		room_mess_es, room_supply_nes, room_pits_w, corr_railcorner_nw, corr_pittee_new, corr_pitgear_sw, corr_bouldertee_nsw, corr_regulartee_esw, corr_pillar4_nesw};
 		
 		
 		static HashMap<Byte, TileName> tiles = new HashMap<>();
@@ -43,7 +43,7 @@ public class Tile {
 			b+=1;
 			tiles.put(b, TileName.room_semicircle_nes);
 			tiles.put((byte) (b|0b10000), TileName.corr_tee1_nes);
-			tiles.put((byte) (b|0b100000), TileName.corr_barrowrail_nes);
+			tiles.put((byte) (b|0b100000), TileName.room_supply_nes);
 			b+=1;
 			tiles.put(b, TileName.room_waterfall_w);
 			tiles.put((byte) (b|0b10000), TileName.room_deadend3_w);
