@@ -43,6 +43,7 @@ public class Item {
 	int spawnCount;
 	int randomPool;
 	int keepHair;
+	int offsetX, offsetY;
 	Sound sound;
 	Trait[] traits;
 	Skill[] skills;
@@ -61,6 +62,7 @@ public class Item {
 			int spawnCount,
 			int randomPool,
 			int keepHair,
+			int offsetX, int offsetY,
 			Sound sound,
 			Skill[] skills,
 			Trait[] traits,
@@ -79,6 +81,7 @@ public class Item {
 		this.spawnCount=spawnCount;
 		this.randomPool=randomPool;
 		this.keepHair=keepHair;
+		this.offsetX=offsetX; this.offsetY=offsetY;
 		this.sound=sound;
 		this.skills=skills;
 		this.traits=traits;
@@ -100,6 +103,7 @@ public class Item {
 	static int aRandomPool;
 	static int aKeepHair;
 	static int aHealth;
+	static int aOffsetX, aOffsetY;
 	static Sound aSound;
 	static Skill[] aSkills;
 	static Trait[] aTraits;
@@ -186,6 +190,7 @@ public class Item {
 		aRandomPool=1;
 		aSound=Sound.equip_leather_helm;
 		aSkills=new Skill[]{Skill.armour.asLevel(2)};
+		aOffsetX=111; aOffsetY=68;
 		add();
 
 		aName="Horned Helm";
@@ -199,6 +204,7 @@ public class Item {
 		aRandomPool=0;
 		aSound=Sound.equip_horned_helm;
 		aSkills=new Skill[]{Skill.armour.asLevel(2), Skill.crush.asLevel(1)};
+		aOffsetX=112; aOffsetY=68;
 		add();
 
 		aName="Winged Fury";
@@ -212,6 +218,7 @@ public class Item {
 		aRandomPool=0;
 		aSound=Sound.equip_winged_helm;
 		aSkills=new Skill[]{Skill.armour.asLevel(2), Skill.swift.asLevel(2), Skill.holy.asLevel(1)};
+		aOffsetX=113; aOffsetY=89;
 		add();
 
 		aName="Scale Mail";
@@ -226,7 +233,7 @@ public class Item {
 		aSound=Sound.equip_scalemail;
 		aTraits= new Trait[]{Trait.Bulwark};
 		aHealth=1;
-
+		aOffsetX=115; aOffsetY=170;
 		add();
 
 		aName="Red Mail";
@@ -240,6 +247,7 @@ public class Item {
 		aSound=Sound.equip_chainmail;
 		aSkills=new Skill[]{Skill.armour.asLevel(1)};
 		aHealth=1;
+		aOffsetX=114; aOffsetY=170;
 		add();
 
 		aName="Doom Plate";
@@ -253,6 +261,7 @@ public class Item {
 		aRandomPool=0;
 		aSound=Sound.equip_platemail;
 		aSkills=new Skill[]{Skill.armour.asLevel(3)};
+		aOffsetX=115; aOffsetY=169;
 		add();
 
 		aName="Wooden Shield";
@@ -265,6 +274,7 @@ public class Item {
 		aRandomPool=0;
 		aSound=Sound.equip_wooden_shield;
 		aSkills=new Skill[]{Skill.armour.asLevel(2)};
+		aOffsetX=70; aOffsetY=175;
 		add();
 
 		aName="Duelling Buckler";
@@ -278,6 +288,7 @@ public class Item {
 		aRandomPool=1;
 		aSound=Sound.equip_buckler;
 		aSkills=new Skill[]{Skill.armour.asLevel(2), Skill.swift.asLevel(2)};
+		aOffsetX=71; aOffsetY=175;
 		add();
 
 		aName="Heater Shield";
@@ -292,6 +303,7 @@ public class Item {
 		aSound=Sound.equip_buckler;
 		aSkills=new Skill[]{Skill.armour.asLevel(1)};
 		aTraits=new Trait[]{Trait.Tenacious};
+		aOffsetX=75; aOffsetY=176;
 		add();
 
 		aName="Kite Shield";
@@ -304,6 +316,7 @@ public class Item {
 		aRandomPool=0;
 		aSound=Sound.equip_buckler;
 		aSkills=new Skill[]{Skill.armour.asLevel(3)};
+		aOffsetX=77; aOffsetY=172;
 		add();
 
 		aName="Club";
@@ -316,6 +329,7 @@ public class Item {
 		aRandomPool=1;
 		aSound=Sound.equip_club;
 		aSkills=new Skill[]{Skill.crush.asLevel(1), Skill.growth.asLevel(1)};
+		aOffsetX=176; aOffsetY=140;
 		add();
 
 		aName="Mace";
@@ -329,7 +343,7 @@ public class Item {
 		aRandomPool=1;
 		aSound=Sound.equip_mace;
 		aSkills=new Skill[]{Skill.crush.asLevel(2), Skill.blade.asLevel(2)};
-
+		aOffsetX=181; aOffsetY=142;
 		add();
 
 		aName="Sword";
@@ -342,6 +356,7 @@ public class Item {
 		aRandomPool=1;
 		aSound=Sound.equip_sword;
 		aSkills=new Skill[]{Skill.blade.asLevel(2)};
+		aOffsetX=170; aOffsetY=146;
 		add();
 
 		aName="Battle Axe";
@@ -355,6 +370,7 @@ public class Item {
 		aRandomPool=0;
 		aSound=Sound.equip_axe;
 		aSkills=new Skill[]{Skill.blade.asLevel(2), Skill.crush.asLevel(2)};
+		aOffsetX=179; aOffsetY=143;
 		add();
 
 		aName="Elixir";
@@ -382,6 +398,7 @@ public class Item {
 		aRandomPool=1;
 		aSound=Sound.equip_robes;
 		aSkills=new Skill[]{Skill.arcane.asLevel(2), Skill.fire.asLevel(2), Skill.swift.asLevel(1)};
+		aOffsetX=114; aOffsetY=182;
 		add();
 
 		aName="Wizard's Hat";
@@ -394,6 +411,7 @@ public class Item {
 		aRandomPool=0;
 		aSound=Sound.equip_cloth_hat;
 		aSkills=new Skill[]{Skill.arcane.asLevel(2), Skill.fire.asLevel(1)};
+		aOffsetX=108; aOffsetY=50;
 		add();
 
 		aName="Feathered Cap";
@@ -408,6 +426,7 @@ public class Item {
 		aKeepHair=1;
 		aSound=Sound.equip_cloth_hat;
 		aSkills=new Skill[]{Skill.swift.asLevel(1), Skill.growth.asLevel(1), Skill.arcane.asLevel(1)};
+		aOffsetX=110; aOffsetY=41;
 		add();
 
 		aName="Stiletto";
@@ -420,6 +439,7 @@ public class Item {
 		aRandomPool=1;
 		aSound=Sound.equip_knife;
 		aSkills=new Skill[]{Skill.swift.asLevel(1), Skill.blade.asLevel(1)};
+		aOffsetX=175; aOffsetY=162;
 		add();
 
 		aName="Green Bow";
@@ -434,6 +454,7 @@ public class Item {
 		aSound=Sound.equip_bow;
 		aSkills=new Skill[]{Skill.swift.asLevel(1)};
 		aTraits=new Trait[]{Trait.Accurate};
+		aOffsetX=156; aOffsetY=168;
 		add();
 
 		aName="Mind Staff";
@@ -447,6 +468,7 @@ public class Item {
 		aRandomPool=0;
 		aSound=Sound.equip_club;
 		aSkills=new Skill[]{Skill.arcane.asLevel(2), Skill.fire.asLevel(2)};
+		aOffsetX=176; aOffsetY=146;
 		add();
 
 		aName="Winged Staff";
@@ -460,6 +482,7 @@ public class Item {
 		aRandomPool=0;
 		aSound=Sound.equip_club;
 		aSkills=new Skill[]{Skill.holy.asLevel(2), Skill.arcane.asLevel(2)};
+		aOffsetX=176; aOffsetY=148;
 		add();
 
 		aName="Toxic Mace";
@@ -472,6 +495,7 @@ public class Item {
 		aRandomPool=0;
 		aSound=Sound.equip_mace;
 		aSkills=new Skill[]{Skill.crush.asLevel(2), Skill.arcane.asLevel(1)};
+		aOffsetX=180; aOffsetY=133;
 		add();
 
 		aName="Twig";
@@ -484,6 +508,7 @@ public class Item {
 		aRandomPool=1;
 		aSound=Sound.equip_club;
 		aSkills=new Skill[]{Skill.crush.asLevel(1)};
+		aOffsetX=175; aOffsetY=159;
 		add();
 
 		aName="Fork";
@@ -496,6 +521,7 @@ public class Item {
 		aRandomPool=1;
 		aSound=Sound.equip_sword;
 		aSkills=new Skill[]{Skill.blade.asLevel(1)};
+		aOffsetX=174; aOffsetY=165;
 		add();
 
 		aName="Sparkly Headband";
@@ -509,6 +535,7 @@ public class Item {
 		aKeepHair=1;
 		aSound=Sound.equip_leather_helm;
 		aSkills=new Skill[]{Skill.holy.asLevel(1), Skill.swift.asLevel(1)};
+		aOffsetX=109; aOffsetY=78;
 		add();
 
 		aName="Voodoo Mask";
@@ -523,6 +550,7 @@ public class Item {
 		aKeepHair=1;
 		aSound=Sound.equip_leather_helm;
 		aSkills=new Skill[]{Skill.holy.asLevel(2), Skill.growth.asLevel(2), Skill.arcane.asLevel(2)};
+		aOffsetX=110; aOffsetY=89;
 		add();
 
 		aName="Paper Crown";
@@ -536,6 +564,7 @@ public class Item {
 		aKeepHair=1;
 		aSound=Sound.equip_cloth_hat;
 		aSkills=new Skill[]{Skill.holy.asLevel(1)};
+		aOffsetX=90; aOffsetY=49;
 		add();
 
 		aName="Fire Shield";
@@ -548,6 +577,7 @@ public class Item {
 		aRandomPool=0;
 		aSound=Sound.equip_silver_shield;
 		aSkills=new Skill[]{Skill.armour.asLevel(2), Skill.fire.asLevel(2)};
+		aOffsetX=70; aOffsetY=179;
 		add();
 
 		aName="Eyeball Charm";
@@ -561,6 +591,7 @@ public class Item {
 		aRandomPool=1;
 		aSound=Sound.equip_great_shield;
 		aSkills=new Skill[]{Skill.arcane.asLevel(1), Skill.holy.asLevel(1)};
+		aOffsetX=67; aOffsetY=185;
 		add();
 
 		aName="Ruffled Shirt";
@@ -573,6 +604,7 @@ public class Item {
 		aRandomPool=1;
 		aSound=Sound.equip_cloth_hat;
 		aSkills=new Skill[]{Skill.swift.asLevel(1)};
+		aOffsetX=113; aOffsetY=168;
 		add();
 
 		aName="Straitjacket";
@@ -586,6 +618,7 @@ public class Item {
 		aSound=Sound.equip_leather_armour;
 		aSkills=null;
 		aTraits=new Trait[]{Trait.Tenacious};
+		aOffsetX=110; aOffsetY=169;
 		add();
 
 		aName="Wolf Pelt";
@@ -600,6 +633,7 @@ public class Item {
 		aRandomPool=1;
 		aSound=Sound.equip_leather_armour;
 		aSkills=new Skill[]{Skill.swift.asLevel(1), Skill.growth.asLevel(2)};
+		aOffsetX=147; aOffsetY=187;
 		add();
 
 		aName="Dragon Scale";
@@ -612,6 +646,7 @@ public class Item {
 		aRandomPool=0;
 		aSound=Sound.equip_chainmail;
 		aSkills=new Skill[]{Skill.armour.asLevel(3)};
+		aOffsetX=113; aOffsetY=170;
 		add();
 
 		aName="Tattered Mail";
@@ -624,6 +659,7 @@ public class Item {
 		aRandomPool=1;
 		aSound=Sound.equip_chainmail;
 		//aSkills=new Skill[]{Skill.armour.asLevel(1), Skill.crush.asLevel(1)};
+		aOffsetX=113; aOffsetY=169;
 		aHealth=1;
 		add();
 
@@ -638,6 +674,7 @@ public class Item {
 		aRandomPool=1;
 		aSound=Sound.equip_club;
 		aSkills=new Skill[]{Skill.arcane.asLevel(1), Skill.swift.asLevel(1)};
+		aOffsetX=113; aOffsetY=181;
 		add();
 
 		aName="Elven Plate";
@@ -651,6 +688,7 @@ public class Item {
 		aRandomPool=0;
 		aSound=Sound.equip_chainmail;
 		aSkills=new Skill[]{Skill.growth.asLevel(3)};
+		aOffsetX=112; aOffsetY=169;
 		add();
 
 		aName="Coat of Thorns";
@@ -664,6 +702,7 @@ public class Item {
 		aRandomPool=0;
 		aSound=Sound.equip_leather_armour;
 		aSkills=new Skill[]{Skill.growth.asLevel(2), Skill.armour.asLevel(2)};
+		aOffsetX=113; aOffsetY=168;
 		add();
 
 		aName="Bone Armour";
@@ -676,6 +715,7 @@ public class Item {
 		aRandomPool=1;
 		aSound=Sound.equip_leather_armour;
 		aSkills=new Skill[]{Skill.arcane.asLevel(2), Skill.armour.asLevel(1)};
+		aOffsetX=113; aOffsetY=169;
 		add();
 
 		aName="Bark Vest";
@@ -689,6 +729,7 @@ public class Item {
 		aRandomPool=0;
 		aSound=Sound.equip_leather_armour;
 		aSkills=new Skill[]{Skill.growth.asLevel(1), Skill.armour.asLevel(1)};
+		aOffsetX=114; aOffsetY=170;
 		add();
 
 		aName="Padded Vest";
@@ -702,6 +743,7 @@ public class Item {
 		aRandomPool=1;
 		aSound=Sound.equip_club;
 		aSkills= new Skill[]{Skill.armour.asLevel(1), Skill.arcane.asLevel(2)};
+		aOffsetX=113; aOffsetY=169;
 		add();
 
 		aName="Wolf Hat";
@@ -716,6 +758,7 @@ public class Item {
 		aKeepHair=1;
 		aSound=Sound.equip_leather_helm;
 		aSkills= new Skill[]{Skill.growth.asLevel(2), Skill.swift.asLevel(1)};
+		aOffsetX=109; aOffsetY=48;
 		add();
 
 		aName="Mail Coif";
@@ -729,6 +772,7 @@ public class Item {
 		aRandomPool=0;
 		aSound=Sound.equip_winged_helm;
 		aSkills= new Skill[]{Skill.armour.asLevel(2)};
+		aOffsetX=110; aOffsetY=100;
 		add();
 
 		aName="Spikey Hat";
@@ -743,6 +787,7 @@ public class Item {
 		aSound=Sound.equip_horned_helm;
 		aSkills=new Skill[]{Skill.armour.asLevel(1)};
 		aHealth=1;
+		aOffsetX=113; aOffsetY=61;
 		add();
 
 		aName="Soldier's Helmet";
@@ -756,6 +801,7 @@ public class Item {
 		aRandomPool=0;
 		aSound=Sound.equip_horned_helm;
 		aHealth=1;
+		aOffsetX=111; aOffsetY=61;
 		add();
 
 		aName="Norse Helmet";
@@ -769,6 +815,7 @@ public class Item {
 		aRandomPool=0;
 		aSound=Sound.equip_horned_helm;
 		aSkills= new Skill[]{Skill.swift.asLevel(2), Skill.armour.asLevel(2)};
+		aOffsetX=110; aOffsetY=88;
 		add();
 
 		aName="Elven Helmet";
@@ -782,6 +829,7 @@ public class Item {
 		aRandomPool=0;
 		aSound=Sound.equip_horned_helm;
 		aSkills= new Skill[]{Skill.arcane.asLevel(2), Skill.growth.asLevel(2)};
+		aOffsetX=111; aOffsetY=54;
 		add();
 
 		aName="Cooking Pot";
@@ -794,6 +842,7 @@ public class Item {
 		aRandomPool=1;
 		aSound=Sound.equip_horned_helm;
 		aSkills= new Skill[]{Skill.fire.asLevel(1), Skill.crush.asLevel(1)};
+		aOffsetX=100; aOffsetY=48;
 		add();
 
 		aName="Fez";
@@ -808,6 +857,7 @@ public class Item {
 		aKeepHair=1;
 		aSound=Sound.equip_cloth_hat;
 		aSkills=new Skill[]{Skill.arcane.asLevel(2)};
+		aOffsetX=73; aOffsetY=58;
 		add();
 
 		aName="Pigeon Nest";
@@ -821,6 +871,7 @@ public class Item {
 		aKeepHair=1;
 		aSound=Sound.equip_cloth_hat;
 		aSkills= new Skill[]{Skill.growth.asLevel(1)};
+		aOffsetX=76; aOffsetY=52;
 		add();
 
 		aName="Daisy Chain";
@@ -836,6 +887,7 @@ public class Item {
 		aSound=Sound.equip_cloth_hat;
 		aSkills= new Skill[]{Skill.growth.asLevel(1)};
 		aHealth=1;
+		aOffsetX=109; aOffsetY=80;
 		add();
 
 		aName="Masquerade Mask";
@@ -850,6 +902,7 @@ public class Item {
 		aKeepHair=1;
 		aSound=Sound.equip_cloth_hat;
 		aSkills= new Skill[]{Skill.arcane.asLevel(1),Skill.fire.asLevel(1), Skill.swift.asLevel(1)};
+		aOffsetX=111; aOffsetY=87;
 		add();
 
 		aName="Cultist Hood";
@@ -864,6 +917,7 @@ public class Item {
 		aRandomPool=1;
 		aSound=Sound.equip_cloth_hat;
 		aSkills=new Skill[]{Skill.holy.asLevel(2)};
+		aOffsetX=112; aOffsetY=99;
 		add();
 
 		aName="Bone Helmet";
@@ -877,6 +931,7 @@ public class Item {
 		aKeepHair=1;
 		aSound=Sound.equip_cloth_hat;
 		aSkills= new Skill[]{Skill.arcane.asLevel(2)};
+		aOffsetX=112; aOffsetY=55;
 		add();
 
 		aName="Heavy Visor";
@@ -889,6 +944,7 @@ public class Item {
 		aRandomPool=0;
 		aSound=Sound.equip_horned_helm;
 		aSkills= new Skill[]{Skill.armour.asLevel(2)};
+		aOffsetX=112; aOffsetY=89;
 		add();
 
 		aName="Femur";
@@ -902,6 +958,7 @@ public class Item {
 		aRandomPool=0;
 		aSound=Sound.equip_club;
 		aSkills= new Skill[]{Skill.crush.asLevel(1), Skill.growth.asLevel(1)};
+		aOffsetX=174; aOffsetY=160;
 		add();
 
 		aName="Rapier";
@@ -914,6 +971,7 @@ public class Item {
 		aRandomPool=0;
 		aSound=Sound.equip_sword;
 		aSkills= new Skill[]{Skill.blade.asLevel(1), Skill.swift.asLevel(2)};
+		aOffsetX=178; aOffsetY=155;
 		add();
 
 		aName="Cutlass";
@@ -928,6 +986,7 @@ public class Item {
 		aSound=Sound.equip_sword;
 		aSkills= new Skill[]{Skill.blade.asLevel(1)};
 		aTraits= new Trait[]{Trait.Ferocious};
+		aOffsetX=179; aOffsetY=157;
 		add();
 
 		aName="Scimitar";
@@ -940,6 +999,7 @@ public class Item {
 		aRandomPool=0;
 		aSound=Sound.equip_sword;
 		aSkills= new Skill[]{Skill.armour.asLevel(1), Skill.blade.asLevel(2)};
+		aOffsetX=179; aOffsetY=157;
 		add();
 
 		aName="Cleaver";
@@ -953,6 +1013,7 @@ public class Item {
 		aRandomPool=0;
 		aSound=Sound.equip_axe;
 		aSkills= new Skill[]{Skill.blade.asLevel(2)};
+		aOffsetX=179; aOffsetY=164;
 		add();
 
 		aName="Demon Claw";
@@ -966,6 +1027,7 @@ public class Item {
 		aRandomPool=0;
 		aSound=Sound.equip_club;
 		aSkills= new Skill[]{Skill.blade.asLevel(2), Skill.fire.asLevel(2)};
+		aOffsetX=168; aOffsetY=187;
 		add();
 
 		aName="Brass Knuckles";
@@ -979,6 +1041,7 @@ public class Item {
 		aRandomPool=1;
 		aSound=Sound.equip_sword;
 		aSkills=new Skill[]{Skill.swift.asLevel(1), Skill.crush.asLevel(1)};
+		aOffsetX=166; aOffsetY=171;
 		add();
 
 		aName="Hand-axe";
@@ -991,6 +1054,7 @@ public class Item {
 		aRandomPool=1;
 		aSound=Sound.equip_axe;
 		aSkills= new Skill[]{Skill.blade.asLevel(2)};
+		aOffsetX=182; aOffsetY=157;
 		add();
 
 		aName="Poison Dagger";
@@ -1003,6 +1067,7 @@ public class Item {
 		aRandomPool=0;
 		aSound=Sound.equip_sword;
 		aSkills= new Skill[]{Skill.blade.asLevel(1), Skill.swift.asLevel(2)};
+		aOffsetX=175; aOffsetY=166;
 		add();
 
 		aName="Arcane Wand";
@@ -1016,6 +1081,7 @@ public class Item {
 		aRandomPool=0;
 		aSound=Sound.equip_staff;
 		aTraits= new Trait[]{Trait.Wise};
+		aOffsetX=170; aOffsetY=170;
 		add();
 
 		aName="Crystal Wand";
@@ -1028,6 +1094,7 @@ public class Item {
 		aRandomPool=0;
 		aSound=Sound.equip_staff;
 		aSkills= new Skill[]{Skill.arcane.asLevel(2), Skill.blade.asLevel(1)};
+		aOffsetX=170; aOffsetY=168;
 		add();
 
 		aName="Crossbow";
@@ -1041,6 +1108,7 @@ public class Item {
 		aRandomPool=0;
 		aSound=Sound.equip_bow;
 		aSkills= new Skill[]{Skill.swift.asLevel(2)};
+		aOffsetX=168; aOffsetY=185;
 		add();
 
 		aName="Gnarled Oak";
@@ -1054,6 +1122,7 @@ public class Item {
 		aRandomPool=0;
 		aSound=Sound.equip_staff;
 		aSkills= new Skill[]{Skill.growth.asLevel(2)};
+		aOffsetX=174; aOffsetY=149;
 		add();
 
 		aName="Halberd";
@@ -1067,6 +1136,7 @@ public class Item {
 		aRandomPool=0;
 		aSound=Sound.equip_staff;
 		aSkills= new Skill[]{Skill.blade.asLevel(2), Skill.swift.asLevel(2)};
+		aOffsetX=179; aOffsetY=146;
 		add();
 
 		aName="Spear";
@@ -1079,6 +1149,7 @@ public class Item {
 		aRandomPool=0;
 		aSound=Sound.equip_staff;
 		aSkills= new Skill[]{Skill.swift.asLevel(2)};
+		aOffsetX=174; aOffsetY=147;
 		add();
 
 		aName="Fire Staff";
@@ -1091,6 +1162,7 @@ public class Item {
 		aRandomPool=0;
 		aSound=Sound.equip_staff;
 		aSkills= new Skill[]{Skill.fire.asLevel(2), Skill.crush.asLevel(1)};
+		aOffsetX=178; aOffsetY=144;
 		add();
 
 		aName="Trident";
@@ -1104,6 +1176,7 @@ public class Item {
 		aRandomPool=0;
 		aSound=Sound.equip_staff;
 		aSkills= new Skill[]{Skill.arcane.asLevel(1), Skill.blade.asLevel(2)};
+		aOffsetX=176; aOffsetY=143;
 		add();
 
 		aName="Broadsword";
@@ -1117,6 +1190,7 @@ public class Item {
 		aRandomPool=0;
 		aSound=Sound.equip_sword;
 		aSkills= new Skill[]{Skill.crush.asLevel(1), Skill.blade.asLevel(2)};
+		aOffsetX=176; aOffsetY=134;
 		add();
 
 		aName="Owl Familiar";
@@ -1130,6 +1204,7 @@ public class Item {
 		aRandomPool=0;
 		aSound=Sound.equip_cloth_hat;
 		aSkills= new Skill[]{Skill.arcane.asLevel(2), Skill.holy.asLevel(1)};
+		aOffsetX=62; aOffsetY=168;
 		add();
 
 		aName="Leather-bound Tome";
@@ -1143,6 +1218,7 @@ public class Item {
 		aRandomPool=0;
 		aSound=Sound.equip_cloth_hat;
 		aHealth=1;
+		aOffsetX=53; aOffsetY=183;
 		add();
 
 		aName="Glyph";
@@ -1155,6 +1231,7 @@ public class Item {
 		aRandomPool=1;
 		aSound=Sound.equip_buckler;
 		aSkills=new Skill[]{Skill.holy.asLevel(1), Skill.arcane.asLevel(1)};
+		aOffsetX=59; aOffsetY=191;
 		add();
 
 		aName="Horseshoe";
@@ -1168,6 +1245,7 @@ public class Item {
 		aRandomPool=1;
 		aSound=Sound.equip_buckler;
 		aSkills=new Skill[]{Skill.holy.asLevel(2)};
+		aOffsetX=59; aOffsetY=184;
 		add();
 
 		aName="War Horn";
@@ -1180,6 +1258,7 @@ public class Item {
 		aRandomPool=0;
 		aSound=Sound.equip_buckler;
 		aSkills= new Skill[]{Skill.holy.asLevel(1), Skill.growth.asLevel(1), Skill.fire.asLevel(1)};
+		aOffsetX=62; aOffsetY=193;
 		add();
 
 		aName="Spiked Shield";
@@ -1194,6 +1273,7 @@ public class Item {
 		aSound=Sound.equip_silver_shield;
 		aSkills= new Skill[]{Skill.armour.asLevel(1)};
 		aTraits= new Trait[]{Trait.Spikey};
+		aOffsetX=74; aOffsetY=178;
 		add();
 
 		aName="Wooden Board";
@@ -1206,6 +1286,7 @@ public class Item {
 		aRandomPool=1;
 		aSound=Sound.equip_wooden_shield;
 		aSkills=new Skill[]{Skill.armour.asLevel(1)};
+		aOffsetX=72; aOffsetY=181;
 		add();
 
 		aName="Net";
@@ -1219,6 +1300,7 @@ public class Item {
 		aRandomPool=0;
 		aSound=Sound.equip_cloth_hat;
 		aSkills= new Skill[]{Skill.swift.asLevel(2)};
+		aOffsetX=60; aOffsetY=197;
 		add();
 
 		aName="Swirling Orb";
@@ -1232,6 +1314,7 @@ public class Item {
 		aRandomPool=1;
 		aSound=Sound.equip_coin_single;
 		aSkills=new Skill[]{Skill.fire.asLevel(2), Skill.arcane.asLevel(1)};
+		aOffsetX=61; aOffsetY=177;
 		add();
 
 		aName="Dead Lizard Charm";
@@ -1245,6 +1328,7 @@ public class Item {
 		aRandomPool=1;
 		aSound=Sound.equip_leather_helm;
 		aSkills=new Skill[]{Skill.fire.asLevel(1), Skill.holy.asLevel(1)};
+		aOffsetX=69; aOffsetY=188;
 		add();
 
 		aName="Scroll of Souls";
@@ -1258,6 +1342,7 @@ public class Item {
 		aRandomPool=0;
 		aSound=Sound.equip_cloth_hat;
 		aSkills= new Skill[]{Skill.arcane.asLevel(2), Skill.holy.asLevel(2), Skill.fire.asLevel(2)};
+		aOffsetX=67; aOffsetY=181;
 		add();
 
 		aName="Cuppa";
@@ -1270,6 +1355,7 @@ public class Item {
 		aRandomPool=0;
 		aSound=Sound.equip_club;
 		aSkills= new Skill[]{Skill.fire.asLevel(1)};
+		aOffsetX=52; aOffsetY=181;
 		add();
 
 		aName="Wooden Stool";
@@ -1282,6 +1368,7 @@ public class Item {
 		aRandomPool=0;
 		aSound=Sound.equip_club;
 		aSkills= new Skill[]{Skill.crush.asLevel(1)};
+		aOffsetX=67; aOffsetY=178;
 		add();
 
 
@@ -1339,7 +1426,8 @@ public class Item {
 							aGlory, 
 							aSpawnCount, 
 							aRandomPool, 
-							aKeepHair, 
+							aKeepHair,
+							aOffsetX, aOffsetY,
 							aSound, 
 							aSkills, 
 							aTraits, 
@@ -1363,19 +1451,20 @@ public class Item {
 		aHealth=0;
 		aKeepHair=0;
 		aSpawnCount=0;
+		aOffsetX=0; aOffsetY=0;
 		aSound=null;
 		aSkills=null;
 		aTraits=null;
 	}
 
-	public static void printAll(){
-		System.out.println("{\n\"Treasures\":{");
+	public static String jsonAll(){
+		String output = "{\n\"Treasures\":{";
 		for(int index=0;index<items.size();index++){
 			Item i=items.get(index);
-			System.out.println(i.toJson()+(items.size()>index+1?",":""));
+			output+=i.toJson()+(items.size()>index+1?",":"");
 		}
-		System.out.println("}");
-		System.out.println("}");
+		output+="}\n}";
+		return output;
 	}
 
 	public static void printItemTypeAmounts(){
@@ -1511,7 +1600,10 @@ public class Item {
 			output+="],\n";
 		}
 		if(health>0) output+=Json.addKey("bonusHP", health, true);
-
+		if(offsetX!=0){
+			output+=Json.addKey("x", offsetX, true);
+			output+=Json.addKey("y", offsetY, true);
+		}
 		output+="}";
 		StringBuilder sb = new StringBuilder(output);
 		sb.deleteCharAt(sb.lastIndexOf(","));

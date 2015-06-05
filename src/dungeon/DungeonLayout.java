@@ -41,10 +41,10 @@ public class DungeonLayout {
 			if(details!=null){
 				output+=details.toJson();
 			}
-			else if (!monster.isEmpty()){
-				Json.addKey("ignoreCamera", true, true);
+			else{
+				output+=Json.addKey("ignoreCamera", true, true);
 			}
-			if(monster.equals("BOSS")){
+			if(monster.equalsIgnoreCase("BOSS")){
 				output += Json.addKey("BossRoom", true, true);
 			}
 			else{

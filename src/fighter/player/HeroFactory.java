@@ -277,8 +277,9 @@ public class HeroFactory {
 		aChats=catChats;
 		addClass();
 		
-		heroName=SkillType.Brusier;
+		heroName=SkillType.Bruiser;
 		aHP=5;
+		traits = new Trait[]{Trait.Spikey};
 		aChats=chumpChats;
 		addClass();
 		

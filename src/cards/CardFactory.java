@@ -138,7 +138,7 @@ public class CardFactory {
 			addCard(type);
 			break;
 
-		case Brusier:
+		case Bruiser:
 			cName= "Oi!";
 			cStrength=1f;
 			cDescription = "1 physical damage";
@@ -159,7 +159,7 @@ public class CardFactory {
 			addAction();
 			addCard(type);
 
-			cName= "Get outta here";
+			cName= "How do you like this?";
 			cStrength=1.4f;
 			cDescription = "1 physical damage, [unblockable]";
 			cDescSize=22;
@@ -170,36 +170,35 @@ public class CardFactory {
 			addAction();
 			addCard(type);
 
-			cName= "Nice try, chump";
-			cStrength=1.5f;
-			cDescription = "1 physical damage, block 1 magical";
+			cName= "Is that all you got?";
+			cStrength=1f;
+			cDescription = "Block all, -1hp";
 			cDescSize=22;
-			aActionType=ActionType.Attack;
-			aDamageType=DamageType.Physical;
-			aEffect=1;
-			addAction();
 			aActionType=ActionType.Block;
-			aDamageType=DamageType.Magical;
+			aDamageType=DamageType.Either;
+			addAction();
+			aActionType=ActionType.TakeDamage;
 			aEffect=1;
 			addAction();
 			addCard(type);
-
-			cName= "How do you like this?";
-			cStrength=2f;
-			cDescription = "2 physical damage";
-			cDescSize=24;
-			aActionType=ActionType.Attack;
-			aDamageType=DamageType.Physical;
+			
+			cName= "Nice try, chump";
+			cStrength=1.3f;
+			cDescription = "Block 2 magic damage";
+			cDescSize=22;
+			aActionType=ActionType.Block;
+			aDamageType=DamageType.Magical;
 			aEffect=2;
 			addAction();
 			addCard(type);
-
-			cName= "Is that all you got?";
-			cStrength=2f;
-			cDescription = "Block all physical damage";
+			
+			cName= "You tryin' something?";
+			cStrength=1.3f;
+			cDescription = "Block 2 physical damage";
 			cDescSize=22;
 			aActionType=ActionType.Block;
 			aDamageType=DamageType.Physical;
+			aEffect=2;
 			addAction();
 			addCard(type);
 			break;
@@ -844,10 +843,19 @@ public class CardFactory {
 			break;
 			
 		case Cartomancer:
+			cName= "Misprint";
+			cStrength=2f;
+			cDescription = "2 magic damage";
+			cDescSize=22;
+			aActionType=ActionType.Attack;
+			aDamageType=DamageType.Magical;
+			aEffect=2;
+			addAction();
+			addCard(type);
 			
 			cName= "Card Storm";
 			cStrength=3f;
-			cDescription = "1 magic damage per card in hand";
+			cDescription = "1 magic damage per card in hand, discard your hand";
 			cDescSize=22;
 			aActionType=ActionType.Attack;
 			aDamageType=DamageType.Magical;
@@ -855,60 +863,53 @@ public class CardFactory {
 			addAction();
 			addCard(type);
 		
-			cName= "Card Storm";
-			cStrength=3f;
-			cDescription = "1 magic damage per card in hand";
+			cName= "Card Flick";
+			cStrength=1.5f;
+			cDescription = "1 physical damage [quick], [unblockable]";
 			cDescSize=22;
 			aActionType=ActionType.Attack;
-			aDamageType=DamageType.Magical;
-			aEffectCondition=ActionEffectCondition.Hand;
+			aDamageType=DamageType.Physical;
+			aEffect=1;
+			aUnblockable=true;
+			aQuick=true;
 			addAction();
 			addCard(type);
 			
 			cName= "Paper Shield";
 			cStrength=2f;
-			cDescription = "Block 1 per card in hand";
+			cDescription = "Block 1 physical per card in hand";
 			cDescSize=22;
 			aActionType=ActionType.Block;
-			aDamageType=DamageType.Either;
+			aDamageType=DamageType.Physical;
 			aEffectCondition=ActionEffectCondition.Hand;
 			addAction();
 			addCard(type);
 			
-			cName= "Card Flick";
-			cStrength=2.4f;
-			cDescription = "2 physical damage [quick]";
-			cDescSize=22;
-			aActionType=ActionType.Attack;
-			aDamageType=DamageType.Physical;
-			aEffect=2;
-			aQuick=true;
-			addAction();
-			addCard(type);
-			
-			cName= "Rules Master";
-			cStrength=2.5f;
-			cDescription = "Block 3 magic damage, draw a card";
+			cName= "Counterplay";
+			cStrength=2f;
+			cDescription = "1 magic damage, block 2 magic damage";
 			cDescSize=22;
 			aActionType=ActionType.Block;
 			aDamageType=DamageType.Magical;
-			aEffect=3;
+			aEffect=2;
+			addAction();
+			aActionType=ActionType.Attack;
+			aDamageType=DamageType.Magical;
+			aEffect=1;
+			addAction();
+			addCard(type);
+			
+			cName= "Heart of the Cards";
+			cStrength=2f;
+			cDescription = "Draw a card, +2 hp";
+			cDescSize=22;
+			aActionType=ActionType.Heal;
+			aEffect=2;
 			addAction();
 			aActionType=ActionType.Draw;
 			aEffect=1;
 			addAction();
 			addCard(type);
-			
-			cName= "Misprint";
-			cStrength=3f;
-			cDescription = "3 magic damage";
-			cDescSize=22;
-			aActionType=ActionType.Attack;
-			aDamageType=DamageType.Magical;
-			aEffect=3;
-			addAction();
-			addCard(type);
-			
 			break;
 			
 		case Mathemagician:

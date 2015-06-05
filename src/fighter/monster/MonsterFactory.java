@@ -688,17 +688,17 @@ public class MonsterFactory {
 		skills = new Skill[]{Skill.get(SkillType.Sorcery).asLevel(2), Skill.get(SkillType.Flame).asLevel(3)};
 		make();
 
-		name = "Earth Elemental";
-		plural= "Earth Elementals";
+		name = "Air Elemental";
+		plural= "Air Elementals";
 		region=Region.Jungle;
-		description = "This guy rocks!";
-		frameNumber = 22;
+		description = "needs description";
+		frameNumber = 23;
 		level = 3;
 		health = 9;
 		randomPool=1;
 		sound = MSound.giant_bat;
 		traits = null;
-		skills = new Skill[]{Skill.get(SkillType.Burly).asLevel(2), Skill.get(SkillType.Irritable).asLevel(3)};
+		skills = new Skill[]{Skill.get(SkillType.Sorcery).asLevel(2), Skill.get(SkillType.Irritable).asLevel(3)};
 		make();
 
 		name = "Gargoyle";
@@ -1032,7 +1032,7 @@ public class MonsterFactory {
 		plural= "Earth Elementals";
 		description = "needs description";
 		region=Region.Mines;
-		frameNumber = 9;
+		frameNumber = 22;
 		level = 3;
 		health = 9;
 		randomPool=0;
@@ -1043,7 +1043,7 @@ public class MonsterFactory {
 
 		name = "Genii";
 		plural= "Genies";
-		description = "Something something deathwish";
+		description = "needs description";
 		region=Region.Mines;
 		frameNumber = 9;
 		level = 3;
@@ -1550,14 +1550,14 @@ public class MonsterFactory {
 		}
 	}
 
-	public static void jsonAll() {
-		System.out.println("{\n\"Monsters\":{");
+	public static String jsonAll() {
+		String output="{\n\"Monsters\":{";
 		for(int index=0;index<monsters.size();index++){
 			Monster m=monsters.get(index);
-			System.out.println(m.toJson()+(monsters.size()>index+1?",":""));
+			output+=m.toJson()+(monsters.size()>index+1?",":"");
 		}
-		System.out.println("}");
-		System.out.println("}");
+		output+="}\n}";
+		return output;
 	}
 
 	public static ArrayList<Monster> getMonsters(Region region, int maxLevel){

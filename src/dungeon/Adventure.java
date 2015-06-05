@@ -77,27 +77,27 @@ public class Adventure {
 			output+="\""+a.name+"\""+((i<adventures.size()-1)?", ":" ");
 		}
 		output+=Json.endArray(true);
-		
+
 		output+=Json.startArray("Regions");
-		
+
 		output+=Json.enclose();
 		output+=Json.addKey("name", "Stone", true);
 		output+=Json.addKey("x", 0, true);
 		output+=Json.addKey("y", 0, false);
 		output+=Json.endEnclose(true);
-		
+
 		output+=Json.enclose();
 		output+=Json.addKey("name", "Jungle", true);
 		output+=Json.addKey("x", -1157, true);
 		output+=Json.addKey("y", 0, false);
 		output+=Json.endEnclose(true);
-		
+
 		output+=Json.enclose();
 		output+=Json.addKey("name", "Mines", true);
 		output+=Json.addKey("x", 0, true);
 		output+=Json.addKey("y", -684, false);
 		output+=Json.endEnclose(false);
-		
+
 		output+=Json.endArray(true);
 
 		output+=Json.startList("QuestLines");
@@ -110,14 +110,14 @@ public class Adventure {
 		output+=Json.endEnclose(false);
 		return output;
 	}
-	
+
 	public static String trophyLocations(){
 		String output="";
-		
+
 		for(Adventure a:adventures){
 			System.out.println(a.trophyX+":"+a.trophyY);
 		}
-		
+
 		return output;
 	}
 
@@ -1137,8 +1137,8 @@ public class Adventure {
 
 		//MINES//
 
-		
-		
+
+
 		// TROLL ADVENTURE //
 
 		aAdvName="Troll Adventure";
@@ -1322,6 +1322,28 @@ public class Adventure {
 		aTrophyName="Mecha's Spring";
 		aTrophyX=-0.5f;
 		aTrophyY=-2;
+
+		aName="Deeper and deeper!";
+		aDescription="Venturing deeper into the mines you run into vampires!";
+		aReward=100;
+		aTerrainType=TerrainType.mines;
+		aBoss="Dwarf Mecha";
+		aBossName="Dwarf Mecha";
+		aStartingTile=Tile.get("murd");
+		aBossChats= new BossChat[]{
+		};
+		aLayout= new DungeonLayout(new TileLocation[]{
+				new TileLocation(Tile.get("mul"), 3, 1, "Vampire", null, new TileDetails(false, true, true, 1, -3, false)),
+				new TileLocation(Tile.get("muld"), 3, 0, "", TreasureType.Large_Chest, new TileDetails(false, true, false, 0, 0, false)),
+				new TileLocation(Tile.get("mdl"), 3, -1, "Vampire", null, null),
+		});
+		aObjectives = new Objective[]{
+				new Objective(ObjectiveType.Defeat, "Vampire", 2),
+		};
+		aTurnLimit=-1;
+		aMonsters=MonsterFactory.getMonsters(Region.Mines, 2);
+		addDungeon();
+
 		aName="Caught!";
 		aDescription="";
 		aReward=100;
@@ -1350,6 +1372,7 @@ public class Adventure {
 		aTurnLimit=-1;
 		aMonsters=MonsterFactory.getMonsters(Region.Mines, 3);
 		addDungeon();
+
 		createAdventure();
 
 		//DWARF MASTERPIECE ADVENTURE//
@@ -1443,6 +1466,10 @@ public class Adventure {
 
 		//DWARF MAGNATE ADVENTURE//
 
+
+
+
+
 		aAdvName="Magnate Adventure";
 		aAdvIcon="mines_office";
 		aAdvX=2f;
@@ -1450,7 +1477,76 @@ public class Adventure {
 		aTrophyName="Magante's Stock Cert";
 		aTrophyX=-.5f;
 		aTrophyY=-2;
-		aName="Final quest";
+
+		aName="Final quest 1";
+		aDescription="Take out the guardians of the magnate";
+		aReward=100;
+		aTerrainType=TerrainType.mines;
+		aBoss="Dwarf Magnate";
+		aBossName="Dwarf Magnate";
+		aBossChats= new BossChat[]{
+				new BossChat(Trigger.FirstKill, new BossSpeech[]{
+						new BossSpeech("Perimeter breached", Func.emote, false),
+						new BossSpeech("It's ok, the security team should be able to sort it out", Func.emote, false),
+				}, PostFunc.FinishBossChat,
+				1, -1, 1, DelayEffect.APPEAR, null),
+				new BossChat(Trigger.SecondKill, new BossSpeech[]{
+						new BossSpeech("Ah they were disposable", Func.emote, false),
+						new BossSpeech("There's still a nasty troll", Func.emote, false),
+				}, PostFunc.FinishBossChat,
+				2, -1, 1, DelayEffect.APPEAR, null),
+		};
+		aStartingTile=Tile.get("md");
+		aLayout= new DungeonLayout(new TileLocation[]{
+				new TileLocation(Tile.get("mud"), 0, 1, "Digger", null, new TileDetails(false, true, true, 0, 1, false)),
+				new TileLocation(Tile.get("mud"), 0, 2, "Miner", null, null),
+				new TileLocation(Tile.get("mu"), 0, 3, "Cave Troll", TreasureType.GOLD_COIN, null),
+		});
+		aObjectives = new Objective[]{
+				new Objective(ObjectiveType.Defeat, "ANY", 3)
+		};
+		aTurnLimit=-1;
+		aMonsters=MonsterFactory.noMonsters;
+		addDungeon();
+
+		
+		aName="Final quest 2";
+		aDescription="Get into the magnate's boardroom";
+		aReward=100;
+		aTerrainType=TerrainType.mines;
+		aBoss="Dwarf Magnate";
+		aBossName="Dwarf Magnate";
+		aBossChats= new BossChat[]{
+				new BossChat(Trigger.FirstTurn, new BossSpeech[]{
+						new BossSpeech("Don't let them in the boardroom", Func.emote, false),
+						new BossSpeech("We're having a shareholder's meeting", Func.emote, false),
+				}, PostFunc.FinishBossChat,
+				-1, 0, 1, DelayEffect.APPEAR, null),
+				new BossChat(Trigger.SecondKill, new BossSpeech[]{
+						new BossSpeech("I think I need to invest in some better protection", Func.emote, false),
+				}, PostFunc.FinishBossChat,
+				2, -1, 1, DelayEffect.APPEAR, null),
+		};
+		aStartingTile=Tile.get("mudr");
+		aLayout= new DungeonLayout(new TileLocation[]{
+				new TileLocation(Tile.get("mdlu"), 5, 0, "", null, new TileDetails(false, true, true, 5, 0, true)),
+				new TileLocation(Tile.get("mul"), 5, 1, "", null, null),
+				new TileLocation(Tile.get("mdl"), 5, -1, "", null, null),
+				new TileLocation(Tile.get("mudlr"), 4, 0, "Cursed Mummy", null, null),
+				new TileLocation(Tile.get("mulr"), 4, 1, "Cave Troll", null, null),
+				new TileLocation(Tile.get("mdlr"), 4, -1, "Earth Elemental", null, null),
+				new TileLocation(Tile.get("mudlr"), 2, 0, "Miner", null, null),
+				new TileLocation(Tile.get("mur"), 1, 1, "Clattering Bones", TreasureType.Large_Chest, null),
+				new TileLocation(Tile.get("mdr"), 1, -1, "Miner", null, null),
+		});
+		aObjectives = new Objective[]{
+				new Objective(ObjectiveType.Arrive, "objective", 1)
+		};
+		aTurnLimit=-1;
+		aMonsters=MonsterFactory.getMonsters(Region.Mines, 3);
+		addDungeon();
+
+		aName="Final quest 3";
 		aDescription="Kill the dwarf leader before you get trapped!";
 		aReward=100;
 		aTerrainType=TerrainType.mines;

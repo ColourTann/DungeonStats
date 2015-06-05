@@ -97,6 +97,7 @@ public abstract class Fighter {
 					bonusHP+=1;
 					break;
 				case Spikey:
+					bonusHP+=1.5f;
 					break;
 				case VitaSuit:
 					bonusHP+=1;

@@ -99,7 +99,7 @@ public class Room {
 		addRoom();
 		
 		aName="Barracks";
-		aClasses.add(SkillType.Brusier);
+		aClasses.add(SkillType.Bruiser);
 		aCost=100;
 		aFrame="guild_barracks_nesw";
 		addRoom();
