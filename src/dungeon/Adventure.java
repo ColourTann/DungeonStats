@@ -160,11 +160,11 @@ public class Adventure {
 				new BossChat(Trigger.Second_Turn, new BossSpeech[]{
 						new BossSpeech("Squeak squeak squeak", Func.emote, false),
 				}, PostFunc.FinishBossChat, 
-				-1, 2, 1, DelayEffect.APPEAR, null),
+			 1, DelayEffect.APPEAR, null),
 				new BossChat(Trigger.SecondKill, new BossSpeech[]{
 						new BossSpeech("Squeak!", Func.emote, false),	
 				}, PostFunc.FinishBossChat, 
-				2, -1, 1, DelayEffect.APPEAR, null),
+				 1, DelayEffect.APPEAR, null),
 		};
 		aStartingTile=Tile.get("n");
 		aStartingHand = new Hand(new DungeonCard[]{
@@ -193,18 +193,18 @@ public class Adventure {
 		aBoss="Rat King Cole";
 		aBossName="Rat King Cole";
 		aBossChats= new BossChat[]{
-				new BossChat(Trigger.Entrance, new BossSpeech[]{
+				new BossChat(Trigger.ZerothTurn, new BossSpeech[]{
 						new BossSpeech("Squeak!!", Func.emote, false),
 				}, PostFunc.StartingRoom, 
-				-1, 0, 1, DelayEffect.APPEAR, null),
+				1, DelayEffect.APPEAR, null),
 				new BossChat(Trigger.SecondKill, new BossSpeech[]{
 						new BossSpeech("*chitter chitter*", Func.emote, false),
 				}, PostFunc.FinishBossChat, 
-				2, -1, 1, DelayEffect.APPEAR, null),
+				1, DelayEffect.APPEAR, null),
 				new BossChat(Trigger.FourthKill, new BossSpeech[]{
 						new BossSpeech("SQUEAK!!", Func.emote, false),
 				}, PostFunc.FinishBossChat, 
-				4, -1, 1, DelayEffect.APPEAR, null),
+				1, DelayEffect.APPEAR, null),
 		};
 		aStartingTile=TileName.room_steps_nesw;
 		aLayout= new DungeonLayout(new TileLocation[]{
@@ -239,16 +239,16 @@ public class Adventure {
 		aBoss="Fire Demon";
 		aBossName="Embro";
 		aBossChats= new BossChat[]{
-				new BossChat(Trigger.Entrance, new BossSpeech[]{
+				new BossChat(Trigger.FirstTurn, new BossSpeech[]{
 						new BossSpeech("HEY! What are you doing in my Evil Entrance Hall?", Func.emote, false),
 						new BossSpeech("Oh well, my imps will make short work of you!", Func.emote, false),
 				}, PostFunc.FinishBossChat, 
-				-1, 1, 1, DelayEffect.APPEAR, null),
+				 1, DelayEffect.APPEAR, null),
 				new BossChat(Trigger.SecondKill, new BossSpeech[]{
 						new BossSpeech("You're not supposed to be able to beat them!", Func.emote, false),
 						new BossSpeech("I should have invested in some better security...", Func.emote, false),	
 				}, PostFunc.FinishBossChat, 
-				2, -1, 1, DelayEffect.APPEAR, null),
+				1, DelayEffect.APPEAR, null),
 		};
 		aStartingTile=TileName.corr_grate_n;
 		aLayout= new DungeonLayout(new TileLocation[]{
@@ -271,10 +271,10 @@ public class Adventure {
 		aBoss="Fire Demon";
 		aBossName="Embro";
 		aBossChats= new BossChat[]{
-				new BossChat(Trigger.Entrance, new BossSpeech[]{
+				new BossChat(Trigger.FirstTurn, new BossSpeech[]{
 						new BossSpeech("HEY! Get out of my treasure chamber!", Func.emote, false),
 				}, PostFunc.FinishBossChat, 
-				-1, 1, 1, DelayEffect.APPEAR, null),
+				1, DelayEffect.APPEAR, null),
 		};
 		aStartingTile=TileName.room_steps_nesw;
 		aLayout= new DungeonLayout(new TileLocation[]{
@@ -296,54 +296,54 @@ public class Adventure {
 		aBoss="Fire Demon";
 		aBossName="Embro";
 		aBossChats= new BossChat[]{
-				new BossChat(Trigger.Entrance, new BossSpeech[]{
+				new BossChat(Trigger.ZerothTurn, new BossSpeech[]{
 						new BossSpeech("WHO DARES INVADE THE HOT, HOT LAIR OF EMBRO, LORD OF FLAME?!", Func.emote, false),
 						new BossSpeech("Right in the middle of bath-time too. Look at this puddle!", Func.emote, false),
 						new BossSpeech("MINIONS! DESTROY THEM! BRING ME THEIR BONES!", Func.emote, false),
 				}, PostFunc.StartingRoom, 
-				-1, 0, 1, DelayEffect.APPEAR, null),
+				1, DelayEffect.APPEAR, null),
 
 				new BossChat(Trigger.Second_Turn, new BossSpeech[]{
 						new BossSpeech("Argh, I have to dry off or I won't be my fiery best.", Func.emote, false),
 						new BossSpeech("You'd better wait {TURNS_LEFT} more turns before fighting me or it won't be fair!", Func.emote, false),
 				}, PostFunc.FinishBossChat, 
-				-1, 2, 1, DelayEffect.APPEAR, null),
+				1, DelayEffect.APPEAR, null),
 
 				new BossChat(Trigger.SixthTurn, new BossSpeech[]{
 						new BossSpeech("MINIONS! Bring me more towels!.", Func.emote, false),
 						new BossSpeech("I need to be ready for my big fight in 6 turns", Func.emote, false),
 				}, PostFunc.FinishBossChat, 
-				-1, 6, 1, DelayEffect.APPEAR, null),
+				1, DelayEffect.APPEAR, null),
 
 				new BossChat(Trigger.EleventhTurn, new BossSpeech[]{
 						new BossSpeech("Almost dry now! I'm coming for you next turn!", Func.emote, false),
 				}, PostFunc.FinishBossChat, 
-				-1, 11, 1, DelayEffect.APPEAR, null),
+				1, DelayEffect.APPEAR, null),
 
 				new BossChat(Trigger.ComingToAttack, new BossSpeech[]{
 						new BossSpeech("**WHOOSH** Finally dry! Now I'm going to get you!", Func.emote, false),
 				}, PostFunc.FireDemonMoveToBoard, 
-				-1, -1, 1, DelayEffect.APPEAR, new PostEffect[]{
+				1, DelayEffect.APPEAR, new PostEffect[]{
 						new PostEffect(Trait.Damp, false)
 				}),
 
 				new BossChat(Trigger.attacked_early, new BossSpeech[]{
 						new BossSpeech("Hey! I'm not ready yet!", Func.emote, false),
 				}, null, 
-				-1, -1, 1, null, null),
+				1, null, null),
 
 				new BossChat(Trigger.ThirdKill, new BossSpeech[]{
 						new BossSpeech("HAR HAR! YOU THINK I'LL MISS THAT {LAST_KILL_TYPE}?", Func.emote, false),
 						new BossSpeech("NO! HE WAS MY LEAST FAVORITE MINION!", Func.emote, false),
 				}, PostFunc.FinishBossChat, 
-				3, -1, 1, DelayEffect.APPEAR, null),
+				1, DelayEffect.APPEAR, null),
 
 				new BossChat(Trigger.FifthKill, new BossSpeech[]{
 						new BossSpeech("*sigh* As usual my minions are bumbling fools..", Func.emote, false),
 						new BossSpeech("If only those sharks with spears attached to their heads had arrived.", Func.emote, false),
 						new BossSpeech("Oh well. SEND MORE RUBBER DUCKIES!", Func.emote, false),
 				}, PostFunc.FinishBossChat, 
-				5, -1, 1, DelayEffect.APPEAR, null),
+				1, DelayEffect.APPEAR, null),
 		};
 		aStartingTile=TileName.corr_grate_n;
 		aTurnLimitActions= new TurnLimitAction[]{(
@@ -397,11 +397,11 @@ public class Adventure {
 		aBoss="Mimic";
 		aBossName="Mimic";
 		aBossChats= new BossChat[]{
-				new BossChat(Trigger.Entrance, new BossSpeech[]{
+				new BossChat(Trigger.ZerothTurn, new BossSpeech[]{
 						new BossSpeech("You're the one who looted my grandparents!?", Func.emote, false),
 						new BossSpeech("DIE, evil adventurer!", Func.emote, false)
 				}, PostFunc.Chase, 
-				-1, 0, 1, DelayEffect.APPEAR, null),
+				1, DelayEffect.APPEAR, null),
 		};
 		aStartingTile=Tile.get("news");
 		aLayout= new DungeonLayout(new TileLocation[]{
@@ -460,22 +460,22 @@ public class Adventure {
 		aBoss="Orc Grunt";
 		aBossName="Orc Grunt";
 		aBossChats= new BossChat[]{
-				new BossChat(Trigger.Entrance, new BossSpeech[]{
+				new BossChat(Trigger.ZerothTurn, new BossSpeech[]{
 						new BossSpeech("GRAK and GRIK! Defeat this interloper!", Func.emote, false)
 				}, PostFunc.StartingRoom, 
-				-1, 0, 1, DelayEffect.APPEAR, null),
+				1, DelayEffect.APPEAR, null),
 				new BossChat(Trigger.SecondKill, new BossSpeech[]{
 						new BossSpeech("Stop killing my monsters!", Func.emote, false)
 				}, PostFunc.FinishBossChat, 
-				2, -1, 1, DelayEffect.APPEAR, null),
+				1, DelayEffect.APPEAR, null),
 				new BossChat(Trigger.FourthKill, new BossSpeech[]{
 						new BossSpeech("Stop it! I mean it!", Func.emote, false)
 				}, PostFunc.FinishBossChat, 
-				4, -1, 1, DelayEffect.APPEAR, null),
+				1, DelayEffect.APPEAR, null),
 				new BossChat(Trigger.attacked_early, new BossSpeech[]{
 						new BossSpeech("This'll be over quick, human!", Func.emote, false)
 				}, PostFunc.FinishBossChat, 
-				-1, -1, 1, DelayEffect.APPEAR, null),
+				1, DelayEffect.APPEAR, null),
 		};
 		aStartingTile=TileName.room_collapse_new;
 		aLayout= new DungeonLayout(new TileLocation[]{
@@ -511,10 +511,10 @@ public class Adventure {
 		aBoss="The Black Knight";
 		aBossName="The Black Knight";
 		aBossChats= new BossChat[]{
-				new BossChat(Trigger.FirstTurn, new BossSpeech[]{
+				new BossChat(Trigger.ZerothTurn, new BossSpeech[]{
 						new BossSpeech("Let's see what you can do, adventurer!", Func.emote, false)
 				}, PostFunc.FinishBossChat, 
-				-1, 0, 1, DelayEffect.APPEAR, null)
+				1, DelayEffect.APPEAR, null)
 		};
 		aStartingTile=TileName.room_collapse_new;
 		aLayout= new DungeonLayout(new TileLocation[]{
@@ -536,10 +536,10 @@ public class Adventure {
 		aBoss="The Black Knight";
 		aBossName="The Black Knight";
 		aBossChats= new BossChat[]{
-				new BossChat(Trigger.FirstTurn, new BossSpeech[]{
+				new BossChat(Trigger.ZerothTurn, new BossSpeech[]{
 						new BossSpeech("Try your luck with these!", Func.emote, false)
 				}, PostFunc.FinishBossChat, 
-				-1, 0, 1, DelayEffect.APPEAR, null)
+				1, DelayEffect.APPEAR, null)
 		};
 		aStartingTile=TileName.room_collapse_new;
 		aLayout= new DungeonLayout(new TileLocation[]{
@@ -562,34 +562,34 @@ public class Adventure {
 		aBoss="The Black Knight";
 		aBossName="The Black Knight";
 		aBossChats= new BossChat[]{
-				new BossChat(Trigger.Entrance, new BossSpeech[]{
+				new BossChat(Trigger.ZerothTurn, new BossSpeech[]{
 						new BossSpeech("A worthy challenger at last!", Func.emote, false)
 				}, PostFunc.StartingRoom, 
-				-1, 0, 1, DelayEffect.APPEAR, null),
+				1, DelayEffect.APPEAR, null),
 				new BossChat(Trigger.FirstKill, new BossSpeech[]{
 						new BossSpeech("Good technique!", Func.emote, false)
 				}, PostFunc.FinishBossChat, 
-				1, -1, 1, DelayEffect.APPEAR, null),
+				1, DelayEffect.APPEAR, null),
 				new BossChat(Trigger.SecondKill, new BossSpeech[]{
 						new BossSpeech("Impressive form!", Func.emote, false)
 				}, PostFunc.FinishBossChat, 
-				2, -1, 1, DelayEffect.APPEAR, null),
+				1, DelayEffect.APPEAR, null),
 				new BossChat(Trigger.ThirdKill, new BossSpeech[]{
 						new BossSpeech("Getting some last minute practice in?", Func.emote, false)
 				}, PostFunc.FinishBossChat, 
-				3, -1, 1, DelayEffect.APPEAR, null),
+				1, DelayEffect.APPEAR, null),
 				new BossChat(Trigger.NinthTurn, new BossSpeech[]{
 						new BossSpeech("Come on, I'm getting impatient!", Func.emote, false)
 				}, PostFunc.FinishBossChat, 
-				-1, 9, 1, DelayEffect.APPEAR, null),
+				1, DelayEffect.APPEAR, null),
 				new BossChat(Trigger.ComingToAttack, new BossSpeech[]{
 						new BossSpeech("Here I come, worthy challenger", Func.emote, false)
 				}, PostFunc.FireDemonMoveToBoard, 
-				-1, -1, 1, DelayEffect.APPEAR, null),
+				1, DelayEffect.APPEAR, null),
 				new BossChat(Trigger.attacked_early, new BossSpeech[]{
 						new BossSpeech("You're eager, I like it!", Func.emote, false),
 				}, null, 
-				-1, -1, 1, null, null),
+				1, null, null),
 		};
 		aStartingTile=TileName.room_collapse_new;
 		aLayout= new DungeonLayout(new TileLocation[]{
@@ -641,31 +641,31 @@ public class Adventure {
 		//		half-baked trait/
 
 		aBossChats= new BossChat[]{
-				new BossChat(Trigger.Entrance, new BossSpeech[]{
+				new BossChat(Trigger.ZerothTurn, new BossSpeech[]{
 						new BossSpeech("Hey! I'm not that evil!", Func.emote, false)
 				}, PostFunc.StartingRoom, 
-				-1, 0, 1, DelayEffect.APPEAR, null),
-				new BossChat(Trigger.FifthKill, new BossSpeech[]{
+				1, DelayEffect.APPEAR, null),
+				new BossChat(Trigger.FirstKill, new BossSpeech[]{
 						new BossSpeech("What're you doing!? You're the evil one!", Func.emote, false)
 				}, PostFunc.FinishBossChat, 
-				1, -1, 1, DelayEffect.APPEAR, null),
+				1, DelayEffect.APPEAR, null),
 				new BossChat(Trigger.ThirdKill, new BossSpeech[]{
 						new BossSpeech("Look it was just one orphanage, everyone makes mistakes!", Func.emote, false)
 				}, PostFunc.FinishBossChat, 
-				-1, 3, 1, DelayEffect.APPEAR, null),
+				1, DelayEffect.APPEAR, null),
 				new BossChat(Trigger.SixthTurn, new BossSpeech[]{
 						new BossSpeech("Come on, I deserve a second chance.", Func.emote, false)
 				}, PostFunc.FinishBossChat, 
-				-1, 6, 1, DelayEffect.APPEAR, null),
+				1, DelayEffect.APPEAR, null),
 				new BossChat(Trigger.attacked_early, new BossSpeech[]{
 						new BossSpeech("No fair, the ritual was almost complete!", Func.emote, false)
 				}, PostFunc.FinishBossChat, 
-				-1, -1, 1, DelayEffect.APPEAR, null),
+				1, DelayEffect.APPEAR, null),
 				new BossChat(Trigger.ComingToAttack, new BossSpeech[]{
 						new BossSpeech("Aha! Now the ritual is complete.", Func.emote, false),
 						new BossSpeech("And by the way it was actually TWO orphanages muahahaha", Func.emote, false)
 				}, PostFunc.FireDemonMoveToBoard, 
-				-1, -1, 1, DelayEffect.APPEAR, new PostEffect[]{
+				1, DelayEffect.APPEAR, new PostEffect[]{
 						new PostEffect(Trait.Halfbaked, false)
 				})
 		};
@@ -716,18 +716,18 @@ public class Adventure {
 		aBoss="Eye Beast";
 		aBossName="Eye Beast";
 		aBossChats= new BossChat[]{
-				new BossChat(Trigger.Entrance, new BossSpeech[]{
+				new BossChat(Trigger.ZerothTurn, new BossSpeech[]{
 						new BossSpeech("I seeeeee youuuu", Func.emote, false)
 				}, PostFunc.StartingRoom, 
-				-1, 0, 1, DelayEffect.APPEAR, null),
+				1, DelayEffect.APPEAR, null),
 				new BossChat(Trigger.ThirdTurn, new BossSpeech[]{
 						new BossSpeech("Tiiick tooock herooo", Func.emote, false)
 				}, PostFunc.FinishBossChat, 
-				-1, 3, 1, DelayEffect.APPEAR, null),
+				1, DelayEffect.APPEAR, null),
 				new BossChat(Trigger.SixthTurn, new BossSpeech[]{
 						new BossSpeech("Sssoooonnn", Func.emote, false)
 				}, PostFunc.FinishBossChat, 
-				-1, 6, 1, DelayEffect.APPEAR, null),
+				1, DelayEffect.APPEAR, null),
 				new BossChat(Trigger.kill, new BossSpeech[]{
 						new BossSpeech("Out of tiiime", Func.emote, false),
 						new BossSpeech("*stare*", Func.emote, false),
@@ -737,11 +737,11 @@ public class Adventure {
 						new BossSpeech("Ah this should be it", Func.emote, false),
 						new BossSpeech("*STAAAARE*", Func.emote, false)
 				}, PostFunc.FailDungeon, 
-				-1, -1, 1, DelayEffect.APPEAR, null),
+				1, DelayEffect.APPEAR, null),
 				new BossChat(Trigger.attacked_early, new BossSpeech[]{
 						new BossSpeech("Hey!", Func.emote, false)
 				}, PostFunc.FinishBossChat, 
-				-1, -1, 1, DelayEffect.APPEAR, null)
+				1, DelayEffect.APPEAR, null)
 		};
 		aStartingTile=TileName.room_collapse_new;
 		aLayout= new DungeonLayout(new TileLocation[]{
@@ -840,10 +840,10 @@ public class Adventure {
 		aBoss="Medusa";
 		aBossName="Medusa";
 		aBossChats= new BossChat[]{
-				new BossChat(Trigger.Entrance, new BossSpeech[]{
+				new BossChat(Trigger.FirstKill, new BossSpeech[]{
 						new BossSpeech("How dare you interloper!", Func.emote, false)
 				}, PostFunc.FinishBossChat, 
-				1, -1, 1, DelayEffect.APPEAR, null),
+				1, DelayEffect.APPEAR, null),
 		};
 		aStartingTile=Tile.get("jnw");
 		aLayout= new DungeonLayout(new TileLocation[]{
@@ -867,26 +867,26 @@ public class Adventure {
 		aBoss="Medusa";
 		aBossName="Medusa";
 		aBossChats= new BossChat[]{
-				new BossChat(Trigger.Entrance, new BossSpeech[]{
+				new BossChat(Trigger.ZerothTurn, new BossSpeech[]{
 						new BossSpeech("I will have my vengeance!", Func.emote, false)
 				}, PostFunc.StartingRoom, 
-				-1, 0, 1, DelayEffect.APPEAR, null),
+				1, DelayEffect.APPEAR, null),
 				new BossChat(Trigger.ThirdTurn, new BossSpeech[]{
 						new BossSpeech("Look me in the eye, adventurer!", Func.emote, false)
 				}, PostFunc.FinishBossChat, 
-				-1, 3, 1, DelayEffect.APPEAR, null),
+				1, DelayEffect.APPEAR, null),
 				new BossChat(Trigger.SixthTurn, new BossSpeech[]{
 						new BossSpeech("Almost out of time!", Func.emote, false)
 				}, PostFunc.FinishBossChat, 
-				-1, 6, 1, DelayEffect.APPEAR, null),
+				1, DelayEffect.APPEAR, null),
 				new BossChat(Trigger.kill, new BossSpeech[]{
 						new BossSpeech("SsssSSSS!", Func.emote, false),
 				}, PostFunc.FailDungeon, 
-				-1, -1, 1, DelayEffect.APPEAR, null),
+				1, DelayEffect.APPEAR, null),
 				new BossChat(Trigger.attacked_early, new BossSpeech[]{
 						new BossSpeech("Good! A proper fight!", Func.emote, false)
 				}, PostFunc.FinishBossChat, 
-				-1, -1, 1, DelayEffect.APPEAR, null)
+				1, DelayEffect.APPEAR, null)
 		};
 		aStartingTile=Tile.get("jnew");
 		aLayout= new DungeonLayout(new TileLocation[]{
@@ -923,15 +923,15 @@ public class Adventure {
 		aBoss="Ettin";
 		aBossName="Ettin";
 		aBossChats= new BossChat[]{
-				new BossChat(Trigger.blah, new BossSpeech[]{
+				new BossChat(Trigger.ZerothTurn, new BossSpeech[]{
 						new BossSpeech("I'm gonna eat your arms!", Func.emote, false),
 						new BossSpeech("I'm gonna eat your legs!", Func.emote, false)
 				}, PostFunc.StartingRoom, 
-				0, 0, 1, DelayEffect.APPEAR, null),
+				1, DelayEffect.APPEAR, null),
 				new BossChat(Trigger.attacked_early, new BossSpeech[]{
 						new BossSpeech("We're gonna eat you! DIE!!", Func.emote, false)
 				}, PostFunc.FinishBossChat, 
-				-1, -1, 1, DelayEffect.APPEAR, null)
+				1, DelayEffect.APPEAR, null)
 		};
 		aStartingTile=Tile.get("jne");
 		aLayout= new DungeonLayout(new TileLocation[]{
@@ -989,10 +989,10 @@ public class Adventure {
 		aBoss="Chimera";
 		aBoss="Chimera";
 		aBossChats= new BossChat[]{
-				new BossChat(Trigger.Entrance, new BossSpeech[]{
+				new BossChat(Trigger.ZerothTurn, new BossSpeech[]{
 						new BossSpeech("Screeeeee!", Func.emote, false),
 				}, PostFunc.Chase, 
-				-1, 0, 1, DelayEffect.APPEAR, null),
+				1, DelayEffect.APPEAR, null),
 		};
 		aStartingTile=Tile.get("judlr");
 		aLayout= new DungeonLayout(new TileLocation[]{
@@ -1028,28 +1028,28 @@ public class Adventure {
 		aBoss="Ogre";
 		aBossName="Ogre";
 		aBossChats= new BossChat[]{
-				new BossChat(Trigger.Entrance, new BossSpeech[]{
+				new BossChat(Trigger.ZerothTurn, new BossSpeech[]{
 						new BossSpeech("Yaaawn!", Func.emote, false)
 				}, PostFunc.StartingRoom,
-				-1, 0, 1, DelayEffect.APPEAR, null),
+				1, DelayEffect.APPEAR, null),
 				new BossChat(Trigger.ThirdTurn, new BossSpeech[]{
 						new BossSpeech("Such a late night...", Func.emote, false)
 				}, PostFunc.FinishBossChat,
-				-1, 3, 1, DelayEffect.APPEAR, null),
+				1, DelayEffect.APPEAR, null),
 				new BossChat(Trigger.SixthTurn, new BossSpeech[]{
 						new BossSpeech("*brushes teeth*", Func.emote, false)
 				}, PostFunc.FinishBossChat,
-				-1, 6, 1, DelayEffect.APPEAR, null),
+				1, DelayEffect.APPEAR, null),
 				new BossChat(Trigger.ComingToAttack, new BossSpeech[]{
 						new BossSpeech("Hey what are you doing here!?", Func.emote, false),
 				}, PostFunc.FireDemonMoveToBoard, 
-				-1, -1, 1, DelayEffect.APPEAR, new PostEffect[]{
+				1, DelayEffect.APPEAR, new PostEffect[]{
 						new PostEffect(Trait.Sleepy, false)
 				}),
 				new BossChat(Trigger.attacked_early, new BossSpeech[]{
 						new BossSpeech("*snooze* huh- what?", Func.emote, false),
 				}, null, 
-				-1, -1, 1, null, null)
+				1, null, null)
 		};
 		aStartingTile=Tile.get("jnwe");
 		aLayout= new DungeonLayout(new TileLocation[]{
@@ -1107,10 +1107,10 @@ public class Adventure {
 		aBoss="Dragon";
 		aBossName="Dragon";
 		aBossChats= new BossChat[]{
-				new BossChat(Trigger.Entrance, new BossSpeech[]{
+				new BossChat(Trigger.ZerothTurn, new BossSpeech[]{
 						new BossSpeech("You will pay for your greed!", Func.emote, false)
 				}, PostFunc.Chase, 
-				-1, 0, 1, DelayEffect.APPEAR, null)
+				1, DelayEffect.APPEAR, null)
 		};
 		aStartingTile=Tile.get("jnews");
 		aLayout= new DungeonLayout(new TileLocation[]{
@@ -1175,10 +1175,10 @@ public class Adventure {
 		aBossName="Troll";
 		aStartingTile=Tile.get("muldr");
 		aBossChats= new BossChat[]{
-				new BossChat(Trigger.Entrance, new BossSpeech[]{
+				new BossChat(Trigger.ZerothTurn, new BossSpeech[]{
 						new BossSpeech("Troll smash!", Func.emote, false),
 				}, PostFunc.Chase,
-				-1, 0, 1, DelayEffect.APPEAR, null),
+				1, DelayEffect.APPEAR, null),
 		};
 		aLayout= new DungeonLayout(new TileLocation[]{
 				new TileLocation(Tile.get("ml"), 6, 0, "BOSS", null, new TileDetails(false, true, true, 6, 0, false)),
@@ -1213,11 +1213,11 @@ public class Adventure {
 		aBossName="Cyclops";
 		aStartingTile=Tile.get("muld");
 		aBossChats= new BossChat[]{
-				new BossChat(Trigger.Entrance, new BossSpeech[]{
+				new BossChat(Trigger.ZerothTurn, new BossSpeech[]{
 						new BossSpeech("A snack?", Func.emote, false),
 						new BossSpeech("You'll never get past me!", Func.emote, false)
 				}, PostFunc.StartingRoom,
-				-1, 0, 1, DelayEffect.APPEAR, null)
+				1, DelayEffect.APPEAR, null)
 		};
 		aLayout= new DungeonLayout(new TileLocation[]{
 				new TileLocation(Tile.get("mur"), -3, 2, "BOSS", null, new TileDetails(false, true, true, -3, 2, false)),
@@ -1251,10 +1251,10 @@ public class Adventure {
 		aStartingTile=Tile.get("muldr");
 		aBossChats= new BossChat[]{
 				new BossChat(Trigger.FirstKill, new BossSpeech[]{
-						new BossSpeech("INTRUDER DAlriETECTED", Func.emote, false),
+						new BossSpeech("INTRUDER DETECTED", Func.emote, false),
 						new BossSpeech("SETTING UP SECONDARY PERIMETER", Func.emote, false)
 				}, PostFunc.FinishBossChat,
-				1, -1, 1, DelayEffect.APPEAR, null)
+				1, DelayEffect.APPEAR, null)
 		};
 		aLayout= new DungeonLayout(new TileLocation[]{
 				new TileLocation(Tile.get("mu"), 0, 2, "", TreasureType.GOLD_COIN, new TileDetails(false, true, true, 0, 2, false)),
@@ -1277,23 +1277,23 @@ public class Adventure {
 		aBossName="Dwarf Sentry";
 		aStartingTile=Tile.get("muld");
 		aBossChats= new BossChat[]{
-				new BossChat(Trigger.Entrance, new BossSpeech[]{
+				new BossChat(Trigger.ZerothTurn, new BossSpeech[]{
 						new BossSpeech("DROP THE GOLD AND PUT YOUR HANDS UP", Func.emote, false),
 						new BossSpeech("THEN I WILL DESTROY YOU", Func.emote, false)
 				}, PostFunc.StartingRoom,
-				-1, 0, 1, DelayEffect.APPEAR, null),
+				1, DelayEffect.APPEAR, null),
 				new BossChat(Trigger.SecondKill, new BossSpeech[]{
 						new BossSpeech("YOU ARE ONLY MAKING IT WORSE FOR YOURSELF!", Func.emote, false)
 				}, PostFunc.FinishBossChat,
-				2, -1, 1, DelayEffect.APPEAR, null),
+				1, DelayEffect.APPEAR, null),
 				new BossChat(Trigger.attacked_early, new BossSpeech[]{
 						new BossSpeech("SERVOS NOT CHARGED!", Func.emote, false),
 				}, null, 
-				-1, -1, 1, null, null),
+				1, null, null),
 				new BossChat(Trigger.kill, new BossSpeech[]{
 						new BossSpeech("TARGET ACQUIRED, FIRING!", Func.emote, false)
 				}, PostFunc.FailDungeon,
-				-1, -1, 1, DelayEffect.APPEAR, null)
+				1, DelayEffect.APPEAR, null)
 
 		};
 		aLayout= new DungeonLayout(new TileLocation[]{
@@ -1352,11 +1352,11 @@ public class Adventure {
 		aBossName="Dwarf Mecha";
 		aStartingTile=Tile.get("muld");
 		aBossChats= new BossChat[]{
-				new BossChat(Trigger.Entrance, new BossSpeech[]{
+				new BossChat(Trigger.ZerothTurn, new BossSpeech[]{
 						new BossSpeech("Get out of here", Func.emote, false),
 						new BossSpeech("You've been causing loads of trouble!", Func.emote, false)
 				}, PostFunc.Chase,
-				-1, 0, 1, DelayEffect.APPEAR, null),
+				1, DelayEffect.APPEAR, null),
 		};
 		aLayout= new DungeonLayout(new TileLocation[]{
 				new TileLocation(Tile.get("md"), 1, -4, "BOSS", null, new TileDetails(false, true, true, 1, -3, false)),
@@ -1396,11 +1396,11 @@ public class Adventure {
 						new BossSpeech("They're trying to get in!", Func.emote, false),
 						new BossSpeech("Don't let them in the workshop", Func.emote, false)
 				}, PostFunc.FinishBossChat,
-				1, -1, 1, DelayEffect.APPEAR, null),
+				1, DelayEffect.APPEAR, null),
 				new BossChat(Trigger.SecondKill, new BossSpeech[]{
 						new BossSpeech("You fools, don't you know how long this has taken to build?", Func.emote, false),
 				}, PostFunc.FinishBossChat,
-				2, -1, 1, DelayEffect.APPEAR, null)
+				1, DelayEffect.APPEAR, null)
 		};
 		aLayout= new DungeonLayout(new TileLocation[]{
 				new TileLocation(Tile.get("mudr"), 2, 0, "", TreasureType.Large_Chest, new TileDetails(false, true, true, 2, 0, false)),
@@ -1425,28 +1425,28 @@ public class Adventure {
 		aBossName="Dwarf Masterpiece";
 		aStartingTile=Tile.get("muld");
 		aBossChats= new BossChat[]{
-				new BossChat(Trigger.FirstTurn, new BossSpeech[]{
+				new BossChat(Trigger.ZerothTurn, new BossSpeech[]{
 						new BossSpeech("They're here!", Func.emote, false),
 						new BossSpeech("Destroy them before they get to me!", Func.emote, false)
 				}, PostFunc.StartingRoom,
-				-1, 0, 1, DelayEffect.APPEAR, null),
+				1, DelayEffect.APPEAR, null),
 				new BossChat(Trigger.ThirdTurn, new BossSpeech[]{
 						new BossSpeech("Their torch is running out!", Func.emote, false),
 						new BossSpeech("Once they're out of light they're screwed!", Func.emote, false)
 				}, PostFunc.FinishBossChat,
-				-1, 3, 1, DelayEffect.APPEAR, null),
+				1, DelayEffect.APPEAR, null),
 				new BossChat(Trigger.SixthTurn, new BossSpeech[]{
 						new BossSpeech("Just delay them a little more", Func.emote, false),
 				}, PostFunc.FinishBossChat,
-				-1, 6, 1, DelayEffect.APPEAR, null),
+				1, DelayEffect.APPEAR, null),
 				new BossChat(Trigger.attacked_early, new BossSpeech[]{
 						new BossSpeech("Now you die!", Func.emote, false),
 				}, null, 
-				-1, -1, 1, null, null),
+				1, null, null),
 				new BossChat(Trigger.kill, new BossSpeech[]{
 						new BossSpeech("Out of time, adventurer. You have no choice in the dark.", Func.emote, false),
 				}, PostFunc.FailDungeon,
-				-1, -1, 1, DelayEffect.APPEAR, null)
+				1, DelayEffect.APPEAR, null)
 		};
 		aLayout= new DungeonLayout(new TileLocation[]{
 				new TileLocation(Tile.get("mudr"), -3, 0, "BOSS", null, new TileDetails(false, true, true, -3, 0, false)),
@@ -1489,12 +1489,12 @@ public class Adventure {
 						new BossSpeech("Perimeter breached", Func.emote, false),
 						new BossSpeech("It's ok, the security team should be able to sort it out", Func.emote, false),
 				}, PostFunc.FinishBossChat,
-				1, -1, 1, DelayEffect.APPEAR, null),
+				1, DelayEffect.APPEAR, null),
 				new BossChat(Trigger.SecondKill, new BossSpeech[]{
 						new BossSpeech("Ah they were disposable", Func.emote, false),
 						new BossSpeech("There's still a nasty troll", Func.emote, false),
 				}, PostFunc.FinishBossChat,
-				2, -1, 1, DelayEffect.APPEAR, null),
+				1, DelayEffect.APPEAR, null),
 		};
 		aStartingTile=Tile.get("md");
 		aLayout= new DungeonLayout(new TileLocation[]{
@@ -1517,15 +1517,15 @@ public class Adventure {
 		aBoss="Dwarf Magnate";
 		aBossName="Dwarf Magnate";
 		aBossChats= new BossChat[]{
-				new BossChat(Trigger.FirstTurn, new BossSpeech[]{
+				new BossChat(Trigger.ZerothTurn, new BossSpeech[]{
 						new BossSpeech("Don't let them in the boardroom", Func.emote, false),
 						new BossSpeech("We're having a shareholder's meeting", Func.emote, false),
 				}, PostFunc.FinishBossChat,
-				-1, 0, 1, DelayEffect.APPEAR, null),
+				1, DelayEffect.APPEAR, null),
 				new BossChat(Trigger.SecondKill, new BossSpeech[]{
 						new BossSpeech("I think I need to invest in some better protection", Func.emote, false),
 				}, PostFunc.FinishBossChat,
-				2, -1, 1, DelayEffect.APPEAR, null),
+				1, DelayEffect.APPEAR, null),
 		};
 		aStartingTile=Tile.get("mudr");
 		aLayout= new DungeonLayout(new TileLocation[]{
@@ -1553,27 +1553,27 @@ public class Adventure {
 		aBoss="Dwarf Magnate";
 		aBossName="Dwarf Magnate";
 		aBossChats= new BossChat[]{
-				new BossChat(Trigger.FirstTurn, new BossSpeech[]{
+				new BossChat(Trigger.ZerothTurn, new BossSpeech[]{
 						new BossSpeech("You will never stop us!", Func.emote, false),
 						new BossSpeech("We will take over the world and you are too weak to stand against us!", Func.emote, false)
 				}, PostFunc.StartingRoom,
-				-1, 0, 1, DelayEffect.APPEAR, null),
+				1, DelayEffect.APPEAR, null),
 				new BossChat(Trigger.ThirdTurn, new BossSpeech[]{
 						new BossSpeech("Once the death ray is complete, we will be unstoppable", Func.emote, false),
 				}, PostFunc.FinishBossChat,
-				-1, 3, 1, DelayEffect.APPEAR, null),
+				1, DelayEffect.APPEAR, null),
 				new BossChat(Trigger.SixthTurn, new BossSpeech[]{
 						new BossSpeech("Tertiary subsystems coming online...", Func.emote, false),
 				}, PostFunc.FinishBossChat,
-				-1, 6, 1, DelayEffect.APPEAR, null),
+				1, DelayEffect.APPEAR, null),
 				new BossChat(Trigger.attacked_early, new BossSpeech[]{
 						new BossSpeech("But I never got to use my death-ray", Func.emote, false),
 				}, null, 
-				-1, -1, 1, null, null),
+				1, null, null),
 				new BossChat(Trigger.kill, new BossSpeech[]{
 						new BossSpeech("Fire the death ray! Muahahaha!", Func.emote, false),
 				}, PostFunc.FailDungeon,
-				-1, -1, 1, DelayEffect.APPEAR, null)
+				1, DelayEffect.APPEAR, null)
 		};
 		aStartingTile=Tile.get("mudr");
 		aLayout= new DungeonLayout(new TileLocation[]{

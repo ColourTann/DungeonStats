@@ -4,26 +4,74 @@ import fighter.Fighter.Trait;
 import json.Json;
 
 public class BossChat {
-	public enum Trigger{blah, FirstKill, flib, intruder, FifthKill, Second_Turn, four_left, last_turn, ComingToAttack, attacked_early, kill, Entrance, SecondKill, FourthKill, SixthTurn, EleventhTurn, ThirdKill, FirstTurn, NinthTurn, ThirdTurn}
+	public enum Trigger{FirstKill, FifthKill, Second_Turn, ComingToAttack, attacked_early, kill, SecondKill, FourthKill, SixthTurn, EleventhTurn, ThirdKill, FirstTurn, NinthTurn, ThirdTurn, ZerothTurn}
 	public enum PostFunc{FinishBossChat, StartingRoom, MoveToBoard, FireDemonMoveToBoard, Chase, FailDungeon}
 	public enum DelayEffect{APPEAR}
 	
 	Trigger trigger;
 	BossSpeech[] speeches;
 	PostFunc postFunc; 
-	int killed, turns; 
+	int killed, turns;
 	int delayType; DelayEffect delayEffect;
 	PostEffect[] postEffects;
 	public BossChat(Trigger trigger, 
 			BossSpeech[] speeches, 
 			PostFunc postFunc, 
-			int killed, int turns, 
 			int delayType, DelayEffect delayEffect,
 			PostEffect[] postEffects) {
 		this.trigger=trigger;
 		this.speeches=speeches;
 		this.postFunc=postFunc;
-		this.killed=killed; this.turns=turns;
+		this.killed=-1; this.turns=-1;
+		switch(trigger){
+		case ComingToAttack:
+			break;
+		case EleventhTurn:
+			this.turns=11;
+			break;
+		case ZerothTurn:
+			this.turns=0;
+			break;
+		case FifthKill:
+			this.killed=5;
+			break;
+		case FirstKill:
+			this.killed=1;
+			break;
+		case FirstTurn:
+			this.turns=0;
+			break;
+		case FourthKill:
+			this.killed=4;
+			break;
+		case NinthTurn:
+			this.turns=9;
+			break;
+		case SecondKill:
+			this.killed=2;
+			break;
+		case Second_Turn:
+			this.turns=2;
+			break;
+		case SixthTurn:
+			this.turns=6;
+			break;
+		case ThirdKill:
+			this.killed=3;
+			break;
+		case ThirdTurn:
+			this.turns=3;
+			break;
+		case attacked_early:
+			break;
+
+		case kill:
+			break;
+		default:
+			break;
+		
+		}
+		
 		this.delayType=delayType; this.delayEffect=delayEffect;
 		this.postEffects=postEffects;
 	}

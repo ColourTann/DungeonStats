@@ -1,0 +1,4037 @@
+{
+"UnlockOrder": [
+"Rats? How original!", "Embro", "Shiny treasure", "Goblins!", "Black Knight", "Evil Lich!", "The Eye Beast", "The Sapphire of Tlaloc", "Medusa Adventure", "Ettin Adventure", "Chimera Adventure", "Ogre Adventure", "Dragon Adventure", "Troll Adventure", "Cyclops Adventure", "Sentry Adventure", "Mecha Adventure", "Masterpiece Adventure", "Magnate Adventure" ],
+"Regions": [
+{
+"name" : "Stone",
+"x" : 0,
+"y" : 0
+},
+{
+"name" : "Jungle",
+"x" : -1157,
+"y" : 0
+},
+{
+"name" : "Mines",
+"x" : 0,
+"y" : -684
+}
+],
+"QuestLines": {
+"Rats? How original!": {
+"Description" : "null",
+"Icon" : "stone_hatch",
+"mapX" : "1.0",
+"mapY" : "0.25",
+"numUnlocks" : 3,
+"trophy" : "Rat King's Tail",
+"trophyX" : -2.0,
+"trophyY" : -1.0,
+"Quests": [
+{
+"Squeak squeak": {
+"Description" : "Everyone's gotta start somewhere",
+"Dungeon" : "stone",
+"Reward" : 100,
+"Boss" : "Rat Man",
+"BossName" : "Rat King Cole",
+"BossDoubleMoveChance" : 1,
+"BossChat": {
+"Second_Turn": {
+"postFunc" : "FinishBossChat",
+"turn" : 2,
+"delay1" : "APPEAR",
+"lines": [
+{
+"TEXT" : "Squeak squeak squeak",
+"FUNC" : "emote"
+}
+]
+},
+"SecondKill": {
+"postFunc" : "FinishBossChat",
+"killed" : 2,
+"delay1" : "APPEAR",
+"lines": [
+{
+"TEXT" : "Squeak!",
+"FUNC" : "emote"
+}
+]
+}
+},
+"StartingTile" : "corr_grate_n",
+"StartingHand": [
+{
+"type" : "TILE",
+"subType" : "room_steps_nesw"
+},
+{
+"type" : "TREASURE",
+"subType" : "Gold Coin"
+},
+{
+"type" : "MONSTER",
+"subType" : "Rubber Ducky"
+},
+{
+"type" : "TILE",
+"subType" : ""
+},
+{
+"type" : "TILE",
+"subType" : ""
+}
+],
+"AutoTurnSequence": [
+0,
+1,
+0],
+"TurnMessages": {
+"turn 0" : "I'll play your first turn. It's easy!",
+"turn 1" : "Now you have a go!"
+},
+"Objectives": [
+{
+"type" : "Defeat",
+"quantity" : 3,
+"target" : "Nasty Rat"
+}
+],
+"DungeonLayout": [
+{
+"TILE" : "room_semicircle_nes",
+"x" : -2,
+"y" : -1,
+"ignoreCamera" : true,
+"MONSTER" : "Nasty Rat",
+"TREASURE" : ""
+},
+{
+"TILE" : "room_semicircle_nes",
+"x" : -1,
+"y" : -2,
+"ignoreCamera" : true,
+"MONSTER" : "Nasty Rat",
+"TREASURE" : ""
+},
+{
+"TILE" : "room_semicircle_nsw",
+"x" : 1,
+"y" : -2,
+"ignoreCamera" : true,
+"MONSTER" : "Nasty Rat",
+"TREASURE" : ""
+}
+],
+"Monsters": [
+]
+}
+},
+{
+"Rat King's Tale": {
+"Description" : "Defeat the rat king!",
+"Dungeon" : "stone",
+"Reward" : 100,
+"Boss" : "Rat King Cole",
+"BossName" : "Rat King Cole",
+"BossDoubleMoveChance" : 1,
+"BossChat": {
+"Entrance": {
+"postFunc" : "StartingRoom",
+"turn" : 0,
+"delay1" : "APPEAR",
+"lines": [
+{
+"TEXT" : "Squeak!!",
+"FUNC" : "emote"
+}
+]
+},
+"SecondKill": {
+"postFunc" : "FinishBossChat",
+"killed" : 2,
+"delay1" : "APPEAR",
+"lines": [
+{
+"TEXT" : "*chitter chitter*",
+"FUNC" : "emote"
+}
+]
+},
+"FourthKill": {
+"postFunc" : "FinishBossChat",
+"killed" : 4,
+"delay1" : "APPEAR",
+"lines": [
+{
+"TEXT" : "SQUEAK!!",
+"FUNC" : "emote"
+}
+]
+}
+},
+"StartingTile" : "room_steps_nesw",
+"Objectives": [
+{
+"type" : "Defeat",
+"target" : "BOSS"
+}
+],
+"DungeonLayout": [
+{
+"TILE" : "room_semicircle_nes",
+"x" : -1,
+"y" : -3,
+"ignoreCamera" : true,
+"camCoords" : true,
+"camX" : -1,
+"camY" : -3,
+"MONSTER" : "Rat Man",
+"TREASURE" : ""
+},
+{
+"TILE" : "room_round_s",
+"x" : -1,
+"y" : -5,
+"ignoreCamera" : true,
+"BossRoom" : true,
+"TREASURE" : ""
+},
+{
+"TILE" : "room_steps_nesw",
+"x" : 0,
+"y" : -2,
+"ignoreCamera" : true,
+"MONSTER" : "Nasty Rat",
+"TREASURE" : ""
+},
+{
+"TILE" : "room_semicircle_nsw",
+"x" : 1,
+"y" : -3,
+"ignoreCamera" : true,
+"MONSTER" : "Nasty Rat",
+"TREASURE" : ""
+},
+{
+"TILE" : "room_steps_nesw",
+"x" : 0,
+"y" : -4,
+"ignoreCamera" : true,
+"MONSTER" : "Rat Man",
+"TREASURE" : ""
+}
+],
+"Monsters": [
+]
+}
+}
+]
+},
+"Embro": {
+"Description" : "",
+"Icon" : "stone_fire_cave",
+"mapX" : "0.2",
+"mapY" : "0.8",
+"numUnlocks" : 1,
+"trophy" : "Embro's Towel",
+"trophyX" : 0.5,
+"trophyY" : 0.0,
+"Quests": [
+{
+"Fiery Foray": {
+"Description" : "Scope out Embro's defences",
+"Dungeon" : "stone",
+"Reward" : 100,
+"Boss" : "Fire Demon",
+"BossName" : "Embro",
+"BossDoubleMoveChance" : 1,
+"BossChat": {
+"Entrance": {
+"postFunc" : "FinishBossChat",
+"turn" : 1,
+"delay1" : "APPEAR",
+"lines": [
+{
+"TEXT" : "HEY! What are you doing in my Evil Entrance Hall?",
+"FUNC" : "emote"
+},
+{
+"TEXT" : "Oh well, my imps will make short work of you!",
+"FUNC" : "emote"
+}
+]
+},
+"SecondKill": {
+"postFunc" : "FinishBossChat",
+"killed" : 2,
+"delay1" : "APPEAR",
+"lines": [
+{
+"TEXT" : "You're not supposed to be able to beat them!",
+"FUNC" : "emote"
+},
+{
+"TEXT" : "I should have invested in some better security...",
+"FUNC" : "emote"
+}
+]
+}
+},
+"StartingTile" : "corr_grate_n",
+"Objectives": [
+{
+"type" : "Defeat",
+"quantity" : 2,
+"target" : "Fire Imp"
+},
+{
+"type" : "Defeat",
+"quantity" : 1,
+"target" : "Gnoll"
+}
+],
+"DungeonLayout": [
+{
+"TILE" : "room_semicircle_nes",
+"x" : -1,
+"y" : -2,
+"ignoreCamera" : true,
+"MONSTER" : "Fire Imp",
+"TREASURE" : ""
+},
+{
+"TILE" : "room_semicircle_nsw",
+"x" : 1,
+"y" : -2,
+"ignoreCamera" : true,
+"MONSTER" : "Fire Imp",
+"TREASURE" : ""
+},
+{
+"TILE" : "room_semicircle_esw",
+"x" : 0,
+"y" : -3,
+"ignoreCamera" : true,
+"MONSTER" : "Gnoll",
+"TREASURE" : ""
+}
+],
+"Monsters": [
+]
+}
+},
+{
+"Scorching Spoils": {
+"Description" : "Loot all of Embro's treasure",
+"Dungeon" : "stone",
+"Reward" : 100,
+"Boss" : "Fire Demon",
+"BossName" : "Embro",
+"BossDoubleMoveChance" : 1,
+"BossChat": {
+"Entrance": {
+"postFunc" : "FinishBossChat",
+"turn" : 1,
+"delay1" : "APPEAR",
+"lines": [
+{
+"TEXT" : "HEY! Get out of my treasure chamber!",
+"FUNC" : "emote"
+}
+]
+}
+},
+"StartingTile" : "room_steps_nesw",
+"Objectives": [
+{
+"type" : "Collect",
+"quantity" : 3,
+"target" : "Large Chest"
+}
+],
+"DungeonLayout": [
+{
+"TILE" : "room_semicircle_nes",
+"x" : -2,
+"y" : 0,
+"ignoreCamera" : true,
+"MONSTER" : "Fire Imp",
+"TREASURE" : "Large Chest"
+},
+{
+"TILE" : "room_collapse_esw",
+"x" : 0,
+"y" : -2,
+"ignoreCamera" : true,
+"MONSTER" : "Zombie",
+"TREASURE" : "Large Chest"
+},
+{
+"TILE" : "room_semicircle_nsw",
+"x" : 2,
+"y" : 0,
+"ignoreCamera" : true,
+"MONSTER" : "Fire Elemental",
+"TREASURE" : "Large Chest"
+}
+],
+"Monsters": [
+]
+}
+},
+{
+"Evil Embers": {
+"Description" : "Defeat Embro",
+"Dungeon" : "stone",
+"Reward" : 100,
+"Boss" : "Fire Demon",
+"BossName" : "Embro",
+"BossDoubleMoveChance" : 1,
+"BossChat": {
+"Entrance": {
+"postFunc" : "StartingRoom",
+"turn" : 0,
+"delay1" : "APPEAR",
+"lines": [
+{
+"TEXT" : "WHO DARES INVADE THE HOT, HOT LAIR OF EMBRO, LORD OF FLAME?!",
+"FUNC" : "emote"
+},
+{
+"TEXT" : "Right in the middle of bath-time too. Look at this puddle!",
+"FUNC" : "emote"
+},
+{
+"TEXT" : "MINIONS! DESTROY THEM! BRING ME THEIR BONES!",
+"FUNC" : "emote"
+}
+]
+},
+"Second_Turn": {
+"postFunc" : "FinishBossChat",
+"turn" : 2,
+"delay1" : "APPEAR",
+"lines": [
+{
+"TEXT" : "Argh, I have to dry off or I won't be my fiery best.",
+"FUNC" : "emote"
+},
+{
+"TEXT" : "You'd better wait {TURNS_LEFT} more turns before fighting me or it won't be fair!",
+"FUNC" : "emote"
+}
+]
+},
+"SixthTurn": {
+"postFunc" : "FinishBossChat",
+"turn" : 6,
+"delay1" : "APPEAR",
+"lines": [
+{
+"TEXT" : "MINIONS! Bring me more towels!.",
+"FUNC" : "emote"
+},
+{
+"TEXT" : "I need to be ready for my big fight in 6 turns",
+"FUNC" : "emote"
+}
+]
+},
+"EleventhTurn": {
+"postFunc" : "FinishBossChat",
+"turn" : 11,
+"delay1" : "APPEAR",
+"lines": [
+{
+"TEXT" : "Almost dry now! I'm coming for you next turn!",
+"FUNC" : "emote"
+}
+]
+},
+"ComingToAttack": {
+"traits": [
+{
+"trait" : "Damp",
+"value" : false
+}
+],
+"postFunc" : "MoveToBoard",
+"block" : true,
+"delay1" : "APPEAR",
+"lines": [
+{
+"TEXT" : "**WHOOSH** Finally dry! Now I'm going to get you!",
+"FUNC" : "emote"
+}
+]
+},
+"attacked_early": {
+"block" : true,
+"lines": [
+{
+"TEXT" : "Hey! I'm not ready yet!",
+"FUNC" : "emote"
+}
+]
+},
+"ThirdKill": {
+"postFunc" : "FinishBossChat",
+"killed" : 3,
+"delay1" : "APPEAR",
+"lines": [
+{
+"TEXT" : "HAR HAR! YOU THINK I'LL MISS THAT {LAST_KILL_TYPE}?",
+"FUNC" : "emote"
+},
+{
+"TEXT" : "NO! HE WAS MY LEAST FAVORITE MINION!",
+"FUNC" : "emote"
+}
+]
+},
+"FifthKill": {
+"postFunc" : "FinishBossChat",
+"killed" : 5,
+"delay1" : "APPEAR",
+"lines": [
+{
+"TEXT" : "*sigh* As usual my minions are bumbling fools..",
+"FUNC" : "emote"
+},
+{
+"TEXT" : "If only those sharks with spears attached to their heads had arrived.",
+"FUNC" : "emote"
+},
+{
+"TEXT" : "Oh well. SEND MORE RUBBER DUCKIES!",
+"FUNC" : "emote"
+}
+]
+}
+},
+"TurnLimit" : 12,
+"TurnLimitStart" : 0,
+"TurnLimitActions": [
+{
+"action" : "BossChat",
+"args": [
+"ComingToAttack"
+],
+"resetTimer" : false,
+"resetTurns" : 0,
+"description" : "Embro attacks"
+}
+],
+"StartingTile" : "corr_grate_n",
+"Objectives": [
+{
+"type" : "Defeat",
+"target" : "BOSS"
+}
+],
+"DungeonLayout": [
+{
+"TILE" : "room_torture_s",
+"x" : 0,
+"y" : -5,
+"ignoreCamera" : true,
+"BossRoom" : true,
+"TREASURE" : ""
+},
+{
+"TILE" : "room_round_s",
+"x" : 2,
+"y" : -3,
+"ignoreCamera" : true,
+"MONSTER" : "",
+"TREASURE" : "MEGA CHEST"
+}
+],
+"Monsters": [
+"Giant Bat",
+"Nasty Rat",
+"Goblin",
+"Scary Spider",
+"Fire Imp",
+"Gray Ooze",
+"Ghost",
+"Snake",
+"Rat Man",
+"Skeleton",
+"Zombie",
+"Gnoll",
+"Mummy",
+"Bear Owl",
+"Shade",
+"Fire Elemental",
+"Scorpion",
+"Bandito"
+]
+}
+}
+]
+},
+"Shiny treasure": {
+"Description" : "",
+"Icon" : "stone_chest",
+"mapX" : "1.25",
+"mapY" : "1.2",
+"numUnlocks" : 1,
+"trophy" : "Mimic Splinters",
+"trophyX" : -1.0,
+"trophyY" : -1.0,
+"Quests": [
+{
+"Lovely loot": {
+"Description" : "Chests full of treasure!",
+"Dungeon" : "stone",
+"Reward" : 100,
+"Boss" : "Mimic",
+"BossName" : "Mimic",
+"BossDoubleMoveChance" : 1,
+"BossChat": {
+},
+"StartingTile" : "room_collapse_new",
+"Objectives": [
+{
+"type" : "Collect",
+"quantity" : 2,
+"target" : "Large Chest"
+}
+],
+"DungeonLayout": [
+{
+"TILE" : "room_semicircle_nes",
+"x" : -1,
+"y" : -2,
+"ignoreCamera" : true,
+"MONSTER" : "Zombie",
+"TREASURE" : "Large Chest"
+},
+{
+"TILE" : "room_semicircle_nsw",
+"x" : 1,
+"y" : -2,
+"ignoreCamera" : true,
+"MONSTER" : "Bear Owl",
+"TREASURE" : "Large Chest"
+}
+],
+"Monsters": [
+"Giant Bat",
+"Nasty Rat",
+"Goblin",
+"Scary Spider",
+"Fire Imp",
+"Gray Ooze",
+"Ghost",
+"Snake",
+"Rat Man",
+"Skeleton",
+"Zombie",
+"Gnoll",
+"Mummy",
+"Bear Owl",
+"Shade",
+"Fire Elemental",
+"Scorpion",
+"Bandito"
+]
+}
+},
+{
+"Terrible Truth": {
+"Description" : "Get strong enough to beat the mimic before he catches you!",
+"Dungeon" : "stone",
+"Reward" : 100,
+"Boss" : "Mimic",
+"BossName" : "Mimic",
+"BossDoubleMoveChance" : 1,
+"BossChat": {
+"Entrance": {
+"postFunc" : "StartingRoom",
+"postArgs": [
+true
+],
+"turn" : 0,
+"delay1" : "APPEAR",
+"lines": [
+{
+"TEXT" : "You're the one who looted my grandparents!?",
+"FUNC" : "emote"
+},
+{
+"TEXT" : "DIE, evil adventurer!",
+"FUNC" : "emote"
+}
+]
+}
+},
+"StartingTile" : "room_steps_nesw",
+"Objectives": [
+{
+"type" : "Defeat",
+"target" : "BOSS"
+}
+],
+"DungeonLayout": [
+{
+"TILE" : "corr_rubble_ew",
+"x" : -1,
+"y" : 0,
+"ignoreCamera" : true,
+"camCoords" : true,
+"camX" : -5,
+"camY" : 0,
+"MONSTER" : "",
+"TREASURE" : ""
+},
+{
+"TILE" : "corr_rubble_ew",
+"x" : -2,
+"y" : 0,
+"ignoreCamera" : true,
+"MONSTER" : "",
+"TREASURE" : ""
+},
+{
+"TILE" : "corr_rubble_ew",
+"x" : -3,
+"y" : 0,
+"ignoreCamera" : true,
+"MONSTER" : "",
+"TREASURE" : ""
+},
+{
+"TILE" : "corr_rubble_ew",
+"x" : -4,
+"y" : 0,
+"ignoreCamera" : true,
+"MONSTER" : "",
+"TREASURE" : ""
+},
+{
+"TILE" : "corr_rubble_e",
+"x" : -5,
+"y" : 0,
+"ignoreCamera" : true,
+"BossRoom" : true,
+"TREASURE" : ""
+}
+],
+"Monsters": [
+"Giant Bat",
+"Nasty Rat",
+"Goblin",
+"Scary Spider",
+"Fire Imp",
+"Gray Ooze",
+"Ghost",
+"Snake",
+"Rat Man",
+"Skeleton",
+"Zombie",
+"Gnoll",
+"Mummy",
+"Bear Owl",
+"Shade",
+"Fire Elemental",
+"Scorpion",
+"Bandito"
+]
+}
+}
+]
+},
+"Goblins!": {
+"Description" : "",
+"Icon" : "stone_skull_cave",
+"mapX" : "2.0",
+"mapY" : "0.25",
+"numUnlocks" : 1,
+"trophy" : "Goblin Teeth",
+"trophyX" : -1.5,
+"trophyY" : 0.0,
+"Quests": [
+{
+"Goblin Menace": {
+"Description" : "Take out the goblins",
+"Dungeon" : "stone",
+"Reward" : 100,
+"Boss" : "Orc Grunt",
+"BossName" : "Orc Grunt",
+"BossDoubleMoveChance" : 1,
+"BossChat": {
+},
+"TurnLimit" : 7,
+"TurnLimitStart" : 0,
+"TurnLimitActions": [
+{
+"action" : "HeroHealth",
+"args": [
+-2
+],
+"resetTimer" : false,
+"resetTurns" : 0,
+"description" : "Lunchtime"
+}
+],
+"StartingTile" : "room_collapse_esw",
+"Objectives": [
+{
+"type" : "Defeat",
+"quantity" : 3,
+"target" : "Goblin"
+}
+],
+"DungeonLayout": [
+{
+"TILE" : "room_semicircle_nes",
+"x" : -2,
+"y" : 0,
+"ignoreCamera" : true,
+"camCoords" : true,
+"camX" : -1,
+"camY" : 1,
+"MONSTER" : "Goblin",
+"TREASURE" : ""
+},
+{
+"TILE" : "room_steps_nesw",
+"x" : -1,
+"y" : 1,
+"ignoreCamera" : true,
+"MONSTER" : "Goblin",
+"TREASURE" : ""
+},
+{
+"TILE" : "room_collapse_new",
+"x" : 0,
+"y" : 2,
+"ignoreCamera" : true,
+"MONSTER" : "Goblin",
+"TREASURE" : ""
+},
+{
+"TILE" : "corr_crushed_ne",
+"x" : -2,
+"y" : 2,
+"ignoreCamera" : true,
+"MONSTER" : "Goblin",
+"TREASURE" : ""
+}
+],
+"Monsters": [
+]
+}
+},
+{
+"Knives and Orcs": {
+"Description" : "Defeat the big orc",
+"Dungeon" : "stone",
+"Reward" : 100,
+"Boss" : "Orc Grunt",
+"BossName" : "Orc Grunt",
+"BossDoubleMoveChance" : 1,
+"BossChat": {
+"Entrance": {
+"postFunc" : "StartingRoom",
+"turn" : 0,
+"delay1" : "APPEAR",
+"lines": [
+{
+"TEXT" : "GRAK and GRIK! Defeat this interloper!",
+"FUNC" : "emote"
+}
+]
+},
+"SecondKill": {
+"postFunc" : "FinishBossChat",
+"killed" : 2,
+"delay1" : "APPEAR",
+"lines": [
+{
+"TEXT" : "Stop killing my monsters!",
+"FUNC" : "emote"
+}
+]
+},
+"FourthKill": {
+"postFunc" : "FinishBossChat",
+"killed" : 4,
+"delay1" : "APPEAR",
+"lines": [
+{
+"TEXT" : "Stop it! I mean it!",
+"FUNC" : "emote"
+}
+]
+},
+"attacked_early": {
+"postFunc" : "FinishBossChat",
+"block" : true,
+"delay1" : "APPEAR",
+"lines": [
+{
+"TEXT" : "This'll be over quick, human!",
+"FUNC" : "emote"
+}
+]
+}
+},
+"TurnLimit" : 7,
+"TurnLimitStart" : 0,
+"TurnLimitActions": [
+{
+"action" : "HeroHealth",
+"args": [
+-2
+],
+"resetTimer" : false,
+"resetTurns" : 0,
+"description" : "Lunchtime"
+}
+],
+"StartingTile" : "room_collapse_new",
+"Objectives": [
+{
+"type" : "Defeat",
+"target" : "BOSS"
+}
+],
+"DungeonLayout": [
+{
+"TILE" : "room_semicircle_nes",
+"x" : -1,
+"y" : -2,
+"ignoreCamera" : true,
+"camCoords" : true,
+"camX" : 0,
+"camY" : -3,
+"MONSTER" : "Goblin",
+"TREASURE" : ""
+},
+{
+"TILE" : "room_semicircle_nsw",
+"x" : 1,
+"y" : -2,
+"ignoreCamera" : true,
+"MONSTER" : "Goblin",
+"TREASURE" : ""
+},
+{
+"TILE" : "room_semicircle_esw",
+"x" : 0,
+"y" : -3,
+"ignoreCamera" : true,
+"BossRoom" : true,
+"TREASURE" : ""
+}
+],
+"Monsters": [
+"Giant Bat",
+"Nasty Rat",
+"Goblin",
+"Scary Spider",
+"Fire Imp",
+"Gray Ooze",
+"Ghost",
+"Snake",
+"Rat Man",
+"Skeleton",
+"Zombie",
+"Gnoll"
+]
+}
+}
+]
+},
+"Black Knight": {
+"Description" : "",
+"Icon" : "stone_castle",
+"mapX" : "2.15",
+"mapY" : "1.0",
+"numUnlocks" : 1,
+"trophy" : "Black Knight's Helm",
+"trophyX" : 0.0,
+"trophyY" : -1.0,
+"Quests": [
+{
+"Test your mettle": {
+"Description" : "Defeat the combatants",
+"Dungeon" : "stone",
+"Reward" : 100,
+"Boss" : "The Black Knight",
+"BossName" : "The Black Knight",
+"BossDoubleMoveChance" : 1,
+"BossChat": {
+"FirstTurn": {
+"postFunc" : "FinishBossChat",
+"turn" : 0,
+"delay1" : "APPEAR",
+"lines": [
+{
+"TEXT" : "Let's see what you can do, adventurer!",
+"FUNC" : "emote"
+}
+]
+}
+},
+"StartingTile" : "room_collapse_new",
+"Objectives": [
+{
+"type" : "Defeat",
+"quantity" : 1,
+"target" : "Zombie"
+},
+{
+"type" : "Defeat",
+"quantity" : 1,
+"target" : "Skeleton"
+}
+],
+"DungeonLayout": [
+{
+"TILE" : "room_collapse_esw",
+"x" : -1,
+"y" : -2,
+"ignoreCamera" : true,
+"MONSTER" : "Zombie",
+"TREASURE" : ""
+},
+{
+"TILE" : "room_collapse_esw",
+"x" : 1,
+"y" : -2,
+"ignoreCamera" : true,
+"MONSTER" : "Skeleton",
+"TREASURE" : ""
+}
+],
+"Monsters": [
+"Giant Bat",
+"Nasty Rat",
+"Goblin",
+"Scary Spider",
+"Fire Imp",
+"Gray Ooze"
+]
+}
+},
+{
+"In the thick of it": {
+"Description" : "Defeat the combatants",
+"Dungeon" : "stone",
+"Reward" : 100,
+"Boss" : "The Black Knight",
+"BossName" : "The Black Knight",
+"BossDoubleMoveChance" : 1,
+"BossChat": {
+"FirstTurn": {
+"postFunc" : "FinishBossChat",
+"turn" : 0,
+"delay1" : "APPEAR",
+"lines": [
+{
+"TEXT" : "Try your luck with these!",
+"FUNC" : "emote"
+}
+]
+}
+},
+"StartingTile" : "room_collapse_new",
+"Objectives": [
+{
+"type" : "Defeat",
+"quantity" : 1,
+"target" : "Bandito"
+},
+{
+"type" : "Defeat",
+"quantity" : 1,
+"target" : "Mummy"
+}
+],
+"DungeonLayout": [
+{
+"TILE" : "room_semicircle_nes",
+"x" : -1,
+"y" : -2,
+"ignoreCamera" : true,
+"MONSTER" : "Bandito",
+"TREASURE" : ""
+},
+{
+"TILE" : "room_semicircle_nsw",
+"x" : 1,
+"y" : -2,
+"ignoreCamera" : true,
+"MONSTER" : "Mummy",
+"TREASURE" : ""
+},
+{
+"TILE" : "corr_rubble_e",
+"x" : -2,
+"y" : -1,
+"ignoreCamera" : true,
+"MONSTER" : "",
+"TREASURE" : "MEGA CHEST"
+}
+],
+"Monsters": [
+"Giant Bat",
+"Nasty Rat",
+"Goblin",
+"Scary Spider",
+"Fire Imp",
+"Gray Ooze",
+"Ghost",
+"Snake",
+"Rat Man",
+"Skeleton",
+"Zombie",
+"Gnoll"
+]
+}
+},
+{
+"Dark duel": {
+"Description" : "Defeat the Black Knight!",
+"Dungeon" : "stone",
+"Reward" : 100,
+"Boss" : "The Black Knight",
+"BossName" : "The Black Knight",
+"BossDoubleMoveChance" : 1,
+"BossChat": {
+"Entrance": {
+"postFunc" : "StartingRoom",
+"turn" : 0,
+"delay1" : "APPEAR",
+"lines": [
+{
+"TEXT" : "A worthy challenger at last!",
+"FUNC" : "emote"
+}
+]
+},
+"FirstKill": {
+"postFunc" : "FinishBossChat",
+"killed" : 1,
+"delay1" : "APPEAR",
+"lines": [
+{
+"TEXT" : "Good technique!",
+"FUNC" : "emote"
+}
+]
+},
+"SecondKill": {
+"postFunc" : "FinishBossChat",
+"killed" : 2,
+"delay1" : "APPEAR",
+"lines": [
+{
+"TEXT" : "Impressive form!",
+"FUNC" : "emote"
+}
+]
+},
+"ThirdKill": {
+"postFunc" : "FinishBossChat",
+"killed" : 3,
+"delay1" : "APPEAR",
+"lines": [
+{
+"TEXT" : "Getting some last minute practice in?",
+"FUNC" : "emote"
+}
+]
+},
+"NinthTurn": {
+"postFunc" : "FinishBossChat",
+"turn" : 9,
+"delay1" : "APPEAR",
+"lines": [
+{
+"TEXT" : "Come on, I'm getting impatient!",
+"FUNC" : "emote"
+}
+]
+},
+"ComingToAttack": {
+"postFunc" : "MoveToBoard",
+"block" : true,
+"delay1" : "APPEAR",
+"lines": [
+{
+"TEXT" : "Here I come, worthy challenger",
+"FUNC" : "emote"
+}
+]
+},
+"attacked_early": {
+"block" : true,
+"lines": [
+{
+"TEXT" : "You're eager, I like it!",
+"FUNC" : "emote"
+}
+]
+}
+},
+"TurnLimit" : 8,
+"TurnLimitStart" : 0,
+"TurnLimitActions": [
+{
+"action" : "BossChat",
+"args": [
+"ComingToAttack"
+],
+"resetTimer" : false,
+"resetTurns" : 0,
+"description" : "Duel"
+}
+],
+"StartingTile" : "room_collapse_new",
+"Objectives": [
+{
+"type" : "Defeat",
+"target" : "BOSS"
+}
+],
+"DungeonLayout": [
+{
+"TILE" : "room_collapse_esw",
+"x" : 0,
+"y" : -3,
+"ignoreCamera" : true,
+"BossRoom" : true,
+"TREASURE" : ""
+},
+{
+"TILE" : "room_round_s",
+"x" : 2,
+"y" : -3,
+"ignoreCamera" : true,
+"MONSTER" : "",
+"TREASURE" : "MEGA CHEST"
+},
+{
+"TILE" : "room_round_s",
+"x" : -2,
+"y" : -3,
+"ignoreCamera" : true,
+"MONSTER" : "",
+"TREASURE" : "MEGA CHEST"
+}
+],
+"Monsters": [
+"Giant Bat",
+"Nasty Rat",
+"Goblin",
+"Scary Spider",
+"Fire Imp",
+"Gray Ooze",
+"Ghost",
+"Snake",
+"Rat Man",
+"Skeleton",
+"Zombie",
+"Gnoll",
+"Mummy",
+"Bear Owl",
+"Shade",
+"Fire Elemental",
+"Scorpion",
+"Bandito"
+]
+}
+}
+]
+},
+"Evil Lich!": {
+"Description" : "",
+"Icon" : "stone_skull_tomb",
+"mapX" : "2.0",
+"mapY" : "2.0",
+"numUnlocks" : 1,
+"trophy" : "Ashes of the Lich",
+"trophyX" : -0.5,
+"trophyY" : 0.0,
+"Quests": [
+{
+"The summoning": {
+"Description" : "Destroy the Evil Lich",
+"Dungeon" : "stone",
+"Reward" : 100,
+"Boss" : "Lich",
+"BossName" : "Evil Lich",
+"BossDoubleMoveChance" : 1,
+"BossChat": {
+"Entrance": {
+"postFunc" : "StartingRoom",
+"turn" : 0,
+"delay1" : "APPEAR",
+"lines": [
+{
+"TEXT" : "Hey! I'm not that evil!",
+"FUNC" : "emote"
+}
+]
+},
+"FifthKill": {
+"postFunc" : "FinishBossChat",
+"killed" : 1,
+"delay1" : "APPEAR",
+"lines": [
+{
+"TEXT" : "What're you doing!? You're the evil one!",
+"FUNC" : "emote"
+}
+]
+},
+"ThirdKill": {
+"postFunc" : "FinishBossChat",
+"turn" : 3,
+"delay1" : "APPEAR",
+"lines": [
+{
+"TEXT" : "Look it was just one orphanage, everyone makes mistakes!",
+"FUNC" : "emote"
+}
+]
+},
+"SixthTurn": {
+"postFunc" : "FinishBossChat",
+"turn" : 6,
+"delay1" : "APPEAR",
+"lines": [
+{
+"TEXT" : "Come on, I deserve a second chance.",
+"FUNC" : "emote"
+}
+]
+},
+"attacked_early": {
+"postFunc" : "FinishBossChat",
+"block" : true,
+"delay1" : "APPEAR",
+"lines": [
+{
+"TEXT" : "No fair, the ritual was almost complete!",
+"FUNC" : "emote"
+}
+]
+},
+"ComingToAttack": {
+"traits": [
+{
+"trait" : "Halfbaked",
+"value" : false
+}
+],
+"postFunc" : "MoveToBoard",
+"block" : true,
+"delay1" : "APPEAR",
+"lines": [
+{
+"TEXT" : "Aha! Now the ritual is complete.",
+"FUNC" : "emote"
+},
+{
+"TEXT" : "And by the way it was actually TWO orphanages muahahaha",
+"FUNC" : "emote"
+}
+]
+}
+},
+"TurnLimit" : 10,
+"TurnLimitStart" : 0,
+"TurnLimitActions": [
+{
+"action" : "BossChat",
+"args": [
+"ComingToAttack"
+],
+"resetTimer" : false,
+"resetTurns" : 0,
+"description" : "The ritual is complete"
+}
+],
+"StartingTile" : "corr_crushed_ne",
+"Objectives": [
+{
+"type" : "Defeat",
+"target" : "BOSS"
+}
+],
+"DungeonLayout": [
+{
+"TILE" : "room_steps_nesw",
+"x" : 3,
+"y" : -3,
+"ignoreCamera" : true,
+"camCoords" : true,
+"camX" : 3,
+"camY" : -3,
+"BossRoom" : true,
+"TREASURE" : ""
+},
+{
+"TILE" : "room_cavern_nw",
+"x" : 2,
+"y" : 0,
+"ignoreCamera" : true,
+"MONSTER" : "",
+"TREASURE" : "MEGA CHEST"
+},
+{
+"TILE" : "room_steps_nesw",
+"x" : 2,
+"y" : -2,
+"ignoreCamera" : true,
+"MONSTER" : "Sorceress",
+"TREASURE" : ""
+},
+{
+"TILE" : "room_steps_nesw",
+"x" : 3,
+"y" : -2,
+"ignoreCamera" : true,
+"MONSTER" : "Sorceress",
+"TREASURE" : ""
+},
+{
+"TILE" : "room_steps_nesw",
+"x" : 4,
+"y" : -2,
+"ignoreCamera" : true,
+"MONSTER" : "Sorceress",
+"TREASURE" : ""
+},
+{
+"TILE" : "room_steps_nesw",
+"x" : 2,
+"y" : -3,
+"ignoreCamera" : true,
+"MONSTER" : "Sorceress",
+"TREASURE" : ""
+},
+{
+"TILE" : "room_steps_nesw",
+"x" : 4,
+"y" : -3,
+"ignoreCamera" : true,
+"MONSTER" : "Sorceress",
+"TREASURE" : ""
+},
+{
+"TILE" : "room_steps_nesw",
+"x" : 3,
+"y" : -4,
+"ignoreCamera" : true,
+"MONSTER" : "",
+"TREASURE" : "MEGA CHEST"
+}
+],
+"Monsters": [
+"Giant Bat",
+"Nasty Rat",
+"Goblin",
+"Scary Spider",
+"Fire Imp",
+"Gray Ooze",
+"Ghost",
+"Snake",
+"Rat Man",
+"Skeleton",
+"Zombie",
+"Gnoll",
+"Mummy",
+"Bear Owl",
+"Shade",
+"Fire Elemental",
+"Scorpion",
+"Bandito"
+]
+}
+}
+]
+},
+"The Eye Beast": {
+"Description" : "",
+"Icon" : "stone_temple",
+"mapX" : "3.0",
+"mapY" : "1.25",
+"numUnlocks" : 1,
+"trophy" : "Jar of Eyeballs",
+"trophyX" : 1.0,
+"trophyY" : -1.0,
+"Quests": [
+{
+"Curious Crypt": {
+"Description" : "Get to the crypt",
+"Dungeon" : "stone",
+"Reward" : 100,
+"Boss" : "Eye Beast",
+"BossName" : "Eye Beast",
+"BossDoubleMoveChance" : 1,
+"BossChat": {
+},
+"StartingTile" : "corr_grate_n",
+"Objectives": [
+{
+"type" : "Arrive",
+"quantity" : 1,
+"target" : "objective"
+}
+],
+"DungeonLayout": [
+{
+"TILE" : "room_round_s",
+"x" : 0,
+"y" : -4,
+"Name" : "objective",
+"MONSTER" : "",
+"TREASURE" : ""
+},
+{
+"TILE" : "room_steps_nesw",
+"x" : 0,
+"y" : -3,
+"ignoreCamera" : true,
+"MONSTER" : "Shade",
+"TREASURE" : ""
+}
+],
+"Monsters": [
+"Giant Bat",
+"Nasty Rat",
+"Goblin",
+"Scary Spider",
+"Fire Imp",
+"Gray Ooze",
+"Ghost",
+"Snake",
+"Rat Man",
+"Skeleton",
+"Zombie",
+"Gnoll"
+]
+}
+},
+{
+"Staring match": {
+"Description" : "BEHOLD! The Eye Beast! (too much?)",
+"Dungeon" : "stone",
+"Reward" : 100,
+"Boss" : "Eye Beast",
+"BossName" : "Eye Beast",
+"BossDoubleMoveChance" : 1,
+"BossChat": {
+"Entrance": {
+"postFunc" : "StartingRoom",
+"turn" : 0,
+"delay1" : "APPEAR",
+"lines": [
+{
+"TEXT" : "I seeeeee youuuu",
+"FUNC" : "emote"
+}
+]
+},
+"ThirdTurn": {
+"postFunc" : "FinishBossChat",
+"turn" : 3,
+"delay1" : "APPEAR",
+"lines": [
+{
+"TEXT" : "Tiiick tooock herooo",
+"FUNC" : "emote"
+}
+]
+},
+"SixthTurn": {
+"postFunc" : "FinishBossChat",
+"turn" : 6,
+"delay1" : "APPEAR",
+"lines": [
+{
+"TEXT" : "Sssoooonnn",
+"FUNC" : "emote"
+}
+]
+},
+"kill": {
+"postFunc" : "FailDungeon",
+"delay1" : "APPEAR",
+"lines": [
+{
+"TEXT" : "Out of tiiime",
+"FUNC" : "emote"
+},
+{
+"TEXT" : "*stare*",
+"FUNC" : "emote"
+},
+{
+"TEXT" : "*stare*",
+"FUNC" : "emote"
+},
+{
+"TEXT" : "*blink*",
+"FUNC" : "emote"
+},
+{
+"TEXT" : "Oops, uhh...",
+"FUNC" : "emote"
+},
+{
+"TEXT" : "Ah this should be it",
+"FUNC" : "emote"
+},
+{
+"TEXT" : "*STAAAARE*",
+"FUNC" : "emote"
+}
+]
+},
+"attacked_early": {
+"postFunc" : "FinishBossChat",
+"block" : true,
+"delay1" : "APPEAR",
+"lines": [
+{
+"TEXT" : "Hey!",
+"FUNC" : "emote"
+}
+]
+}
+},
+"TurnLimit" : 8,
+"TurnLimitStart" : 0,
+"TurnLimitActions": [
+{
+"action" : "BossChat",
+"args": [
+"kill"
+],
+"resetTimer" : false,
+"resetTurns" : 0,
+"description" : "Petrified"
+}
+],
+"StartingTile" : "room_collapse_new",
+"Objectives": [
+{
+"type" : "Defeat",
+"target" : "BOSS"
+}
+],
+"DungeonLayout": [
+{
+"TILE" : "room_torture_s",
+"x" : -1,
+"y" : -3,
+"ignoreCamera" : true,
+"camCoords" : true,
+"camX" : -1,
+"camY" : -3,
+"BossRoom" : true,
+"TREASURE" : ""
+},
+{
+"TILE" : "room_round_s",
+"x" : 1,
+"y" : -3,
+"ignoreCamera" : true,
+"MONSTER" : "",
+"TREASURE" : "Large Chest"
+},
+{
+"TILE" : "corr_rubble_e",
+"x" : -2,
+"y" : -1,
+"ignoreCamera" : true,
+"MONSTER" : "",
+"TREASURE" : "MEGA CHEST"
+}
+],
+"Monsters": [
+"Giant Bat",
+"Nasty Rat",
+"Goblin",
+"Scary Spider",
+"Fire Imp",
+"Gray Ooze",
+"Ghost",
+"Snake",
+"Rat Man",
+"Skeleton",
+"Zombie",
+"Gnoll",
+"Mummy",
+"Bear Owl",
+"Shade",
+"Fire Elemental",
+"Scorpion",
+"Bandito"
+]
+}
+}
+]
+},
+"The Sapphire of Tlaloc": {
+"Description" : "",
+"Icon" : "jungle_gem",
+"mapX" : "-0.75",
+"mapY" : "1.2",
+"numUnlocks" : 1,
+"trophy" : "Sapphire",
+"trophyX" : 1.5,
+"trophyY" : 0.0,
+"Quests": [
+{
+"Grab": {
+"Description" : "Steal the sapphire",
+"Dungeon" : "jungle",
+"Reward" : 100,
+"Boss" : "Eye Beast",
+"BossName" : "Eye Beast",
+"BossDoubleMoveChance" : 1,
+"BossChat": {
+},
+"StartingTile" : "corr_deadend1_n",
+"Objectives": [
+{
+"type" : "Collect",
+"quantity" : 1,
+"target" : "Massive Gem"
+}
+],
+"DungeonLayout": [
+{
+"TILE" : "room_deadend2_s",
+"x" : 0,
+"y" : -4,
+"ignoreCamera" : true,
+"MONSTER" : "",
+"TREASURE" : "Massive Gem"
+},
+{
+"TILE" : "corr_cross16_nesw",
+"x" : 0,
+"y" : -3,
+"ignoreCamera" : true,
+"MONSTER" : "Gargoyle",
+"TREASURE" : ""
+}
+],
+"Monsters": [
+"Bloodstarved Bat",
+"Plague Rat",
+"Frenzied Goblin",
+"Leggy Spider",
+"Pixies",
+"Jungle Warrior",
+"Poisonous Snake",
+"Rat Berserker",
+"Hilly Gnoll",
+"Lizardman",
+"Harpy",
+"Man-Eating Plant"
+]
+}
+},
+{
+"Run": {
+"Description" : "Get out before the roof collapses!",
+"Dungeon" : "jungle",
+"Reward" : 100,
+"Boss" : "Eye Beast",
+"BossName" : "Eye Beast",
+"BossDoubleMoveChance" : 1,
+"BossChat": {
+},
+"TurnLimit" : 6,
+"TurnLimitStart" : 0,
+"TurnLimitActions": [
+{
+"action" : "FailDungeon",
+"args": [
+],
+"resetTimer" : false,
+"resetTurns" : 0,
+"description" : "Cave collapse"
+}
+],
+"StartingTile" : "corr_tee4_new",
+"Objectives": [
+{
+"type" : "Arrive",
+"quantity" : 1,
+"target" : "objective"
+}
+],
+"DungeonLayout": [
+{
+"TILE" : "room_deadend2_s",
+"x" : -1,
+"y" : -3,
+"Name" : "objective",
+"MONSTER" : "",
+"TREASURE" : ""
+},
+{
+"TILE" : "corr_cross16_nesw",
+"x" : -1,
+"y" : -2,
+"MONSTER" : "Owl Bear",
+"TREASURE" : ""
+},
+{
+"TILE" : "corr_corner2_es",
+"x" : -2,
+"y" : -1,
+"ignoreCamera" : true,
+"MONSTER" : "",
+"TREASURE" : "MEGA CHEST"
+}
+],
+"Monsters": [
+"Bloodstarved Bat",
+"Plague Rat",
+"Frenzied Goblin",
+"Leggy Spider",
+"Pixies",
+"Jungle Warrior",
+"Poisonous Snake",
+"Rat Berserker",
+"Hilly Gnoll",
+"Lizardman",
+"Harpy",
+"Man-Eating Plant"
+]
+}
+}
+]
+},
+"Medusa Adventure": {
+"Description" : "",
+"Icon" : "jungle_snake",
+"mapX" : "-1.5",
+"mapY" : "0.5",
+"numUnlocks" : 1,
+"trophy" : "Snakeskin Belt",
+"trophyX" : 2.25,
+"trophyY" : -1.0,
+"Quests": [
+{
+"Snakes": {
+"Description" : "I hate snakes",
+"Dungeon" : "jungle",
+"Reward" : 100,
+"Boss" : "Medusa",
+"BossName" : "Medusa",
+"BossDoubleMoveChance" : 1,
+"BossChat": {
+"Entrance": {
+"postFunc" : "FinishBossChat",
+"killed" : 1,
+"delay1" : "APPEAR",
+"lines": [
+{
+"TEXT" : "How dare you interloper!",
+"FUNC" : "emote"
+}
+]
+}
+},
+"StartingTile" : "corr_corner3_nw",
+"Objectives": [
+{
+"type" : "Defeat",
+"quantity" : 3,
+"target" : "Poisonous Snake"
+}
+],
+"DungeonLayout": [
+{
+"TILE" : "corr_corner1_ne",
+"x" : -2,
+"y" : 0,
+"ignoreCamera" : true,
+"camCoords" : true,
+"camX" : 0,
+"camY" : -2,
+"MONSTER" : "Poisonous Snake",
+"TREASURE" : ""
+},
+{
+"TILE" : "corr_regular2_ew",
+"x" : -1,
+"y" : -2,
+"ignoreCamera" : true,
+"MONSTER" : "Poisonous Snake",
+"TREASURE" : ""
+},
+{
+"TILE" : "room_deadend2_s",
+"x" : 1,
+"y" : -2,
+"ignoreCamera" : true,
+"MONSTER" : "Poisonous Snake",
+"TREASURE" : ""
+},
+{
+"TILE" : "corr_corner4_sw",
+"x" : 0,
+"y" : -2,
+"ignoreCamera" : true,
+"MONSTER" : "Poisonous Snake",
+"TREASURE" : ""
+},
+{
+"TILE" : "corr_corner2_es",
+"x" : -2,
+"y" : -2,
+"ignoreCamera" : true,
+"MONSTER" : "Poisonous Snake",
+"TREASURE" : ""
+}
+],
+"Monsters": [
+"Bloodstarved Bat",
+"Plague Rat",
+"Frenzied Goblin",
+"Leggy Spider",
+"Pixies",
+"Jungle Warrior"
+]
+}
+},
+{
+"Stony Stare": {
+"Description" : "Defeat Medusa before you get turned to stone!",
+"Dungeon" : "jungle",
+"Reward" : 100,
+"Boss" : "Medusa",
+"BossName" : "Medusa",
+"BossDoubleMoveChance" : 1,
+"BossChat": {
+"Entrance": {
+"postFunc" : "StartingRoom",
+"turn" : 0,
+"delay1" : "APPEAR",
+"lines": [
+{
+"TEXT" : "I will have my vengeance!",
+"FUNC" : "emote"
+}
+]
+},
+"ThirdTurn": {
+"postFunc" : "FinishBossChat",
+"turn" : 3,
+"delay1" : "APPEAR",
+"lines": [
+{
+"TEXT" : "Look me in the eye, adventurer!",
+"FUNC" : "emote"
+}
+]
+},
+"SixthTurn": {
+"postFunc" : "FinishBossChat",
+"turn" : 6,
+"delay1" : "APPEAR",
+"lines": [
+{
+"TEXT" : "Almost out of time!",
+"FUNC" : "emote"
+}
+]
+},
+"kill": {
+"postFunc" : "FailDungeon",
+"delay1" : "APPEAR",
+"lines": [
+{
+"TEXT" : "SsssSSSS!",
+"FUNC" : "emote"
+}
+]
+},
+"attacked_early": {
+"postFunc" : "FinishBossChat",
+"block" : true,
+"delay1" : "APPEAR",
+"lines": [
+{
+"TEXT" : "Good! A proper fight!",
+"FUNC" : "emote"
+}
+]
+}
+},
+"TurnLimit" : 10,
+"TurnLimitStart" : 0,
+"TurnLimitActions": [
+{
+"action" : "BossChat",
+"args": [
+"kill"
+],
+"resetTimer" : false,
+"resetTurns" : 0,
+"description" : "Petrified"
+}
+],
+"StartingTile" : "corr_tee4_new",
+"Objectives": [
+{
+"type" : "Defeat",
+"target" : "BOSS"
+}
+],
+"DungeonLayout": [
+{
+"TILE" : "corr_tee6_esw",
+"x" : 0,
+"y" : -3,
+"ignoreCamera" : true,
+"camCoords" : true,
+"camX" : 0,
+"camY" : -3,
+"BossRoom" : true,
+"TREASURE" : ""
+},
+{
+"TILE" : "corr_deadend1_e",
+"x" : -2,
+"y" : 0,
+"ignoreCamera" : true,
+"MONSTER" : "",
+"TREASURE" : "MEGA CHEST"
+},
+{
+"TILE" : "corr_corner2_es",
+"x" : -2,
+"y" : -3,
+"ignoreCamera" : true,
+"MONSTER" : "",
+"TREASURE" : "MEGA CHEST"
+},
+{
+"TILE" : "corr_corner4_sw",
+"x" : 2,
+"y" : -3,
+"ignoreCamera" : true,
+"MONSTER" : "",
+"TREASURE" : "MEGA CHEST"
+}
+],
+"Monsters": [
+"Bloodstarved Bat",
+"Plague Rat",
+"Frenzied Goblin",
+"Leggy Spider",
+"Pixies",
+"Jungle Warrior",
+"Poisonous Snake",
+"Rat Berserker",
+"Hilly Gnoll",
+"Lizardman",
+"Harpy",
+"Man-Eating Plant",
+"Owl Bear",
+"Dire Scorpion",
+"Jungle Shaman",
+"Air Elemental",
+"Gargoyle",
+"Worm"
+]
+}
+}
+]
+},
+"Ettin Adventure": {
+"Description" : "",
+"Icon" : "jungle_mailbox",
+"mapX" : "-1.75",
+"mapY" : "1.5",
+"numUnlocks" : 1,
+"trophy" : "Ettin Shampoo",
+"trophyX" : -2.5,
+"trophyY" : 0.0,
+"Quests": [
+{
+"Ettin Troubles": {
+"Description" : "He's ganging up on you!",
+"Dungeon" : "jungle",
+"Reward" : 100,
+"Boss" : "Ettin",
+"BossName" : "Ettin",
+"BossDoubleMoveChance" : 1,
+"BossChat": {
+"blah": {
+"postFunc" : "StartingRoom",
+"turn" : 0,
+"killed" : 0,
+"delay1" : "APPEAR",
+"lines": [
+{
+"TEXT" : "I'm gonna eat your arms!",
+"FUNC" : "emote"
+},
+{
+"TEXT" : "I'm gonna eat your legs!",
+"FUNC" : "emote"
+}
+]
+},
+"attacked_early": {
+"postFunc" : "FinishBossChat",
+"block" : true,
+"delay1" : "APPEAR",
+"lines": [
+{
+"TEXT" : "We're gonna eat you! DIE!!",
+"FUNC" : "emote"
+}
+]
+}
+},
+"TurnLimit" : 8,
+"TurnLimitStart" : 0,
+"TurnLimitActions": [
+{
+"action" : "HeroHealth",
+"args": [
+-2
+],
+"resetTimer" : false,
+"resetTurns" : 0,
+"description" : "Lunchtime"
+}
+],
+"StartingTile" : "corr_corner1_ne",
+"Objectives": [
+{
+"type" : "Defeat",
+"target" : "BOSS"
+}
+],
+"DungeonLayout": [
+{
+"TILE" : "corr_corner4_sw",
+"x" : 2,
+"y" : -2,
+"ignoreCamera" : true,
+"BossRoom" : true,
+"TREASURE" : ""
+},
+{
+"TILE" : "corr_corner3_nw",
+"x" : 2,
+"y" : 0,
+"ignoreCamera" : true,
+"MONSTER" : "",
+"TREASURE" : "MEGA CHEST"
+},
+{
+"TILE" : "room_deadend2_s",
+"x" : 0,
+"y" : -2,
+"ignoreCamera" : true,
+"MONSTER" : "",
+"TREASURE" : "MEGA CHEST"
+}
+],
+"Monsters": [
+"Bloodstarved Bat",
+"Plague Rat",
+"Frenzied Goblin",
+"Leggy Spider",
+"Pixies",
+"Jungle Warrior",
+"Poisonous Snake",
+"Rat Berserker",
+"Hilly Gnoll",
+"Lizardman",
+"Harpy",
+"Man-Eating Plant",
+"Owl Bear",
+"Dire Scorpion",
+"Jungle Shaman",
+"Air Elemental",
+"Gargoyle",
+"Worm"
+]
+}
+}
+]
+},
+"Chimera Adventure": {
+"Description" : "",
+"Icon" : "jungle_temple",
+"mapX" : "-2.0",
+"mapY" : "2.0",
+"numUnlocks" : 1,
+"trophy" : "Chimera Venom",
+"trophyX" : -3.0,
+"trophyY" : -1.0,
+"Quests": [
+{
+"Wild Life": {
+"Description" : "Defend yourself!",
+"Dungeon" : "jungle",
+"Reward" : 100,
+"Boss" : "Chimera",
+"BossName" : "Chimera",
+"BossDoubleMoveChance" : 1,
+"BossChat": {
+},
+"StartingTile" : "corr_tee5_nsw",
+"Objectives": [
+{
+"type" : "Defeat",
+"quantity" : 3,
+"target" : "ANY"
+}
+],
+"DungeonLayout": [
+{
+"TILE" : "corr_deadend1_e",
+"x" : -2,
+"y" : 0,
+"ignoreCamera" : true,
+"camCoords" : true,
+"camX" : -2,
+"camY" : 0,
+"MONSTER" : "Poisonous Snake",
+"TREASURE" : ""
+},
+{
+"TILE" : "corr_tee6_esw",
+"x" : -1,
+"y" : -1,
+"ignoreCamera" : true,
+"MONSTER" : "Plague Rat",
+"TREASURE" : ""
+},
+{
+"TILE" : "corr_deadend1_e",
+"x" : -2,
+"y" : -1,
+"ignoreCamera" : true,
+"MONSTER" : "",
+"TREASURE" : "Large Chest"
+},
+{
+"TILE" : "corr_corner1_ne",
+"x" : -1,
+"y" : 1,
+"ignoreCamera" : true,
+"MONSTER" : "Dire Scorpion",
+"TREASURE" : ""
+}
+],
+"Monsters": [
+]
+}
+},
+{
+"Awakened": {
+"Description" : "Defeat the chimera!",
+"Dungeon" : "jungle",
+"Reward" : 100,
+"Boss" : "Chimera",
+"BossName" : "",
+"BossDoubleMoveChance" : 1,
+"BossChat": {
+"Entrance": {
+"postFunc" : "StartingRoom",
+"postArgs": [
+true
+],
+"turn" : 0,
+"delay1" : "APPEAR",
+"lines": [
+{
+"TEXT" : "Screeeeee!",
+"FUNC" : "emote"
+}
+]
+}
+},
+"StartingTile" : "corr_cross16_nesw",
+"Objectives": [
+{
+"type" : "Defeat",
+"target" : "BOSS"
+}
+],
+"DungeonLayout": [
+{
+"TILE" : "corr_deadend1_e",
+"x" : -5,
+"y" : 0,
+"ignoreCamera" : true,
+"camCoords" : true,
+"camX" : -5,
+"camY" : 0,
+"BossRoom" : true,
+"TREASURE" : ""
+},
+{
+"TILE" : "corr_regular2_ew",
+"x" : -1,
+"y" : 0,
+"ignoreCamera" : true,
+"MONSTER" : "",
+"TREASURE" : ""
+},
+{
+"TILE" : "corr_regular2_ew",
+"x" : -2,
+"y" : 0,
+"ignoreCamera" : true,
+"MONSTER" : "",
+"TREASURE" : ""
+},
+{
+"TILE" : "corr_regular2_ew",
+"x" : -3,
+"y" : 0,
+"ignoreCamera" : true,
+"MONSTER" : "",
+"TREASURE" : ""
+},
+{
+"TILE" : "corr_regular2_ew",
+"x" : -4,
+"y" : 0,
+"ignoreCamera" : true,
+"MONSTER" : "",
+"TREASURE" : ""
+}
+],
+"Monsters": [
+"Bloodstarved Bat",
+"Plague Rat",
+"Frenzied Goblin",
+"Leggy Spider",
+"Pixies",
+"Jungle Warrior",
+"Poisonous Snake",
+"Rat Berserker",
+"Hilly Gnoll",
+"Lizardman",
+"Harpy",
+"Man-Eating Plant",
+"Owl Bear",
+"Dire Scorpion",
+"Jungle Shaman",
+"Air Elemental",
+"Gargoyle",
+"Worm"
+]
+}
+}
+]
+},
+"Ogre Adventure": {
+"Description" : "",
+"Icon" : "jungle_keepout",
+"mapX" : "-2.5",
+"mapY" : "1.0",
+"numUnlocks" : 1,
+"trophy" : "Ogre's Favourite Rock",
+"trophyX" : 2.5,
+"trophyY" : 0.0,
+"Quests": [
+{
+"Assassination": {
+"Description" : "Defeat the ogre while he's still sleepy",
+"Dungeon" : "jungle",
+"Reward" : 100,
+"Boss" : "Ogre",
+"BossName" : "Ogre",
+"BossDoubleMoveChance" : 1,
+"BossChat": {
+"Entrance": {
+"postFunc" : "StartingRoom",
+"turn" : 0,
+"delay1" : "APPEAR",
+"lines": [
+{
+"TEXT" : "Yaaawn!",
+"FUNC" : "emote"
+}
+]
+},
+"ThirdTurn": {
+"postFunc" : "FinishBossChat",
+"turn" : 3,
+"delay1" : "APPEAR",
+"lines": [
+{
+"TEXT" : "Such a late night...",
+"FUNC" : "emote"
+}
+]
+},
+"SixthTurn": {
+"postFunc" : "FinishBossChat",
+"turn" : 6,
+"delay1" : "APPEAR",
+"lines": [
+{
+"TEXT" : "*brushes teeth*",
+"FUNC" : "emote"
+}
+]
+},
+"ComingToAttack": {
+"traits": [
+{
+"trait" : "Sleepy",
+"value" : false
+}
+],
+"postFunc" : "MoveToBoard",
+"block" : true,
+"delay1" : "APPEAR",
+"lines": [
+{
+"TEXT" : "Hey what are you doing here!?",
+"FUNC" : "emote"
+}
+]
+},
+"attacked_early": {
+"block" : true,
+"lines": [
+{
+"TEXT" : "*snooze* huh- what?",
+"FUNC" : "emote"
+}
+]
+}
+},
+"TurnLimit" : 10,
+"TurnLimitStart" : 0,
+"TurnLimitActions": [
+{
+"action" : "BossChat",
+"args": [
+"ComingToAttack"
+],
+"resetTimer" : false,
+"resetTurns" : 0,
+"description" : "Ogre wakes"
+}
+],
+"StartingTile" : "corr_tee4_new",
+"Objectives": [
+{
+"type" : "Defeat",
+"target" : "BOSS"
+}
+],
+"DungeonLayout": [
+{
+"TILE" : "corr_tee6_esw",
+"x" : 0,
+"y" : -3,
+"ignoreCamera" : true,
+"BossRoom" : true,
+"TREASURE" : ""
+},
+{
+"TILE" : "room_deadend3_w",
+"x" : 2,
+"y" : -1,
+"ignoreCamera" : true,
+"MONSTER" : "Hilly Gnoll",
+"TREASURE" : "Large Chest"
+},
+{
+"TILE" : "corr_deadend1_e",
+"x" : -2,
+"y" : -1,
+"ignoreCamera" : true,
+"MONSTER" : "Dire Scorpion",
+"TREASURE" : "MEGA CHEST"
+}
+],
+"Monsters": [
+"Bloodstarved Bat",
+"Plague Rat",
+"Frenzied Goblin",
+"Leggy Spider",
+"Pixies",
+"Jungle Warrior",
+"Poisonous Snake",
+"Rat Berserker",
+"Hilly Gnoll",
+"Lizardman",
+"Harpy",
+"Man-Eating Plant",
+"Owl Bear",
+"Dire Scorpion",
+"Jungle Shaman",
+"Air Elemental",
+"Gargoyle",
+"Worm"
+]
+}
+}
+]
+},
+"Dragon Adventure": {
+"Description" : "",
+"Icon" : "jungle_volcano",
+"mapX" : "-3.0",
+"mapY" : "2.0",
+"numUnlocks" : 1,
+"trophy" : "Dragon Claw",
+"trophyX" : -3.5,
+"trophyY" : 0.0,
+"Quests": [
+{
+"Heist": {
+"Description" : "Steal 4 chests",
+"Dungeon" : "jungle",
+"Reward" : 100,
+"Boss" : "Dragon",
+"BossName" : "Dragon",
+"BossDoubleMoveChance" : 1,
+"BossChat": {
+},
+"StartingTile" : "corr_regular2_ew",
+"Objectives": [
+{
+"type" : "Collect",
+"quantity" : 3,
+"target" : "Large Chest"
+}
+],
+"DungeonLayout": [
+{
+"TILE" : "corr_tee5_nsw",
+"x" : 2,
+"y" : -1,
+"ignoreCamera" : true,
+"camCoords" : true,
+"camX" : 2,
+"camY" : -1,
+"MONSTER" : "Jungle Warrior",
+"TREASURE" : "Large Chest"
+},
+{
+"TILE" : "corr_tee1_nes",
+"x" : -2,
+"y" : -1,
+"ignoreCamera" : true,
+"MONSTER" : "Pixies",
+"TREASURE" : "Large Chest"
+},
+{
+"TILE" : "corr_cross16_nesw",
+"x" : 0,
+"y" : -2,
+"ignoreCamera" : true,
+"MONSTER" : "Man-Eating Plant",
+"TREASURE" : "Large Chest"
+},
+{
+"TILE" : "corr_corner4_sw",
+"x" : 0,
+"y" : -3,
+"ignoreCamera" : true,
+"MONSTER" : "Gargoyle",
+"TREASURE" : "Large Chest"
+}
+],
+"Monsters": [
+]
+}
+},
+{
+"Revenge": {
+"Description" : "Defeat the angry Dragon!",
+"Dungeon" : "jungle",
+"Reward" : 100,
+"Boss" : "Dragon",
+"BossName" : "Dragon",
+"BossDoubleMoveChance" : 1,
+"BossChat": {
+"Entrance": {
+"postFunc" : "StartingRoom",
+"postArgs": [
+true
+],
+"turn" : 0,
+"delay1" : "APPEAR",
+"lines": [
+{
+"TEXT" : "You will pay for your greed!",
+"FUNC" : "emote"
+}
+]
+}
+},
+"StartingTile" : "corr_cross16_nesw",
+"Objectives": [
+{
+"type" : "Defeat",
+"target" : "BOSS"
+}
+],
+"DungeonLayout": [
+{
+"TILE" : "room_deadend3_w",
+"x" : 6,
+"y" : 0,
+"ignoreCamera" : true,
+"camCoords" : true,
+"camX" : 6,
+"camY" : 0,
+"BossRoom" : true,
+"TREASURE" : ""
+},
+{
+"TILE" : "room_deadend2_s",
+"x" : 5,
+"y" : -1,
+"ignoreCamera" : true,
+"MONSTER" : "",
+"TREASURE" : "Gold Coin"
+},
+{
+"TILE" : "corr_tee4_new",
+"x" : 5,
+"y" : 0,
+"ignoreCamera" : true,
+"MONSTER" : "",
+"TREASURE" : ""
+},
+{
+"TILE" : "corr_regular2_ew",
+"x" : 4,
+"y" : 0,
+"ignoreCamera" : true,
+"MONSTER" : "",
+"TREASURE" : ""
+},
+{
+"TILE" : "corr_deadend1_n",
+"x" : 3,
+"y" : 1,
+"ignoreCamera" : true,
+"MONSTER" : "",
+"TREASURE" : "Gold Coin"
+},
+{
+"TILE" : "corr_tee6_esw",
+"x" : 3,
+"y" : 0,
+"ignoreCamera" : true,
+"MONSTER" : "",
+"TREASURE" : ""
+},
+{
+"TILE" : "corr_regular2_ew",
+"x" : 2,
+"y" : 0,
+"ignoreCamera" : true,
+"MONSTER" : "",
+"TREASURE" : ""
+},
+{
+"TILE" : "room_deadend2_s",
+"x" : 5,
+"y" : -1,
+"ignoreCamera" : true,
+"MONSTER" : "",
+"TREASURE" : "Gold Coin"
+},
+{
+"TILE" : "corr_tee4_new",
+"x" : 1,
+"y" : 0,
+"ignoreCamera" : true,
+"MONSTER" : "",
+"TREASURE" : ""
+},
+{
+"TILE" : "corr_cross16_nesw",
+"x" : -3,
+"y" : -1,
+"ignoreCamera" : true,
+"MONSTER" : "",
+"TREASURE" : "MEGA CHEST"
+}
+],
+"Monsters": [
+"Bloodstarved Bat",
+"Plague Rat",
+"Frenzied Goblin",
+"Leggy Spider",
+"Pixies",
+"Jungle Warrior",
+"Poisonous Snake",
+"Rat Berserker",
+"Hilly Gnoll",
+"Lizardman",
+"Harpy",
+"Man-Eating Plant",
+"Owl Bear",
+"Dire Scorpion",
+"Jungle Shaman",
+"Air Elemental",
+"Gargoyle",
+"Worm"
+]
+}
+}
+]
+},
+"Troll Adventure": {
+"Description" : "",
+"Icon" : "mines_rope_shaft",
+"mapX" : "1.0",
+"mapY" : "-0.5",
+"numUnlocks" : 1,
+"trophy" : "Troll's Tankard",
+"trophyX" : -2.0,
+"trophyY" : 1.0,
+"Quests": [
+{
+"Tools down": {
+"Description" : "Disrupt the mining operation",
+"Dungeon" : "mines",
+"Reward" : 100,
+"Boss" : "Troll",
+"BossName" : "Troll",
+"BossDoubleMoveChance" : 1,
+"BossChat": {
+},
+"StartingTile" : "room_supply_nes",
+"Objectives": [
+{
+"type" : "Defeat",
+"quantity" : 4,
+"target" : "Miner"
+}
+],
+"DungeonLayout": [
+{
+"TILE" : "corr_pittee_new",
+"x" : 0,
+"y" : 2,
+"ignoreCamera" : true,
+"camCoords" : true,
+"camX" : 0,
+"camY" : 2,
+"MONSTER" : "Miner",
+"TREASURE" : ""
+},
+{
+"TILE" : "corr_bouldertee_nsw",
+"x" : 2,
+"y" : 0,
+"ignoreCamera" : true,
+"MONSTER" : "Miner",
+"TREASURE" : ""
+}
+],
+"Monsters": [
+"Miner"
+]
+}
+},
+{
+"Troll attack!": {
+"Description" : "The miner's set a troll on you",
+"Dungeon" : "mines",
+"Reward" : 100,
+"Boss" : "Troll",
+"BossName" : "Troll",
+"BossDoubleMoveChance" : 1,
+"BossChat": {
+"Entrance": {
+"postFunc" : "StartingRoom",
+"postArgs": [
+true
+],
+"turn" : 0,
+"delay1" : "APPEAR",
+"lines": [
+{
+"TEXT" : "Troll smash!",
+"FUNC" : "emote"
+}
+]
+}
+},
+"StartingTile" : "corr_pillar4_nesw",
+"Objectives": [
+{
+"type" : "Defeat",
+"quantity" : 1,
+"target" : "BOSS"
+}
+],
+"DungeonLayout": [
+{
+"TILE" : "room_pits_w",
+"x" : 6,
+"y" : 0,
+"ignoreCamera" : true,
+"camCoords" : true,
+"camX" : 6,
+"camY" : 0,
+"BossRoom" : true,
+"TREASURE" : ""
+},
+{
+"TILE" : "corr_regular_ew",
+"x" : 5,
+"y" : 0,
+"ignoreCamera" : true,
+"MONSTER" : "",
+"TREASURE" : ""
+},
+{
+"TILE" : "corr_regular_ew",
+"x" : 4,
+"y" : 0,
+"ignoreCamera" : true,
+"MONSTER" : "",
+"TREASURE" : ""
+},
+{
+"TILE" : "corr_regular_ew",
+"x" : 3,
+"y" : 0,
+"ignoreCamera" : true,
+"MONSTER" : "",
+"TREASURE" : ""
+},
+{
+"TILE" : "corr_regular_ew",
+"x" : 2,
+"y" : 0,
+"ignoreCamera" : true,
+"MONSTER" : "",
+"TREASURE" : ""
+},
+{
+"TILE" : "corr_regular_ew",
+"x" : 1,
+"y" : 0,
+"ignoreCamera" : true,
+"MONSTER" : "",
+"TREASURE" : ""
+}
+],
+"Monsters": [
+"Miner"
+]
+}
+}
+]
+},
+"Cyclops Adventure": {
+"Description" : "",
+"Icon" : "mines_cave",
+"mapX" : "2.0",
+"mapY" : "-0.5",
+"numUnlocks" : 1,
+"trophy" : "Cyclops' Monocle",
+"trophyX" : -1.5,
+"trophyY" : -2.0,
+"Quests": [
+{
+"Mine Patrol": {
+"Description" : "Defeat the Cyclops",
+"Dungeon" : "mines",
+"Reward" : 100,
+"Boss" : "Cyclops",
+"BossName" : "Cyclops",
+"BossDoubleMoveChance" : 1,
+"BossChat": {
+"Entrance": {
+"postFunc" : "StartingRoom",
+"turn" : 0,
+"delay1" : "APPEAR",
+"lines": [
+{
+"TEXT" : "A snack?",
+"FUNC" : "emote"
+},
+{
+"TEXT" : "You'll never get past me!",
+"FUNC" : "emote"
+}
+]
+}
+},
+"StartingTile" : "corr_bouldertee_nsw",
+"Objectives": [
+{
+"type" : "Defeat",
+"target" : "BOSS"
+}
+],
+"DungeonLayout": [
+{
+"TILE" : "corr_boxcorner_ne",
+"x" : -3,
+"y" : 2,
+"ignoreCamera" : true,
+"camCoords" : true,
+"camX" : -3,
+"camY" : 2,
+"BossRoom" : true,
+"TREASURE" : ""
+},
+{
+"TILE" : "room_pits_e",
+"x" : -3,
+"y" : 0,
+"ignoreCamera" : true,
+"MONSTER" : "Vampire",
+"TREASURE" : "MEGA CHEST"
+},
+{
+"TILE" : "corr_pillar4_nesw",
+"x" : -1,
+"y" : 1,
+"ignoreCamera" : true,
+"MONSTER" : "",
+"TREASURE" : "Large Chest"
+}
+],
+"Monsters": [
+"Miner",
+"Infected Slime",
+"Albino Goblin",
+"Sizzling Imp",
+"Rust Monster",
+"Digger",
+"Blind Worm",
+"Rotting Corpse",
+"Wailing Ghost",
+"Clattering Bones",
+"Water Elemental",
+"Gelatinous Cube",
+"Cursed Mummy",
+"Cave Troll",
+"Earth Elemental",
+"Genii",
+"Vampire",
+"Nymph"
+]
+}
+}
+]
+},
+"Sentry Adventure": {
+"Description" : "",
+"Icon" : "mines_hut",
+"mapX" : "1.5",
+"mapY" : "-1.0",
+"numUnlocks" : 1,
+"trophy" : "The Sentry's Gunpowder",
+"trophyX" : -1.0,
+"trophyY" : 1.0,
+"Quests": [
+{
+"Steal it all!": {
+"Description" : "Grab some piles of gold",
+"Dungeon" : "mines",
+"Reward" : 100,
+"Boss" : "Dwarf Sentry",
+"BossName" : "Dwarf Sentry",
+"BossDoubleMoveChance" : 1,
+"BossChat": {
+"FirstKill": {
+"postFunc" : "FinishBossChat",
+"killed" : 1,
+"delay1" : "APPEAR",
+"lines": [
+{
+"TEXT" : "INTRUDER DAlriETECTED",
+"FUNC" : "emote"
+},
+{
+"TEXT" : "SETTING UP SECONDARY PERIMETER",
+"FUNC" : "emote"
+}
+]
+}
+},
+"StartingTile" : "corr_pillar4_nesw",
+"Objectives": [
+{
+"type" : "Collect",
+"quantity" : 4,
+"target" : "Gold Coin"
+}
+],
+"DungeonLayout": [
+{
+"TILE" : "corr_boulders_n",
+"x" : 0,
+"y" : 2,
+"ignoreCamera" : true,
+"camCoords" : true,
+"camX" : 0,
+"camY" : 2,
+"MONSTER" : "",
+"TREASURE" : "Gold Coin"
+},
+{
+"TILE" : "corr_boulders_n",
+"x" : 1,
+"y" : 2,
+"ignoreCamera" : true,
+"MONSTER" : "Rust Monster",
+"TREASURE" : "Gold Coin"
+},
+{
+"TILE" : "corr_boulders_n",
+"x" : -1,
+"y" : 2,
+"ignoreCamera" : true,
+"MONSTER" : "Gelatinous Cube",
+"TREASURE" : "Gold Coin"
+},
+{
+"TILE" : "corr_pillar4_nesw",
+"x" : -1,
+"y" : 1,
+"ignoreCamera" : true,
+"MONSTER" : "Clattering Bones",
+"TREASURE" : "Gold Coin"
+}
+],
+"Monsters": [
+"Miner",
+"Infected Slime",
+"Albino Goblin",
+"Sizzling Imp",
+"Rust Monster",
+"Digger",
+"Blind Worm",
+"Rotting Corpse",
+"Wailing Ghost",
+"Clattering Bones",
+"Water Elemental",
+"Gelatinous Cube",
+"Cursed Mummy",
+"Cave Troll",
+"Earth Elemental",
+"Genii",
+"Vampire",
+"Nymph"
+]
+}
+},
+{
+"Get out alive": {
+"Description" : "Defeat the sentry before it shoots!",
+"Dungeon" : "mines",
+"Reward" : 100,
+"Boss" : "Dwarf Sentry",
+"BossName" : "Dwarf Sentry",
+"BossDoubleMoveChance" : 1,
+"BossChat": {
+"Entrance": {
+"postFunc" : "StartingRoom",
+"turn" : 0,
+"delay1" : "APPEAR",
+"lines": [
+{
+"TEXT" : "DROP THE GOLD AND PUT YOUR HANDS UP",
+"FUNC" : "emote"
+},
+{
+"TEXT" : "THEN I WILL DESTROY YOU",
+"FUNC" : "emote"
+}
+]
+},
+"SecondKill": {
+"postFunc" : "FinishBossChat",
+"killed" : 2,
+"delay1" : "APPEAR",
+"lines": [
+{
+"TEXT" : "YOU ARE ONLY MAKING IT WORSE FOR YOURSELF!",
+"FUNC" : "emote"
+}
+]
+},
+"attacked_early": {
+"block" : true,
+"lines": [
+{
+"TEXT" : "SERVOS NOT CHARGED!",
+"FUNC" : "emote"
+}
+]
+},
+"kill": {
+"postFunc" : "FailDungeon",
+"delay1" : "APPEAR",
+"lines": [
+{
+"TEXT" : "TARGET ACQUIRED, FIRING!",
+"FUNC" : "emote"
+}
+]
+}
+},
+"TurnLimit" : 9,
+"TurnLimitStart" : 0,
+"TurnLimitActions": [
+{
+"action" : "BossChat",
+"args": [
+"kill"
+],
+"resetTimer" : false,
+"resetTurns" : 0,
+"description" : "Sentry shoots"
+}
+],
+"StartingTile" : "corr_bouldertee_nsw",
+"Objectives": [
+{
+"type" : "Defeat",
+"quantity" : 1,
+"target" : "BOSS"
+}
+],
+"DungeonLayout": [
+{
+"TILE" : "room_mess_es",
+"x" : -3,
+"y" : 0,
+"ignoreCamera" : true,
+"camCoords" : true,
+"camX" : -3,
+"camY" : 0,
+"BossRoom" : true,
+"TREASURE" : ""
+},
+{
+"TILE" : "corr_regulartee_esw",
+"x" : 0,
+"y" : -2,
+"ignoreCamera" : true,
+"MONSTER" : "",
+"TREASURE" : "Gold Coin"
+},
+{
+"TILE" : "corr_pittee_new",
+"x" : 0,
+"y" : 2,
+"ignoreCamera" : true,
+"MONSTER" : "Digger",
+"TREASURE" : "Large Chest"
+},
+{
+"TILE" : "corr_pillar4_nesw",
+"x" : -1,
+"y" : 1,
+"ignoreCamera" : true,
+"MONSTER" : "Wailing Ghost",
+"TREASURE" : "MEGA CHEST"
+}
+],
+"Monsters": [
+"Miner",
+"Infected Slime",
+"Albino Goblin",
+"Sizzling Imp",
+"Rust Monster",
+"Digger",
+"Blind Worm",
+"Rotting Corpse",
+"Wailing Ghost",
+"Clattering Bones",
+"Water Elemental",
+"Gelatinous Cube",
+"Cursed Mummy",
+"Cave Troll",
+"Earth Elemental",
+"Genii",
+"Vampire",
+"Nymph"
+]
+}
+}
+]
+},
+"Mecha Adventure": {
+"Description" : "",
+"Icon" : "mines_cart",
+"mapX" : "2.5",
+"mapY" : "-1.0",
+"numUnlocks" : 1,
+"trophy" : "Mecha's Spring",
+"trophyX" : -0.5,
+"trophyY" : -2.0,
+"Quests": [
+{
+"Deeper and deeper!": {
+"Description" : "Venturing deeper into the mines you run into vampires!",
+"Dungeon" : "mines",
+"Reward" : 100,
+"Boss" : "Dwarf Mecha",
+"BossName" : "Dwarf Mecha",
+"BossDoubleMoveChance" : 1,
+"BossChat": {
+},
+"StartingTile" : "room_supply_nes",
+"Objectives": [
+{
+"type" : "Defeat",
+"quantity" : 2,
+"target" : "Vampire"
+}
+],
+"DungeonLayout": [
+{
+"TILE" : "corr_railcorner_nw",
+"x" : 3,
+"y" : 1,
+"ignoreCamera" : true,
+"camCoords" : true,
+"camX" : 1,
+"camY" : -3,
+"MONSTER" : "Vampire",
+"TREASURE" : ""
+},
+{
+"TILE" : "corr_bouldertee_nsw",
+"x" : 3,
+"y" : 0,
+"ignoreCamera" : true,
+"MONSTER" : "",
+"TREASURE" : "Large Chest"
+},
+{
+"TILE" : "corr_pitgear_sw",
+"x" : 3,
+"y" : -1,
+"ignoreCamera" : true,
+"MONSTER" : "Vampire",
+"TREASURE" : ""
+}
+],
+"Monsters": [
+"Miner",
+"Infected Slime",
+"Albino Goblin",
+"Sizzling Imp",
+"Rust Monster",
+"Digger",
+"Blind Worm",
+"Rotting Corpse",
+"Wailing Ghost",
+"Clattering Bones",
+"Water Elemental",
+"Gelatinous Cube"
+]
+}
+},
+{
+"Caught!": {
+"Description" : "",
+"Dungeon" : "mines",
+"Reward" : 100,
+"Boss" : "Dwarf Mecha",
+"BossName" : "Dwarf Mecha",
+"BossDoubleMoveChance" : 1,
+"BossChat": {
+"Entrance": {
+"postFunc" : "StartingRoom",
+"postArgs": [
+true
+],
+"turn" : 0,
+"delay1" : "APPEAR",
+"lines": [
+{
+"TEXT" : "Get out of here",
+"FUNC" : "emote"
+},
+{
+"TEXT" : "You've been causing loads of trouble!",
+"FUNC" : "emote"
+}
+]
+}
+},
+"StartingTile" : "corr_bouldertee_nsw",
+"Objectives": [
+{
+"type" : "Defeat",
+"quantity" : 1,
+"target" : "BOSS"
+}
+],
+"DungeonLayout": [
+{
+"TILE" : "room_tavern_s",
+"x" : 1,
+"y" : -4,
+"ignoreCamera" : true,
+"camCoords" : true,
+"camX" : 1,
+"camY" : -3,
+"BossRoom" : true,
+"TREASURE" : ""
+},
+{
+"TILE" : "corr_bucket_ns",
+"x" : 1,
+"y" : -3,
+"ignoreCamera" : true,
+"MONSTER" : "",
+"TREASURE" : ""
+},
+{
+"TILE" : "corr_railcorner_nw",
+"x" : 1,
+"y" : -2,
+"ignoreCamera" : true,
+"MONSTER" : "",
+"TREASURE" : ""
+},
+{
+"TILE" : "room_mess_es",
+"x" : 0,
+"y" : -2,
+"ignoreCamera" : true,
+"MONSTER" : "",
+"TREASURE" : ""
+},
+{
+"TILE" : "corr_bucket_ns",
+"x" : 0,
+"y" : -1,
+"ignoreCamera" : true,
+"MONSTER" : "",
+"TREASURE" : ""
+}
+],
+"Monsters": [
+"Miner",
+"Infected Slime",
+"Albino Goblin",
+"Sizzling Imp",
+"Rust Monster",
+"Digger",
+"Blind Worm",
+"Rotting Corpse",
+"Wailing Ghost",
+"Clattering Bones",
+"Water Elemental",
+"Gelatinous Cube",
+"Cursed Mummy",
+"Cave Troll",
+"Earth Elemental",
+"Genii",
+"Vampire",
+"Nymph"
+]
+}
+}
+]
+},
+"Masterpiece Adventure": {
+"Description" : "",
+"Icon" : "mines_factory",
+"mapX" : "1.0",
+"mapY" : "-1.5",
+"numUnlocks" : 1,
+"trophy" : "MegaDrill Cog",
+"trophyX" : 0.0,
+"trophyY" : 1.0,
+"Quests": [
+{
+"Workshop infiltration": {
+"Description" : "Get into the secret workshop",
+"Dungeon" : "mines",
+"Reward" : 100,
+"Boss" : "Dwarf Masterpiece",
+"BossName" : "Dwarf Masterpiece",
+"BossDoubleMoveChance" : 1,
+"BossChat": {
+"FirstKill": {
+"postFunc" : "FinishBossChat",
+"killed" : 1,
+"delay1" : "APPEAR",
+"lines": [
+{
+"TEXT" : "They're trying to get in!",
+"FUNC" : "emote"
+},
+{
+"TEXT" : "Don't let them in the workshop",
+"FUNC" : "emote"
+}
+]
+},
+"SecondKill": {
+"postFunc" : "FinishBossChat",
+"killed" : 2,
+"delay1" : "APPEAR",
+"lines": [
+{
+"TEXT" : "You fools, don't you know how long this has taken to build?",
+"FUNC" : "emote"
+}
+]
+}
+},
+"StartingTile" : "room_supply_nes",
+"Objectives": [
+{
+"type" : "Arrive",
+"quantity" : 1,
+"target" : "objective"
+}
+],
+"DungeonLayout": [
+{
+"TILE" : "room_supply_nes",
+"x" : 2,
+"y" : 0,
+"ignoreCamera" : true,
+"camCoords" : true,
+"camX" : 2,
+"camY" : 0,
+"MONSTER" : "",
+"TREASURE" : "Large Chest"
+},
+{
+"TILE" : "corr_pillar4_nesw",
+"x" : 2,
+"y" : -1,
+"ignoreCamera" : true,
+"MONSTER" : "Gelatinous Cube",
+"TREASURE" : ""
+},
+{
+"TILE" : "corr_pillar4_nesw",
+"x" : 2,
+"y" : 1,
+"ignoreCamera" : true,
+"MONSTER" : "Clattering Bones",
+"TREASURE" : ""
+},
+{
+"TILE" : "corr_regular_ew",
+"x" : 3,
+"y" : 0,
+"ignoreCamera" : true,
+"MONSTER" : "Earth Elemental",
+"TREASURE" : ""
+},
+{
+"TILE" : "room_pits_w",
+"x" : 4,
+"y" : 0,
+"Name" : "objective",
+"ignoreCamera" : true,
+"MONSTER" : "",
+"TREASURE" : ""
+}
+],
+"Monsters": [
+"Miner",
+"Infected Slime",
+"Albino Goblin",
+"Sizzling Imp",
+"Rust Monster",
+"Digger",
+"Blind Worm",
+"Rotting Corpse",
+"Wailing Ghost",
+"Clattering Bones",
+"Water Elemental",
+"Gelatinous Cube",
+"Cursed Mummy",
+"Cave Troll",
+"Earth Elemental",
+"Genii",
+"Vampire",
+"Nymph"
+]
+}
+},
+{
+"Demolition": {
+"Description" : "Destroy the masterpiece",
+"Dungeon" : "mines",
+"Reward" : 100,
+"Boss" : "Dwarf Masterpiece",
+"BossName" : "Dwarf Masterpiece",
+"BossDoubleMoveChance" : 1,
+"BossChat": {
+"FirstTurn": {
+"postFunc" : "StartingRoom",
+"turn" : 0,
+"delay1" : "APPEAR",
+"lines": [
+{
+"TEXT" : "They're here!",
+"FUNC" : "emote"
+},
+{
+"TEXT" : "Destroy them before they get to me!",
+"FUNC" : "emote"
+}
+]
+},
+"ThirdTurn": {
+"postFunc" : "FinishBossChat",
+"turn" : 3,
+"delay1" : "APPEAR",
+"lines": [
+{
+"TEXT" : "Their torch is running out!",
+"FUNC" : "emote"
+},
+{
+"TEXT" : "Once they're out of light they're screwed!",
+"FUNC" : "emote"
+}
+]
+},
+"SixthTurn": {
+"postFunc" : "FinishBossChat",
+"turn" : 6,
+"delay1" : "APPEAR",
+"lines": [
+{
+"TEXT" : "Just delay them a little more",
+"FUNC" : "emote"
+}
+]
+},
+"attacked_early": {
+"block" : true,
+"lines": [
+{
+"TEXT" : "Now you die!",
+"FUNC" : "emote"
+}
+]
+},
+"kill": {
+"postFunc" : "FailDungeon",
+"delay1" : "APPEAR",
+"lines": [
+{
+"TEXT" : "Out of time, adventurer. You have no choice in the dark.",
+"FUNC" : "emote"
+}
+]
+}
+},
+"TurnLimit" : 10,
+"TurnLimitStart" : 0,
+"TurnLimitActions": [
+{
+"action" : "BossChat",
+"args": [
+"kill"
+],
+"resetTimer" : false,
+"resetTurns" : 0,
+"description" : "Torch runs out"
+}
+],
+"StartingTile" : "corr_bouldertee_nsw",
+"Objectives": [
+{
+"type" : "Defeat",
+"quantity" : 1,
+"target" : "BOSS"
+}
+],
+"DungeonLayout": [
+{
+"TILE" : "room_supply_nes",
+"x" : -3,
+"y" : 0,
+"ignoreCamera" : true,
+"camCoords" : true,
+"camX" : -3,
+"camY" : 0,
+"BossRoom" : true,
+"TREASURE" : ""
+},
+{
+"TILE" : "corr_pillar4_nesw",
+"x" : -2,
+"y" : -1,
+"ignoreCamera" : true,
+"MONSTER" : "Blind Worm",
+"TREASURE" : "Large Chest"
+},
+{
+"TILE" : "corr_pillar4_nesw",
+"x" : -2,
+"y" : 1,
+"ignoreCamera" : true,
+"MONSTER" : "Cave Troll",
+"TREASURE" : "MEGA CHEST"
+}
+],
+"Monsters": [
+"Miner",
+"Infected Slime",
+"Albino Goblin",
+"Sizzling Imp",
+"Rust Monster",
+"Digger",
+"Blind Worm",
+"Rotting Corpse",
+"Wailing Ghost",
+"Clattering Bones",
+"Water Elemental",
+"Gelatinous Cube",
+"Cursed Mummy",
+"Cave Troll",
+"Earth Elemental",
+"Genii",
+"Vampire",
+"Nymph"
+]
+}
+}
+]
+},
+"Magnate Adventure": {
+"Description" : "",
+"Icon" : "mines_office",
+"mapX" : "2.0",
+"mapY" : "-1.5",
+"numUnlocks" : 1,
+"trophy" : "Magante's Stock Cert",
+"trophyX" : -0.5,
+"trophyY" : -2.0,
+"Quests": [
+{
+"Final quest 1": {
+"Description" : "Take out the guardians of the magnate",
+"Dungeon" : "mines",
+"Reward" : 100,
+"Boss" : "Dwarf Magnate",
+"BossName" : "Dwarf Magnate",
+"BossDoubleMoveChance" : 1,
+"BossChat": {
+"FirstKill": {
+"postFunc" : "FinishBossChat",
+"killed" : 1,
+"delay1" : "APPEAR",
+"lines": [
+{
+"TEXT" : "Perimeter breached",
+"FUNC" : "emote"
+},
+{
+"TEXT" : "It's ok, the security team should be able to sort it out",
+"FUNC" : "emote"
+}
+]
+},
+"SecondKill": {
+"postFunc" : "FinishBossChat",
+"killed" : 2,
+"delay1" : "APPEAR",
+"lines": [
+{
+"TEXT" : "Ah they were disposable",
+"FUNC" : "emote"
+},
+{
+"TEXT" : "There's still a nasty troll",
+"FUNC" : "emote"
+}
+]
+}
+},
+"StartingTile" : "room_tavern_s",
+"Objectives": [
+{
+"type" : "Defeat",
+"quantity" : 3,
+"target" : "ANY"
+}
+],
+"DungeonLayout": [
+{
+"TILE" : "corr_bucket_ns",
+"x" : 0,
+"y" : 1,
+"ignoreCamera" : true,
+"camCoords" : true,
+"camX" : 0,
+"camY" : 1,
+"MONSTER" : "Digger",
+"TREASURE" : ""
+},
+{
+"TILE" : "corr_bucket_ns",
+"x" : 0,
+"y" : 2,
+"ignoreCamera" : true,
+"MONSTER" : "Miner",
+"TREASURE" : ""
+},
+{
+"TILE" : "corr_boulders_n",
+"x" : 0,
+"y" : 3,
+"ignoreCamera" : true,
+"MONSTER" : "Cave Troll",
+"TREASURE" : "Gold Coin"
+}
+],
+"Monsters": [
+]
+}
+},
+{
+"Final quest 2": {
+"Description" : "Get into the magnate's boardroom",
+"Dungeon" : "mines",
+"Reward" : 100,
+"Boss" : "Dwarf Magnate",
+"BossName" : "Dwarf Magnate",
+"BossDoubleMoveChance" : 1,
+"BossChat": {
+"FirstTurn": {
+"postFunc" : "FinishBossChat",
+"turn" : 0,
+"delay1" : "APPEAR",
+"lines": [
+{
+"TEXT" : "Don't let them in the boardroom",
+"FUNC" : "emote"
+},
+{
+"TEXT" : "We're having a shareholder's meeting",
+"FUNC" : "emote"
+}
+]
+},
+"SecondKill": {
+"postFunc" : "FinishBossChat",
+"killed" : 2,
+"delay1" : "APPEAR",
+"lines": [
+{
+"TEXT" : "I think I need to invest in some better protection",
+"FUNC" : "emote"
+}
+]
+}
+},
+"StartingTile" : "room_supply_nes",
+"Objectives": [
+{
+"type" : "Arrive",
+"quantity" : 1,
+"target" : "objective"
+}
+],
+"DungeonLayout": [
+{
+"TILE" : "corr_bouldertee_nsw",
+"x" : 5,
+"y" : 0,
+"Name" : "objective",
+"ignoreCamera" : true,
+"camCoords" : true,
+"camX" : 5,
+"camY" : 0,
+"MONSTER" : "",
+"TREASURE" : ""
+},
+{
+"TILE" : "corr_railcorner_nw",
+"x" : 5,
+"y" : 1,
+"ignoreCamera" : true,
+"MONSTER" : "",
+"TREASURE" : ""
+},
+{
+"TILE" : "corr_pitgear_sw",
+"x" : 5,
+"y" : -1,
+"ignoreCamera" : true,
+"MONSTER" : "",
+"TREASURE" : ""
+},
+{
+"TILE" : "corr_pillar4_nesw",
+"x" : 4,
+"y" : 0,
+"ignoreCamera" : true,
+"MONSTER" : "Cursed Mummy",
+"TREASURE" : ""
+},
+{
+"TILE" : "corr_pittee_new",
+"x" : 4,
+"y" : 1,
+"ignoreCamera" : true,
+"MONSTER" : "Cave Troll",
+"TREASURE" : ""
+},
+{
+"TILE" : "corr_regulartee_esw",
+"x" : 4,
+"y" : -1,
+"ignoreCamera" : true,
+"MONSTER" : "Earth Elemental",
+"TREASURE" : ""
+},
+{
+"TILE" : "corr_pillar4_nesw",
+"x" : 2,
+"y" : 0,
+"ignoreCamera" : true,
+"MONSTER" : "Miner",
+"TREASURE" : ""
+},
+{
+"TILE" : "corr_boxcorner_ne",
+"x" : 1,
+"y" : 1,
+"ignoreCamera" : true,
+"MONSTER" : "Clattering Bones",
+"TREASURE" : "Large Chest"
+},
+{
+"TILE" : "room_mess_es",
+"x" : 1,
+"y" : -1,
+"ignoreCamera" : true,
+"MONSTER" : "Miner",
+"TREASURE" : ""
+}
+],
+"Monsters": [
+"Miner",
+"Infected Slime",
+"Albino Goblin",
+"Sizzling Imp",
+"Rust Monster",
+"Digger",
+"Blind Worm",
+"Rotting Corpse",
+"Wailing Ghost",
+"Clattering Bones",
+"Water Elemental",
+"Gelatinous Cube",
+"Cursed Mummy",
+"Cave Troll",
+"Earth Elemental",
+"Genii",
+"Vampire",
+"Nymph"
+]
+}
+},
+{
+"Final quest 3": {
+"Description" : "Kill the dwarf leader before you get trapped!",
+"Dungeon" : "mines",
+"Reward" : 100,
+"Boss" : "Dwarf Magnate",
+"BossName" : "Dwarf Magnate",
+"BossDoubleMoveChance" : 1,
+"BossChat": {
+"FirstTurn": {
+"postFunc" : "StartingRoom",
+"turn" : 0,
+"delay1" : "APPEAR",
+"lines": [
+{
+"TEXT" : "You will never stop us!",
+"FUNC" : "emote"
+},
+{
+"TEXT" : "We will take over the world and you are too weak to stand against us!",
+"FUNC" : "emote"
+}
+]
+},
+"ThirdTurn": {
+"postFunc" : "FinishBossChat",
+"turn" : 3,
+"delay1" : "APPEAR",
+"lines": [
+{
+"TEXT" : "Once the death ray is complete, we will be unstoppable",
+"FUNC" : "emote"
+}
+]
+},
+"SixthTurn": {
+"postFunc" : "FinishBossChat",
+"turn" : 6,
+"delay1" : "APPEAR",
+"lines": [
+{
+"TEXT" : "Tertiary subsystems coming online...",
+"FUNC" : "emote"
+}
+]
+},
+"attacked_early": {
+"block" : true,
+"lines": [
+{
+"TEXT" : "But I never got to use my death-ray",
+"FUNC" : "emote"
+}
+]
+},
+"kill": {
+"postFunc" : "FailDungeon",
+"delay1" : "APPEAR",
+"lines": [
+{
+"TEXT" : "Fire the death ray! Muahahaha!",
+"FUNC" : "emote"
+}
+]
+}
+},
+"TurnLimit" : 10,
+"TurnLimitStart" : 0,
+"TurnLimitActions": [
+{
+"action" : "BossChat",
+"args": [
+"kill"
+],
+"resetTimer" : false,
+"resetTurns" : 0,
+"description" : "Death ray "
+}
+],
+"StartingTile" : "room_supply_nes",
+"Objectives": [
+{
+"type" : "Defeat",
+"target" : "BOSS"
+}
+],
+"DungeonLayout": [
+{
+"TILE" : "corr_pillar4_nesw",
+"x" : 6,
+"y" : 0,
+"ignoreCamera" : true,
+"camCoords" : true,
+"camX" : 6,
+"camY" : 0,
+"BossRoom" : true,
+"TREASURE" : ""
+},
+{
+"TILE" : "corr_regular_ew",
+"x" : 1,
+"y" : 1,
+"ignoreCamera" : true,
+"MONSTER" : "Miner",
+"TREASURE" : ""
+},
+{
+"TILE" : "corr_pillar4_nesw",
+"x" : 2,
+"y" : 0,
+"ignoreCamera" : true,
+"MONSTER" : "Digger",
+"TREASURE" : ""
+},
+{
+"TILE" : "corr_pittee_new",
+"x" : 3,
+"y" : 1,
+"ignoreCamera" : true,
+"MONSTER" : "Blind Worm",
+"TREASURE" : ""
+},
+{
+"TILE" : "corr_regular_ew",
+"x" : 3,
+"y" : -1,
+"ignoreCamera" : true,
+"MONSTER" : "Gelatinous Cube",
+"TREASURE" : ""
+},
+{
+"TILE" : "corr_pillar4_nesw",
+"x" : 4,
+"y" : 0,
+"ignoreCamera" : true,
+"MONSTER" : "Cave Troll",
+"TREASURE" : ""
+},
+{
+"TILE" : "corr_regulartee_esw",
+"x" : 5,
+"y" : -1,
+"ignoreCamera" : true,
+"MONSTER" : "Earth Elemental",
+"TREASURE" : ""
+}
+],
+"Monsters": [
+"Miner",
+"Infected Slime",
+"Albino Goblin",
+"Sizzling Imp",
+"Rust Monster",
+"Digger",
+"Blind Worm",
+"Rotting Corpse",
+"Wailing Ghost",
+"Clattering Bones",
+"Water Elemental",
+"Gelatinous Cube",
+"Cursed Mummy",
+"Cave Troll",
+"Earth Elemental",
+"Genii",
+"Vampire",
+"Nymph"
+]
+}
+}
+]
+}
+}
+}
+
