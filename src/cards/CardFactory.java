@@ -178,6 +178,7 @@ public class CardFactory {
 			aDamageType=DamageType.Either;
 			addAction();
 			aActionType=ActionType.TakeDamage;
+			aDamageType=DamageType.Physical;
 			aEffect=1;
 			addAction();
 			addCard(type);
