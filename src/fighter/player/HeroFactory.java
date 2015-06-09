@@ -68,7 +68,6 @@ public class HeroFactory {
 				"...", 
 				"zzzzZZZ", 
 				"*sigh*", 
-				"How about finding me something easy.. like a rubber ducky?", 
 				"I wish I was back at my nice warm room in the Guild", 
 				"*YAWN*", 
 				"Are you AFK?? Don't leave me here!"
