@@ -138,7 +138,7 @@
 "BossName" : "Rat King Cole",
 "BossDoubleMoveChance" : 1,
 "BossChat": {
-"Entrance": {
+"ZerothTurn": {
 "postFunc" : "StartingRoom",
 "turn" : 0,
 "delay1" : "APPEAR",
@@ -249,9 +249,9 @@
 "BossName" : "Embro",
 "BossDoubleMoveChance" : 1,
 "BossChat": {
-"Entrance": {
+"ZerothTurn": {
 "postFunc" : "FinishBossChat",
-"turn" : 1,
+"turn" : 0,
 "delay1" : "APPEAR",
 "lines": [
 {
@@ -332,7 +332,7 @@
 "BossName" : "Embro",
 "BossDoubleMoveChance" : 1,
 "BossChat": {
-"Entrance": {
+"FirstTurn": {
 "postFunc" : "FinishBossChat",
 "turn" : 1,
 "delay1" : "APPEAR",
@@ -391,7 +391,7 @@
 "BossName" : "Embro",
 "BossDoubleMoveChance" : 1,
 "BossChat": {
-"Entrance": {
+"ZerothTurn": {
 "postFunc" : "StartingRoom",
 "turn" : 0,
 "delay1" : "APPEAR",
@@ -651,7 +651,7 @@
 "BossName" : "Mimic",
 "BossDoubleMoveChance" : 1,
 "BossChat": {
-"Entrance": {
+"ZerothTurn": {
 "postFunc" : "StartingRoom",
 "postArgs": [
 true
@@ -837,7 +837,7 @@ true
 "BossName" : "Orc Grunt",
 "BossDoubleMoveChance" : 1,
 "BossChat": {
-"Entrance": {
+"ZerothTurn": {
 "postFunc" : "StartingRoom",
 "turn" : 0,
 "delay1" : "APPEAR",
@@ -968,7 +968,7 @@ true
 "BossName" : "The Black Knight",
 "BossDoubleMoveChance" : 1,
 "BossChat": {
-"FirstTurn": {
+"ZerothTurn": {
 "postFunc" : "FinishBossChat",
 "turn" : 0,
 "delay1" : "APPEAR",
@@ -1030,7 +1030,7 @@ true
 "BossName" : "The Black Knight",
 "BossDoubleMoveChance" : 1,
 "BossChat": {
-"FirstTurn": {
+"ZerothTurn": {
 "postFunc" : "FinishBossChat",
 "turn" : 0,
 "delay1" : "APPEAR",
@@ -1106,7 +1106,7 @@ true
 "BossName" : "The Black Knight",
 "BossDoubleMoveChance" : 1,
 "BossChat": {
-"Entrance": {
+"ZerothTurn": {
 "postFunc" : "StartingRoom",
 "turn" : 0,
 "delay1" : "APPEAR",
@@ -1271,7 +1271,7 @@ true
 "BossName" : "Evil Lich",
 "BossDoubleMoveChance" : 1,
 "BossChat": {
-"Entrance": {
+"ZerothTurn": {
 "postFunc" : "StartingRoom",
 "turn" : 0,
 "delay1" : "APPEAR",
@@ -1282,7 +1282,7 @@ true
 }
 ]
 },
-"FifthKill": {
+"FirstKill": {
 "postFunc" : "FinishBossChat",
 "killed" : 1,
 "delay1" : "APPEAR",
@@ -1295,7 +1295,7 @@ true
 },
 "ThirdKill": {
 "postFunc" : "FinishBossChat",
-"turn" : 3,
+"killed" : 3,
 "delay1" : "APPEAR",
 "lines": [
 {
@@ -1532,7 +1532,7 @@ true
 "BossName" : "Eye Beast",
 "BossDoubleMoveChance" : 1,
 "BossChat": {
-"Entrance": {
+"ZerothTurn": {
 "postFunc" : "StartingRoom",
 "turn" : 0,
 "delay1" : "APPEAR",
@@ -1838,7 +1838,7 @@ true
 "BossName" : "Medusa",
 "BossDoubleMoveChance" : 1,
 "BossChat": {
-"Entrance": {
+"FirstKill": {
 "postFunc" : "FinishBossChat",
 "killed" : 1,
 "delay1" : "APPEAR",
@@ -1922,7 +1922,7 @@ true
 "BossName" : "Medusa",
 "BossDoubleMoveChance" : 1,
 "BossChat": {
-"Entrance": {
+"ZerothTurn": {
 "postFunc" : "StartingRoom",
 "turn" : 0,
 "delay1" : "APPEAR",
@@ -2077,10 +2077,9 @@ true
 "BossName" : "Ettin",
 "BossDoubleMoveChance" : 1,
 "BossChat": {
-"blah": {
+"ZerothTurn": {
 "postFunc" : "StartingRoom",
 "turn" : 0,
-"killed" : 0,
 "delay1" : "APPEAR",
 "lines": [
 {
@@ -2253,7 +2252,7 @@ true
 "BossName" : "",
 "BossDoubleMoveChance" : 1,
 "BossChat": {
-"Entrance": {
+"ZerothTurn": {
 "postFunc" : "StartingRoom",
 "postArgs": [
 true
@@ -2363,7 +2362,7 @@ true
 "BossName" : "Ogre",
 "BossDoubleMoveChance" : 1,
 "BossChat": {
-"Entrance": {
+"ZerothTurn": {
 "postFunc" : "StartingRoom",
 "turn" : 0,
 "delay1" : "APPEAR",
@@ -2571,7 +2570,7 @@ true
 "BossName" : "Dragon",
 "BossDoubleMoveChance" : 1,
 "BossChat": {
-"Entrance": {
+"ZerothTurn": {
 "postFunc" : "StartingRoom",
 "postArgs": [
 true
@@ -2765,7 +2764,7 @@ true
 "BossName" : "Troll",
 "BossDoubleMoveChance" : 1,
 "BossChat": {
-"Entrance": {
+"ZerothTurn": {
 "postFunc" : "StartingRoom",
 "postArgs": [
 true
@@ -2867,7 +2866,7 @@ true
 "BossName" : "Cyclops",
 "BossDoubleMoveChance" : 1,
 "BossChat": {
-"Entrance": {
+"ZerothTurn": {
 "postFunc" : "StartingRoom",
 "turn" : 0,
 "delay1" : "APPEAR",
@@ -2968,7 +2967,7 @@ true
 "delay1" : "APPEAR",
 "lines": [
 {
-"TEXT" : "INTRUDER DAlriETECTED",
+"TEXT" : "INTRUDER DETECTED",
 "FUNC" : "emote"
 },
 {
@@ -3054,7 +3053,7 @@ true
 "BossName" : "Dwarf Sentry",
 "BossDoubleMoveChance" : 1,
 "BossChat": {
-"Entrance": {
+"ZerothTurn": {
 "postFunc" : "StartingRoom",
 "turn" : 0,
 "delay1" : "APPEAR",
@@ -3264,7 +3263,7 @@ true
 "BossName" : "Dwarf Mecha",
 "BossDoubleMoveChance" : 1,
 "BossChat": {
-"Entrance": {
+"ZerothTurn": {
 "postFunc" : "StartingRoom",
 "postArgs": [
 true
@@ -3491,7 +3490,7 @@ true
 "BossName" : "Dwarf Masterpiece",
 "BossDoubleMoveChance" : 1,
 "BossChat": {
-"FirstTurn": {
+"ZerothTurn": {
 "postFunc" : "StartingRoom",
 "turn" : 0,
 "delay1" : "APPEAR",
@@ -3726,7 +3725,7 @@ true
 "BossName" : "Dwarf Magnate",
 "BossDoubleMoveChance" : 1,
 "BossChat": {
-"FirstTurn": {
+"ZerothTurn": {
 "postFunc" : "FinishBossChat",
 "turn" : 0,
 "delay1" : "APPEAR",
@@ -3870,7 +3869,7 @@ true
 "BossName" : "Dwarf Magnate",
 "BossDoubleMoveChance" : 1,
 "BossChat": {
-"FirstTurn": {
+"ZerothTurn": {
 "postFunc" : "StartingRoom",
 "turn" : 0,
 "delay1" : "APPEAR",

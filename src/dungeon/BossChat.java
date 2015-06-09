@@ -39,7 +39,7 @@ public class BossChat {
 			this.killed=1;
 			break;
 		case FirstTurn:
-			this.turns=0;
+			this.turns=1;
 			break;
 		case FourthKill:
 			this.killed=4;

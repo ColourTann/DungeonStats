@@ -239,7 +239,7 @@ public class Adventure {
 		aBoss="Fire Demon";
 		aBossName="Embro";
 		aBossChats= new BossChat[]{
-				new BossChat(Trigger.FirstTurn, new BossSpeech[]{
+				new BossChat(Trigger.ZerothTurn, new BossSpeech[]{
 						new BossSpeech("HEY! What are you doing in my Evil Entrance Hall?", Func.emote, false),
 						new BossSpeech("Oh well, my imps will make short work of you!", Func.emote, false),
 				}, PostFunc.FinishBossChat, 
