@@ -17,7 +17,6 @@ public class BossChat {
 	public BossChat(Trigger trigger, 
 			BossSpeech[] speeches, 
 			PostFunc postFunc, 
-			int delayType, DelayEffect delayEffect,
 			PostEffect[] postEffects) {
 		this.trigger=trigger;
 		this.speeches=speeches;
@@ -72,8 +71,19 @@ public class BossChat {
 		
 		}
 		
-		this.delayType=delayType; this.delayEffect=delayEffect;
+		this.delayType=1; this.delayEffect=DelayEffect.APPEAR;
 		this.postEffects=postEffects;
+	}
+	
+	public BossChat(Trigger trigger, 
+			BossSpeech[] speeches, 
+			PostFunc postFunc) {
+		this(trigger, speeches, postFunc, null);
+	}
+	
+	public BossChat(Trigger trigger, 
+			BossSpeech[] speeches){
+		this(trigger, speeches, PostFunc.FinishBossChat);
 	}
 	
 	public String toJson(){
@@ -133,6 +143,11 @@ public class BossChat {
 			this.func=func;
 			this.weirdArgs=weirdArgs;
 		}
+		
+		public BossSpeech(String text){
+			this(text, Func.emote, false);
+		}
+		
 		public String toJson(){
 			String result ="";
 			result += Json.addKey("TEXT", text, true);
@@ -146,6 +161,8 @@ public class BossChat {
 			return result;
 		}
 	}
+	
+	
 	
 	public static class PostEffect{
 		Trait trait; boolean set;
