@@ -2,6 +2,7 @@ package dungeon;
 
 import item.Item.TreasureType;
 
+import java.awt.List;
 import java.util.ArrayList;
 
 import dungeon.BossChat.BossSpeech;
@@ -140,7 +141,10 @@ public class Adventure {
 	public static void setup(){	
 
 		// RAT ADVENTURE //
-
+		
+		ArrayList<Monster> ratList1 = MonsterFactory.getMonsters(new String[]{"Nasty Rat", "Giant Bat"});
+		ArrayList<Monster> ratList2 = MonsterFactory.getMonsters(new String[]{"Nasty Rat", "Giant Bat", "Gnoll", "Rat Man"});
+		
 		aAdvName="Rats? How original!";
 		//aAdvDescription="Delve into the basement and defeat the mighty... rats";
 		aAdvIcon="stone_hatch";
@@ -179,10 +183,10 @@ public class Adventure {
 				new TileLocation(Tile.get("nsw"), 1, -2, "Nasty Rat", null, null),
 		});
 		aObjectives = new Objective[]{
-				new Objective(ObjectiveType.Defeat, "Nasty Rat", 3),
+				new Objective(ObjectiveType.Defeat, "ANY", 3),
 		};
 		aTurnLimit=-1;
-		aMonsters=MonsterFactory.noMonsters;
+		aMonsters=ratList1;
 		addDungeon();
 
 		aName="Rat King's Tale";
@@ -217,12 +221,12 @@ public class Adventure {
 				new Objective(ObjectiveType.Defeat, "BOSS", -1)
 		};
 		aTurnLimit=-1;
-		aMonsters=MonsterFactory.noMonsters;
+		aMonsters=ratList2;
 		addDungeon();
 		createAdventure();
 
 		// EMBRO ADVENTURE //
-
+		ArrayList<Monster> embroList= MonsterFactory.getMonsters(new String[]{"Fire Imp", "Scary Spider", "Goblin", "Ghost", "Zombie", "Gnoll", "Bear Owl", "Fire Elemental", "Bandito"});
 		aAdvName="Embro";
 		//aAdvDescription="Defeat the evil demon, Embro";
 		aAdvIcon="stone_fire_cave";
@@ -256,11 +260,10 @@ public class Adventure {
 				new TileLocation(TileName.room_semicircle_esw, 0, -3, "Gnoll", null, null)
 		});
 		aObjectives = new Objective[]{
-				new Objective(ObjectiveType.Defeat, "Fire Imp", 2),
-				new Objective(ObjectiveType.Defeat, "Gnoll", 1)
+				new Objective(ObjectiveType.Defeat, "ANY", 3),
 		};
 		aTurnLimit=-1;
-		aMonsters=MonsterFactory.noMonsters;
+		aMonsters=embroList;
 		addDungeon();
 
 		aName="Scorching Spoils";
@@ -285,7 +288,7 @@ public class Adventure {
 				new Objective(ObjectiveType.Collect, TreasureType.Large_Chest.toString(), 3)
 		};
 		aTurnLimit=-1;
-		aMonsters=MonsterFactory.noMonsters;
+		aMonsters=embroList;
 		addDungeon();
 
 		aName="Evil Embers";
@@ -355,12 +358,17 @@ public class Adventure {
 				new Objective(ObjectiveType.Defeat, "BOSS", -1)
 		};
 		aTurnLimit=12;
-		aMonsters=MonsterFactory.getMonsters(Region.Stone, 3);
+		aMonsters=embroList;
 		addDungeon();
 		createAdventure(); 
 
 		// MIMIC ADVENTURE //
 
+		ArrayList<Monster> mimicList= MonsterFactory.getMonsters(new String[]{
+				"Fire Imp", "Scary Spider", "Goblin", 
+				"Ghost", "Mimic", "Gnoll", 
+				"Bear Owl", "Fire Elemental", "Bandito"});
+		
 		aAdvName="Shiny treasure";
 		//aAdvDescription="Loot all the treasure";
 		aAdvIcon="stone_chest";
@@ -373,8 +381,8 @@ public class Adventure {
 		aDescription="Chests full of treasure!";
 		aReward=100;
 		aTerrainType=TerrainType.stone;
-		aBoss="Mimic";
-		aBossName="Mimic";
+		aBoss="Mimic Queen";
+		aBossName="Mimic Queen";
 		aBossChats= new BossChat[]{};
 		aStartingTile=Tile.get("ulr");
 		aLayout= new DungeonLayout(new TileLocation[]{
@@ -385,15 +393,15 @@ public class Adventure {
 				new Objective(ObjectiveType.Collect, "Large Chest", 2),
 		};
 		aTurnLimit=-1;
-		aMonsters=MonsterFactory.stoneMonsters;
+		aMonsters=mimicList;
 		addDungeon();
 
 		aName="Terrible Truth";
-		aDescription="Get strong enough to beat the mimic before he catches you!";
+		aDescription="Get strong enough to beat the mimic before she catches you!";
 		aReward=100;
 		aTerrainType=TerrainType.stone; 
-		aBoss="Mimic";
-		aBossName="Mimic";
+		aBoss="Mimic Queen";
+		aBossName="Mimic Queen";
 		aBossChats= new BossChat[]{
 				new BossChat(Trigger.ZerothTurn, new BossSpeech[]{
 						new BossSpeech("You're the one who looted my grandparents!?"),
@@ -413,12 +421,17 @@ public class Adventure {
 				new Objective(ObjectiveType.Defeat, "BOSS", -1)
 		};
 		aTurnLimit=-1;
-		aMonsters=MonsterFactory.getMonsters(Region.Stone, 3);
+		aMonsters=mimicList;
 		addDungeon();
 		createAdventure();
 
 		// GOBLIN ADVENTURE //
 
+		ArrayList<Monster> goblinList= MonsterFactory.getMonsters(new String[]{
+				"Goblin", "Scary Spider", "Nasty Rat", 
+				"Skeleton", "Rat Man", "Gnoll", 
+				"Bear Owl", "Bandito", "Scorpion"});
+		
 		aAdvName="Goblins!";
 		//aAdvDescription="Loot all the treasure";
 		aAdvIcon="stone_skull_cave";
@@ -428,7 +441,7 @@ public class Adventure {
 		aTrophyX=-1.5f;
 		aTrophyY=0;
 		aName="Goblin Menace";
-		aDescription="Take out the goblins";
+		aDescription="Take out the guards";
 		aReward=100;
 		aTerrainType=TerrainType.stone;
 		aBoss="Orc Grunt";
@@ -439,16 +452,13 @@ public class Adventure {
 				new TileLocation(TileName.room_semicircle_nes, -2, 0, "Goblin", null, new TileDetails(false, true, true, -1, 1, false)),
 				new TileLocation(TileName.room_steps_nesw, -1, 1, "Goblin", null, new TileDetails(false, true, false, 0, 0, false)),
 				new TileLocation(TileName.room_collapse_new, 0, 2, "Goblin", null, new TileDetails(false, true, false, 0, 0, false)),
-				new TileLocation(TileName.corr_crushed_ne, -2, 2, "Goblin", null, new TileDetails(false, true, false, 0, 0, false)),
+				new TileLocation(TileName.corr_crushed_ne, -2, 2, "Gnoll", null, new TileDetails(false, true, false, 0, 0, false)),
 		});
 		aObjectives = new Objective[]{
-				new Objective(ObjectiveType.Defeat, "Goblin", 3),
+				new Objective(ObjectiveType.Defeat, "ANY", 4),
 		};
-		aTurnLimit=7;
-		aTurnLimitActions= new TurnLimitAction[]{(
-				new TurnLimitAction(ActionType.HeroHealth, new String[]{"-2"}, "Lunchtime")
-				)};
-		aMonsters=MonsterFactory.noMonsters;
+		aTurnLimit=-1;
+		aMonsters=goblinList;
 		addDungeon();
 
 		aName="Knives and Orcs";
@@ -484,16 +494,19 @@ public class Adventure {
 		aObjectives = new Objective[]{
 				new Objective(ObjectiveType.Defeat, "BOSS", -1)
 		};
-		aTurnLimit=7;
-		aTurnLimitActions= new TurnLimitAction[]{(
-				new TurnLimitAction(ActionType.HeroHealth, new String[]{"-2"}, "Lunchtime")
-				)};
-		aMonsters=MonsterFactory.getMonsters(Region.Stone, 2);
+		aTurnLimit=-1;
+		aMonsters=goblinList;
 		addDungeon();
 		createAdventure();
 
 		// BLACK KNIGHT ADVENTURE //
 
+		ArrayList<Monster> knightList= MonsterFactory.getMonsters(new String[]{
+				"Goblin", "Fire Imp", "Nasty Rat", 
+				"Mimic", "Skeleton", "Gnoll", 
+				"Bear Owl", "Bandito", "Scorpion"});
+		
+		
 		aAdvName="Black Knight";
 		//aAdvDescription="Loot all the treasure";
 		aAdvIcon="stone_castle";
@@ -503,7 +516,7 @@ public class Adventure {
 		aTrophyX= 0;
 		aTrophyY= -1;
 		aName="Test your mettle";
-		aDescription="Defeat the combatants";
+		aDescription="Defeat a Skeleton!";
 		aReward=100;
 		aTerrainType=TerrainType.stone;
 		aBoss="The Black Knight";
@@ -516,41 +529,39 @@ public class Adventure {
 		};
 		aStartingTile=TileName.room_collapse_new;
 		aLayout= new DungeonLayout(new TileLocation[]{
-				new TileLocation(Tile.get("sew"), -1, -2, "Zombie", null, null),
-				new TileLocation(Tile.get("sew"), 1, -2, "Skeleton", null, null),
+				new TileLocation(Tile.get("sew"), 1, -1, "Skeleton", null, null),
 		});
 		aObjectives = new Objective[]{
-				new Objective(ObjectiveType.Defeat, "Zombie", 1),
 				new Objective(ObjectiveType.Defeat, "Skeleton", 1),
 		};
 		aTurnLimit=-1;
-		aMonsters=MonsterFactory.getMonsters(Region.Stone, 1);
+		aMonsters=knightList;
 		addDungeon();
 
-		aName="In the thick of it";
-		aDescription="Defeat the combatants";
+		aName="Flee!";
+		aDescription="Defeat a minotaur";
 		aReward=100;
 		aTerrainType=TerrainType.stone;
-		aBoss="The Black Knight";
-		aBossName="The Black Knight";
+		aBoss="Minotaur";
+		aBossName="Minotaur";
 		aBossChats= new BossChat[]{
 				new BossChat(Trigger.ZerothTurn, new BossSpeech[]{
-						new BossSpeech("Try your luck with these!")
-				}
-						)
+						new BossSpeech("Grah! Black Knight says kill!"),
+				},
+				PostFunc.Chase
+			)
 		};
-		aStartingTile=TileName.room_collapse_new;
+		aStartingTile=Tile.get("udl");
 		aLayout= new DungeonLayout(new TileLocation[]{
-				new TileLocation(TileName.room_semicircle_nes, -1, -2, "Bandito", null, null),
-				new TileLocation(TileName.room_semicircle_nsw, 1, -2, "Mummy", null, null),
-				new TileLocation(TileName.corr_rubble_e, -2, -1, "", TreasureType.MEGA_CHEST, null)
+				new TileLocation(Tile.get("ur"), 0, 1, "", null, null),
+				new TileLocation(Tile.get("lu"), 1, 1, "", null, null),
+				new TileLocation(Tile.get("dur"), 1, 0, "boss", null, null)
 		});
 		aObjectives = new Objective[]{
-				new Objective(ObjectiveType.Defeat, "Bandito", 1),
-				new Objective(ObjectiveType.Defeat, "Mummy", 1),
+				new Objective(ObjectiveType.Defeat, "BOSS", -1),
 		};
 		aTurnLimit=-1;
-		aMonsters=MonsterFactory.getMonsters(Region.Stone, 2);
+		aMonsters=knightList;
 		addDungeon();
 
 		aName="Dark duel";
@@ -601,7 +612,7 @@ public class Adventure {
 				new TurnLimitAction(ActionType.BossChat, new String[]{"\""+Trigger.ComingToAttack.toString()+"\""}, "Duel")
 				)};
 		aTurnLimit=8;
-		aMonsters=MonsterFactory.getMonsters(Region.Stone, 3);
+		aMonsters=knightList;
 		addDungeon();
 		createAdventure();
 
@@ -1228,7 +1239,6 @@ public class Adventure {
 		addDungeon();
 		createAdventure();
 
-
 		// SENTRY ADVENTURE //
 
 		aAdvName="Sentry Adventure";
@@ -1609,6 +1619,7 @@ public class Adventure {
 		resetDungeon();		
 	}
 
+	
 	private static void resetDungeon() {
 		aName=""; aDescription=""; aReward=0;
 		aTerrainType=null;

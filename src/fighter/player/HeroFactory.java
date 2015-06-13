@@ -10,15 +10,15 @@ import cards.Skill.SkillType;
 import fighter.Fighter.Trait;
 
 public class HeroFactory {
-	
-	
+
+
 	static ArrayList<Hero> heroes = new ArrayList<>();
 	static SkillType heroName;
 	static int aHP=0;
 	static Trait[] traits= null;
 	static int aFrame=102;
 	static HeroChat[] aChats;
-	
+
 	static HeroChat[] chumpChats = new HeroChat[]{
 		new HeroChat("Monster", new String[]{
 				"Who fills a dungeon with {MONSTERS}!?", 
@@ -88,7 +88,7 @@ public class HeroFactory {
 				"There's no space for that {CARDNAME}!"
 		}),
 	};	
-	
+
 	static HeroChat[] catChats = new HeroChat[]{
 		new HeroChat("Monster", new String[]{
 				"{MONSTER}? Purr-fect", 
@@ -150,7 +150,7 @@ public class HeroFactory {
 				"Can't fit that {CARDNAME} right meow"
 		}),
 	};	
-	
+
 	static HeroChat[] mimeChats = new HeroChat[]{
 		new HeroChat("Monster", new String[]{
 				"[wiggling horn-fingers]", 
@@ -207,7 +207,7 @@ public class HeroFactory {
 				"[shrugs]"
 		}),
 	};	
-	
+
 	static HeroChat[] barbariChats = new HeroChat[]{
 		new HeroChat("Monster", new String[]{
 				"I'm getting too old for this",
@@ -260,99 +260,223 @@ public class HeroFactory {
 		new HeroChat("CardFit", new String[]{
 				"That won't fit anywhere!"
 		}),
-	};	
+	};
+
+	static HeroChat[] apprenticeChats = new HeroChat[]{
+		new HeroChat("Monster", new String[]{
+				"More {MONSTERS}? Simply dreadful.",
+				"Oh the majestic {MONSTER}. A fine specimen too!",
+				"This never used to happen in finishing school!",
+				"Dulce et decorum est pro patria mori, as they say. But for one's Guild?",
+				"Fortes fortuna iuvat, indeed!",
+				"By Jove, if it isn't a {MONSTER}",
+				"I don't suppose we could simply exchange pleasantries instead of more boorish dueling?",
+				"They really have let this place go haven't they. {MONSTERS} everywhere."
+		}),
+		new HeroChat("Treasure", new String[]{
+				  "Where has my manservant gotten to? Am I to carry all this myself?",
+                  "{TREASURE}! Nulli secundus, indeed",
+                  "Oh bother, another {TREASURE} to weigh me down",
+                  "Ad praesens ova cras pullis sunt meliora, as I always say!",
+                  "More specie? Perhaps we can renovate that worn-down old guild with this",
+                  "Good grief! Who leaves {TREASURE} just sitting on the ground like this",
+                  "{TREASURE}? Simply vulgar!"
+		}),
+		new HeroChat("Random", new String[]{
+				"Capital, old bean, and jolly good show too!",
+                "Well well well, let's see then",
+                "Which way? This way! Alea iacta est, you know",
+                "Oh no, not more bothersome trudging about",
+                "I never thought I'd miss that grubby old guild room",
+                "Onwards, companions! Oh that's right it's just me",
+                "I hope this place has decent library, at least",
+                "Perchance I can write about this in my journal",
+                "Gosh! That awful smell!"
+		}),
+		new HeroChat("Explored", new String[]{
+				 "One finds oneself doing more aimless meandering than one would prefer",
+                 "I hope YOU know what we should be doing with ourselves in here",
+                 "Hopelessly lost! If only daddy were here to fix all this"
+		}),
+		new HeroChat("Unexplored", new String[]{
+		}),
+		new HeroChat("NoMove", new String[]{
+                "I suppose we'll just stand right here then, shall we?"
+		}),
+		new HeroChat("Idle", new String[]{
+                "You must come see our chateau in the summertime. Simply fabulous!",
+                "... so there we were enjoying our brandy after dinner when all of a sudden Lady Ludwig burst into ...",
+                "You wouldn't believe the absolute oafs they have let into this guild!",
+                "Perhaps they have simply abandoned me here? Most egregious.",
+                "Lets all just stand around, shall we?",
+                "I am starting to believe I'm not part of the dramatis personae here."
+
+		}),
+		new HeroChat("Poked", new String[]{
+				 "Darling, what is it?",
+                 "Would you mind holding off on the incessant poking? I'm trying to think",
+                 "By Jove, you wouldn't do that if I had my manservant here to teach you a lesson!",
+                 "It seems they'll let ANYONE become a guild master, these days",
+                 "oof. Dum spiro spero, I suppose",
+                 "OW! I was trying to record my most precious thoughts in my private journal you oaf!"
+		}),
+		new HeroChat("CardFit", new String[]{
+                "There's nowhere for that to go right now, is there old bean?"
+		}),
+	};
+	
+	static HeroChat[] bruiserChats = new HeroChat[]{
+		new HeroChat("Monster", new String[]{
+				  "OI {MONSTER}!",
+                  "Summink to PUNCH!",
+                  "You what?",
+                  "Ere what d'you fink you're lookin at {MONSTER}",
+                  "I'll bash you!",
+                  "What is you lookin' at!? I'll 'ave you",
+                  "No offense but, {MONSTERS} is well ugly, innit",
+					"Watch it {MONSTER} or I'll have me bruvver bash ya"
+		}),
+		new HeroChat("Treasure", new String[]{
+			    "That's well shiny",
+                "Give us that {TREASURE}",
+                "Ah yeah give us that {TREASURE}!",
+                "Havin' that",
+                "Send me that!",
+				"Minted",
+				"Proper blingin'",
+                "{TREASURE}? I'm havin' that mate"
+		}),
+		new HeroChat("Random", new String[]{
+				 "Give us something to bash, mate!",
+                 "What you got there? More cards?",
+                 "You wot? This is well dumb",
+                 "Lets bounce",
+                 "What's this? There's nuffink here an' all",
+                 "No offense, but give us somethin' to do yeah?",
+                 "More nothin', innit"
+		}),
+		new HeroChat("Explored", new String[]{
+				"Ah no I wuz here before and all",
+                "D'you even know what yer doin' mate?",
+                "This is right stupid"
+		}),
+		new HeroChat("Unexplored", new String[]{
+		}),
+		new HeroChat("NoMove", new String[]{
+				"I'm proper stuck 'ere"
+		}),
+		new HeroChat("Idle", new String[]{
+                "No but yeah, knowhaddimean?",
+				"Nuff said, mate",
+				"This is proper borin'"
+		}),
+		new HeroChat("Poked", new String[]{
+                "Am I bovvered?",
+                "Am I bovvered though?",
+                "Look at my face. Is it bovvered?",
+                "Arks me if I'm bovvered!",
+                "Look, face, bovvered?",
+				"I AIN'T BOVVERED!!"
+		}),
+		new HeroChat("CardFit", new String[]{
+                "That won't fit nowhere!"
+		}),
+	};
+
+
 	public static void init(){
-		
+
 		//TODO Add in frame numbers
-		
+
 		heroName=SkillType.Chump;
 		aHP=5;
 		aChats=chumpChats;
 		addClass();
-		
+
 		heroName=SkillType.Cat_Burglar;
 		aHP=5;
 		traits=new Trait[]{Trait.Covetous};
 		aChats=catChats;
 		addClass();
-		
+
 		heroName=SkillType.Bruiser;
 		aHP=5;
 		traits = new Trait[]{Trait.Spikey};
-		aChats=chumpChats;
+		aChats=bruiserChats;
 		addClass();
-		
+
 		heroName=SkillType.Mime;
 		aHP=5;
 		aChats=mimeChats;
 		addClass();
-		
+
 		heroName=SkillType.Apprentice;
 		aHP=5;
-		aChats=chumpChats;
+		aChats=apprenticeChats;
+		traits=new Trait[]{Trait.Talented};
 		addClass();
-		
+
 		heroName=SkillType.Ranger;
 		aHP=6;
 		traits=new Trait[]{Trait.Accurate, Trait.Ranged};
 		aChats=chumpChats;
 		addClass();
-		
+
 		heroName=SkillType.Barbarian;
 		aHP=6;
 		traits = new Trait[]{Trait.Deathwish};
 		aChats=barbariChats;
 		addClass();
-		
+
 		heroName=SkillType.Shapeshifter;
 		aHP=6;
 		traits=null;
 		aChats=chumpChats;
 		addClass();
-		
+
 		heroName=SkillType.Alchemist;
 		aHP=5;
 		traits=new Trait[]{Trait.Blessed};
 		aChats=chumpChats;
 		addClass();
-		
+
 		heroName=SkillType.Most_Holy_Grail_Knight;
 		aHP=8;
 		traits = new Trait[]{Trait.Retribution};
 		aChats=chumpChats;
 		addClass();
-		
+
 		heroName=SkillType.Troubador;
 		aHP=7;
 		traits = new Trait[]{Trait.SpellSword};
 		aChats=chumpChats;
 		addClass();
-		
+
 		heroName=SkillType.Cartomancer;
 		traits = new Trait[]{Trait.Cunning};
 		aHP=7;
 		aChats=chumpChats;
 		addClass();
-		
+
 		heroName=SkillType.Mathemagician;
 		aHP=7;
 		aChats=chumpChats;
 		addClass();
-		
+
 		heroName=SkillType.Artificer;
 		traits = new Trait[]{Trait.VitaSuit};
 		aHP=7;
 		aChats=chumpChats;
 		addClass();
-//		heroName=SkillType.Shapeshifter;
-//		aHP=6;
-//		traits=null;
-//		addClass();
-		
-		
-		
+		//		heroName=SkillType.Shapeshifter;
+		//		aHP=6;
+		//		traits=null;
+		//		addClass();
+
+
+
 	}
-	
+
 	public static void addClass(){
 		heroes.add(new Hero(heroName.toString(), aHP, traits, Skill.get(heroName).getCards(false), aFrame, aChats));
 		aFrame++;
@@ -361,7 +485,7 @@ public class HeroFactory {
 		traits=null;
 		aChats=null;
 	}
-	
+
 	public static String toJson(){
 		String output="";
 		output+=Json.enclose();
@@ -372,14 +496,14 @@ public class HeroFactory {
 				output=Json.removeComma(output);
 			}
 		}
-		
+
 		output+=Json.endList(true);
 		output=Json.removeComma(output);
 		output+=Json.endEnclose(true);
 		output=Json.removeComma(output);
 
-		
-		
+
+
 		return output;
 	}
 

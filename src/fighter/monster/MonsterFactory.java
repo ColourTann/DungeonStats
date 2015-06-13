@@ -153,6 +153,9 @@ public class MonsterFactory {
 		skills = new Skill[]{Skill.get(SkillType.Death).asLevel(1), Skill.get(SkillType.Spooky).asLevel(2), Skill.get(SkillType.Flame).asLevel(2)};
 		make();
 
+		
+		//L2//
+		
 		name = "Ghost";
 		plural= "Ghosts";
 		region=Region.Stone;
@@ -234,6 +237,21 @@ public class MonsterFactory {
 		traits = new Trait[]{Trait.Fury};
 		skills = new Skill[]{Skill.get(SkillType.Nature).asLevel(2), Skill.get(SkillType.Armed).asLevel(2), Skill.get(SkillType.Irritable).asLevel(3)};
 		make();
+		
+		name = "Mimic";
+		plural= "Mimics";
+		description = "Maybe it still has treasure inside";
+		frameNumber = 37;
+		level = 2;
+		health = 6;
+		randomPool=0;
+		sound = MSound.giant_bat;
+		traits = null;
+		skills = new Skill[]{Skill.get(SkillType.Death).asLevel(3), Skill.get(SkillType.Spooky).asLevel(3), Skill.get(SkillType.Feral).asLevel(2)};
+		make();
+
+		
+		//L3//
 
 		name = "Mummy";
 		plural= "Mummies";
@@ -318,7 +336,42 @@ public class MonsterFactory {
 		skills = new Skill[]{Skill.get(SkillType.Armed).asLevel(5)};
 		make();
 
+		name = "Minotaur";
+		plural= "Minotaurs";
+		region=Region.Stone;
+		description = "Seeing red";
+		frameNumber = 18;
+		level = 3;
+		health = 9;
+		traits = new Trait[]{Trait.Fury, Trait.Meaty};
+		randomPool=0;
+		sound = MSound.giant_bat;
+		skills = new Skill[]{Skill.get(SkillType.Irritable).asLevel(4), Skill.get(SkillType.Armed).asLevel(4)};
+		boardChat=new BoardChat[]{
+				new BoardChat(ChatType.Monster, new String[]{
+						"Scram!", 
+				}),
+
+				new BoardChat(ChatType.Treasure, new String[]{
+						"Give back Black Knight's stuff!", 
+				}),
+
+				new BoardChat(ChatType.Hero, new String[]{
+				"I have you now!"
+						}),
+
+				new BoardChat(ChatType.Random, new String[]{
+						"Gotta get stupid adventurer",
+						"Want a promotion!",
+				})
+		};
+		make();
+
+		
 		//BOSSES//
+		
+		
+		
 		name = "Rat King Cole";
 		plural= "Rat Men";
 		description = "Squeak squeak!";
@@ -347,9 +400,9 @@ public class MonsterFactory {
 		};
 		make();
 
-		name = "Mimic";
-		plural= "Mimics";
-		description = "Maybe it still has treasure inside";
+		name = "Mimic Queen";
+		plural= "Mimic Queens";
+		description = "Wow she looks angry!";
 		frameNumber = 64;
 		level = 3;
 		health = 7;
@@ -389,6 +442,8 @@ public class MonsterFactory {
 		traits = new Trait[]{Trait.Skilled};
 		skills = new Skill[]{Skill.get(SkillType.Armed).asLevel(5), Skill.get(SkillType.Irritable).asLevel(5)};
 		make();
+		
+		
 
 		name = "The Black Knight";
 		plural= "Black Knights";
@@ -949,7 +1004,7 @@ public class MonsterFactory {
 		region=Region.Mines;
 		species=Species.undead;
 		description = "needs description";
-		frameNumber = 12;
+		frameNumber = 11;
 		level = 2;
 		health = 8;
 		randomPool=1;
@@ -1572,14 +1627,21 @@ public class MonsterFactory {
 
 	public static ArrayList<Monster> getMonsters(String[] names){
 		ArrayList<Monster> result = new ArrayList<>();
-		for(Monster m:MonsterFactory.monsters){
-			for(String s:names){
-				if(m.name.equals(s))
+		for(String s:names){
+			boolean found =false;
+			for(Monster m:MonsterFactory.monsters){
+				if(m.name.equals(s)){
 					result.add(m);
+					found=true;
+					break;
+				}
+				
+			}
+			if(!found){
+			System.out.println("Could not find monster "+s);
+			throw new IllegalArgumentException();
 			}
 		}
 		return result;
 	}
-
-
 }

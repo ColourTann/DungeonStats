@@ -20,11 +20,11 @@ public class Main {
 	public static void main(String[] args) {
 		setup();
 
-		System.out.println(Adventure.jsonAdventures());
+//		System.out.println(Adventure.jsonAdventures());
 		//System.out.println(CardFactory.jsonAllSkills(false));
 		//System.out.println(CardFactory.jsonAllSkills(true));
 //		System.out.println(Item.jsonAll());
-//		System.out.println(MonsterFactory.jsonAll());
+		System.out.println(MonsterFactory.jsonAll());
 //		System.out.println(HeroFactory.toJson());
 
 
