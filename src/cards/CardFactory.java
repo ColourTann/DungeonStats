@@ -68,14 +68,14 @@ public class CardFactory {
 		resetCard();
 
 		switch (type){
-		
+
 		/*
 		 * 
 		 * CLASSES
 		 * 
 		 */
-		
-		
+
+
 		case Chump:
 			cName= "Eyes closed punch";
 			cStrength=1f;
@@ -160,7 +160,7 @@ public class CardFactory {
 			addCard(type);
 
 			cName= "How do you like this?";
-			cStrength=1.4f;
+			cStrength=1.3f;
 			cDescription = "1 physical damage, [unblockable]";
 			cDescSize=22;
 			aActionType=ActionType.Attack;
@@ -170,19 +170,20 @@ public class CardFactory {
 			addAction();
 			addCard(type);
 
-			cName= "Is that all you got?";
-			cStrength=1f;
-			cDescription = "Block all, -1hp";
+			cName= "Get outta here";
+			cStrength=1.8f;
+			cDescription = "1 physical damage, block 1 physical";
 			cDescSize=22;
-			aActionType=ActionType.Block;
-			aDamageType=DamageType.Either;
+			aActionType=ActionType.Attack;
+			aDamageType=DamageType.Physical;
+			aEffect=1;
 			addAction();
-			aActionType=ActionType.TakeDamage;
+			aActionType=ActionType.Block;
 			aDamageType=DamageType.Physical;
 			aEffect=1;
 			addAction();
 			addCard(type);
-			
+
 			cName= "Nice try, chump";
 			cStrength=1.3f;
 			cDescription = "Block 2 magic damage";
@@ -192,7 +193,7 @@ public class CardFactory {
 			aEffect=2;
 			addAction();
 			addCard(type);
-			
+
 			cName= "You tryin' something?";
 			cStrength=1.3f;
 			cDescription = "Block 2 physical damage";
@@ -236,7 +237,7 @@ public class CardFactory {
 			aEffect=2;
 			addAction();
 			addCard(type);
-			
+
 			cName= "Throw cat";
 			cStrength=2f;
 			cDescription = "2 physical damage";
@@ -256,7 +257,7 @@ public class CardFactory {
 			aEffect=1;
 			addAction();
 			addCard(type);
-			
+
 			cName= "Catnip";
 			cStrength=1f;
 			cDescription = "Next physical attack get +1 damage";
@@ -310,27 +311,34 @@ public class CardFactory {
 			addAction();
 			addCard(type);
 
-			cName= "Steelhead arrow";
+			cName= "Camouflage";
 			cStrength=2f;
-			cDescription = "2 physical damage";
+			cDescription = "Block 1 any, +1 to next physical attack";
 			cDescSize=24;
-			aActionType=ActionType.Attack;
-			aDamageType=DamageType.Physical;
-			aEffect=2;
-			addAction();
-			addCard(type);
-
-			cName= "Duck";
-			cStrength=2.5f;
-			cDescription = "Block 3 damage";
-			cDescSize=22;
 			aActionType=ActionType.Block;
-			aDamageType=DamageType.Either;
-			aEffect=3;
+			aDamageType=DamageType.Physical;
+			aEffect=1;
 			addAction();
+			aActionType=ActionType.NextAttack;
+			aDamageType=DamageType.Physical;
+			aEffect=1;
 			addCard(type);
-			break;
 
+			cName= "Camouflage";
+			cStrength=2f;
+			cDescription = "Block 1 any, +1 to next physical attack";
+			cDescSize=24;
+			aActionType=ActionType.Block;
+			aDamageType=DamageType.Physical;
+			aEffect=1;
+			addAction();
+			aActionType=ActionType.NextAttack;
+			aDamageType=DamageType.Physical;
+			aEffect=1;
+			addCard(type);
+
+			break;
+			
 		case Barbarian:
 
 			cName= "Slam";
@@ -358,7 +366,7 @@ public class CardFactory {
 			aEffect=1;
 			addAction();
 			addCard(type);
-			
+
 			cName= "Howl";
 			cStrength=2f;
 			cDescription = "3 phsycial damage, -1 hp";
@@ -456,7 +464,7 @@ public class CardFactory {
 			aEffect=1;
 			addAction();
 			addCard(type);
-			
+
 			cName= "Fire Shield";
 			cStrength=1.5f;
 			cDescription = "1 magic damage, block 1 magic";
@@ -470,7 +478,7 @@ public class CardFactory {
 			aEffect=1;
 			addAction();
 			addCard(type);
-			
+
 			cName= "Intuition";
 			cStrength=1f;
 			cDescription = "Draw 2 cards";
@@ -479,10 +487,10 @@ public class CardFactory {
 			aEffect=2;
 			addAction();
 			addCard(type);
-break;	
+			break;	
 		case Mime:
 
-		
+
 			cName= "Copycat";
 			cStrength=1.5f;
 			cDescription = "1 magic damage: Copy top enemy card to your hand";
@@ -508,7 +516,7 @@ break;
 			addResultAction();
 			addAction();
 			addCard(type);
-			
+
 			cName= "Stage-presence";
 			cStrength=1.5f;
 			cDescription = "1 magic damage: discard one of the enemy's top 2 cards";
@@ -535,7 +543,7 @@ break;
 			aEffect=1;
 			addAction();
 			addCard(type);
-			
+
 			cName= "Imaginary box";
 			cStrength=1.8f;
 			cDescription = "Block 1 physical, +1 next magic attack";
@@ -549,7 +557,7 @@ break;
 			aEffect=1;
 			addAction();
 			addCard(type);
-		
+
 			cName= "Imaginary Cannon";
 			cStrength=2f;
 			cDescription = "2 magic damage";
@@ -561,19 +569,9 @@ break;
 			addCard(type);
 
 			break;
-			
+
 		case Alchemist:
-			cName= "Potion of acid";
-			cStrength=2f;
-			cDescription = "2 magic damage";
-			cDescSize=24;
-			aActionType=ActionType.Attack;
-			aDamageType=DamageType.Magical;
-			aEffect=2;
-			addAction();
-			addCard(type);
-			
-			cName= "Potion of acid";
+			cName= "Flask of Acid";
 			cStrength=2f;
 			cDescription = "2 magic damage";
 			cDescSize=24;
@@ -583,7 +581,17 @@ break;
 			addAction();
 			addCard(type);
 
-			cName= "Potion of healing";
+			cName= "Flask of Acid";
+			cStrength=2f;
+			cDescription = "2 magic damage";
+			cDescSize=24;
+			aActionType=ActionType.Attack;
+			aDamageType=DamageType.Magical;
+			aEffect=2;
+			addAction();
+			addCard(type);
+
+			cName= "Flask of Healing";
 			cStrength=3f;
 			cDescription = "+2 HP";
 			cDescSize=24;
@@ -592,20 +600,19 @@ break;
 			addAction();
 			addCard(type);
 
-			cName= "Potion of invigoration";
-			cStrength=3f;
-			cDescription = "1 magic damage, +1 HP";
+			cName= "Flask of Invigoration";
+			cStrength=2.3f;
+			cDescription = "+1 HP, draw a card";
 			cDescSize=24;
 			aActionType=ActionType.Heal;
 			aEffect=1;
 			addAction();
-			aActionType=ActionType.Attack;
-			aDamageType=DamageType.Magical;
+			aActionType=ActionType.Draw;
 			aEffect=1;
 			addAction();
 			addCard(type);
 
-			cName= "Potion of sparks";
+			cName= "Flask of Lightning";
 			cStrength=1.4f;
 			cDescription = "1 magic damage [quick]";
 			cDescSize=24;
@@ -616,13 +623,13 @@ break;
 			addAction();
 			addCard(type);
 
-			cName= "Potion of rockskin";	
-			cDescription = "Block 3 damage";
+			cName= "Flask of Pixie Tears";	
+			cDescription = "Block 2 magic";
 			cDescSize=22;
-			cStrength=2.8f;
+			cStrength=1.7f;
 			aActionType=ActionType.Block;
-			aDamageType=DamageType.Either;
-			aEffect=3;
+			aDamageType=DamageType.Magical;
+			aEffect=2;
 			addAction();
 			addCard(type);
 			break;
@@ -648,7 +655,7 @@ break;
 			aUnblockable=true;
 			addAction();
 			addCard(type);
-			
+
 			cName= "Aspect of the panther";
 			cStrength=1.3f;
 			cDescription = "1 magic damage [unblockable]";
@@ -661,24 +668,24 @@ break;
 			addCard(type);
 
 			cName= "Aspect of the bull";
-			cStrength=2.5f;
-			cDescription = "1 physical damage, block 2 damage";
+			cStrength=3f;
+			cDescription = "3 physical damage";
 			cDescSize=22;
 			aActionType=ActionType.Attack;
 			aDamageType=DamageType.Physical;
-			aEffect=1;
-			addAction();
-			aActionType=ActionType.Block;
-			aDamageType=DamageType.Either;
-			aEffect=2;
+			aEffect=3;
 			addAction();
 			addCard(type);
 
 			cName= "Aspect of the dragon";
-			cStrength=2f;
-			cDescription = "2 magic damage";
+			cStrength=2.2f;
+			cDescription = "1 magic damage, block 2 magic";
 			cDescSize=24;
 			aActionType=ActionType.Attack;
+			aDamageType=DamageType.Magical;
+			aEffect=1;
+			addAction();
+			aActionType=ActionType.Block;
 			aDamageType=DamageType.Magical;
 			aEffect=2;
 			addAction();
@@ -686,27 +693,29 @@ break;
 
 			cName= "Barkskin";
 			cStrength=2.8f;
-			cDescription = "Block all physical damage";
+			cDescription = "Block 3 physical";
 			cDescSize=22;
 			aActionType=ActionType.Block;
 			aDamageType=DamageType.Physical;
+			aEffect=3;
 			addAction();
 			addCard(type);
 			break;
 
 
 		case Troubador:
-			
+
 			cName= "Ice Blast";
-			cStrength=2f;
-			cDescription = "2 magic damage";
+			cStrength=1.4f;
+			cDescription = "1 magic damage [unblockable]";
 			cDescSize=22;
 			aActionType=ActionType.Attack;
 			aDamageType=DamageType.Magical;
-			aEffect=2;
+			aUnblockable=true;
+			aEffect=1;
 			addAction();
 			addCard(type);
-			
+
 			cName= "Spike";
 			cStrength=2.4f;
 			cDescription = "2 physical damage [quick]";
@@ -717,7 +726,7 @@ break;
 			aEffect=2;
 			addAction();
 			addCard(type);
-			
+
 			cName= "Parry";
 			cStrength=3.5f;
 			cDescription = "2 physical damage, block 2 physical";
@@ -731,7 +740,7 @@ break;
 			aEffect=2;
 			addAction();
 			addCard(type);
-			
+
 			cName= "Leap";
 			cStrength=3.5f;
 			cDescription = "2 physical damage, block 2 magic";
@@ -745,7 +754,7 @@ break;
 			aEffect=2;
 			addAction();
 			addCard(type);
-			
+
 			cName= "Arcane Swipe";
 			cStrength=2f;
 			cDescription = "1 physical damage, 1 magic damage";
@@ -773,49 +782,49 @@ break;
 			aEffect=1;
 			addAction();
 			addCard(type);			
-			
+
 			break;
 		case Most_Holy_Grail_Knight:
-			
-			cName= "Holy Fervor";
-			cStrength=1.7f;
-			cDescription = "1 physical damage: +1 hp";
+
+			cName= "Divine Hammer";
+			cStrength=2.5f;
+			cDescription = "1 physical damage: +2 hp";
 			cDescSize=22;
 			aActionType=ActionType.Attack;
 			aDamageType=DamageType.Physical;
 			aEffect=1;
 			raType=ActionType.Heal;
-			raEffect=1;
+			raEffect=2;
 			addResultAction();
 			addAction();
 			addCard(type);
-			
-			cName= "Holy Fervor";
-			cStrength=1.7f;
-			cDescription = "1 physical damage: +1 hp";
+
+			cName= "Divine Hammer";
+			cStrength=2.5f;
+			cDescription = "1 physical damage: +2 hp";
 			cDescSize=22;
 			aActionType=ActionType.Attack;
 			aDamageType=DamageType.Physical;
 			aEffect=1;
 			raType=ActionType.Heal;
-			raEffect=1;
+			raEffect=2;
 			addResultAction();
 			addAction();
 			addCard(type);
-			
+
 			cName= "Absolution";
-			cStrength=1.7f;
-			cDescription = "1 magic damage: +1 hp";
+			cStrength=2.5f;
+			cDescription = "1 magic damage: +2 hp";
 			cDescSize=22;
 			aActionType=ActionType.Attack;
 			aDamageType=DamageType.Magical;
 			aEffect=1;
 			raType=ActionType.Heal;
-			raEffect=1;
+			raEffect=2;
 			addResultAction();
 			addAction();
 			addCard(type);
-			
+
 			cName= "Divine Strike";
 			cStrength=2.3f;
 			cDescription = "2 physical damage [unblockable]";
@@ -826,35 +835,34 @@ break;
 			aUnblockable=true;
 			addAction();
 			addCard(type);
-			
-			cName= "Aegis";
-			cStrength=2f;
-			cDescription = "Block 2 physical, +1 HP";
+
+			cName= "Fervor";
+			cStrength=1.5f;
+			cDescription = "2 physical damage, -1 HP";
 			cDescSize=22;
-			aActionType=ActionType.Block;
+			aActionType=ActionType.Attack;
 			aDamageType=DamageType.Physical;
 			aEffect=2;
 			addAction();
-			aActionType=ActionType.Heal;
+			aActionType=ActionType.TakeDamage;
 			aEffect=1;
 			addAction();
 			addCard(type);
-			
-			cName= "Protection";
-			cStrength=2f;
-			cDescription = "Block 2 magical, +1 HP";
+
+			cName= "Flagellate";
+			cStrength=1.5f;
+			cDescription = "+2 hp, -1 hp";
 			cDescSize=22;
-			aActionType=ActionType.Block;
-			aDamageType=DamageType.Magical;
-			aEffect=2;
-			addAction();
 			aActionType=ActionType.Heal;
 			aEffect=1;
 			addAction();
+			aActionType=ActionType.TakeDamage;
+			aEffect=1;
+			addAction();
 			addCard(type);
-			
+
 			break;
-			
+
 		case Cartomancer:
 			cName= "Misprint";
 			cStrength=2f;
@@ -865,7 +873,7 @@ break;
 			aEffect=2;
 			addAction();
 			addCard(type);
-			
+
 			cName= "Card Storm";
 			cStrength=3f;
 			cDescription = "1 magic damage per card in hand, discard your hand";
@@ -875,7 +883,7 @@ break;
 			aEffectCondition=ActionEffectCondition.Hand;
 			addAction();
 			addCard(type);
-		
+
 			cName= "Card Flick";
 			cStrength=1.5f;
 			cDescription = "1 physical damage [quick], [unblockable]";
@@ -887,7 +895,7 @@ break;
 			aQuick=true;
 			addAction();
 			addCard(type);
-			
+
 			cName= "Paper Shield";
 			cStrength=2f;
 			cDescription = "Block 1 physical per card in hand";
@@ -897,7 +905,7 @@ break;
 			aEffectCondition=ActionEffectCondition.Hand;
 			addAction();
 			addCard(type);
-			
+
 			cName= "Counterplay";
 			cStrength=2f;
 			cDescription = "1 magic damage, block 2 magic damage";
@@ -911,7 +919,7 @@ break;
 			aEffect=1;
 			addAction();
 			addCard(type);
-			
+
 			cName= "Heart of the Cards";
 			cStrength=2f;
 			cDescription = "Draw a card, +2 hp";
@@ -924,19 +932,9 @@ break;
 			addAction();
 			addCard(type);
 			break;
-			
+
 		case Mathemagician:
-			
-			cName= "Measure Trajectory";
-			cStrength=2f;
-			cDescription = "Block 3 damage";
-			cDescSize=22;
-			aActionType=ActionType.Block;
-			aDamageType=DamageType.Either;
-			aEffect=3;
-			addAction();
-			addCard(type);
-			
+
 			cName= "Card Counting";
 			cStrength=3f;
 			cDescription = "2 magic damage: look at top 3 enemy cards, discard 1";
@@ -949,7 +947,7 @@ break;
 			addResultAction();
 			addAction();
 			addCard(type);
-			
+
 			cName= "Card Counting";
 			cStrength=3f;
 			cDescription = "2 magic damage: look at top 3 enemy cards, discard 1";
@@ -962,15 +960,11 @@ break;
 			addResultAction();
 			addAction();
 			addCard(type);
-			
+
 			cName= "Calculate";
-			cStrength=3f;
-			cDescription = "Block 1, +1 card, +1 hp, +1 next magic damage";
+			cStrength=2.5f;
+			cDescription = "+1 card, +1 hp, +1 next magic damage";
 			cDescSize=22;
-			aActionType=ActionType.Block;
-			aDamageType=DamageType.Either;
-			aEffect=1;
-			addAction();
 			aActionType=ActionType.Draw;
 			aEffect=1;
 			addAction();
@@ -982,6 +976,20 @@ break;
 			aEffect=1;
 			addAction();
 			addCard(type);
+
+			cName= "Explain Theorem";
+			cStrength=3f;
+			cDescription = "2 magic damage, enemy becomes stupid";
+			cDescSize=22;
+			aActionType=ActionType.Attack;
+			aDamageType=DamageType.Magical;
+			aEffect=2;
+			raType=ActionType.Stupidity;
+			raEffect=1;
+			addResultAction();
+			addAction();
+			addCard(type);
+
 			
 			cName= "Explain Theorem";
 			cStrength=3f;
@@ -995,10 +1003,10 @@ break;
 			addResultAction();
 			addAction();
 			addCard(type);
-			
+
 			cName= "Proof";
 			cStrength=2.5f;
-			cDescription = "2 magic damage, unblockable";
+			cDescription = "2 magic damage";
 			cDescSize=22;
 			aActionType=ActionType.Attack;
 			aDamageType=DamageType.Magical;
@@ -1006,25 +1014,11 @@ break;
 			aUnblockable=true;
 			addAction();
 			addCard(type);
-			
+
 			break;
-			
+
 		case Artificer:
-			
-			cName= "Blast-hammer";
-			cStrength=2.5f;
-			cDescription = "2 physical damage, block 1 any";
-			cDescSize=22;
-			aActionType=ActionType.Attack;
-			aDamageType=DamageType.Physical;
-			aEffect=2;
-			addAction();
-			aActionType=ActionType.Block;
-			aDamageType=DamageType.Either;
-			aEffect=1;
-			addAction();
-			addCard(type);
-			
+
 			cName= "Zap-o-matic";
 			cStrength=2.4f;
 			cDescription = "2 magic damage, quick";
@@ -1035,13 +1029,13 @@ break;
 			aEffect=2;
 			addAction();
 			addCard(type);
-			
+
 			cName= "Regenoshield";
 			cStrength=2;
-			cDescription = "Block 2, +1 hp";
+			cDescription = "Block 2 physical, +1 hp";
 			cDescSize=22;
 			aActionType=ActionType.Block;
-			aDamageType=DamageType.Either;
+			aDamageType=DamageType.Physical;
 			aEffect=2;
 			addAction();
 			aActionType=ActionType.Heal;
@@ -1049,12 +1043,12 @@ break;
 			addAction();
 			addCard(type);
 			
-			cName= "Regenoshield";
+			cName= "Static Field";
 			cStrength=2;
-			cDescription = "Block 2, +1 hp";
+			cDescription = "Block 2 magic, +1 hp";
 			cDescSize=22;
 			aActionType=ActionType.Block;
-			aDamageType=DamageType.Either;
+			aDamageType=DamageType.Magical;
 			aEffect=2;
 			addAction();
 			aActionType=ActionType.Heal;
@@ -1062,6 +1056,18 @@ break;
 			addAction();
 			addCard(type);
 			
+			cName= "Brain-Enchane Serum";
+			cStrength=1.9f;
+			cDescription = "Draw 2 cards, +1 hp";
+			cDescSize=22;
+			aActionType=ActionType.Draw;
+			aEffect=2;
+			addAction();
+			aActionType=ActionType.Heal;
+			aEffect=1;
+			addAction();
+			addCard(type);
+
 			cName= "Reflecting Ray";
 			cStrength=3f;
 			cDescription = "1 magic damage per damage taken this turn";
@@ -1071,7 +1077,7 @@ break;
 			aEffectCondition=ActionEffectCondition.damageTaken;
 			addAction();
 			addCard(type);
-			
+
 			cName= "Thought Extractor";
 			cStrength=2.5f;
 			cDescription = "2 magic damage: Copy top enemy card to your hand";
@@ -1084,17 +1090,17 @@ break;
 			addResultAction();
 			addAction();
 			addCard(type);
-			
-			
+
+
 			break;
-			
-		/*
-		 * 
-		 * BLESSINGS
-		 * 
-		 */
-			
-			
+
+			/*
+			 * 
+			 * BLESSINGS
+			 * 
+			 */
+
+
 		case Crone:
 			cName="Crone's Wrath";
 			cStrength=4.5f;
@@ -1139,14 +1145,14 @@ break;
 			addAction();
 			addCard(type);
 			break;
-		
-		/*
-		 * 
-		 * PLAYER SKILLS
-		 * 
-		 */
-			
-			
+
+			/*
+			 * 
+			 * PLAYER SKILLS
+			 * 
+			 */
+
+
 		case Arcane:
 
 			cName= "Force Shield";
@@ -1496,7 +1502,7 @@ break;
 			 * 
 			 * 
 			 */
-			
+
 		case Feral:
 			cName= "Bite";
 			cStrength=1.2f;
@@ -1585,22 +1591,22 @@ break;
 			addAction();
 			addCard(type);
 
-			cName= "Shadow Strike";
-			cStrength=2f;
-			cDescription = "1 magic damage, 1 physical damage";
+			cName= "Acrid Fog";
+			cStrength=2.3f;
+			cDescription = "2 magic damage, block 1 magical";
 			cDescSize=22;
 			aActionType=ActionType.Attack;
 			aDamageType=DamageType.Magical;
-			aEffect=1;
+			aEffect=2;
 			addAction();
-			aActionType=ActionType.Attack;
-			aDamageType=DamageType.Physical;
+			aActionType=ActionType.Block;
+			aDamageType=DamageType.Magical;
 			aEffect=1;
 			addAction();
 			addCard(type);
 
 			cName= "Shadow Spear";
-			cStrength=2.6f;
+			cStrength=2.4f;
 			cDescription = "2 magic damage, [unblockable]";
 			cDescSize=22;
 			aActionType=ActionType.Attack;
@@ -1611,7 +1617,7 @@ break;
 			addCard(type);
 
 			cName= "Curse";
-			cStrength=3f;
+			cStrength=2.5f;
 			cDescription = "2 magic damage: enemy discards 1 card";
 			cDescSize=19;
 			aActionType=ActionType.Attack;
@@ -1624,6 +1630,7 @@ break;
 			addCard(type);
 
 			break;
+
 		case Flame:
 
 			cName= "Spark";
@@ -1682,6 +1689,7 @@ break;
 			addCard(type);
 
 			break;
+
 		case Nature:
 
 			cName= "Claw";
@@ -1696,10 +1704,10 @@ break;
 
 			cName= "Neurotoxin";
 			cStrength=1.2f;
-			cDescription = "1 magic damage: enemy discards 1 card";
+			cDescription = "1 physical damage: enemy discards 1 card";
 			cDescSize=20;
 			aActionType=ActionType.Attack;
-			aDamageType=DamageType.Magical;
+			aDamageType=DamageType.Physical;
 			aEffect=1;
 			raType=ActionType.Discard;
 			raEffect=1;
@@ -1753,11 +1761,25 @@ break;
 
 			cName= "Anger";
 			cStrength=0.1f;
-			cDescription = "1 physical damage, take 1 damage";
+			cDescription = "1 physical damage, -1hp";
 			cDescSize=22;
 			aActionType=ActionType.Attack;
 			aDamageType=DamageType.Physical;
 			aEffect=1;
+			addAction();
+			aActionType=ActionType.TakeDamage;
+			aDamageType=DamageType.Physical;
+			aEffect=1;
+			addAction();
+			addCard(type);
+
+			cName= "Headbutt";
+			cStrength=1.3f;
+			cDescription = "2 physical damage, -1 hp";
+			cDescSize=22;
+			aActionType=ActionType.Attack;
+			aDamageType=DamageType.Physical;
+			aEffect=2;
 			addAction();
 			aActionType=ActionType.TakeDamage;
 			aDamageType=DamageType.Physical;
@@ -1779,41 +1801,30 @@ break;
 			addAction();
 			addCard(type);
 
-			cName= "Headbutt";
-			cStrength=1.3f;
-			cDescription = "2 physical damage, take 1 damage";
-			cDescSize=22;
-			aActionType=ActionType.Attack;
-			aDamageType=DamageType.Physical;
-			aEffect=2;
-			addAction();
-			aActionType=ActionType.TakeDamage;
-			aDamageType=DamageType.Physical;
-			aEffect=1;
-			addAction();
-			addCard(type);
-
-			cName= "Clobber";
-			cStrength=2.3f;
-			cDescription = "2 physical damage, [unblockable]";
-			cDescSize=22;
-			aActionType=ActionType.Attack;
-			aDamageType=DamageType.Physical;
-			aEffect=2;
-			aUnblockable=true;
-			addAction();
-			addCard(type);
-
-			cName= "Wrath";
-			cStrength=3.3f;
-			cDescription = "3 physical damage, block 1 magic";
+			cName= "Body Slam";
+			cStrength=2.5f;
+			cDescription = "3 physical damage, -1 hp";
 			cDescSize=22;
 			aActionType=ActionType.Attack;
 			aDamageType=DamageType.Physical;
 			aEffect=3;
 			addAction();
-			aActionType=ActionType.Block;
-			aDamageType=DamageType.Magical;
+			aActionType=ActionType.TakeDamage;
+			aDamageType=DamageType.Physical;
+			aEffect=1;
+			addAction();
+			addCard(type);
+
+			cName= "Body Slam";
+			cStrength=2.5f;
+			cDescription = "3 physical damage, -1 hp";
+			cDescSize=22;
+			aActionType=ActionType.Attack;
+			aDamageType=DamageType.Physical;
+			aEffect=3;
+			addAction();
+			aActionType=ActionType.TakeDamage;
+			aDamageType=DamageType.Physical;
 			aEffect=1;
 			addAction();
 			addCard(type);
@@ -1848,17 +1859,16 @@ break;
 			addAction();
 			addCard(type);
 
-			cName= "Whoosh";
+			cName= "Drain";
 			cStrength=1.8f;
-			cDescription = "1 magic damage, block 1 any";
+			cDescription = "1 magic damage, +1 HP/damage dealt";
 			cDescSize=21;
 			aActionType=ActionType.Attack;
 			aDamageType=DamageType.Magical;
 			aEffect=1;
 			addAction();
-			aActionType=ActionType.Block;
-			aDamageType=DamageType.Either;
-			aEffect=1;
+			aActionType=ActionType.Heal;
+			aEffectCondition= ActionEffectCondition.damageDealt;
 			addAction();
 			addCard(type);
 
@@ -1890,6 +1900,7 @@ break;
 			addCard(type);
 
 			break;
+
 		case Stupidity:
 
 			cName="Uhh..";
@@ -1929,13 +1940,16 @@ break;
 			addAction();
 			addCard(type);
 
-			cName= "Strike";
-			cStrength=1f;
-			cDescription = "1 physical damage";
+			cName= "Head blow";
+			cStrength=1.2f;
+			cDescription = "1 physical damage: enemy discards a card";
 			cDescSize=24;
 			aActionType=ActionType.Attack;
 			aDamageType=DamageType.Physical;
 			aEffect=1;
+			raType=ActionType.Discard;
+			raEffect=1;
+			addResultAction();
 			addAction();
 			addCard(type);
 
@@ -1953,14 +1967,19 @@ break;
 			addAction();
 			addCard(type);
 
-			cName= "Clash";
-			cStrength=2.3f;
-			cDescription = "2 physical damage, [unblockable]";
+			cName= "Slash";
+			cStrength=2.5f;
+			cDescription = "1 physical damage: 1 damage per turn";
 			cDescSize=22;
 			aActionType=ActionType.Attack;
 			aDamageType=DamageType.Physical;
-			aEffect=2;
-			aUnblockable=true;
+			aEffect=1;
+			raType=ActionType.Effect;
+			raEffectType=ResultActionEffectType.Fire;
+			raDamageType=DamageType.Physical;
+			raEffect=1;
+			raRounds=-1;
+			addResultAction();
 			addAction();
 			addCard(type);
 
@@ -1979,7 +1998,7 @@ break;
 			addCard(type);
 
 			break;
-			
+
 			/*
 			 * 
 			 * 
@@ -1999,7 +2018,7 @@ break;
 			 * 
 			 * 
 			 */
-			
+
 		case Rage:
 			cName= "Thrash";
 			cStrength=2.5f;
@@ -2014,7 +2033,7 @@ break;
 			aEffect=1;
 			addAction();
 			addCard(type);
-			
+
 			cName= "Thrash";
 			cStrength=2.5f;
 			cDescription = "3 physical damage, take 1 damage";
@@ -2028,7 +2047,7 @@ break;
 			aEffect=1;
 			addAction();
 			addCard(type);
-			
+
 			cName= "Maul";
 			cStrength=3.5f;
 			cDescription = "4 physical damage, take 1 damage";
@@ -2042,7 +2061,7 @@ break;
 			aEffect=1;
 			addAction();
 			addCard(type);
-			
+
 			cName= "Trample";
 			cStrength=3.5f;
 			cDescription = "4 physical damage [unblockable]";
@@ -2054,8 +2073,8 @@ break;
 			addAction();
 			addCard(type);
 			break;
-			
-			
+
+
 		case Demonic:
 			cName= "Mind Blast";
 			cStrength=3f;
@@ -2066,7 +2085,7 @@ break;
 			aEffect=3;
 			addAction();
 			addCard(type);
-			
+
 			cName= "Sweeping Blast";
 			cStrength=3f;
 			cDescription = "3 magic damage, block 2 magic";
@@ -2080,7 +2099,7 @@ break;
 			aEffect=2;
 			addAction();
 			addCard(type);
-			
+
 			cName= "Withering Touch";
 			cStrength=4;
 			cDescription = "3 magic damage [unblockable]";
@@ -2091,7 +2110,7 @@ break;
 			aUnblockable=true;
 			addAction();
 			addCard(type);
-			
+
 			cName= "Lightning Burst";
 			cStrength=3f;
 			cDescription = "4 magic damage, block 1";
@@ -2107,7 +2126,7 @@ break;
 			addCard(type);
 			break;
 
-			
+
 		case Sorcery:
 			cName= "Dark Strike";
 			cStrength=2.3f;
@@ -2147,7 +2166,7 @@ break;
 			addResultAction();
 			addAction();
 			addCard(type);
-			
+
 			cName= "Black Strike";
 			cStrength=4.2f;
 			cDescription = "4 magic damage: next card is hidden";
@@ -2160,11 +2179,11 @@ break;
 			addResultAction();
 			addAction();
 			addCard(type);
-		
+
 			break;
-			
+
 		case Venom:
-			
+
 			cName= "Venomous Bite";
 			cStrength=3f;
 			cDescription = "2 phsyical damage, 1 magic damage";
@@ -2178,7 +2197,7 @@ break;
 			aEffect=1;
 			addAction();
 			addCard(type);
-			
+
 			cName= "Poison";
 			cStrength=4;
 			cDescription = "2 physical damage: 1 physical damage each turn";
@@ -2194,7 +2213,7 @@ break;
 			addResultAction();
 			addAction();
 			addCard(type);
-			
+
 			cName= "Spider Bite";
 			cStrength=4f;
 			cDescription = "2 phsyical damage, 2 magic damage";
@@ -2208,7 +2227,7 @@ break;
 			aEffect=2;
 			addAction();
 			addCard(type);
-			
+
 			cName= "Disease";
 			cStrength=5;
 			cDescription = "3 physical damage: 1 physical damage each turn";
@@ -2224,11 +2243,11 @@ break;
 			addResultAction();
 			addAction();
 			addCard(type);
-			
+
 			break;
-			
+
 		case Ghoulish:
-			
+
 			cName= " Pain";
 			cStrength=3;
 			cDescription = "2 magic damage, block all magical";
@@ -2241,7 +2260,7 @@ break;
 			aDamageType=DamageType.Magical;
 			addAction();
 			addCard(type);
-			
+
 			cName= "Torment";
 			cStrength=3;
 			cDescription = "2 magic damage, block all physical";
@@ -2254,7 +2273,7 @@ break;
 			aDamageType=DamageType.Physical;
 			addAction();
 			addCard(type);
-			
+
 			cName= "Siphon";
 			cStrength=3.8f;
 			cDescription = "2 magic damage, +1 HP/damage dealt";
@@ -2267,7 +2286,7 @@ break;
 			aEffectCondition= ActionEffectCondition.damageDealt;
 			addAction();
 			addCard(type);
-			
+
 			cName= "Siphon";
 			cStrength=3.8f;
 			cDescription = "2 magic damage, +1 HP/damage dealt";
@@ -2280,11 +2299,11 @@ break;
 			aEffectCondition= ActionEffectCondition.damageDealt;
 			addAction();
 			addCard(type);
-			
+
 			break;
-			
+
 		case Burly:
-			
+
 			cName= "Beat";
 			cStrength=2.8f;
 			cDescription = "2 physical damage, block 2 physical";
@@ -2298,7 +2317,7 @@ break;
 			aEffect=2;
 			addAction();
 			addCard(type);
-			
+
 			cName= "Pummel";
 			cStrength=2.8f;
 			cDescription = "2 physical damage, block 2 magic";
@@ -2312,7 +2331,7 @@ break;
 			aEffect=2;
 			addAction();
 			addCard(type);
-			
+
 			cName= "Head Crack";
 			cStrength=3.3f;
 			cDescription = "3 physical damage: enemy discards 1 card";
@@ -2341,7 +2360,7 @@ break;
 			addCard(type);
 			break;
 
-		
+
 		default:
 			break;
 
@@ -2428,12 +2447,10 @@ break;
 			output+=jsonSkills(type);	
 		}
 		output=Json.removeComma(output);
-		output+=Json.endList(true);
-		output=Json.removeComma(output);
-		output+=Json.endList(true);
-		output=Json.removeComma(output);
-		output+=Json.endEnclose(true);
-		output=Json.removeComma(output);
+		output+=Json.endList(false);
+		output+=Json.endList(false);
+		output+=Json.endEnclose(false);
+
 		return output;
 	}
 
@@ -2453,7 +2470,19 @@ break;
 	}
 
 
+	public static String cardDetails(Skill.SkillType[] types){
+		String output="";
+		for(SkillType st:types){
+			System.out.println("----"+st+"----");
+			int index=1;
+			for(Card c:Skill.get(st).getCards(false)){
+				System.out.println("["+index+"]: "+c.name+" -> "+c.description+" ("+c.strength+")");
+				index++;
+			}	
+		}
 
+		return output;
+	}
 
 
 
@@ -2495,16 +2524,19 @@ break;
 				return s;
 			}
 		}
+
+		
+
 		public String toJson() {
 			String output="";
-			
+
 			if(aType==ActionType.Withstand){
 				output+=Json.addKey("type", "Effect", true);
 				output+=Json.addKey("effectType", "Trait", true);
 				output+=Json.addKey("effectTrait", ActionType.Withstand.toString(), true);
 				output+=Json.addKey("target", "self", true);
 			}
-			
+
 			else if(aType!=null)output+=Json.addKey("type", aType.toString(), true);
 			if(dType!=null)output+=Json.addKey("damageType", dType.toString(), true);
 			if(effect>0){
@@ -2525,7 +2557,7 @@ break;
 				case Withstand:
 					output+=Json.addKey("rounds", effect, true);
 					break;
-				
+
 				}
 			}
 			if(effectCondition!=null) output+=Json.addKey("quantityCondition", effectCondition.toString(), true);
@@ -2578,7 +2610,7 @@ break;
 					effectType!=ResultActionEffectType.Stupidity)output+=Json.addKey("effectType", effectType.toString(), true);
 			if(damageType!=null)output+=Json.addKey("damageType", damageType.toString(), true);
 			if(rounds!=0)output+=Json.addKey("rounds", rounds, true);
-			
+
 			if(type==ActionType.Effect){
 				switch(effectType){
 				case Conceal:
@@ -2599,7 +2631,7 @@ break;
 					break;
 				default:
 					break;
-				
+
 				}
 			}
 			if(actionEffect!=0){
@@ -2632,9 +2664,9 @@ break;
 					break;
 				}
 			}
-			
-			
-			
+
+
+
 			output=Json.removeComma(output);
 			output+=Json.endEnclose(true);
 			return output;

@@ -25,7 +25,7 @@ public class Skill {
 		SkillType.Rage, SkillType.Demonic, SkillType.Sorcery, SkillType.Venom, SkillType.Ghoulish, SkillType.Burly};
 	public static SkillType[] playerSkills=new SkillType[]{SkillType.Fire, SkillType.Arcane, SkillType.Holy, SkillType.Armour, SkillType.Blade, SkillType.Crush, SkillType.Swift, SkillType.Growth,
 		SkillType.Trickster, SkillType.Warrior, SkillType.Crone, SkillType.HealAid};
-	public static SkillType[] heroDecks = new SkillType[]{SkillType.Chump, SkillType.Bruiser, SkillType.Apprentice, SkillType.Alchemist, SkillType.Cat_Burglar, SkillType.Shapeshifter, SkillType.Ranger, SkillType.Barbarian};
+	public static SkillType[] heroDecks = new SkillType[]{SkillType.Chump, SkillType.Bruiser, SkillType.Cat_Burglar, SkillType.Apprentice, SkillType.Mime, SkillType.Ranger, SkillType.Barbarian, SkillType.Alchemist, SkillType.Shapeshifter, SkillType.Most_Holy_Grail_Knight, SkillType.Troubador, SkillType.Mathemagician, SkillType.Cartomancer, SkillType.Artificer};
 	
 	public static Skill fire= new Skill(SkillType.Fire);
 	public static Skill arcane= new Skill(SkillType.Arcane);

@@ -32,7 +32,6 @@ public class Card {
 		}
 		output+=Json.addKey("descSize", descSize, true);
 		if(image!=null)output+=Json.addKey("image", image.toString(), true);
-		
 		if(actions.size()>0){
 			output+=Json.startArray("Actions");
 			for (int i=0;i<actions.size();i++){
@@ -42,11 +41,9 @@ public class Card {
 				output+=Json.endEnclose(true);
 			}
 			output=Json.removeComma(output);
-			output+=Json.endArray(true);
+			output+=Json.endArray(false);
 		}
-		output=Json.removeComma(output);
-		output+=Json.endEnclose(true);
-		output=Json.removeComma(output);
+		output+=Json.endEnclose(false);
 		
 		return output;
 		

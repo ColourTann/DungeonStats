@@ -2,8 +2,6 @@ package fighter;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Level;
-
 import cards.Card;
 
 public abstract class Fighter {
@@ -12,7 +10,13 @@ public abstract class Fighter {
 	public int level;
 	int hp;
 	public enum Trait{
-		Tenacious, Brittle, Meaty, Respite, Fury, Burn, Skilled, Damp, Blessed, Covetous, ArcaneBlade, Ranged, Ferocious, Bulwark, Accurate, Wise, Spikey, Deathwish, Halfbaked, Sleepy, SpellSword, Retribution, Cunning, VitaSuit, Talented;
+		Tenacious, Brittle, Meaty, Respite, Fury, Burn, 
+		Skilled, Damp, Blessed, Covetous, ArcaneBlade, 
+		Ranged, Ferocious, Bulwark, Accurate, Wise, Spikey, 
+		Deathwish, Halfbaked, Sleepy, SpellSword, Retribution, 
+		Cunning, VitaSuit, Talented, Intuition, 
+		MagicalVuln, PhysicalVuln,
+		Predictable;
 
 		public String toJson() {
 			return "\""+this+"\"";
@@ -103,6 +107,19 @@ public abstract class Fighter {
 					bonusHP+=1;
 					break;
 				case Wise:
+					break;
+				case Intuition:
+					break;
+				case MagicalVuln:
+					bonusHP-=getHP()/5f;
+					break;
+				case PhysicalVuln:
+					bonusHP-=getHP()/5f;
+					break;
+				case Predictable:
+					bonusHP-=getHP()/8f;
+					break;
+				case Talented:
 					break;
 				default:
 					break;
