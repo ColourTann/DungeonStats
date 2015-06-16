@@ -239,13 +239,14 @@ public class MonsterFactory {
 
 		name = "Mimic";
 		plural= "Mimics";
+		region=Region.Stone;
 		description = "Maybe it still has treasure inside";
 		frameNumber = 37;
 		level = 2;
 		health = 7;
 		randomPool=0;
 		sound = MSound.giant_bat;
-		traits = null;
+		//traits = new Trait[]{};
 		skills = new Skill[]{Skill.get(SkillType.Death).asLevel(3), Skill.get(SkillType.Feral).asLevel(3), Skill.get(SkillType.Irritable).asLevel(3)};
 		make();
 
@@ -290,10 +291,23 @@ public class MonsterFactory {
 		randomPool=1;
 		sound= MSound.ghost;
 		traits = new Trait[]{Trait.Tenacious};
-		skills = new Skill[]{Skill.get(SkillType.Spooky).asLevel(3), Skill.get(SkillType.Death).asLevel(4)};
+		skills = new Skill[]{Skill.get(SkillType.Spooky).asLevel(4), Skill.get(SkillType.Death).asLevel(5)};
 		make();
-
-
+		
+		name = "Scorpion";
+		plural= "Scorpions";
+		region=Region.Stone;
+		species=Species.undead;
+		description = "Snap snap";
+		frameNumber = 43;
+		level = 3;
+		health = 8;
+		randomPool=1;
+		sound= MSound.skeleton;
+		traits = null;
+		skills = new Skill[]{Skill.get(SkillType.Armed).asLevel(4), Skill.get(SkillType.Nature).asLevel(4), Skill.get(SkillType.Feral).asLevel(4)};
+		make();
+		
 		name = "Fire Elemental";
 		plural= "Fire Elementals";
 		region=Region.Stone;
@@ -305,22 +319,8 @@ public class MonsterFactory {
 		randomPool=1;
 		sound= MSound.ghost;
 		traits = new Trait[]{Trait.Burn};
-		skills = new Skill[]{Skill.get(SkillType.Flame).asLevel(4), Skill.get(SkillType.Irritable).asLevel(4)};
-		make();
-
-		name = "Scorpion";
-		plural= "Scorpions";
-		region=Region.Stone;
-		species=Species.undead;
-		description = "Snap snap";
-		frameNumber = 43;
-		level = 3;
-		health = 7;
-		randomPool=1;
-		sound= MSound.skeleton;
-		traits = null;
-		skills = new Skill[]{Skill.get(SkillType.Armed).asLevel(4), Skill.get(SkillType.Nature).asLevel(4), Skill.get(SkillType.Feral).asLevel(4)};
-		make();
+		skills = new Skill[]{Skill.get(SkillType.Flame).asLevel(4), Skill.get(SkillType.Death).asLevel(4)};
+		make();		
 
 		name = "Bandito";
 		plural= "Banditos";
@@ -328,7 +328,7 @@ public class MonsterFactory {
 		description = "¡La bolsa o la vida!";
 		frameNumber = 6;
 		level = 3;
-		health = 6;
+		health = 7;
 		randomPool=1;
 		sound= MSound.goblin;
 		traits = null;
@@ -341,11 +341,11 @@ public class MonsterFactory {
 		description = "Seeing red";
 		frameNumber = 18;
 		level = 3;
-		health = 9;
+		health = 10;
 		traits = new Trait[]{Trait.Fury, Trait.Meaty};
 		randomPool=0;
 		sound = MSound.giant_bat;
-		skills = new Skill[]{Skill.get(SkillType.Irritable).asLevel(4), Skill.get(SkillType.Armed).asLevel(4)};
+		skills = new Skill[]{Skill.get(SkillType.Irritable).asLevel(5), Skill.get(SkillType.Armed).asLevel(4)};
 		boardChat=new BoardChat[]{
 				new BoardChat(ChatType.Monster, new String[]{
 						"Scram!", 
@@ -372,11 +372,11 @@ public class MonsterFactory {
 		
 		
 		name = "Rat King Cole";
-		plural= "Rat Men";
+		plural= "Rat Kings Cole";
 		description = "Squeak squeak!";
 		frameNumber = 62;
-		level = 2;
-		health = 7;
+		level = 3;
+		health = 8;
 		randomPool=0;
 		traits = null;
 		sound= MSound.giant_bat;
@@ -403,12 +403,12 @@ public class MonsterFactory {
 		plural= "Mimic Queens";
 		description = "Wow she looks angry!";
 		frameNumber = 64;
-		level = 3;
-		health = 7;
+		level = 4;
+		health = 11;
 		randomPool=0;
 		sound = MSound.giant_bat;
-		traits = null;
-		skills = new Skill[]{Skill.get(SkillType.Death).asLevel(4), Skill.get(SkillType.Feral).asLevel(4)};
+		traits = new Trait[]{Trait.Brittle};
+		skills = new Skill[]{Skill.get(SkillType.Death).asLevel(5), Skill.get(SkillType.Feral).asLevel(4), Skill.get(SkillType.Irritable).asLevel(5)};
 		boardChat=new BoardChat[]{
 				new BoardChat(ChatType.Monster, new String[]{
 						"Grahh! Get outta my way!", 
@@ -430,58 +430,20 @@ public class MonsterFactory {
 		};
 		make();
 
-		name = "Orc Grunt";
-		plural= "Orc Grunts";
+		name = "Orc Warlord";
+		plural= "Orc Warlords";
 		description = "ORCZ iz da best! *sigh* Must I do the voice?";
 		frameNumber = 19;
-		level = 3;
-		health = 6;
+		level = 4;
+		health = 11;
 		randomPool=0;
 		sound = MSound.giant_bat;
-		traits = new Trait[]{Trait.Skilled};
-		skills = new Skill[]{Skill.get(SkillType.Armed).asLevel(5), Skill.get(SkillType.Irritable).asLevel(5)};
+		traits = new Trait[]{Trait.Predictable};
+		skills = new Skill[]{Skill.get(SkillType.Armed).asLevel(5), Skill.get(SkillType.Irritable).asLevel(5), Skill.get(SkillType.Stupidity).asLevel(2)};
 		make();
 		
-		
-
-		name = "The Black Knight";
-		plural= "Black Knights";
-		description = "I'll bite you!";
-		frameNumber = 46;
-		level = 4 ;
-		health = 8;
-		randomPool=0;
-		sound = MSound.giant_bat;
-		traits = null;
-		skills = new Skill[]{Skill.get(SkillType.Armed).asLevel(5), Skill.get(SkillType.Death).asLevel(4)};
-		make();
-
-		name = "Lich";
-		plural= "Lichen";
-		description = "Don't let him cast Lich Itch on you!";
-		frameNumber = 29;
-		level = 4;
-		health = 8;
-		randomPool=0;
-		sound = MSound.giant_bat;
-		traits = new Trait[]{Trait.Halfbaked};
-		skills = new Skill[]{Skill.get(SkillType.Spooky).asLevel(5), Skill.get(SkillType.Death).asLevel(5)};
-		make();
-
-		name = "Fire Demon";
-		plural= "Fire Demons";
-		description = "OW! This card is burning hot!";
-		frameNumber = 8;
-		level = 4;
-		health = 7;
-		randomPool=0;
-		sound = MSound.skeleton;
-		traits = new Trait[]{Trait.Skilled, Trait.Damp};
-		skills = new Skill[]{Skill.get(SkillType.Armed).asLevel(5), Skill.get(SkillType.Flame).asLevel(5), Skill.get(SkillType.Irritable).asLevel(5)};
-		make();
-
 		name = "Embro";
-		plural= "Fire Demons";
+		plural= "Embrosia";
 		description = "OW! This card is burning hot!";
 		frameNumber = 8;
 		level = 4;
@@ -524,23 +486,43 @@ public class MonsterFactory {
 		};
 		make();
 
+		name = "The Black Knight";
+		plural= "Black Knights";
+		description = "I'll bite you!";
+		frameNumber = 46;
+		level = 4 ;
+		health = 10;
+		randomPool=0;
+		sound = MSound.giant_bat;
+		traits = new Trait[]{Trait.MagicalVuln};
+		skills = new Skill[]{Skill.get(SkillType.Armed).asLevel(5), Skill.get(SkillType.Death).asLevel(5)};
+		make();
 
+		name = "Lich";
+		plural= "Lichen";
+		description = "Don't let him cast Lich Itch on you!";
+		frameNumber = 29;
+		level = 4;
+		health = 8;
+		randomPool=0;
+		sound = MSound.giant_bat;
+		traits = new Trait[]{Trait.Halfbaked};
+		skills = new Skill[]{Skill.get(SkillType.Spooky).asLevel(5), Skill.get(SkillType.Death).asLevel(5)};
+		make();
 
 		name = "Eye Beast";
 		plural= "Eye Beasts";
 		description = "Is it looking at me?";
 		frameNumber = 47;
 		level = 4 ;
-		health = 10;
+		health = 11;
 		randomPool=0;
 		sound = MSound.giant_bat;
-		traits = null;
-		skills = new Skill[]{Skill.get(SkillType.Death).asLevel(5)};
+		traits = new Trait[]{Trait.PhysicalVuln};
+		skills = new Skill[]{Skill.get(SkillType.Death).asLevel(5), Skill.get(SkillType.Flame).asLevel(5)};
 		make();
 
-
 		//ZONE 2//
-
 
 		name= "Bloodstarved Bat";
 		plural= "Bloodstarved Bats";
@@ -1575,7 +1557,13 @@ public class MonsterFactory {
 
 	public static void printAll(){
 		for(Monster m: monsters) {
-			//if(m.randomPool==0)continue;
+			m.getStrength(true);
+		}
+	}
+	
+	public static void printAll(Region region){
+		for(Monster m: monsters) {
+			if(m.region!=region)continue;
 			m.getStrength(true);
 		}
 	}

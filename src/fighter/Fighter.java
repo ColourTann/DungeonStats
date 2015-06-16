@@ -57,7 +57,7 @@ public abstract class Fighter {
 					bonusHP+=getHP()/5f;
 					break;
 				case Fury:
-					bonusAverageStrength+=.4f;
+					bonusAverageStrength+=.33f;
 					break;
 				case Burn:
 					flatBonusStrength=1.5f;
@@ -87,6 +87,7 @@ public abstract class Fighter {
 					bonusHP+=.5f;
 					break;
 				case Damp:
+					bonusHP+=.5f;
 					break;
 				case Ferocious:
 					break;
@@ -138,7 +139,7 @@ public abstract class Fighter {
 			startPrint();
 			print(name +" ["+level+"]");
 			print("Power: "+getStrength(false)+(flatBonusStrength>0?(" ["+flatBonusStrength+"]"):("")));
-			print("HP: "+getHP()+(bonusHP>0?("("+bonusHP+")"):""));
+			print("HP: "+getHP()+(bonusHP!=0?("("+bonusHP+")"):""));
 			print("Total power: "+truncate(totalStrength));
 			print("Avg power: "+truncate((totalStrength/numberOfCards))+(bonusAverageStrength>0?"("+bonusAverageStrength+")":""));
 			print("Total cards: "+(int)numberOfCards+"("+(int)cards.size()+")");

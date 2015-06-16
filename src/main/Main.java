@@ -2,7 +2,9 @@ package main;
 import fighter.Fighter.*;
 import item.Item;
 import item.Item.UnlockedBy;
+
 import java.util.ArrayList;
+
 import room.Room;
 import cards.CardFactory;
 import cards.Skill;
@@ -13,6 +15,7 @@ import dungeon.Tile;
 import fighter.monster.Monster;
 import fighter.monster.MonsterFactory;
 import fighter.monster.Monster.*;
+import fighter.monster.MonsterFactory.Region;
 import fighter.player.Hero;
 import fighter.player.HeroFactory;
 
@@ -20,18 +23,18 @@ public class Main {
 	public static void main(String[] args) {
 		setup();
 
-//		System.out.println(Adventure.jsonAdventures());
-//		System.out.println(CardFactory.jsonAllSkills(false));
-		//System.out.println(CardFactory.jsonAllSkills(true));
-//		System.out.println(Item.jsonAll());
-//		System.out.println(MonsterFactory.jsonAll());
-//		System.out.println(HeroFactory.toJson());
+//				System.out.println(Adventure.jsonAdventures());
+//				System.out.println(CardFactory.jsonAllSkills(false));
+//				System.out.println(CardFactory.jsonAllSkills(true));
+		//		System.out.println(Item.jsonAll());
+				System.out.println(MonsterFactory.jsonAll());
+		//		System.out.println(HeroFactory.toJson());
 
 
-//		System.out.println(CardFactory.cardDetails(Skill.heroDecks));
-				MonsterFactory.printAll();
+
+		//		MonsterFactory.printAll(Region.Stone);
+//				MonsterFactory.printAll();
 		//		MonsterFactory.sortMonsters();
-		//		
 		//		Item.printAllUnlocks();
 		//		Item.printItemTypeAmounts();
 		//		System.out.println(Item.analyseTier(0));
@@ -39,7 +42,8 @@ public class Main {
 		//		for(int i=1;i<=5;i++) Item.analyseLevel(i);
 		//		Item.analyseLevel(2, true, true);
 		//		System.out.println(Room.JsonAllRooms());
-//				System.out.println(HeroFactory.analyseClasses());
+		//		System.out.println(CardFactory.cardDetails(Skill.heroDecks));
+		//		System.out.println(HeroFactory.analyseClasses());
 		//		System.out.println(Adventure.trophyLocations());
 	}
 

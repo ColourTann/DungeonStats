@@ -1157,10 +1157,10 @@ public class CardFactory {
 
 			cName= "Force Shield";
 			cStrength=2;
-			cDescription = "Block 1 dmg, +1 card per dmg blocked";
+			cDescription = "Block 1 magic dmg, +1 card per dmg blocked";
 			cDescSize=20;
 			aActionType=ActionType.Block;
-			aDamageType=DamageType.Either;
+			aDamageType=DamageType.Magical;
 			aEffect=1;
 			addAction();
 			aActionType=ActionType.Draw;
@@ -1397,10 +1397,10 @@ public class CardFactory {
 
 			cName= "Holy Seal";
 			cStrength=2;
-			cDescription = "Block 1 damage, +1 hp per dmg blocked";
+			cDescription = "Block 1 physical, +1 hp per dmg blocked";
 			cDescSize=20;
 			aActionType=ActionType.Block;
-			aDamageType=DamageType.Either;
+			aDamageType=DamageType.Physical;
 			aEffect=1;
 			addAction();
 			aActionType=ActionType.Heal;
@@ -1457,7 +1457,7 @@ public class CardFactory {
 
 			cName= "Interrupt";
 			cStrength=2.5f;
-			cDescription = "1 physical damage, [quick], block all magic";
+			cDescription = "1 physical damage, [quick], block 2 magic";
 			cDescSize=20;
 			aActionType=ActionType.Attack;
 			aDamageType=DamageType.Physical;
@@ -1466,6 +1466,7 @@ public class CardFactory {
 			addAction();
 			aActionType=ActionType.Block;
 			aDamageType=DamageType.Magical;
+			aEffect=2;
 			addAction();			
 			addCard(type);
 
@@ -1729,31 +1730,30 @@ public class CardFactory {
 			addCard(type);
 
 
-			cName= "Entangle";
-			cStrength=3.5f;
-			cDescription = "2 magic damage, block 2 damage";
+			cName= "Acid Spit";
+			cStrength=3f;
+			cDescription = "1 physical damage, 2 magic damage";
 			cDescSize=22;
 			aActionType=ActionType.Attack;
-			aDamageType=DamageType.Magical;
-			aEffect=2;
+			aDamageType=DamageType.Physical;
+			aEffect=1;
 			addAction();
-			aActionType=ActionType.Block;
-			aDamageType=DamageType.Either;
+			aActionType=ActionType.Attack;
+			aDamageType=DamageType.Magical;
 			aEffect=2;
 			addAction();
 			addCard(type);
 
-			cName= "Entangle";
-			cStrength=3.5f;
-			cDescription = "2 magic damage, block 2 damage";
-			cDescSize=22;
+			cName= "Restore";
+			cStrength=3.7f;
+			cDescription = "2 magic damage: +3 hp";
+			cDescSize=24;
 			aActionType=ActionType.Attack;
 			aDamageType=DamageType.Magical;
 			aEffect=2;
-			addAction();
-			aActionType=ActionType.Block;
-			aDamageType=DamageType.Either;
-			aEffect=2;
+			raType=ActionType.Heal;
+			raEffect=3;
+			addResultAction();
 			addAction();
 			addCard(type);
 			break;
@@ -1967,18 +1967,15 @@ public class CardFactory {
 			addAction();
 			addCard(type);
 
-			cName= "Slash";
+			cName= "Stagger";
 			cStrength=2.5f;
-			cDescription = "1 physical damage: 1 damage per turn";
-			cDescSize=22;
+			cDescription = "2 physical damage: enemy discards a card";
+			cDescSize=24;
 			aActionType=ActionType.Attack;
 			aDamageType=DamageType.Physical;
-			aEffect=1;
-			raType=ActionType.Effect;
-			raEffectType=ResultActionEffectType.Fire;
-			raDamageType=DamageType.Physical;
+			aEffect=2;
+			raType=ActionType.Discard;
 			raEffect=1;
-			raRounds=-1;
 			addResultAction();
 			addAction();
 			addCard(type);
@@ -2588,7 +2585,7 @@ public class CardFactory {
 		DamageType damageType;
 		int rounds;
 		public enum ResultActionEffectType{
-			Fire, StopPlayerFromPlayingPhysical, StopPlayerFromPlayingMagical, StopPlayerFromPlayingBlocks, Conceal, Stupidity, Poison
+			Fire, StopPlayerFromPlayingPhysical, StopPlayerFromPlayingMagical, StopPlayerFromPlayingBlocks, Conceal, Stupidity, Poison, Bleed
 		}
 		public ResultAction(ActionType type, ResultActionEffectType effectType, DamageType raDamageType, int actionEffect, int raRounds){
 			this.type=type;
@@ -2620,7 +2617,7 @@ public class CardFactory {
 					output += Json.addKey("rounds", 1, true);
 					output += Json.addKey("ignoreFirstTick", true, true);
 					break;
-				case Fire: case Poison:
+				case Fire: case Poison: case Bleed:
 					output+=Json.addKey("damage", actionEffect, true);
 					break;
 				case StopPlayerFromPlayingBlocks:

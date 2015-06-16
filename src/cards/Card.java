@@ -30,7 +30,7 @@ public class Card {
 		if(actions.size()==4){
 			output += Json.addKey("firstRow", 3, true);
 		}
-		output+=Json.addKey("descSize", descSize, true);
+		output+=Json.addKey("descSize", descSize, actions.size()>0);
 		if(image!=null)output+=Json.addKey("image", image.toString(), true);
 		if(actions.size()>0){
 			output+=Json.startArray("Actions");
@@ -43,6 +43,7 @@ public class Card {
 			output=Json.removeComma(output);
 			output+=Json.endArray(false);
 		}
+		
 		output+=Json.endEnclose(false);
 		
 		return output;

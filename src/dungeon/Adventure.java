@@ -444,8 +444,8 @@ public class Adventure {
 		aDescription="Take out the guards";
 		aReward=100;
 		aTerrainType=TerrainType.stone;
-		aBoss="Orc Grunt";
-		aBossName="Orc Grunt";
+		aBoss="Orc Warlord";
+		aBossName="Orc Warlord";
 		aBossChats= new BossChat[]{};
 		aStartingTile=TileName.room_collapse_esw;
 		aLayout= new DungeonLayout(new TileLocation[]{
@@ -465,8 +465,8 @@ public class Adventure {
 		aDescription="Defeat the big orc";
 		aReward=100;
 		aTerrainType=TerrainType.stone;
-		aBoss="Orc Grunt";
-		aBossName="Orc Grunt";
+		aBoss="Orc Warlord";
+		aBossName="Orc Warlord";
 		aBossChats= new BossChat[]{
 				new BossChat(Trigger.ZerothTurn, new BossSpeech[]{
 						new BossSpeech("GRAK and GRIK! Defeat this interloper!")
