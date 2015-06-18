@@ -1201,10 +1201,10 @@ public class CardFactory {
 
 			cName= "Advance";
 			cStrength=2;
-			cDescription = "Block 1 physical dmg, +1 to next physical attack";
+			cDescription = "Block 1 dmg, +1 to next physical attack";
 			cDescSize=19;
 			aActionType=ActionType.Block;
-			aDamageType=DamageType.Physical;
+			aDamageType=DamageType.Either;
 			aEffect=1;
 			addAction();
 			aActionType=ActionType.NextAttack;
@@ -1215,10 +1215,10 @@ public class CardFactory {
 
 			cName= "Shield Wall";
 			cStrength=2.5f;
-			cDescription = "1 physical damage, block 2 dmg";
+			cDescription = "1 physical damage, block 2 physical dmg";
 			cDescSize=19;
 			aActionType=ActionType.Block;
-			aDamageType=DamageType.Either;
+			aDamageType=DamageType.Physical;
 			aEffect=2;
 			addAction();
 			aActionType=ActionType.Attack;

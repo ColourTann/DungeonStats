@@ -186,10 +186,12 @@ public class Item {
 		aType=EquipmentType.helmet;
 		aLevel=3;
 		aEquipFrame=11;
-		aUnlockLevel=0;
+		aUnlockLevel=1;
+		aUnlock=UnlockedBy.Leather;
 		aRandomPool=1;
 		aSound=Sound.equip_leather_helm;
 		aSkills=new Skill[]{Skill.armour.asLevel(2)};
+		aHealth=1;  
 		aOffsetX=111; aOffsetY=68;
 		add();
 
@@ -418,14 +420,14 @@ public class Item {
 		aDesc="Where are my merry Men?!";
 		aEquipment=1;
 		aType=EquipmentType.helmet;
-		aLevel=2;
+		aLevel=3;
 		aEquipFrame=31;
-		aUnlockLevel=1;
-		aUnlock=UnlockedBy.Leather;
+		aUnlockLevel=0;
+		aUnlock=UnlockedBy.Base;
 		aRandomPool=0;
 		aKeepHair=1;
 		aSound=Sound.equip_cloth_hat;
-		aSkills=new Skill[]{Skill.swift.asLevel(1), Skill.growth.asLevel(1), Skill.arcane.asLevel(1)};
+		aSkills=new Skill[]{Skill.growth.asLevel(2)};
 		aOffsetX=110; aOffsetY=41;
 		add();
 
@@ -534,7 +536,7 @@ public class Item {
 		aRandomPool=1;
 		aKeepHair=1;
 		aSound=Sound.equip_leather_helm;
-		aSkills=new Skill[]{Skill.holy.asLevel(1), Skill.swift.asLevel(1)};
+		aSkills=new Skill[]{Skill.holy.asLevel(1), Skill.fire.asLevel(1)};
 		aOffsetX=109; aOffsetY=78;
 		add();
 
@@ -673,7 +675,7 @@ public class Item {
 		aUnlockLevel=0;
 		aRandomPool=1;
 		aSound=Sound.equip_club;
-		aSkills=new Skill[]{Skill.arcane.asLevel(1), Skill.swift.asLevel(1)};
+		aSkills=new Skill[]{Skill.arcane.asLevel(1), Skill.fire.asLevel(1)};
 		aOffsetX=113; aOffsetY=181;
 		add();
 
@@ -1367,7 +1369,7 @@ public class Item {
 		aUnlockLevel=0;
 		aRandomPool=0;
 		aSound=Sound.equip_club;
-		aSkills= new Skill[]{Skill.crush.asLevel(1)};
+		aSkills= new Skill[]{Skill.stupidity.asLevel(1), Skill.crush.asLevel(1), Skill.armour.asLevel(1)};
 		aOffsetX=67; aOffsetY=178;
 		add();
 

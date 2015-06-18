@@ -23,8 +23,7 @@ public class Skill {
 	
 	public static SkillType[] monsterSkills=new SkillType[]{SkillType.Feral, SkillType.Spooky, SkillType.Irritable, SkillType.Stupidity, SkillType.Armed, SkillType.Flame, SkillType.Nature, SkillType.Death,
 		SkillType.Rage, SkillType.Demonic, SkillType.Sorcery, SkillType.Venom, SkillType.Ghoulish, SkillType.Burly};
-	public static SkillType[] playerSkills=new SkillType[]{SkillType.Fire, SkillType.Arcane, SkillType.Holy, SkillType.Armour, SkillType.Blade, SkillType.Crush, SkillType.Swift, SkillType.Growth,
-		SkillType.Trickster, SkillType.Warrior, SkillType.Crone, SkillType.HealAid};
+	public static SkillType[] playerSkills=new SkillType[]{SkillType.Fire, SkillType.Arcane, SkillType.Holy, SkillType.Armour, SkillType.Blade, SkillType.Crush, SkillType.Swift, SkillType.Growth, SkillType.Stupidity};
 	public static SkillType[] heroDecks = new SkillType[]{SkillType.Chump, SkillType.Bruiser, SkillType.Cat_Burglar, SkillType.Apprentice, SkillType.Mime, SkillType.Ranger, SkillType.Barbarian, SkillType.Alchemist, SkillType.Shapeshifter, SkillType.Most_Holy_Grail_Knight, SkillType.Troubador, SkillType.Mathemagician, SkillType.Cartomancer, SkillType.Artificer};
 	
 	public static Skill fire= new Skill(SkillType.Fire);
@@ -35,6 +34,7 @@ public class Skill {
 	public static Skill blade= new Skill(SkillType.Blade);
 	public static Skill crush= new Skill(SkillType.Crush);
 	public static Skill swift= new Skill(SkillType.Swift);
+	public static Skill stupidity= new Skill(SkillType.Stupidity);
 	
 //	public static Skill mFeral= new Skill(SkillType.Feral);
 //	public static Skill mSpooky= new Skill(SkillType.Spooky);
@@ -46,6 +46,7 @@ public class Skill {
 //	public static Skill mDeath= new Skill(SkillType.Death);
 	
 	private static HashMap<SkillType, Skill> skillMap = new HashMap<>();
+	
 	
 	public static void setupMap(){
 		for(SkillType type:SkillType.values()){
