@@ -23,7 +23,7 @@ public class Main {
 	public static void main(String[] args) {
 		setup();
 
-				System.out.println(Adventure.jsonAdventures());
+//				System.out.println(Adventure.jsonAdventures());
 //				System.out.println(CardFactory.jsonAllSkills(false));
 //				System.out.println(CardFactory.jsonAllSkills(true));
 		//		System.out.println(Item.jsonAll());
@@ -35,9 +35,9 @@ public class Main {
 		//		MonsterFactory.printAll(Region.Stone);
 //				MonsterFactory.printAll();
 		//		MonsterFactory.sortMonsters();
-		//		Item.printAllUnlocks();
+//				Item.printAllUnlocks();
 		//		Item.printItemTypeAmounts();
-		//		System.out.println(Item.analyseTier(0));
+				System.out.println(Item.analyseTier(0));
 		//		System.out.println(Item.analyseUnlock(UnlockedBy.Leather));
 		//		for(int i=1;i<=5;i++) Item.analyseLevel(i);
 		//		Item.analyseLevel(2, true, true);

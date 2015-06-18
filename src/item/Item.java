@@ -1613,7 +1613,7 @@ public class Item {
 
 	static int length = 35;
 	public String toString(){
-		String result ="/";
+		String result ="\n/";
 		for(int i=0;i<length-1;i++){
 			result += "-";
 		}

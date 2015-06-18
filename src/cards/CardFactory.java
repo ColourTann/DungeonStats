@@ -1157,26 +1157,30 @@ public class CardFactory {
 
 			cName= "Force Shield";
 			cStrength=2;
-			cDescription = "Block 1 magic dmg, +1 card per dmg blocked";
+			cDescription = "1 magic damage, block 1 magic damage";
 			cDescSize=20;
 			aActionType=ActionType.Block;
 			aDamageType=DamageType.Magical;
 			aEffect=1;
 			addAction();
-			aActionType=ActionType.Draw;
-			aEffectCondition=ActionEffectCondition.damageBlocked;
+			aActionType=ActionType.Attack;
+			aDamageType=DamageType.Magical;
+			aEffect=1;
 			addAction();
 			addCard(type);
 
 			cName= "Focus";
 			cStrength=2.5f;
-			cDescription = "+2 on next magic attack, +1 hp";
+			cDescription = "+1 on next magic attack, +1 hp, draw a card";
 			cDescSize=20;
 			aActionType=ActionType.NextAttack;
 			aDamageType=DamageType.Magical;
 			aEffect=2;
 			addAction();
 			aActionType=ActionType.Heal;
+			aEffect=1;
+			addAction();
+			aActionType=ActionType.Draw;
 			aEffect=1;
 			addAction();
 			addCard(type);
@@ -1197,27 +1201,27 @@ public class CardFactory {
 
 			cName= "Advance";
 			cStrength=2;
-			cDescription = "1 physical damage, block 1 damage";
-			cDescSize=20;
-			aActionType=ActionType.Attack;
+			cDescription = "Block 1 physical dmg, +1 to next physical attack";
+			cDescSize=19;
+			aActionType=ActionType.Block;
 			aDamageType=DamageType.Physical;
 			aEffect=1;
 			addAction();
-			aActionType=ActionType.Block;
-			aDamageType=DamageType.Either;
+			aActionType=ActionType.NextAttack;
+			aDamageType=DamageType.Physical;
 			aEffect=1;
 			addAction();
 			addCard(type);
 
-			cName= "Barge";
+			cName= "Shield Wall";
 			cStrength=2.5f;
-			cDescription = "Block 2 physical dmg, +1 to next physical attack";
+			cDescription = "1 physical damage, block 2 dmg";
 			cDescSize=19;
 			aActionType=ActionType.Block;
-			aDamageType=DamageType.Physical;
+			aDamageType=DamageType.Either;
 			aEffect=2;
 			addAction();
-			aActionType=ActionType.NextAttack;
+			aActionType=ActionType.Attack;
 			aDamageType=DamageType.Physical;
 			aEffect=1;
 			addAction();
@@ -1282,11 +1286,15 @@ public class CardFactory {
 
 			cName= "Bash";
 			cStrength=2;
-			cDescription = "2 physical damage";
+			cDescription = "1 physical damage, block 1 physical";
 			cDescSize=24;
 			aActionType=ActionType.Attack;
 			aDamageType=DamageType.Physical;
-			aEffect=2;
+			aEffect=1;
+			addAction();
+			aActionType=ActionType.Block;
+			aDamageType=DamageType.Physical;
+			aEffect=1;
 			addAction();
 			addCard(type);
 
@@ -1397,10 +1405,10 @@ public class CardFactory {
 
 			cName= "Holy Seal";
 			cStrength=2;
-			cDescription = "Block 1 physical, +1 hp per dmg blocked";
+			cDescription = "Block 1 any, +1 hp per dmg blocked";
 			cDescSize=20;
 			aActionType=ActionType.Block;
-			aDamageType=DamageType.Physical;
+			aDamageType=DamageType.Either;
 			aEffect=1;
 			addAction();
 			aActionType=ActionType.Heal;
