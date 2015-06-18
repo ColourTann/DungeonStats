@@ -32,6 +32,7 @@ public class DungeonLayout {
 			if(treasure!=null)this.treasure=treasure.toString();
 			this.details=details;
 		}
+		
 		public String toJson(){
 			String output="";
 			output += Json.enclose();
@@ -56,21 +57,44 @@ public class DungeonLayout {
 		}
 	}
 	
+	/*
+	 * Blindness : BAD,
+			Stupidity : BAD,
+			Decay : BAD,
+			Combustion : BAD,
+			Power : GOOD,
+			Heroism : GOOD,
+			Clairvoyance : GOOD,
+			Knowledge : GOOD
+	 */
+	
+	public enum FountainType{Blindness, Stupidity, Decay, Combustion, Power, Heroism, Clairvoyance, Knowledge};
+	
 	public static class TileDetails{
 		boolean explored;
 		boolean ignoreCamera;
 		boolean camCoords;
+		FountainType fountain;
 		int x;
 		int y;
 		boolean objective;
+		 public TileDetails(FountainType type) {
+			 this(type, false, false, false, 0, 0, false);
+		 }
 		 public TileDetails(boolean explored, boolean ignoreCamera, boolean camCoords, int x, int y, boolean objective) {
+			 this(null, explored, ignoreCamera, camCoords, x, y, objective);
+		}
+		 
+		 public TileDetails(FountainType type, boolean explored, boolean ignoreCamera, boolean camCoords, int x, int y, boolean objective) {
+			 this.fountain=type;
 			 this.objective=objective;
 			 this.explored=explored;
 			 this.ignoreCamera=ignoreCamera;
 			 this.camCoords=camCoords; this.x=x; this.y=y;
-		}
+		 }
 		 public String toJson(){
 			 String output="";
+			 if(fountain!=null) output+=Json.addKey("Fountain", fountain.toString(), true);
 			 if(objective) output += Json.addKey("Name", "objective", true);
 			 if(explored) output+=Json.addKey("explored", true, true);
 			 if(ignoreCamera) output+=Json.addKey("ignoreCamera", true, true);

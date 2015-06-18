@@ -4,7 +4,7 @@ import fighter.Fighter.Trait;
 import json.Json;
 
 public class BossChat {
-	public enum Trigger{FirstKill, FifthKill, Second_Turn, ComingToAttack, attacked_early, kill, SecondKill, FourthKill, SixthTurn, EleventhTurn, ThirdKill, FirstTurn, NinthTurn, ThirdTurn, ZerothTurn}
+	public enum Trigger{FirstKill, FifthKill, Second_Turn, ComingToAttack, attacked_early, kill, SecondKill, FourthKill, SixthTurn, EleventhTurn, ThirdKill, FirstTurn, NinthTurn, ThirdTurn, ZerothTurn, FifthTurn}
 	public enum PostFunc{FinishBossChat, StartingRoom, MoveToBoard, FireDemonMoveToBoard, Chase, FailDungeon}
 	public enum DelayEffect{APPEAR}
 	
@@ -63,7 +63,9 @@ public class BossChat {
 			break;
 		case attacked_early:
 			break;
-
+		case FifthTurn:
+			this.turns=5;
+			break;
 		case kill:
 			break;
 		default:

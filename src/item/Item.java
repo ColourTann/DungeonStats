@@ -13,7 +13,7 @@ import fighter.Fighter.Trait;
 
 public class Item {
 
-	public enum TreasureType{MEGA_CHEST("MEGA CHEST"), GOLD_COIN("Gold Coin"), Large_Chest("Large Chest"), Massive_Gem("Massive Gem");
+	public enum TreasureType{MEGA_CHEST("MEGA CHEST"), GOLD_COIN("Gold Coin"), Large_Chest("Large Chest"), Massive_Gem("Massive Gem"), Sapphire_Ring("Sapphire Ring");
 	String nice;
 	TreasureType(String nice){
 		this.nice=nice;
