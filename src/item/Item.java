@@ -619,7 +619,8 @@ public class Item {
 		aRandomPool=1;
 		aSound=Sound.equip_leather_armour;
 		aSkills=null;
-		aTraits=new Trait[]{Trait.Tenacious};
+		//aTraits=new Trait[]{Trait.Tenacious};
+		aHealth=1;
 		aOffsetX=110; aOffsetY=169;
 		add();
 
@@ -660,9 +661,10 @@ public class Item {
 		aUnlockLevel=0;
 		aRandomPool=1;
 		aSound=Sound.equip_chainmail;
-		//aSkills=new Skill[]{Skill.armour.asLevel(1), Skill.crush.asLevel(1)};
+		aTraits=new Trait[]{Trait.Tenacious};
+		aSkills=new Skill[]{Skill.armour.asLevel(1), Skill.stupidity.asLevel(1)};
 		aOffsetX=113; aOffsetY=169;
-		aHealth=1;
+		//aHealth=1;
 		add();
 
 		aName="Shimmering Cloak";
@@ -949,7 +951,7 @@ public class Item {
 		aOffsetX=112; aOffsetY=89;
 		add();
 
-		aName="Femur";
+		aName="Troll Femur";
 		aDesc="Rattle rattle";
 		aEquipment=1;
 		aType=EquipmentType.weapon;
@@ -959,7 +961,7 @@ public class Item {
 		aUnlock=UnlockedBy.Curio;
 		aRandomPool=0;
 		aSound=Sound.equip_club;
-		aSkills= new Skill[]{Skill.crush.asLevel(1), Skill.growth.asLevel(1)};
+		aSkills= new Skill[]{Skill.stupidity.asLevel(1), Skill.crush.asLevel(2), Skill.growth.asLevel(1)};
 		aOffsetX=174; aOffsetY=160;
 		add();
 
@@ -1219,7 +1221,7 @@ public class Item {
 		aUnlock=UnlockedBy.Leather;
 		aRandomPool=0;
 		aSound=Sound.equip_cloth_hat;
-		aHealth=1;
+		aSkills=new Skill[]{Skill.fire.asLevel(1), Skill.arcane.asLevel(1)};
 		aOffsetX=53; aOffsetY=183;
 		add();
 

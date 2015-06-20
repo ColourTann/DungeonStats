@@ -16,7 +16,7 @@ public abstract class Fighter {
 		Deathwish, Halfbaked, Sleepy, SpellSword, Retribution, 
 		Cunning, VitaSuit, Talented, Intuition, 
 		MagicalVuln, PhysicalVuln,
-		Predictable;
+		Predictable, Sluggish;
 
 		public String toJson() {
 			return "\""+this+"\"";
@@ -117,7 +117,7 @@ public abstract class Fighter {
 				case PhysicalVuln:
 					bonusHP-=getHP()/5f;
 					break;
-				case Predictable:
+				case Sluggish:
 					bonusHP-=getHP()/8f;
 					break;
 				case Talented:

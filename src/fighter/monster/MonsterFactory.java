@@ -524,45 +524,20 @@ public class MonsterFactory {
 
 		//ZONE 2//
 
-		name= "Bloodstarved Bat";
-		plural= "Bloodstarved Bats";
-		region=Region.Jungle;
-		species=Species.beast;
-		description = "I'm not a vampire, leave me alone!";
-		frameNumber = 12;
-		level = 1;
-		health = 6;
-		randomPool=1;
-		sound = MSound.giant_bat;
-		traits = null;
-		skills = new Skill[]{Skill.get(SkillType.Rage).asLevel(2), Skill.get(SkillType.Spooky).asLevel(3)};
-		make();
+	
 
 		name = "Plague Rat";
 		plural= "Plague Rats";
 		region=Region.Jungle;
 		species=Species.beast;
 		description = "Not just a rat, oh no, this one's nasty.";
-		frameNumber = 43;
+		frameNumber = 63;
 		level = 1;
-		health = 5;
+		health = 6;
 		randomPool=1;
 		sound = MSound.giant_bat;
 		traits = null;
 		skills = new Skill[]{Skill.get(SkillType.Feral).asLevel(2), Skill.get(SkillType.Venom).asLevel(2)};
-		make();
-
-		name = "Frenzied Goblin";
-		plural= "Frenzied Goblins";
-		region=Region.Jungle;
-		description = "Welcome to da club. Hehe geddit?";
-		frameNumber = 15;
-		level = 1;
-		health = 5;
-		randomPool=1;
-		sound = MSound.goblin;
-		traits = new Trait[]{Trait.Fury};
-		skills = new Skill[]{Skill.get(SkillType.Rage).asLevel(3), Skill.get(SkillType.Armed).asLevel(2)};
 		make();
 
 		name = "Leggy Spider";
@@ -572,24 +547,51 @@ public class MonsterFactory {
 		description = "Woah - EIGHT dungeoneers!";
 		frameNumber = 13;
 		level = 1;
-		health = 5;
+		health = 7;
 		randomPool=1;
 		sound = MSound.scary_spider;
-		traits = null;
-		skills = new Skill[]{Skill.get(SkillType.Nature).asLevel(2), Skill.get(SkillType.Ghoulish).asLevel(2)};
+		traits = new Trait[]{Trait.PhysicalVuln};
+		skills = new Skill[]{Skill.get(SkillType.Venom).asLevel(3), Skill.get(SkillType.Spooky).asLevel(2)};
 		make();
-
+		
+		name= "Bloodstarved Bat";
+		plural= "Bloodstarved Bats";
+		region=Region.Jungle;
+		species=Species.beast;
+		description = "I'm not a vampire, leave me alone!";
+		frameNumber = 12;
+		level = 1;
+		health = 7;
+		randomPool=1;
+		sound = MSound.giant_bat;
+		traits = new Trait[]{Trait.Predictable};
+		skills = new Skill[]{Skill.get(SkillType.Rage).asLevel(2), Skill.get(SkillType.Spooky).asLevel(2)};
+		make();
+		
 		name = "Pixies";
 		plural= "Pixieseseses";
 		region=Region.Jungle;
 		description = "Pick on the little guys why don't you?";
 		frameNumber = 41;
 		level = 1;
-		health = 5;
+		health = 6;
 		randomPool=1;
 		sound = MSound.giant_bat;
 		traits = new Trait[]{Trait.Tenacious};
-		skills = new Skill[]{Skill.get(SkillType.Sorcery).asLevel(2), Skill.get(SkillType.Nature).asLevel(2)};
+		skills = new Skill[]{Skill.get(SkillType.Demonic).asLevel(2), Skill.get(SkillType.Nature).asLevel(2)};
+		make();
+		
+		name = "Frenzied Goblin";
+		plural= "Frenzied Goblins";
+		region=Region.Jungle;
+		description = "Welcome to da club. Hehe geddit?";
+		frameNumber = 15;
+		level = 1;
+		health = 6;
+		randomPool=1;
+		sound = MSound.goblin;
+		traits = new Trait[]{Trait.Fury};
+		skills = new Skill[]{Skill.get(SkillType.Rage).asLevel(3), Skill.get(SkillType.Armed).asLevel(2)};
 		make();
 
 		name = "Jungle Warrior";
@@ -598,13 +600,14 @@ public class MonsterFactory {
 		description = "Welcome to the jungle";
 		frameNumber = 55;
 		level = 1 ;
-		health = 6;
+		health = 7;
 		randomPool=1;
 		sound = MSound.giant_bat;
 		traits = null;
 		skills = new Skill[]{Skill.get(SkillType.Burly).asLevel(2), Skill.get(SkillType.Nature).asLevel(3)};
 		make();
 
+		
 		name = "Poisonous Snake";
 		plural= "Poisonous Snakes";
 		region=Region.Jungle;
@@ -612,11 +615,11 @@ public class MonsterFactory {
 		description = "SSSsssssssss";
 		frameNumber = 28;
 		level = 2;
-		health = 7;
+		health = 8;
 		randomPool=1;
 		sound= MSound.scary_spider;
 		traits = null;
-		skills = new Skill[]{Skill.get(SkillType.Venom).asLevel(2), Skill.get(SkillType.Nature).asLevel(3)};
+		skills = new Skill[]{Skill.get(SkillType.Venom).asLevel(3), Skill.get(SkillType.Nature).asLevel(3)};
 		make();
 
 		name = "Rat Berserker";
@@ -625,11 +628,11 @@ public class MonsterFactory {
 		description = "Squeak squeak!";
 		frameNumber = 42;
 		level = 2;
-		health = 8;
+		health = 10;
 		randomPool=1;
-		traits = null;
+		traits = new Trait[]{Trait.Predictable};
 		sound= MSound.giant_bat;
-		skills = new Skill[]{Skill.get(SkillType.Rage).asLevel(3), Skill.get(SkillType.Irritable).asLevel(3)};
+		skills = new Skill[]{Skill.get(SkillType.Rage).asLevel(3), Skill.get(SkillType.Armed).asLevel(3)};
 		make();
 
 		name = "Hilly Gnoll";
@@ -638,7 +641,7 @@ public class MonsterFactory {
 		description = "What are you looking at??";
 		frameNumber = 31;
 		level = 2;
-		health = 7;
+		health = 8;
 		randomPool=1;
 		sound= MSound.goblin;
 		traits = new Trait[]{Trait.Fury};
@@ -677,11 +680,11 @@ public class MonsterFactory {
 		description = "CZRCHHHH!!";
 		frameNumber = 56;
 		level = 2 ;
-		health = 7;
+		health = 8;
 		randomPool=1;
 		sound = MSound.giant_bat;
 		traits = null;
-		skills = new Skill[]{Skill.get(SkillType.Venom).asLevel(3), Skill.get(SkillType.Stupidity).asLevel(2)};
+		skills = new Skill[]{Skill.get(SkillType.Venom).asLevel(4), Skill.get(SkillType.Stupidity).asLevel(2)};
 		make();
 
 		name = "Owl Bear";
