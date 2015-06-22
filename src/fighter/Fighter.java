@@ -16,7 +16,17 @@ public abstract class Fighter {
 		Deathwish, Halfbaked, Sleepy, SpellSword, Retribution, 
 		Cunning, VitaSuit, Talented, Intuition, 
 		MagicalVuln, PhysicalVuln,
-		Predictable, Sluggish;
+		Predictable, Sluggish,
+		
+		Leader, //+1 hp for surrounding enemy
+		
+		NightOwl, //-1 hp if surrounded by tiles
+		Loner, //-1 hp if in a dead end
+		Greedy, //+1 hp if on a tile with treasure
+		Aggressive, //Chase
+		Thief, //moves to gold
+		Wandering //random move
+		;
 
 		public String toJson() {
 			return "\""+this+"\"";
@@ -82,6 +92,7 @@ public abstract class Fighter {
 				case ArcaneBlade:
 					break;
 				case Bulwark:
+					bonusHP+=1.2f;
 					break;
 				case Cunning:
 					bonusHP+=.5f;

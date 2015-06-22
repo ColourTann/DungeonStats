@@ -1177,7 +1177,7 @@ public class CardFactory {
 			cDescSize=20;
 			aActionType=ActionType.NextAttack;
 			aDamageType=DamageType.Magical;
-			aEffect=2;
+			aEffect=1;
 			addAction();
 			aActionType=ActionType.Heal;
 			aEffect=1;
@@ -2109,17 +2109,14 @@ public class CardFactory {
 			
 			cName= "Dark Pact";
 			cStrength=3.2f;
-			cDescription = "1 magic damage, block 2 magic, +1 hp";
+			cDescription = "3 magic damage, block 1 magic";
 			cDescSize=22;
 			aActionType=ActionType.Attack;
 			aDamageType=DamageType.Magical;
-			aEffect=-1;
+			aEffect=-3;
 			addAction();
 			aActionType=ActionType.Block;
 			aDamageType=DamageType.Magical;
-			aEffect=2;
-			addAction();
-			aActionType=ActionType.Heal;
 			aEffect=1;
 			addAction();
 			addCard(type);
@@ -2139,13 +2136,13 @@ public class CardFactory {
 		case Sorcery:
 			cName= "Dark Strike";
 			cStrength=2.3f;
-			cDescription = "2 magic damage: <next card is hidden>";
+			cDescription = "2 magic damage: +1 hp";
 			cDescSize=22;
 			aActionType=ActionType.Attack;
 			aDamageType=DamageType.Magical;
 			aEffect=2;
-			raType=ActionType.Effect;
-			raEffectType=ResultActionEffectType.Conceal;
+			raType=ActionType.Heal;
+			raEffect=1;
 			addResultAction();
 			addAction();
 			addCard(type);
