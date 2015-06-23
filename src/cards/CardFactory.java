@@ -789,27 +789,27 @@ public class CardFactory {
 		case Most_Holy_Grail_Knight:
 
 			cName= "Divine Hammer";
-			cStrength=2.5f;
-			cDescription = "1 physical damage: +2 hp";
+			cStrength=1.5f;
+			cDescription = "1 physical damage: +1 hp";
 			cDescSize=22;
 			aActionType=ActionType.Attack;
 			aDamageType=DamageType.Physical;
 			aEffect=1;
 			raType=ActionType.Heal;
-			raEffect=2;
+			raEffect=1;
 			addResultAction();
 			addAction();
 			addCard(type);
 
 			cName= "Divine Hammer";
-			cStrength=2.5f;
-			cDescription = "1 physical damage: +2 hp";
+			cStrength=1.5f;
+			cDescription = "1 physical damage: +1 hp";
 			cDescSize=22;
 			aActionType=ActionType.Attack;
 			aDamageType=DamageType.Physical;
 			aEffect=1;
 			raType=ActionType.Heal;
-			raEffect=2;
+			raEffect=1;
 			addResultAction();
 			addAction();
 			addCard(type);
@@ -839,7 +839,7 @@ public class CardFactory {
 			addCard(type);
 
 			cName= "Fervor";
-			cStrength=1.5f;
+			cStrength=1f;
 			cDescription = "2 physical damage, -1 HP";
 			cDescSize=22;
 			aActionType=ActionType.Attack;
@@ -852,11 +852,11 @@ public class CardFactory {
 			addCard(type);
 
 			cName= "Flagellate";
-			cStrength=1.5f;
+			cStrength=1f;
 			cDescription = "+2 hp, -1 hp";
 			cDescSize=22;
 			aActionType=ActionType.Heal;
-			aEffect=1;
+			aEffect=2;
 			addAction();
 			aActionType=ActionType.TakeDamage;
 			aEffect=1;
@@ -877,8 +877,8 @@ public class CardFactory {
 			addCard(type);
 
 			cName= "Card Storm";
-			cStrength=3f;
-			cDescription = "1 magic damage per card in hand, discard your hand";
+			cStrength=4f;
+			cDescription = "1 magic damage per card in hand, discard 4 cards";
 			cDescSize=22;
 			aActionType=ActionType.Attack;
 			aDamageType=DamageType.Magical;
@@ -909,7 +909,7 @@ public class CardFactory {
 			addCard(type);
 
 			cName= "Counterplay";
-			cStrength=2f;
+			cStrength=2.3f;
 			cDescription = "1 magic damage, block 2 magic damage";
 			cDescSize=22;
 			aActionType=ActionType.Block;
@@ -923,7 +923,7 @@ public class CardFactory {
 			addCard(type);
 
 			cName= "Heart of the Cards";
-			cStrength=2f;
+			cStrength=2.3f;
 			cDescription = "Draw a card, +2 hp";
 			cDescSize=22;
 			aActionType=ActionType.Heal;
@@ -936,19 +936,6 @@ public class CardFactory {
 			break;
 
 		case Mathemagician:
-
-			cName= "Card Counting";
-			cStrength=3f;
-			cDescription = "2 magic damage: look at top 3 enemy cards, discard 1";
-			cDescSize=22;
-			aActionType=ActionType.Attack;
-			aDamageType=DamageType.Magical;
-			aEffect=2;
-			raType=ActionType.Scry;
-			raEffect=3;
-			addResultAction();
-			addAction();
-			addCard(type);
 
 			cName= "Card Counting";
 			cStrength=3f;
@@ -980,39 +967,49 @@ public class CardFactory {
 			addCard(type);
 
 			cName= "Explain Theorem";
-			cStrength=3f;
-			cDescription = "2 magic damage, enemy becomes stupid";
+			cStrength=2f;
+			cDescription = "1 magic damage, enemy becomes stupid";
 			cDescSize=22;
 			aActionType=ActionType.Attack;
 			aDamageType=DamageType.Magical;
-			aEffect=2;
+			aEffect=1;
 			raType=ActionType.Stupidity;
 			raEffect=1;
 			addResultAction();
 			addAction();
 			addCard(type);
-
 			
-			cName= "Explain Theorem";
-			cStrength=3f;
-			cDescription = "2 magic damage, enemy becomes stupid";
+			cName= "Mental Maths";
+			cStrength=2.8f;
+			cDescription = "2 magic damage, quick";
 			cDescSize=22;
 			aActionType=ActionType.Attack;
 			aDamageType=DamageType.Magical;
 			aEffect=2;
-			raType=ActionType.Stupidity;
-			raEffect=1;
-			addResultAction();
+			aQuick=true;
+			addAction();
+			addCard(type);
+			
+			cName= "Measure Trajectory";
+			cStrength=2f;
+			cDescription = "Block 2 any, +1 hp";
+			cDescSize=22;
+			aActionType=ActionType.Block;
+			aDamageType=DamageType.Either;
+			aEffect=2;
+			addAction();
+			aActionType=ActionType.Heal;
+			aEffect=1;
 			addAction();
 			addCard(type);
 
 			cName= "Proof";
-			cStrength=2.5f;
-			cDescription = "2 magic damage";
+			cStrength=1.4f;
+			cDescription = "1 magic damage [unblockable]";
 			cDescSize=22;
 			aActionType=ActionType.Attack;
 			aDamageType=DamageType.Magical;
-			aEffect=2;
+			aEffect=1;
 			aUnblockable=true;
 			addAction();
 			addCard(type);
@@ -1023,11 +1020,11 @@ public class CardFactory {
 
 			cName= "Zap-o-matic";
 			cStrength=2.4f;
-			cDescription = "2 magic damage, quick";
+			cDescription = "2 magic damage [unblockable]";
 			cDescSize=22;
 			aActionType=ActionType.Attack;
 			aDamageType=DamageType.Magical;
-			aQuick=true;
+			aUnblockable=true;
 			aEffect=2;
 			addAction();
 			addCard(type);

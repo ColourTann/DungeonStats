@@ -23,16 +23,16 @@ public class Main {
 	public static void main(String[] args) {
 		setup();
 
-				System.out.println(Adventure.jsonAdventures());
+//				System.out.println(Adventure.jsonAdventures());
 //				System.out.println(CardFactory.jsonAllSkills(false));
 //				System.out.println(CardFactory.jsonAllSkills(true));
 //				System.out.println(Item.jsonAll());
 //				System.out.println(MonsterFactory.jsonAll());
-//				System.out.println(HeroFactory.toJson());
+				System.out.println(HeroFactory.toJson());
 //
 
 
-//				MonsterFactory.printAll(Region.Jungle);
+//				MonsterFactory.printAll(Region.Mines);
 //				MonsterFactory.printAll();
 		//		MonsterFactory.sortMonsters();
 //				Item.printAllUnlocks();
@@ -42,7 +42,7 @@ public class Main {
 		//		for(int i=1;i<=5;i++) Item.analyseLevel(i);
 		//		Item.analyseLevel(2, true, true);
 		//		System.out.println(Room.JsonAllRooms());
-//				System.out.println(CardFactory.cardDetails(Skill.monsterSkills));
+//				System.out.println(CardFactory.cardDetails(Skill.heroDecks));
 //				System.out.println(HeroFactory.analyseClasses());
 //				System.out.println(Adventure.trophyLocations());
 	}

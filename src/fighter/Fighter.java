@@ -26,6 +26,7 @@ public abstract class Fighter {
 		Aggressive, //Chase
 		Thief, //moves to gold
 		Wandering //random move
+, Bisect
 		;
 
 		public String toJson() {
@@ -87,6 +88,9 @@ public abstract class Fighter {
 				case Skilled:
 					
 					break;
+				case Bisect:
+					bonusHP+=.6f;
+					break;
 				case Accurate:
 					break;
 				case ArcaneBlade:
@@ -121,6 +125,7 @@ public abstract class Fighter {
 				case Wise:
 					break;
 				case Intuition:
+					bonusHP+=1.2f;
 					break;
 				case MagicalVuln:
 					bonusHP-=getHP()/5f;

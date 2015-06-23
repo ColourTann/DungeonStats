@@ -894,7 +894,20 @@ public class MonsterFactory {
 		health = 7;
 		randomPool=1;
 		sound = MSound.giant_bat;
-		traits = new Trait[]{Trait.Fury};
+		traits = new Trait[]{Trait.Fury, Trait.Leader};
+		skills = new Skill[]{Skill.get(SkillType.Burly).asLevel(3), Skill.get(SkillType.Rage).asLevel(2)};
+		make();
+		
+		name = "Digger";
+		plural= "Diggers";
+		region=Region.Mines;
+		description = "needs description";
+		frameNumber = 59;
+		level = 1;
+		health = 9;
+		randomPool=1;
+		sound = MSound.giant_bat;
+		traits = new Trait[]{Trait.Brittle, Trait.Leader};
 		skills = new Skill[]{Skill.get(SkillType.Burly).asLevel(3), Skill.get(SkillType.Rage).asLevel(2)};
 		make();
 
@@ -904,7 +917,7 @@ public class MonsterFactory {
 		description = "needs description";
 		frameNumber = 3;
 		level = 1;
-		health = 9;
+		health = 11;
 		randomPool=1;
 		sound = MSound.giant_bat;
 		traits = new Trait[]{Trait.Meaty};
@@ -920,12 +933,12 @@ public class MonsterFactory {
 		health = 9;
 		randomPool=1;
 		sound = MSound.giant_bat;
-		traits = new Trait[]{Trait.Tenacious};
+		traits = new Trait[]{Trait.Tenacious, Trait.NightOwl};
 		skills = new Skill[]{Skill.get(SkillType.Rage).asLevel(2), Skill.get(SkillType.Irritable).asLevel(1), Skill.get(SkillType.Ghoulish).asLevel(2)};
 		make();
 
-		name = "Sizzling Imp";
-		plural= "Sizzling Imps";
+		name = "Dwarvern Explosives";
+		plural= "Dwarvern Explosiveses";
 		region=Region.Mines;
 		species= Species.demonic;
 		description = "needs description";
@@ -934,8 +947,8 @@ public class MonsterFactory {
 		health = 8;
 		randomPool=1;
 		sound = MSound.goblin;
-		traits = null;
-		skills = new Skill[]{Skill.get(SkillType.Demonic).asLevel(2), Skill.get(SkillType.Sorcery).asLevel(1)};
+		traits = new Trait[]{Trait.Retribution};
+		skills = new Skill[]{Skill.get(SkillType.Demonic).asLevel(2), Skill.get(SkillType.Sorcery).asLevel(1), Skill.get(SkillType.Venom).asLevel(1)};
 		make();
 
 		name = "Rust Monster";
@@ -947,22 +960,11 @@ public class MonsterFactory {
 		health = 7;
 		randomPool=0;
 		sound = MSound.giant_bat;
-		traits = null;
-		skills = new Skill[]{Skill.get(SkillType.Venom).asLevel(2), Skill.get(SkillType.Burly).asLevel(1)};
+		traits = new Trait[]{Trait.Wandering};
+		skills = new Skill[]{Skill.get(SkillType.Venom).asLevel(2), Skill.get(SkillType.Burly).asLevel(2)};
 		make();
 
-		name = "Digger";
-		plural= "Diggers";
-		region=Region.Mines;
-		description = "needs description";
-		frameNumber = 59;
-		level = 1;
-		health = 9;
-		randomPool=1;
-		sound = MSound.giant_bat;
-		traits = new Trait[]{Trait.Brittle};
-		skills = new Skill[]{Skill.get(SkillType.Burly).asLevel(3), Skill.get(SkillType.Rage).asLevel(2)};
-		make();
+		
 
 		//L2//
 
@@ -973,10 +975,10 @@ public class MonsterFactory {
 		description = "needs description";
 		frameNumber = 14;
 		level = 2;
-		health = 9;
+		health = 11;
 		randomPool=1;
 		sound = MSound.giant_bat;
-		traits = null;
+		traits = new Trait[]{Trait.NightOwl, Trait.Sluggish};
 		skills = new Skill[]{Skill.get(SkillType.Demonic).asLevel(2), Skill.get(SkillType.Ghoulish).asLevel(3), Skill.get(SkillType.Stupidity).asLevel(1)};
 		make();
 
@@ -989,7 +991,7 @@ public class MonsterFactory {
 		health = 12;
 		randomPool=1;
 		sound = MSound.skeleton;
-		traits = new Trait[]{Trait.Meaty};
+		traits = new Trait[]{Trait.Meaty, Trait.Wandering};
 		skills = new Skill[]{Skill.get(SkillType.Burly).asLevel(2), Skill.get(SkillType.Ghoulish).asLevel(2), Skill.get(SkillType.Rage).asLevel(2)};
 		make();
 
@@ -1003,7 +1005,7 @@ public class MonsterFactory {
 		health = 8;
 		randomPool=1;
 		sound = MSound.ghost;
-		traits = new Trait[]{Trait.Tenacious};
+		traits = new Trait[]{Trait.Tenacious, Trait.Loner};
 		skills = new Skill[]{Skill.get(SkillType.Ghoulish).asLevel(3), Skill.get(SkillType.Demonic).asLevel(2), Skill.get(SkillType.Sorcery).asLevel(2)};
 		make();
 
@@ -1021,16 +1023,16 @@ public class MonsterFactory {
 		skills = new Skill[]{Skill.get(SkillType.Demonic).asLevel(2), Skill.get(SkillType.Ghoulish).asLevel(3), Skill.get(SkillType.Burly).asLevel(2)};
 		make();
 
-		name = "Water Elemental";
-		plural= "Water Elementals";
+		name = "Spider Drill";
+		plural= "Spider Drills";
 		region=Region.Mines;
 		description = "needs description";
 		frameNumber = 21;
 		level = 2;
-		health = 11;
+		health = 9;
 		randomPool=0;
 		sound = MSound.giant_bat;
-		traits = new Trait[]{Trait.Meaty};
+		traits = new Trait[]{Trait.Bulwark, Trait.Aggressive};
 		skills = new Skill[]{Skill.get(SkillType.Sorcery).asLevel(3), Skill.get(SkillType.Burly).asLevel(2)};
 		make();
 
@@ -1073,7 +1075,7 @@ public class MonsterFactory {
 		health = 9;
 		randomPool=1;
 		sound = MSound.mummy;
-		traits = new Trait[]{Trait.Fury};
+		traits = new Trait[]{Trait.Fury, Trait.Aggressive};
 		skills = new Skill[]{Skill.get(SkillType.Rage).asLevel(4), Skill.get(SkillType.Irritable).asLevel(2), Skill.get(SkillType.Burly).asLevel(3)};
 		make();
 
@@ -1083,10 +1085,10 @@ public class MonsterFactory {
 		region=Region.Mines;
 		frameNumber = 22;
 		level = 3;
-		health = 9;
+		health = 11;
 		randomPool=0;
 		sound = MSound.giant_bat;
-		traits = null;
+		traits = new Trait[]{Trait.Brittle};
 		skills = new Skill[]{Skill.get(SkillType.Burly).asLevel(3), Skill.get(SkillType.Demonic).asLevel(2)};
 		make();
 
@@ -1099,7 +1101,6 @@ public class MonsterFactory {
 		health = 9;
 		randomPool=0;
 		sound = MSound.giant_bat;
-		traits = null;
 		skills = new Skill[]{Skill.get(SkillType.Sorcery).asLevel(3), Skill.get(SkillType.Demonic).asLevel(2)};
 		make();
 
@@ -1112,7 +1113,7 @@ public class MonsterFactory {
 		health = 9;
 		randomPool=0;
 		sound = MSound.giant_bat;
-		traits = null;
+		traits = new Trait[]{Trait.Leader};
 		skills = new Skill[]{Skill.get(SkillType.Ghoulish).asLevel(3), Skill.get(SkillType.Demonic).asLevel(3)};
 		make();
 
@@ -1122,10 +1123,10 @@ public class MonsterFactory {
 		region=Region.Mines;
 		frameNumber = 32;
 		level = 3;
-		health = 8;
+		health = 7;
 		randomPool=0;
 		sound = MSound.giant_bat;
-		traits = null;
+		traits = new Trait[]{Trait.Tenacious};
 		skills = new Skill[]{Skill.get(SkillType.Sorcery).asLevel(3), Skill.get(SkillType.Venom).asLevel(3)};
 		make();
 
@@ -1136,11 +1137,11 @@ public class MonsterFactory {
 		description = "I spy with my little eye.. FOOD";
 		frameNumber = 7;
 		level = 4;
-		health = 10;
+		health = 13;
 		randomPool=0;
 		sound = MSound.giant_bat;
-//		traits = new Trait[]{Trait.Bulwark, Trait.Fury};
-		skills = new Skill[]{Skill.get(SkillType.Burly).asLevel(4), Skill.get(SkillType.Venom).asLevel(2)};
+		traits = new Trait[]{Trait.Sluggish};
+		skills = new Skill[]{Skill.get(SkillType.Burly).asLevel(4), Skill.get(SkillType.Ghoulish).asLevel(2)};
 		make();
 
 		name = "Dwarf Sentry";
@@ -1148,11 +1149,11 @@ public class MonsterFactory {
 		description = "needs description";
 		frameNumber = 67;
 		level = 4;
-		health = 10;
+		health = 11;
 		randomPool=0;
 		sound = MSound.giant_bat;
-//		traits = new Trait[]{Trait.Bulwark, Trait.Fury};
-		skills = new Skill[]{Skill.get(SkillType.Burly).asLevel(3), Skill.get(SkillType.Ghoulish).asLevel(2)};
+		traits = new Trait[]{Trait.Bulwark};
+		skills = new Skill[]{Skill.get(SkillType.Burly).asLevel(3), Skill.get(SkillType.Demonic).asLevel(2)};
 		make();
 
 		name = "Dwarf Masterpiece";
@@ -1163,8 +1164,8 @@ public class MonsterFactory {
 		health = 10;
 		randomPool=0;
 		sound = MSound.giant_bat;
-//		traits = new Trait[]{Trait.Bulwark, Trait.Fury};
-		skills = new Skill[]{Skill.get(SkillType.Burly).asLevel(3), Skill.get(SkillType.Sorcery).asLevel(3)};
+		traits = new Trait[]{Trait.Tenacious};
+		skills = new Skill[]{Skill.get(SkillType.Sorcery).asLevel(3), Skill.get(SkillType.Venom).asLevel(3)};
 		make();
 
 		name = "Dwarf Mecha";
@@ -1175,8 +1176,8 @@ public class MonsterFactory {
 		health = 10;
 		randomPool=0;
 		sound = MSound.giant_bat;
-//		traits = new Trait[]{Trait.Bulwark, Trait.Fury};
-		skills = new Skill[]{Skill.get(SkillType.Rage).asLevel(3), Skill.get(SkillType.Burly).asLevel(2)};
+		traits = new Trait[]{Trait.Bulwark};
+		skills = new Skill[]{Skill.get(SkillType.Sorcery).asLevel(3), Skill.get(SkillType.Burly).asLevel(2)};
 		boardChat=new BoardChat[]{
 				new BoardChat(ChatType.Monster, new String[]{
 						"Bzzzt!", 
@@ -1208,7 +1209,7 @@ public class MonsterFactory {
 		randomPool=0;
 		sound = MSound.giant_bat;
 		traits = null;
-		skills = new Skill[]{Skill.get(SkillType.Irritable).asLevel(5)};
+		skills = new Skill[]{Skill.get(SkillType.Venom).asLevel(3), Skill.get(SkillType.Burly).asLevel(3)};
 		boardChat=new BoardChat[]{
 				new BoardChat(ChatType.Monster, new String[]{
 						"Smash everything", 

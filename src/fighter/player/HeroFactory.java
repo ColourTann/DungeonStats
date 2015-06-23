@@ -98,6 +98,7 @@ public class HeroFactory {
 
 		heroName=SkillType.Mathemagician;
 		aHP=7;
+		traits = new Trait[]{Trait.Bisect};
 		aChats=HeroChat.chumpChats;
 		addClass();
 
