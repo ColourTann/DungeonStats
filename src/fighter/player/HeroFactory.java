@@ -104,7 +104,7 @@ public class HeroFactory {
 
 		heroName=SkillType.Artificer;
 		traits = new Trait[]{Trait.Intuition};
-		aHP=7;
+		aHP=8;
 		aChats=HeroChat.chumpChats;
 		addClass();
 		//		heroName=SkillType.Shapeshifter;

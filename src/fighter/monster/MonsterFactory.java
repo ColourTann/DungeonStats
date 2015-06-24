@@ -969,19 +969,6 @@ public class MonsterFactory {
 		//L2//
 
 
-		name = "Blind Worm";
-		plural= "Blind Worms";
-		region=Region.Mines;
-		description = "needs description";
-		frameNumber = 14;
-		level = 2;
-		health = 11;
-		randomPool=1;
-		sound = MSound.giant_bat;
-		traits = new Trait[]{Trait.NightOwl, Trait.Sluggish};
-		skills = new Skill[]{Skill.get(SkillType.Demonic).asLevel(2), Skill.get(SkillType.Ghoulish).asLevel(3), Skill.get(SkillType.Stupidity).asLevel(1)};
-		make();
-
 		name = "Rotting Corpse";
 		plural= "Rotting Corpse";
 		region=Region.Mines;
@@ -1002,11 +989,37 @@ public class MonsterFactory {
 		description = "needs description";
 		frameNumber = 11;
 		level = 2;
-		health = 8;
+		health = 7;
 		randomPool=1;
 		sound = MSound.ghost;
 		traits = new Trait[]{Trait.Tenacious, Trait.Loner};
 		skills = new Skill[]{Skill.get(SkillType.Ghoulish).asLevel(3), Skill.get(SkillType.Demonic).asLevel(2), Skill.get(SkillType.Sorcery).asLevel(2)};
+		make();
+
+		name = "Gelatinous Cube";
+		plural= "Gelatinous Cubes";
+		region=Region.Mines;
+		description = "Lemon flavour";
+		frameNumber = 34;
+		level = 2;
+		health = 8;
+		randomPool=0;
+		sound = MSound.giant_bat;
+		traits = new Trait[]{Trait.Tenacious};
+		skills = new Skill[]{Skill.get(SkillType.Venom).asLevel(2), Skill.get(SkillType.Demonic).asLevel(2)};
+		make();
+		
+		name = "Blind Worm";
+		plural= "Blind Worms";
+		region=Region.Mines;
+		description = "needs description";
+		frameNumber = 14;
+		level = 2;
+		health = 11;
+		randomPool=1;
+		sound = MSound.giant_bat;
+		traits = new Trait[]{Trait.NightOwl, Trait.Sluggish};
+		skills = new Skill[]{Skill.get(SkillType.Demonic).asLevel(2), Skill.get(SkillType.Ghoulish).asLevel(3), Skill.get(SkillType.Stupidity).asLevel(1)};
 		make();
 
 		name = "Clattering Bones";
@@ -1036,18 +1049,7 @@ public class MonsterFactory {
 		skills = new Skill[]{Skill.get(SkillType.Sorcery).asLevel(3), Skill.get(SkillType.Burly).asLevel(2)};
 		make();
 
-		name = "Gelatinous Cube";
-		plural= "Gelatinous Cubes";
-		region=Region.Mines;
-		description = "Lemon flavour";
-		frameNumber = 34;
-		level = 2;
-		health = 8;
-		randomPool=0;
-		sound = MSound.giant_bat;
-		traits = new Trait[]{Trait.Tenacious};
-		skills = new Skill[]{Skill.get(SkillType.Venom).asLevel(2), Skill.get(SkillType.Demonic).asLevel(2)};
-		make();
+		
 
 		//L3//
 
@@ -1123,7 +1125,7 @@ public class MonsterFactory {
 		region=Region.Mines;
 		frameNumber = 32;
 		level = 3;
-		health = 7;
+		health = 9;
 		randomPool=0;
 		sound = MSound.giant_bat;
 		traits = new Trait[]{Trait.Tenacious};
@@ -1137,7 +1139,7 @@ public class MonsterFactory {
 		description = "I spy with my little eye.. FOOD";
 		frameNumber = 7;
 		level = 4;
-		health = 13;
+		health = 12;
 		randomPool=0;
 		sound = MSound.giant_bat;
 		traits = new Trait[]{Trait.Sluggish};
@@ -1149,10 +1151,10 @@ public class MonsterFactory {
 		description = "needs description";
 		frameNumber = 67;
 		level = 4;
-		health = 11;
+		health = 12;
 		randomPool=0;
 		sound = MSound.giant_bat;
-		traits = new Trait[]{Trait.Bulwark};
+		traits = new Trait[]{Trait.Retribution};
 		skills = new Skill[]{Skill.get(SkillType.Burly).asLevel(3), Skill.get(SkillType.Demonic).asLevel(2)};
 		make();
 
@@ -1161,11 +1163,11 @@ public class MonsterFactory {
 		description = "needs description";
 		frameNumber = 65;
 		level = 4;
-		health = 10;
+		health = 13;
 		randomPool=0;
 		sound = MSound.giant_bat;
-		traits = new Trait[]{Trait.Tenacious};
-		skills = new Skill[]{Skill.get(SkillType.Sorcery).asLevel(3), Skill.get(SkillType.Venom).asLevel(3)};
+		traits = new Trait[]{Trait.Brittle};
+		skills = new Skill[]{Skill.get(SkillType.Sorcery).asLevel(4), Skill.get(SkillType.Venom).asLevel(4)};
 		make();
 
 		name = "Dwarf Mecha";
@@ -1173,11 +1175,11 @@ public class MonsterFactory {
 		description = "needs description";
 		frameNumber = 61;
 		level = 4;
-		health = 10;
+		health = 14;
 		randomPool=0;
 		sound = MSound.giant_bat;
-		traits = new Trait[]{Trait.Bulwark};
-		skills = new Skill[]{Skill.get(SkillType.Sorcery).asLevel(3), Skill.get(SkillType.Burly).asLevel(2)};
+		traits = new Trait[]{Trait.Predictable, Trait.PhysicalVuln};
+		skills = new Skill[]{Skill.get(SkillType.Sorcery).asLevel(3), Skill.get(SkillType.Burly).asLevel(4)};
 		boardChat=new BoardChat[]{
 				new BoardChat(ChatType.Monster, new String[]{
 						"Bzzzt!", 
@@ -1205,10 +1207,10 @@ public class MonsterFactory {
 		description = "Really rude to people who go over his bridge";
 		frameNumber = 48;
 		level = 5 ;
-		health = 10;
+		health = 14;
 		randomPool=0;
 		sound = MSound.giant_bat;
-		traits = null;
+		traits = new Trait[]{Trait.Fury, Trait.MagicalVuln};
 		skills = new Skill[]{Skill.get(SkillType.Venom).asLevel(3), Skill.get(SkillType.Burly).asLevel(3)};
 		boardChat=new BoardChat[]{
 				new BoardChat(ChatType.Monster, new String[]{
@@ -1237,7 +1239,7 @@ public class MonsterFactory {
 		health = 10;
 		randomPool=0;
 		sound = MSound.giant_bat;
-		traits = new Trait[]{Trait.Bulwark, Trait.Fury};
+		traits = new Trait[]{Trait.Fury};
 		skills = new Skill[]{Skill.get(SkillType.Sorcery).asLevel(4), Skill.get(SkillType.Demonic).asLevel(2)};
 		make();
 

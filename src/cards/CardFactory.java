@@ -923,11 +923,11 @@ public class CardFactory {
 			addCard(type);
 
 			cName= "Heart of the Cards";
-			cStrength=2.3f;
-			cDescription = "Draw a card, +2 hp";
+			cStrength=2f;
+			cDescription = "Draw a card, +1 hp";
 			cDescSize=22;
 			aActionType=ActionType.Heal;
-			aEffect=2;
+			aEffect=1;
 			addAction();
 			aActionType=ActionType.Draw;
 			aEffect=1;
@@ -1019,39 +1019,44 @@ public class CardFactory {
 		case Artificer:
 
 			cName= "Zap-o-matic";
-			cStrength=2.4f;
-			cDescription = "2 magic damage [unblockable]";
+			cStrength=3.1f;
+			cDescription = "2 magic damage [unblockable], +1 hp";
 			cDescSize=22;
 			aActionType=ActionType.Attack;
 			aDamageType=DamageType.Magical;
 			aUnblockable=true;
 			aEffect=2;
 			addAction();
+			aActionType=ActionType.Heal;
+			aEffect=1;
+			addAction();
 			addCard(type);
 
-			cName= "Regenoshield";
-			cStrength=2;
-			cDescription = "Block 2 physical, +1 hp";
+			cName= "Spike-o-shield";
+			cStrength=2.4f;
+			cDescription = "Block 2 physical, 1 physical damage";
 			cDescSize=22;
 			aActionType=ActionType.Block;
 			aDamageType=DamageType.Physical;
 			aEffect=2;
 			addAction();
-			aActionType=ActionType.Heal;
+			aActionType=ActionType.Attack;
+			aDamageType=DamageType.Physical;
 			aEffect=1;
 			addAction();
 			addCard(type);
 			
 			cName= "Static Field";
-			cStrength=2;
-			cDescription = "Block 2 magic, +1 hp";
+			cStrength=2.4f;
+			cDescription = "Block 1 magic, 2 magic damage";
 			cDescSize=22;
 			aActionType=ActionType.Block;
 			aDamageType=DamageType.Magical;
-			aEffect=2;
-			addAction();
-			aActionType=ActionType.Heal;
 			aEffect=1;
+			addAction();
+			aActionType=ActionType.Attack;
+			aDamageType=DamageType.Magical;
+			aEffect=2;
 			addAction();
 			addCard(type);
 			
@@ -2064,16 +2069,16 @@ public class CardFactory {
 			addCard(type);
 
 			cName= "Maul";
-			cStrength=4.2f;
-			cDescription = "5 physical damage, take 2 damage";
+			cStrength=3.9f;
+			cDescription = "4 physical damage, take 1 damage";
 			cDescSize=22;
 			aActionType=ActionType.Attack;
 			aDamageType=DamageType.Physical;
-			aEffect=5;
+			aEffect=4;
 			addAction();
 			aActionType=ActionType.TakeDamage;
 			aDamageType=DamageType.Physical;
-			aEffect=2;
+			aEffect=1;
 			addAction();
 			addCard(type);
 			break;
@@ -2110,7 +2115,7 @@ public class CardFactory {
 			cDescSize=22;
 			aActionType=ActionType.Attack;
 			aDamageType=DamageType.Magical;
-			aEffect=-3;
+			aEffect=3;
 			addAction();
 			aActionType=ActionType.Block;
 			aDamageType=DamageType.Magical;

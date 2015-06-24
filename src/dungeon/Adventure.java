@@ -993,8 +993,8 @@ public class Adventure {
 				}, PostFunc.StartingRoom),
 				new BossChat(Trigger.Second_Turn, new BossSpeech[]{new BossSpeech("Don't make us come find you!")}),
 				new BossChat(Trigger.FourthTurn, new BossSpeech[]{new BossSpeech("I'm hungry!"), new BossSpeech("I want his eyes!")}),
-				new BossChat(Trigger.ComingToAttack, new BossSpeech[]{new BossSpeech("We're gonna eat you! DIE!!")}),
-				new BossChat(Trigger.attacked_early, new BossSpeech[]{new BossSpeech("Dinner's here!")}, PostFunc.FireDemonMoveToBoard)
+				new BossChat(Trigger.ComingToAttack, new BossSpeech[]{new BossSpeech("We're gonna eat you! DIE!!")}, PostFunc.FireDemonMoveToBoard),
+				new BossChat(Trigger.attacked_early, new BossSpeech[]{new BossSpeech("Dinner's here!")})
 		};
 		aStartingTile=Tile.get("jne");
 		aLayout= new DungeonLayout(new TileLocation[]{

@@ -107,6 +107,9 @@ public class BossChat {
 		if(postFunc==PostFunc.FireDemonMoveToBoard){
 			output += Json.addKey("postFunc", PostFunc.MoveToBoard.toString(), true);
 			output += Json.addKey("block", true, true);
+			output += Json.startArray("postArgs");
+			output += "true\n";
+			output += Json.endArray(true);
 		}
 		else if(postFunc==PostFunc.Chase){
 			output += Json.addKey("postFunc", PostFunc.StartingRoom.toString(), true);
