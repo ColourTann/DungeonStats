@@ -70,6 +70,7 @@ public class HeroFactory {
 		aHP=6;
 		traits=null;
 		aChats=HeroChat.chumpChats;
+		traits=new Trait[]{Trait.Wild};
 		addClass();
 
 		heroName=SkillType.Alchemist;

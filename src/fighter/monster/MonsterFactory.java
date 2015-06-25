@@ -96,7 +96,7 @@ public class MonsterFactory {
 		health = 6;
 		randomPool=1;
 		sound = MSound.goblin;
-		traits = null;
+//		traits = new Trait[]{Trait.};
 		skills = new Skill[]{Skill.get(SkillType.Irritable).asLevel(3), Skill.get(SkillType.Armed).asLevel(2)};
 		make();
 		
@@ -110,6 +110,7 @@ public class MonsterFactory {
 		health = 5;
 		randomPool=1;
 		sound = MSound.goblin;
+		traits = new Trait[]{Trait.NightOwl};
 		skills = new Skill[]{Skill.get(SkillType.Flame).asLevel(3), Skill.get(SkillType.Stupidity).asLevel(1)};
 		make();
 
@@ -123,7 +124,7 @@ public class MonsterFactory {
 		health = 4;
 		randomPool=1;
 		sound = MSound.giant_bat;
-		traits = null;
+		traits = new Trait[]{Trait.Loner};
 		skills = new Skill[]{Skill.get(SkillType.Feral).asLevel(2), Skill.get(SkillType.Spooky).asLevel(3)};
 		make();
 		
@@ -213,7 +214,7 @@ public class MonsterFactory {
 		plural= "Snakes";
 		region=Region.Stone;
 		species=Species.beast;
-		description = "SSSsssssssss";
+		description = "Why'd it have to be snakes?";
 		frameNumber = 28;
 		level = 2;
 		health = 7;
@@ -233,7 +234,7 @@ public class MonsterFactory {
 		health = 5;
 		randomPool=1;
 		sound = MSound.ghost;
-		traits = new Trait[]{Trait.Tenacious};
+		traits = new Trait[]{Trait.Tenacious, Trait.NightOwl};
 		skills = new Skill[]{Skill.get(SkillType.Spooky).asLevel(4), Skill.get(SkillType.Death).asLevel(3)};
 		make();
 
@@ -270,7 +271,7 @@ public class MonsterFactory {
 		name = "Bear Owl";
 		plural= "Bear Owls";
 		region=Region.Stone;
-		description = "A bit top-heavy";
+		description = "They're in cahoots";
 		frameNumber = 36;
 		level = 3;
 		health = 7;
@@ -290,7 +291,7 @@ public class MonsterFactory {
 		health = 7;
 		randomPool=1;
 		sound= MSound.ghost;
-		traits = new Trait[]{Trait.Tenacious};
+		traits = new Trait[]{Trait.Tenacious, Trait.NightOwl};
 		skills = new Skill[]{Skill.get(SkillType.Spooky).asLevel(4), Skill.get(SkillType.Death).asLevel(5)};
 		make();
 		
@@ -331,7 +332,7 @@ public class MonsterFactory {
 		health = 7;
 		randomPool=1;
 		sound= MSound.goblin;
-		traits = null;
+		traits = new Trait[]{Trait.Loner};
 		skills = new Skill[]{Skill.get(SkillType.Armed).asLevel(5)};
 		make();
 
@@ -378,7 +379,7 @@ public class MonsterFactory {
 		level = 3;
 		health = 8;
 		randomPool=0;
-		traits = null;
+		traits = new Trait[]{Trait.Leader};
 		sound= MSound.giant_bat;
 		skills = new Skill[]{Skill.get(SkillType.Feral).asLevel(3), Skill.get(SkillType.Armed).asLevel(3), Skill.get(SkillType.Irritable).asLevel(3)};
 		boardChat=new BoardChat[]{

@@ -26,7 +26,7 @@ public abstract class Fighter {
 		Aggressive, //Chase
 		Thief, //moves to gold
 		Wandering //random move
-, Bisect
+, Bisect, Wild
 		;
 
 		public String toJson() {

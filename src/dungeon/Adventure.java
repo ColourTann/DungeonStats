@@ -202,7 +202,7 @@ public class Adventure {
 						}
 								),
 								new BossChat(Trigger.FourthKill, new BossSpeech[]{
-										new BossSpeech("SQUEAK!!")
+										new BossSpeech("OI!- uh i mean SQUEAK!!")
 								}
 										)
 		};
@@ -250,9 +250,9 @@ public class Adventure {
 						}
 								),
 		};
-		aStartingTile=TileName.corr_grate_n;
+		aStartingTile=Tile.get("ulr");
 		aLayout= new DungeonLayout(new TileLocation[]{
-				new TileLocation(TileName.room_semicircle_nes, -1, -2, "Fire Imp", null, new TileDetails(FountainType.Blindness, false, false, false, 0, 0, false)),
+				new TileLocation(TileName.room_semicircle_nes, -1, -2, "Fire Imp", null, new TileDetails(FountainType.Clairvoyance)),
 				new TileLocation(TileName.room_semicircle_nsw, 1, -2, "Fire Imp", null, null),
 				new TileLocation(TileName.room_semicircle_esw, 0, -3, "Gnoll", null, null)
 		});
@@ -277,7 +277,6 @@ public class Adventure {
 		};
 		aStartingTile=TileName.room_steps_nesw;
 		aLayout= new DungeonLayout(new TileLocation[]{
-				new TileLocation(Tile.get("udlr"), -1, -1, "", null, new TileDetails(FountainType.Knowledge)),
 				new TileLocation(TileName.room_semicircle_nes, -2, 0, "Ghost", TreasureType.Large_Chest, null),
 				new TileLocation(TileName.room_collapse_esw, 0, -2, "Zombie", TreasureType.Large_Chest, null),
 				new TileLocation(TileName.room_semicircle_nsw, 2, 0, "Fire Elemental", TreasureType.Large_Chest, null)
@@ -300,51 +299,23 @@ public class Adventure {
 						new BossSpeech("WHO DARES INVADE THE HOT, HOT LAIR OF EMBRO, LORD OF FLAME?!"),
 						new BossSpeech("Right in the middle of bath-time too. Look at this puddle!"),
 						new BossSpeech("MINIONS! DESTROY THEM! BRING ME THEIR BONES!"),
-				}, PostFunc.StartingRoom 
-						),
+				}, PostFunc.StartingRoom ),
 
-						new BossChat(Trigger.Second_Turn, new BossSpeech[]{
-								new BossSpeech("Argh, I have to dry off or I won't be my fiery best."),
-								new BossSpeech("You'd better wait {TURNS_LEFT} more turns before fighting me or it won't be fair!"),
+				new BossChat(Trigger.Second_Turn, new BossSpeech[]{new BossSpeech("Argh, I have to dry off or I won't be my fiery best."),new BossSpeech("You'd better wait {TURNS_LEFT} more turns before fighting me or it won't be fair!"),}),
+				new BossChat(Trigger.SixthTurn, new BossSpeech[]{new BossSpeech("MINIONS! Bring me more towels!."),new BossSpeech("I need to be ready for my big fight in 6 turns"),}),
+				new BossChat(Trigger.EleventhTurn, new BossSpeech[]{new BossSpeech("Almost dry now! I'm coming for you next turn!"),}),
+				new BossChat(Trigger.ComingToAttack, new BossSpeech[]{new BossSpeech("**WHOOSH** Finally dry! Now I'm going to get you!"),}, 
+						PostFunc.FireDemonMoveToBoard,new PostEffect[]{new PostEffect(Trait.Damp, false)}),
+						new BossChat(Trigger.attacked_early, new BossSpeech[]{new BossSpeech("Hey! I'm not ready yet!"),}),
+						new BossChat(Trigger.ThirdKill, new BossSpeech[]{new BossSpeech("HAR HAR! YOU THINK I'LL MISS THAT {LAST_KILL_TYPE}?"),new BossSpeech("NO! HE WAS MY LEAST FAVORITE MINION!"),}),
+						new BossChat(Trigger.FifthKill, new BossSpeech[]{
+								new BossSpeech("*sigh* As usual my minions are bumbling fools.."),
+								new BossSpeech("If only those sharks with spears attached to their heads had arrived."),
+								new BossSpeech("Oh well. SEND MORE RUBBER DUCKIES!"),
 						} 
 								),
-
-								new BossChat(Trigger.SixthTurn, new BossSpeech[]{
-										new BossSpeech("MINIONS! Bring me more towels!."),
-										new BossSpeech("I need to be ready for my big fight in 6 turns"),
-								} 
-										),
-
-										new BossChat(Trigger.EleventhTurn, new BossSpeech[]{
-												new BossSpeech("Almost dry now! I'm coming for you next turn!"),
-										} 
-												),
-
-												new BossChat(Trigger.ComingToAttack, new BossSpeech[]{
-														new BossSpeech("**WHOOSH** Finally dry! Now I'm going to get you!"),
-												}, PostFunc.FireDemonMoveToBoard,
-												new PostEffect[]{
-														new PostEffect(Trait.Damp, false)
-												}),
-
-												new BossChat(Trigger.attacked_early, new BossSpeech[]{
-														new BossSpeech("Hey! I'm not ready yet!"),
-												}),
-
-												new BossChat(Trigger.ThirdKill, new BossSpeech[]{
-														new BossSpeech("HAR HAR! YOU THINK I'LL MISS THAT {LAST_KILL_TYPE}?"),
-														new BossSpeech("NO! HE WAS MY LEAST FAVORITE MINION!"),
-												} 
-														),
-
-														new BossChat(Trigger.FifthKill, new BossSpeech[]{
-																new BossSpeech("*sigh* As usual my minions are bumbling fools.."),
-																new BossSpeech("If only those sharks with spears attached to their heads had arrived."),
-																new BossSpeech("Oh well. SEND MORE RUBBER DUCKIES!"),
-														} 
-																),
 		};
-		aStartingTile=TileName.corr_grate_n;
+		aStartingTile=Tile.get("u");
 		aTurnLimitActions= new TurnLimitAction[]{(
 				new TurnLimitAction(ActionType.BossChat, new String[]{"\""+Trigger.ComingToAttack.toString()+"\""}, "Embro attacks")
 				)};
@@ -472,21 +443,17 @@ public class Adventure {
 		aBossName="Orc Warlord";
 		aBossChats= new BossChat[]{
 				new BossChat(Trigger.ZerothTurn, new BossSpeech[]{
-						new BossSpeech("GRAK and GRIK! Defeat this interloper!")
-				}, PostFunc.StartingRoom
-						),
-						new BossChat(Trigger.SecondKill, new BossSpeech[]{
-								new BossSpeech("Stop killing my monsters!")
-						} 
-								),
-								new BossChat(Trigger.FourthKill, new BossSpeech[]{
-										new BossSpeech("Stop it! I mean it!")
-								} 
-										),
-										new BossChat(Trigger.attacked_early, new BossSpeech[]{
-												new BossSpeech("This'll be over quick, human!")
-										} 
-												),
+						new BossSpeech("Oh crap it's one of those do-gooders from the ivory league."),
+						new BossSpeech("I knew I should have been more careful"),}, PostFunc.StartingRoom),
+						
+						new BossChat(Trigger.FirstTurn, new BossSpeech[]{new BossSpeech("Wait a sec you're from the guild of dungoneering?"),
+								new BossSpeech("Take them out with the trash, minions"),}),
+						
+						new BossChat(Trigger.SecondKill, new BossSpeech[]{new BossSpeech("Hey stop killing my monsters!")}),
+						
+						new BossChat(Trigger.FourthKill, new BossSpeech[]{new BossSpeech("Oi! I mean it!")}),
+						
+						new BossChat(Trigger.attacked_early, new BossSpeech[]{new BossSpeech("This'll be over quick, human!")}),
 		};
 		aStartingTile=TileName.room_collapse_new;
 		aLayout= new DungeonLayout(new TileLocation[]{
@@ -551,15 +518,11 @@ public class Adventure {
 		aBoss="Minotaur";
 		aBossName="Minotaur";
 		aBossChats= new BossChat[]{
-				new BossChat(Trigger.ZerothTurn, new BossSpeech[]{
-						new BossSpeech("Grah! Black Knight says kill!"),
-				},
-				PostFunc.Chase
-						)
+				new BossChat(Trigger.ZerothTurn, new BossSpeech[]{new BossSpeech("Grah! Black Knight says kill!"),new BossSpeech("Last guy from the ivory league lasted 10 seconds."), },PostFunc.Chase),
 		};
 		aStartingTile=Tile.get("udl");
 		aLayout= new DungeonLayout(new TileLocation[]{
-				new TileLocation(Tile.get("udlr"), -1, 1, "", null, new TileDetails(FountainType.Power)),
+				new TileLocation(Tile.get("udl"), -1, 1, "", null, new TileDetails(FountainType.Power)),
 				new TileLocation(Tile.get("ur"), 0, 1, "", null, null),
 				new TileLocation(Tile.get("lu"), 1, 1, "", null, null),
 				new TileLocation(Tile.get("dur"), 1, 0, "boss", null, null)
@@ -578,33 +541,22 @@ public class Adventure {
 		aBoss="The Black Knight";
 		aBossName="The Black Knight";
 		aBossChats= new BossChat[]{
-				new BossChat(Trigger.ZerothTurn, new BossSpeech[]{
-						new BossSpeech("A worthy challenger at last!")
-				}, PostFunc.StartingRoom
+				new BossChat(Trigger.ZerothTurn, new BossSpeech[]{new BossSpeech("A worthy challenger at last!")}, PostFunc.StartingRoom),
+				new BossChat(Trigger.FirstKill, new BossSpeech[]{new BossSpeech("Good technique!")}),
+				new BossChat(Trigger.SecondKill, new BossSpeech[]{new BossSpeech("Impressive form!")}),
+				new BossChat(Trigger.ThirdKill, new BossSpeech[]{new BossSpeech("Getting some last minute practice in?")} 
 						),
-						new BossChat(Trigger.FirstKill, new BossSpeech[]{
-								new BossSpeech("Good technique!")
+						new BossChat(Trigger.NinthTurn, new BossSpeech[]{
+								new BossSpeech("Come on, I'm getting impatient!")
 						} 
 								),
-								new BossChat(Trigger.SecondKill, new BossSpeech[]{
-										new BossSpeech("Impressive form!")
-								} 
+								new BossChat(Trigger.ComingToAttack, new BossSpeech[]{
+										new BossSpeech("Here I come, worthy challenger")
+								}, PostFunc.FireDemonMoveToBoard 
 										),
-										new BossChat(Trigger.ThirdKill, new BossSpeech[]{
-												new BossSpeech("Getting some last minute practice in?")
-										} 
-												),
-												new BossChat(Trigger.NinthTurn, new BossSpeech[]{
-														new BossSpeech("Come on, I'm getting impatient!")
-												} 
-														),
-														new BossChat(Trigger.ComingToAttack, new BossSpeech[]{
-																new BossSpeech("Here I come, worthy challenger")
-														}, PostFunc.FireDemonMoveToBoard 
-																),
-																new BossChat(Trigger.attacked_early, new BossSpeech[]{
-																		new BossSpeech("You're eager, I like it!"),
-																}),
+										new BossChat(Trigger.attacked_early, new BossSpeech[]{
+												new BossSpeech("You're eager, I like it!"),
+										}),
 		};
 		aStartingTile=TileName.room_collapse_new;
 		aLayout= new DungeonLayout(new TileLocation[]{
@@ -702,6 +654,7 @@ public class Adventure {
 
 		aBossChats= new BossChat[]{
 				new BossChat(Trigger.ZerothTurn, new BossSpeech[]{new BossSpeech("Hey! I'm not that evil!")}, PostFunc.StartingRoom),
+				new BossChat(Trigger.FirstTurn, new BossSpeech[]{new BossSpeech("I've filed all my papers with the Ivory League of Explorers")}),
 				new BossChat(Trigger.FirstKill, new BossSpeech[]{new BossSpeech("What're you doing!? You're the evil one!")}),
 				new BossChat(Trigger.ThirdKill, new BossSpeech[]{new BossSpeech("Look it was just one orphanage, everyone makes mistakes!")}),
 				new BossChat(Trigger.SixthTurn, new BossSpeech[]{new BossSpeech("Come on, I deserve a second chance.")}),
@@ -1131,7 +1084,7 @@ public class Adventure {
 				"Pixies", "Jungle Warrior", "Frenzied Goblin", 
 				"Harpy", "Poisonous Snake", "Rat Berserker",
 				"Worm", "Gargoyle", "Jungle Shaman"});
-		
+
 		aAdvName="Dragon Adventure";
 		aAdvIcon="jungle_volcano";
 		aAdvX=-3;
