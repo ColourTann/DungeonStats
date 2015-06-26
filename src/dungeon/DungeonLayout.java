@@ -3,6 +3,8 @@ package dungeon;
 import item.Item.TreasureType;
 import json.Json;
 import dungeon.Tile.TileName;
+import fighter.monster.Monster;
+import fighter.monster.MonsterFactory;
 
 public class DungeonLayout {
 	TileLocation[] locations;
@@ -31,8 +33,29 @@ public class DungeonLayout {
 			this.monster=monster;
 			if(treasure!=null)this.treasure=treasure.toString();
 			this.details=details;
+			if(monster != null && !monster.equalsIgnoreCase("BOSS") && monster != ""){
+			
+					boolean found =false;
+					for(Monster m:MonsterFactory.monsters){
+						if(m.name.equals(monster)){
+							
+							found=true;
+							
+						}
+						
+					}
+					if(!found){
+					System.out.println("Could not find monster "+monster);
+					throw new IllegalArgumentException();
+					
+				}
+			}
 		}
 		
+		public TileLocation(TileName tileName, int i, int j, String string, TreasureType treasure) {
+			this(tileName, i, j, string, treasure, null);
+		}
+
 		public String toJson(){
 			String output="";
 			output += Json.enclose();

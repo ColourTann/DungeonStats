@@ -504,10 +504,10 @@ public class MonsterFactory {
 		description = "Don't let him cast Lich Itch on you!";
 		frameNumber = 29;
 		level = 4;
-		health = 8;
+		health = 11;
 		randomPool=0;
 		sound = MSound.giant_bat;
-		traits = new Trait[]{Trait.Halfbaked};
+		traits = new Trait[]{Trait.Halfbaked, Trait.PhysicalVuln};
 		skills = new Skill[]{Skill.get(SkillType.Spooky).asLevel(5), Skill.get(SkillType.Death).asLevel(5)};
 		make();
 
@@ -1251,7 +1251,7 @@ public class MonsterFactory {
 		description = "She's got a wand and she's not afraid to use it";
 		frameNumber = 0;
 		level = 3;
-		health = 5;
+		health = 7;
 		randomPool=1;
 		sound = MSound.giant_bat;
 		traits = null;

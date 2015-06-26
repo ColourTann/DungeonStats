@@ -336,7 +336,7 @@ public class Adventure {
 
 		ArrayList<Monster> mimicList= MonsterFactory.getMonsters(new String[]{
 				"Fire Imp", "Scary Spider", "Goblin", 
-				"Ghost", "Mimic", "Gnoll", 
+				"Ghost", "Skeleton", "Gnoll", 
 				"Bear Owl", "Fire Elemental", "Bandito"});
 
 		aAdvName="Shiny treasure";
@@ -445,15 +445,15 @@ public class Adventure {
 				new BossChat(Trigger.ZerothTurn, new BossSpeech[]{
 						new BossSpeech("Oh crap it's one of those do-gooders from the ivory league."),
 						new BossSpeech("I knew I should have been more careful"),}, PostFunc.StartingRoom),
-						
+
 						new BossChat(Trigger.FirstTurn, new BossSpeech[]{new BossSpeech("Wait a sec you're from the guild of dungoneering?"),
 								new BossSpeech("Take them out with the trash, minions"),}),
-						
-						new BossChat(Trigger.SecondKill, new BossSpeech[]{new BossSpeech("Hey stop killing my monsters!")}),
-						
-						new BossChat(Trigger.FourthKill, new BossSpeech[]{new BossSpeech("Oi! I mean it!")}),
-						
-						new BossChat(Trigger.attacked_early, new BossSpeech[]{new BossSpeech("This'll be over quick, human!")}),
+
+								new BossChat(Trigger.SecondKill, new BossSpeech[]{new BossSpeech("Hey stop killing my monsters!")}),
+
+								new BossChat(Trigger.FourthKill, new BossSpeech[]{new BossSpeech("Oi! I mean it!")}),
+
+								new BossChat(Trigger.attacked_early, new BossSpeech[]{new BossSpeech("This'll be over quick, human!")}),
 		};
 		aStartingTile=TileName.room_collapse_new;
 		aLayout= new DungeonLayout(new TileLocation[]{
@@ -612,7 +612,6 @@ public class Adventure {
 		};
 		aStartingTile=Tile.get("dlr");
 		aLayout= new DungeonLayout(new TileLocation[]{
-				new TileLocation(Tile.get("uld"), 1, 1, "Scary Spider", null, null),
 				new TileLocation(Tile.get("ur"), -1, 1, "", TreasureType.Large_Chest, null),
 				new TileLocation(Tile.get("udr"), 0, 2, "Giant Bat", null, null),
 				new TileLocation(Tile.get("udl"), 1, 2, "", null, new TileDetails(FountainType.Combustion)),
@@ -627,7 +626,7 @@ public class Adventure {
 		};
 		aTurnLimit=10;
 		aTurnLimitActions= new TurnLimitAction[]{(
-				new TurnLimitAction(ActionType.BossChat, new String[]{"\""+Trigger.kill+"\""}, "The ritual is over")
+				new TurnLimitAction(ActionType.BossChat, new String[]{"\""+Trigger.kill+"\""}, "Ritual completes")
 				)};
 		aMonsters=lichst;
 		addDungeon();
@@ -654,7 +653,7 @@ public class Adventure {
 
 		aBossChats= new BossChat[]{
 				new BossChat(Trigger.ZerothTurn, new BossSpeech[]{new BossSpeech("Hey! I'm not that evil!")}, PostFunc.StartingRoom),
-				new BossChat(Trigger.FirstTurn, new BossSpeech[]{new BossSpeech("I've filed all my papers with the Ivory League of Explorers")}),
+				new BossChat(Trigger.FirstTurn, new BossSpeech[]{new BossSpeech("I've filed all my papers with the Ivory League of Explorers!")}),
 				new BossChat(Trigger.FirstKill, new BossSpeech[]{new BossSpeech("What're you doing!? You're the evil one!")}),
 				new BossChat(Trigger.ThirdKill, new BossSpeech[]{new BossSpeech("Look it was just one orphanage, everyone makes mistakes!")}),
 				new BossChat(Trigger.SixthTurn, new BossSpeech[]{new BossSpeech("Come on, I deserve a second chance.")}),
@@ -689,37 +688,49 @@ public class Adventure {
 		aTrophyX= 1;
 		aTrophyY=-1;
 		aName="Curious Crypt";
-		aDescription="Steal the Sapphire Ring";
+		aDescription="Find your way into the eye-beast's lair";
 		aReward=100;
 		aTerrainType=TerrainType.stone;
 		aBoss="Eye Beast";
 		aBossName="Eye Beast";
-		aBossChats= new BossChat[]{};
-		aStartingTile=Tile.get("ulr");
+		aBossChats= new BossChat[]{
+				new BossChat(Trigger.ZerothTurn, new BossSpeech[]{new BossSpeech("Finally I can get back to snooping on the neighbours with the orb")}),
+				new BossChat(Trigger.FirstTurn, new BossSpeech[]{new BossSpeech("Wow, Glothnar certainly seems to be doing well for herself")}),
+				new BossChat(Trigger.ThirdTurn, new BossSpeech[]{new BossSpeech("What's this? A visitor for Glothnar?")}),
+				new BossChat(Trigger.FourthTurn, new BossSpeech[]{new BossSpeech("Oh no! An affair while Gaorok is out!")}),
+				new BossChat(Trigger.FifthTurn, new BossSpeech[]{new BossSpeech("I should stop watching")}),
+				new BossChat(Trigger.SeventhTurn, new BossSpeech[]{new BossSpeech("I really should stop watching")}),
+		};
+		aStartingTile=Tile.get("uld");
 		aLayout= new DungeonLayout(new TileLocation[]{
-				new TileLocation(Tile.get("udl"), 1, -2, "", null, new TileDetails(FountainType.Stupidity)),
-				new TileLocation(Tile.get("dlr"), 0, -3, "", null, new TileDetails(FountainType.Decay)),
-				new TileLocation(Tile.get("ld"), 1, -3, "Minotaur", TreasureType.Sapphire_Ring, null),
+				new TileLocation(Tile.get("drl"), -1, -1, "Gray Ooze", TreasureType.GOLD_COIN),
+				new TileLocation(Tile.get("url"), -2, 1, "Mimic", null, new TileDetails(FountainType.Heroism)),
+				new TileLocation(Tile.get("lr"), -3, 0, "", null, new TileDetails(FountainType.Decay)),
+				new TileLocation(Tile.get("ur"), -4, 1, "", null, new TileDetails(FountainType.Blindness)),
+				new TileLocation(Tile.get("dr"), -4, -1, "", null, new TileDetails(FountainType.Stupidity)),
+				new TileLocation(Tile.get("udlr"), -4, 0, "Minotaur", TreasureType.Sapphire_Ring, null),
+				new TileLocation(Tile.get("r"), -5, 0, "", null, new TileDetails(false, false, false, 0, 0, true)),
 		});
 		aObjectives = new Objective[]{
-				new Objective(ObjectiveType.Collect, TreasureType.Sapphire_Ring.toString(), 1),
+				new Objective(ObjectiveType.Arrive, "objective", 1),
 		};
 		aTurnLimit=-1;
 		aMonsters=eyeblist;
 		addDungeon();
 
 		aName="Staring match";
-		aDescription="BEHOLD! The Eye Beast! (too much?)";
+		aDescription="Steal the orb of nosiness";
 		aReward=100;
 		aTerrainType=TerrainType.stone;
 		aBoss="Eye Beast";
 		aBossName="Eye Beast";
 		aBossChats= new BossChat[]{
 				new BossChat(Trigger.ZerothTurn, new BossSpeech[]{
-						new BossSpeech("I seeeeee youuuu"),
-						new BossSpeech("You thought you could steeeal my priiize?")}, PostFunc.StartingRoom),
-						new BossChat(Trigger.ThirdTurn, new BossSpeech[]{new BossSpeech("Tiiick tooock herooo")}),
-						new BossChat(Trigger.SixthTurn, new BossSpeech[]{new BossSpeech("Sssoooonnn")}),
+						new BossSpeech("How daaare you interrupt me during my evening entertainment"),
+						new BossSpeech("You thought you could steal my priiize?")}, PostFunc.StartingRoom),
+						new BossChat(Trigger.FirstTurn, new BossSpeech[]{new BossSpeech("I knew your were coming!")}),
+						new BossChat(Trigger.ThirdTurn, new BossSpeech[]{new BossSpeech("Get out or I turn you to stone")}),
+						new BossChat(Trigger.SixthTurn, new BossSpeech[]{new BossSpeech("Tick tock hero!")}),
 						new BossChat(Trigger.kill, new BossSpeech[]{
 								new BossSpeech("Out of tiiime"),
 								new BossSpeech("*stare*"),
@@ -732,13 +743,14 @@ public class Adventure {
 		};
 		aStartingTile=TileName.room_collapse_new;
 		aLayout= new DungeonLayout(new TileLocation[]{
-				new TileLocation(TileName.room_torture_s, -1, -3, "BOSS", null, new TileDetails(false, true, true, -1, -3, false)),
+				new TileLocation(Tile.get("d"), -1, -4, "", TreasureType.Sapphire_Ring),
+				new TileLocation(Tile.get("du"), -1, -3, "BOSS", null, new TileDetails(false, true, true, -1, -3, false)),
 				new TileLocation(TileName.room_round_s, 1, -3, "", TreasureType.Large_Chest, new TileDetails(false, true, false, 0, 0, false)),
 				new TileLocation(TileName.corr_rubble_e, -2, -1, "", TreasureType.MEGA_CHEST, new TileDetails(false, true, false, 0, 0, false)),
 
 		});
 		aObjectives = new Objective[]{
-				new Objective(ObjectiveType.Defeat, "BOSS", -1)
+				new Objective(ObjectiveType.Collect, TreasureType.Sapphire_Ring.toString(), 1)
 		};
 		aTurnLimit=8;
 		aTurnLimitActions= new TurnLimitAction[]{
@@ -784,7 +796,7 @@ public class Adventure {
 		aLayout= new DungeonLayout(new TileLocation[]{
 				new TileLocation(Tile.get("judr"), -1, -1, "Pixies", null, new TileDetails(FountainType.Power)),
 				new TileLocation(Tile.get("js"), 0, -3, "", TreasureType.Massive_Gem, null),
-				new TileLocation(Tile.get("jsnew"), 0, -2, "LizardMan", null, null),
+				new TileLocation(Tile.get("jsnew"), 0, -2, "Lizardman", null, null),
 		});
 		aObjectives = new Objective[]{
 				new Objective(ObjectiveType.Collect, TreasureType.Massive_Gem.toString(), 1),
@@ -844,17 +856,14 @@ public class Adventure {
 		aBoss="Medusa";
 		aBossName="Medusa";
 		aBossChats= new BossChat[]{
-				new BossChat(Trigger.FirstKill, new BossSpeech[]{
-						new BossSpeech("How dare you interloper!")
-				}
-						),
+				new BossChat(Trigger.FirstKill, new BossSpeech[]{new BossSpeech("How dare you interloper!")}),
+				new BossChat(Trigger.SecondKill, new BossSpeech[]{new BossSpeech("At least the Ivory Leaguers give me fair warning!")}),
 		};
 		aStartingTile=Tile.get("jnw");
 		aLayout= new DungeonLayout(new TileLocation[]{
-				new TileLocation(Tile.get("jur"), -2, 0, "", TreasureType.Large_Chest, new TileDetails(false, true, true, 0, -2, false)),
-				new TileLocation(Tile.get("jlr"), -1, -2, "Poisonous Snake", null, new TileDetails(false, true, false, 0, 0, false)),
-				new TileLocation(Tile.get("jd"), 1, -2, "Poisonous Snake", null, new TileDetails(false, true, false, 0, 0, false)),
-				new TileLocation(Tile.get("jdl"), 0, -2, "Poisonous Snake", null, new TileDetails(false, true, false, 0, 0, false)),
+				new TileLocation(Tile.get("jrd"), -1, -2, "Poisonous Snake", null, new TileDetails(false, true, false, 0, 0, false)),
+				new TileLocation(Tile.get("jdl"), 1, -2, "Poisonous Snake", null, new TileDetails(false, true, false, 0, 0, false)),
+				new TileLocation(Tile.get("jdlr"), 0, -2, "Poisonous Snake", null, new TileDetails(false, true, false, 0, 0, false)),
 				new TileLocation(Tile.get("jrd"), -2, -2, "Poisonous Snake", null, new TileDetails(false, true, false, 0, 0, false)),
 		});
 		aObjectives = new Objective[]{
@@ -1121,7 +1130,9 @@ public class Adventure {
 		aBossName="Dragon";
 		aBossChats= new BossChat[]{
 				new BossChat(Trigger.ZerothTurn, new BossSpeech[]{
-						new BossSpeech("You will pay for your greed!")
+						new BossSpeech("Here for the golden Sun Idol?"),
+						new BossSpeech("Just like the last 5 losers from the Ivory League!"),
+						new BossSpeech("You will pay for your greed!"),
 				}, PostFunc.Chase
 						)
 		};

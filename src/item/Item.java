@@ -135,14 +135,14 @@ public class Item {
 		aDesc="A pouch bulging with coins";
 		aLevel=3;
 		aGlory=3;
-		aRandomPool=1;
+		aRandomPool=0;
 		aSound=Sound.equip_coin_bag;
 		add();
 
 		aName="Candlstick";
 		aDesc="Does this match the set we have in the guild?";
-		aLevel=4;
-		aGlory=4;
+		aLevel=3;
+		aGlory=3;
 		aRandomPool=0;
 		aSound=Sound.equip_staff;
 		add();
@@ -184,14 +184,13 @@ public class Item {
 		aDesc="A simple leather cap. Might warm you up.";
 		aEquipment=1;
 		aType=EquipmentType.helmet;
-		aLevel=3;
+		aLevel=2;
 		aEquipFrame=11;
 		aUnlockLevel=1;
 		aUnlock=UnlockedBy.Leather;
 		aRandomPool=1;
 		aSound=Sound.equip_leather_helm;
-		aSkills=new Skill[]{Skill.armour.asLevel(2)};
-		aHealth=1;  
+		aSkills=new Skill[]{Skill.armour.asLevel(2), Skill.holy.asLevel(1)};
 		aOffsetX=111; aOffsetY=68;
 		add();
 
@@ -205,7 +204,8 @@ public class Item {
 		aUnlock=UnlockedBy.Smith;
 		aRandomPool=0;
 		aSound=Sound.equip_horned_helm;
-		aSkills=new Skill[]{Skill.armour.asLevel(2), Skill.crush.asLevel(1)};
+		aSkills=new Skill[]{Skill.blade.asLevel(1)};
+		aTraits=new Trait[]{Trait.Fury};
 		aOffsetX=112; aOffsetY=68;
 		add();
 
@@ -213,13 +213,14 @@ public class Item {
 		aDesc="It gleams in the dark. Could it be magical?";
 		aEquipment=1;
 		aType=EquipmentType.helmet;
-		aLevel=4;
+		aLevel=3;
 		aEquipFrame=13;
 		aUnlockLevel=3;
 		aUnlock=UnlockedBy.Smith;
 		aRandomPool=0;
 		aSound=Sound.equip_winged_helm;
-		aSkills=new Skill[]{Skill.armour.asLevel(2), Skill.swift.asLevel(2), Skill.holy.asLevel(1)};
+		aSkills=new Skill[]{Skill.holy.asLevel(1)};
+		aTraits=new Trait[]{Trait.Retribution};
 		aOffsetX=113; aOffsetY=89;
 		add();
 
@@ -256,13 +257,13 @@ public class Item {
 		aDesc="Awkward, but looks like it will keep you safe";
 		aEquipment=1;
 		aType=EquipmentType.armour;
-		aLevel=4;
+		aLevel=3;
 		aEquipFrame=17;
 		aUnlockLevel=2;
 		aUnlock=UnlockedBy.Smith;
 		aRandomPool=0;
 		aSound=Sound.equip_platemail;
-		aSkills=new Skill[]{Skill.armour.asLevel(3)};
+		aSkills=new Skill[]{Skill.armour.asLevel(2), Skill.crush.asLevel(1)};
 		aOffsetX=115; aOffsetY=169;
 		add();
 
@@ -275,7 +276,8 @@ public class Item {
 		aUnlockLevel=0;
 		aRandomPool=0;
 		aSound=Sound.equip_wooden_shield;
-		aSkills=new Skill[]{Skill.armour.asLevel(2)};
+		aSkills=new Skill[]{Skill.armour.asLevel(1)};
+		aTraits=new Trait[]{Trait.Tenacious};
 		aOffsetX=70; aOffsetY=175;
 		add();
 
@@ -303,8 +305,8 @@ public class Item {
 		aUnlock=UnlockedBy.Wood;
 		aRandomPool=0;
 		aSound=Sound.equip_buckler;
-		aSkills=new Skill[]{Skill.armour.asLevel(1)};
-		aTraits=new Trait[]{Trait.Tenacious};
+		aSkills=new Skill[]{Skill.fire.asLevel(2)};
+		aHealth=1;
 		aOffsetX=75; aOffsetY=176;
 		add();
 
@@ -338,7 +340,7 @@ public class Item {
 		aDesc="Good for self-defence";
 		aEquipment=1;
 		aType=EquipmentType.weapon;
-		aLevel=4;
+		aLevel=3;
 		aEquipFrame=23;
 		aUnlockLevel=1;
 		aUnlock=UnlockedBy.Smith;
@@ -394,12 +396,12 @@ public class Item {
 		aEquipment=1;
 		aType=EquipmentType.armour;
 		aEquipFrame=30;
-		aLevel=4;
+		aLevel=2;
 		aUnlockLevel=2;
 		aUnlock=UnlockedBy.Leather;
 		aRandomPool=1;
 		aSound=Sound.equip_robes;
-		aSkills=new Skill[]{Skill.arcane.asLevel(2), Skill.fire.asLevel(2), Skill.swift.asLevel(1)};
+		aSkills=new Skill[]{Skill.arcane.asLevel(1), Skill.fire.asLevel(1), Skill.growth.asLevel(1)};
 		aOffsetX=114; aOffsetY=182;
 		add();
 
@@ -463,7 +465,7 @@ public class Item {
 		aDesc="Tell me, what's on your mind?";
 		aEquipment=1;
 		aType=EquipmentType.weapon;
-		aLevel=4;
+		aLevel=3;
 		aEquipFrame=28;
 		aUnlockLevel=2;
 		aUnlock=UnlockedBy.Wood;
@@ -477,7 +479,7 @@ public class Item {
 		aDesc="It hums with power";
 		aEquipment=1;
 		aType=EquipmentType.weapon;
-		aLevel=4;
+		aLevel=3;
 		aEquipFrame=34;
 		aUnlockLevel=1;
 		aUnlock=UnlockedBy.Curio;
@@ -544,14 +546,14 @@ public class Item {
 		aDesc="Voodoo! Who do? You do!";
 		aEquipment=1;
 		aType=EquipmentType.helmet;
-		aLevel=4;
+		aLevel=2;
 		aEquipFrame=39;
 		aUnlockLevel=3;
 		aUnlock=UnlockedBy.Wood;
 		aRandomPool=1;
 		aKeepHair=1;
 		aSound=Sound.equip_leather_helm;
-		aSkills=new Skill[]{Skill.holy.asLevel(2), Skill.growth.asLevel(2), Skill.arcane.asLevel(2)};
+		aSkills=new Skill[]{Skill.holy.asLevel(1), Skill.growth.asLevel(2)};
 		aOffsetX=110; aOffsetY=89;
 		add();
 
@@ -574,7 +576,7 @@ public class Item {
 		aEquipment=1;
 		aType=EquipmentType.shield;
 		aLevel=5;
-		aEquipFrame=36;
+		aEquipFrame=41;
 		aUnlockLevel=-5;
 		aRandomPool=0;
 		aSound=Sound.equip_silver_shield;
@@ -592,7 +594,7 @@ public class Item {
 		aUnlock=UnlockedBy.Curio;
 		aRandomPool=1;
 		aSound=Sound.equip_great_shield;
-		aSkills=new Skill[]{Skill.arcane.asLevel(1), Skill.holy.asLevel(1)};
+		aSkills=new Skill[]{Skill.fire.asLevel(1), Skill.holy.asLevel(1)};
 		aOffsetX=67; aOffsetY=185;
 		add();
 
@@ -635,7 +637,8 @@ public class Item {
 		aUnlock=UnlockedBy.Leather;
 		aRandomPool=1;
 		aSound=Sound.equip_leather_armour;
-		aSkills=new Skill[]{Skill.swift.asLevel(1), Skill.growth.asLevel(2)};
+		aSkills=new Skill[]{Skill.growth.asLevel(2)};
+		aHealth=1;
 		aOffsetX=147; aOffsetY=187;
 		add();
 
@@ -648,7 +651,8 @@ public class Item {
 		aUnlockLevel=-5;
 		aRandomPool=0;
 		aSound=Sound.equip_chainmail;
-		aSkills=new Skill[]{Skill.armour.asLevel(3)};
+		aSkills=new Skill[]{Skill.fire.asLevel(1), Skill.armour.asLevel(1)};
+		aHealth=1;
 		aOffsetX=113; aOffsetY=170;
 		add();
 
@@ -661,7 +665,7 @@ public class Item {
 		aUnlockLevel=0;
 		aRandomPool=1;
 		aSound=Sound.equip_chainmail;
-		aTraits=new Trait[]{Trait.Tenacious};
+		aHealth=1;
 		aSkills=new Skill[]{Skill.armour.asLevel(1), Skill.stupidity.asLevel(1)};
 		aOffsetX=113; aOffsetY=169;
 		//aHealth=1;
@@ -685,13 +689,14 @@ public class Item {
 		aDesc="Masterfully crafted";
 		aEquipment=1;
 		aType=EquipmentType.armour;
-		aLevel=4;
+		aLevel=3;
 		aEquipFrame=49;
 		aUnlockLevel=3;
 		aUnlock=UnlockedBy.Curio;
 		aRandomPool=0;
 		aSound=Sound.equip_chainmail;
-		aSkills=new Skill[]{Skill.growth.asLevel(3)};
+		aSkills=new Skill[]{Skill.growth.asLevel(1)};
+		aHealth=2;
 		aOffsetX=112; aOffsetY=169;
 		add();
 
@@ -715,10 +720,11 @@ public class Item {
 		aType=EquipmentType.armour;
 		aLevel=3;
 		aEquipFrame=51;
-		aUnlockLevel=-5;
+		aUnlockLevel=0;
 		aRandomPool=1;
 		aSound=Sound.equip_leather_armour;
-		aSkills=new Skill[]{Skill.arcane.asLevel(2), Skill.armour.asLevel(1)};
+		aHealth=1;
+		aSkills=new Skill[]{Skill.arcane.asLevel(1)};
 		aOffsetX=113; aOffsetY=169;
 		add();
 
@@ -761,7 +767,7 @@ public class Item {
 		aRandomPool=0;
 		aKeepHair=1;
 		aSound=Sound.equip_leather_helm;
-		aSkills= new Skill[]{Skill.growth.asLevel(2), Skill.swift.asLevel(1)};
+		aTraits=new Trait[]{Trait.Fury};
 		aOffsetX=109; aOffsetY=48;
 		add();
 
@@ -771,11 +777,12 @@ public class Item {
 		aType=EquipmentType.helmet;
 		aLevel=2;
 		aEquipFrame=54;
+		aUnlockLevel=0;
 		aEquipBackFrame=101;
-		aUnlockLevel=-5;
-		aRandomPool=0;
+		aRandomPool=1;
 		aSound=Sound.equip_winged_helm;
-		aSkills= new Skill[]{Skill.armour.asLevel(2)};
+		aHealth=2;
+		aSkills= new Skill[]{Skill.stupidity.asLevel(2)};
 		aOffsetX=110; aOffsetY=100;
 		add();
 
@@ -804,7 +811,7 @@ public class Item {
 		aUnlock=UnlockedBy.Smith;
 		aRandomPool=0;
 		aSound=Sound.equip_horned_helm;
-		aHealth=1;
+		aTraits=new Trait[]{Trait.Tenacious};
 		aOffsetX=111; aOffsetY=61;
 		add();
 
@@ -812,13 +819,13 @@ public class Item {
 		aDesc="verja hqfdi";
 		aEquipment=1;
 		aType=EquipmentType.helmet;
-		aLevel=4;
+		aLevel=2;
 		aEquipFrame=57;
 		aUnlockLevel=1;
 		aUnlock=UnlockedBy.Leather;
 		aRandomPool=0;
 		aSound=Sound.equip_horned_helm;
-		aSkills= new Skill[]{Skill.swift.asLevel(2), Skill.armour.asLevel(2)};
+		aSkills= new Skill[]{Skill.swift.asLevel(2), Skill.armour.asLevel(1)};
 		aOffsetX=110; aOffsetY=88;
 		add();
 
@@ -826,13 +833,14 @@ public class Item {
 		aDesc="The smart choice";
 		aEquipment=1;
 		aType=EquipmentType.helmet;
-		aLevel=3;
+		aLevel=2;
 		aEquipFrame=58;
 		aUnlockLevel=3;
 		aUnlock=UnlockedBy.Curio;
 		aRandomPool=0;
 		aSound=Sound.equip_horned_helm;
-		aSkills= new Skill[]{Skill.arcane.asLevel(2), Skill.growth.asLevel(2)};
+		aSkills= new Skill[]{Skill.growth.asLevel(2)};
+		aHealth=1;
 		aOffsetX=111; aOffsetY=54;
 		add();
 
@@ -860,7 +868,8 @@ public class Item {
 		aRandomPool=0;
 		aKeepHair=1;
 		aSound=Sound.equip_cloth_hat;
-		aSkills=new Skill[]{Skill.arcane.asLevel(2)};
+		aSkills=new Skill[]{Skill.arcane.asLevel(1)};
+		aHealth=1;
 		aOffsetX=73; aOffsetY=58;
 		add();
 
@@ -984,9 +993,8 @@ public class Item {
 		aType=EquipmentType.weapon;
 		aLevel=2;
 		aEquipFrame=69;
-		aUnlockLevel=1;
-		aUnlock=UnlockedBy.Smith;
-		aRandomPool=1;
+		aUnlockLevel=-5;
+		aRandomPool=0;
 		aSound=Sound.equip_sword;
 		aSkills= new Skill[]{Skill.blade.asLevel(1)};
 		aTraits= new Trait[]{Trait.Ferocious};
@@ -997,12 +1005,14 @@ public class Item {
 		aDesc="Stab slice slice";
 		aEquipment=1;
 		aType=EquipmentType.weapon;
-		aLevel=4;
+		aLevel=2;
 		aEquipFrame=70;
-		aUnlockLevel=-5;
-		aRandomPool=0;
+		aUnlockLevel=1;
+		aUnlock=UnlockedBy.Smith;
+		aRandomPool=1;
 		aSound=Sound.equip_sword;
-		aSkills= new Skill[]{Skill.armour.asLevel(1), Skill.blade.asLevel(2)};
+		aSkills= new Skill[]{Skill.blade.asLevel(1)};
+		aTraits= new Trait[]{Trait.Ferocious};
 		aOffsetX=179; aOffsetY=157;
 		add();
 
@@ -1024,13 +1034,13 @@ public class Item {
 		aDesc="Still warm";
 		aEquipment=1;
 		aType=EquipmentType.weapon;
-		aLevel=4;
+		aLevel=1;
 		aEquipFrame=72;
 		aUnlockLevel=2;
 		aUnlock=UnlockedBy.Curio;
 		aRandomPool=0;
 		aSound=Sound.equip_club;
-		aSkills= new Skill[]{Skill.blade.asLevel(2), Skill.fire.asLevel(2)};
+		aSkills= new Skill[]{Skill.blade.asLevel(1), Skill.fire.asLevel(1)};
 		aOffsetX=168; aOffsetY=187;
 		add();
 
@@ -1047,15 +1057,16 @@ public class Item {
 		aSkills=new Skill[]{Skill.swift.asLevel(1), Skill.crush.asLevel(1)};
 		aOffsetX=166; aOffsetY=171;
 		add();
-
+		
 		aName="Hand-axe";
 		aDesc="Handy!";
 		aEquipment=1;
 		aType=EquipmentType.weapon;
-		aLevel=2;
+		aLevel=1;
 		aEquipFrame=74;
-		aUnlockLevel=-5;
+		aUnlockLevel=1;
 		aRandomPool=1;
+		aUnlock=UnlockedBy.Wood;
 		aSound=Sound.equip_axe;
 		aSkills= new Skill[]{Skill.blade.asLevel(2)};
 		aOffsetX=182; aOffsetY=157;
@@ -1135,8 +1146,7 @@ public class Item {
 		aType=EquipmentType.weapon;
 		aLevel=4;
 		aEquipFrame=80;
-		aUnlockLevel=1;
-		aUnlock=UnlockedBy.Wood;
+		aUnlockLevel=-5;
 		aRandomPool=0;
 		aSound=Sound.equip_staff;
 		aSkills= new Skill[]{Skill.blade.asLevel(2), Skill.swift.asLevel(2)};
@@ -1207,7 +1217,8 @@ public class Item {
 		aUnlock=UnlockedBy.Curio;
 		aRandomPool=0;
 		aSound=Sound.equip_cloth_hat;
-		aSkills= new Skill[]{Skill.arcane.asLevel(2), Skill.holy.asLevel(1)};
+		aSkills= new Skill[]{Skill.holy.asLevel(1)};
+		aTraits=new Trait[]{Trait.Wise};
 		aOffsetX=62; aOffsetY=168;
 		add();
 
@@ -1339,13 +1350,13 @@ public class Item {
 		aDesc="Don't read it!";
 		aEquipment=1;
 		aType=EquipmentType.shield;
-		aLevel=4;
+		aLevel=1;
 		aEquipFrame=95;
 		aUnlockLevel=3;
 		aUnlock=UnlockedBy.Leather;
 		aRandomPool=0;
 		aSound=Sound.equip_cloth_hat;
-		aSkills= new Skill[]{Skill.arcane.asLevel(2), Skill.holy.asLevel(2), Skill.fire.asLevel(2)};
+		aSkills= new Skill[]{Skill.stupidity.asLevel(1), Skill.holy.asLevel(2), Skill.fire.asLevel(1)};
 		aOffsetX=67; aOffsetY=181;
 		add();
 

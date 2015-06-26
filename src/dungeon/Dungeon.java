@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import json.Json;
 import dungeon.Tile.TileName;
 import fighter.monster.Monster ;
+import fighter.monster.MonsterFactory;
 
 public class Dungeon {
 	public enum CardType{TILE, TREASURE, MONSTER}
