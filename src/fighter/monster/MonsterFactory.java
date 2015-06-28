@@ -18,7 +18,7 @@ public class MonsterFactory {
 
 	public static ArrayList<Monster> monsters= new ArrayList<Monster>();
 
-	public enum Region{Stone, Jungle, Mines}
+	public enum Region{stone, jungle, mines, tutorial, finale}
 
 	public enum MSound{
 		giant_bat, goblin, scary_spider, gray_ooze, ghost, skeleton, mummy, rubber_ducky
@@ -75,7 +75,7 @@ public class MonsterFactory {
 
 		name = "Nasty Rat";
 		plural= "Nasty Rats";
-		region=Region.Stone;
+		region=Region.stone;
 		species=Species.beast;
 		description = "Not just a rat, oh no, this one's nasty.";
 		frameNumber = 39;
@@ -89,7 +89,7 @@ public class MonsterFactory {
 		
 		name = "Goblin";
 		plural= "Goblins";
-		region=Region.Stone;
+		region=Region.stone;
 		description = "Welcome to da club. Hehe geddit?";
 		frameNumber = 15;
 		level = 1;
@@ -102,7 +102,7 @@ public class MonsterFactory {
 		
 		name = "Fire Imp";
 		plural= "Fire Imps";
-		region=Region.Stone;
+		region=Region.stone;
 		species= Species.demonic;
 		description = "You may feel a burning sensation.";
 		frameNumber = 40;
@@ -116,7 +116,7 @@ public class MonsterFactory {
 
 		name = "Giant Bat";
 		plural= "Giant Bats";
-		region=Region.Stone;
+		region=Region.stone;
 		species=Species.beast;
 		description = "I'm not a vampire, leave me alone!";
 		frameNumber = 12;
@@ -130,7 +130,7 @@ public class MonsterFactory {
 		
 		name = "Scary Spider";
 		plural= "Scary Spiders";
-		region=Region.Stone;
+		region=Region.stone;
 		species=Species.beast;
 		description = "Woah - EIGHT dungeoneers!";
 		frameNumber = 13;
@@ -144,7 +144,7 @@ public class MonsterFactory {
 
 		name = "Gray Ooze";
 		plural= "Gray Oozes";
-		region=Region.Stone;
+		region=Region.stone;
 		description = "Gloopy stains on your armour a guarantee";
 		frameNumber = 3;
 		level = 1;
@@ -159,7 +159,7 @@ public class MonsterFactory {
 
 		name = "Rat Man";
 		plural= "Rat Men";
-		region=Region.Stone;
+		region=Region.stone;
 		description = "Squeak squeak!";
 		frameNumber = 42;
 		level = 2;
@@ -172,7 +172,7 @@ public class MonsterFactory {
 		
 		name = "Zombie";
 		plural= "Zombies";
-		region=Region.Stone;
+		region=Region.stone;
 		description = "*groan* *drool* I waaas like you .. once";
 		frameNumber = 5;
 		level = 2;
@@ -185,7 +185,7 @@ public class MonsterFactory {
 		
 		name = "Gnoll";
 		plural= "Gnolls";
-		region=Region.Stone;
+		region=Region.stone;
 		description = "What are you looking at??";
 		frameNumber = 31;
 		level = 2;
@@ -198,7 +198,7 @@ public class MonsterFactory {
 		
 		name = "Skeleton";
 		plural= "Skeletons";
-		region=Region.Stone;
+		region=Region.stone;
 		species=Species.undead;
 		description = "Once a hoplite, always a hoplite";
 		frameNumber = 1;
@@ -212,7 +212,7 @@ public class MonsterFactory {
 		
 		name = "Snake";
 		plural= "Snakes";
-		region=Region.Stone;
+		region=Region.stone;
 		species=Species.beast;
 		description = "Why'd it have to be snakes?";
 		frameNumber = 28;
@@ -226,7 +226,7 @@ public class MonsterFactory {
 		
 		name = "Ghost";
 		plural= "Ghosts";
-		region=Region.Stone;
+		region=Region.stone;
 		species=Species.undead;
 		description = "BOO! Hey - were you scared?";
 		frameNumber = 11;
@@ -240,7 +240,7 @@ public class MonsterFactory {
 
 		name = "Mimic";
 		plural= "Mimics";
-		region=Region.Stone;
+		region=Region.stone;
 		description = "Maybe it still has treasure inside";
 		frameNumber = 37;
 		level = 2;
@@ -256,7 +256,7 @@ public class MonsterFactory {
 
 		name = "Mummy";
 		plural= "Mummies";
-		region=Region.Stone;
+		region=Region.stone;
 		species=Species.undead;
 		description = "Never ever caught without any toilet paper";
 		frameNumber = 4;
@@ -270,7 +270,7 @@ public class MonsterFactory {
 
 		name = "Bear Owl";
 		plural= "Bear Owls";
-		region=Region.Stone;
+		region=Region.stone;
 		description = "They're in cahoots";
 		frameNumber = 36;
 		level = 3;
@@ -283,7 +283,7 @@ public class MonsterFactory {
 
 		name = "Shade";
 		plural= "Shades";
-		region=Region.Stone;
+		region=Region.stone;
 		species=Species.undead;
 		description = "Probably just my own shadow..";
 		frameNumber = 25;
@@ -297,7 +297,7 @@ public class MonsterFactory {
 		
 		name = "Scorpion";
 		plural= "Scorpions";
-		region=Region.Stone;
+		region=Region.stone;
 		species=Species.undead;
 		description = "Snap snap";
 		frameNumber = 43;
@@ -311,7 +311,7 @@ public class MonsterFactory {
 		
 		name = "Fire Elemental";
 		plural= "Fire Elementals";
-		region=Region.Stone;
+		region=Region.stone;
 		species=Species.demonic;
 		description = "Hot hot hot!";
 		frameNumber = 20;
@@ -325,7 +325,7 @@ public class MonsterFactory {
 
 		name = "Bandito";
 		plural= "Banditos";
-		region=Region.Stone;
+		region=Region.stone;
 		description = "¡La bolsa o la vida!";
 		frameNumber = 6;
 		level = 3;
@@ -338,7 +338,7 @@ public class MonsterFactory {
 
 		name = "Minotaur";
 		plural= "Minotaurs";
-		region=Region.Stone;
+		region=Region.stone;
 		description = "Seeing red";
 		frameNumber = 18;
 		level = 3;
@@ -529,7 +529,7 @@ public class MonsterFactory {
 
 		name = "Plague Rat";
 		plural= "Plague Rats";
-		region=Region.Jungle;
+		region=Region.jungle;
 		species=Species.beast;
 		description = "Not just a rat, oh no, this one's nasty.";
 		frameNumber = 63;
@@ -543,7 +543,7 @@ public class MonsterFactory {
 
 		name = "Pixies";
 		plural= "Pixieseseses";
-		region=Region.Jungle;
+		region=Region.jungle;
 		description = "Pick on the little guys why don't you?";
 		frameNumber = 41;
 		level = 1;
@@ -556,10 +556,10 @@ public class MonsterFactory {
 		
 		name = "Leggy Spider";
 		plural= "Scary Spiders";
-		region=Region.Jungle;
+		region=Region.jungle;
 		species=Species.beast;
 		description = "Woah - EIGHT dungeoneers!";
-		frameNumber = 13;
+		frameNumber = 70;
 		level = 1;
 		health = 7;
 		randomPool=1;
@@ -570,10 +570,10 @@ public class MonsterFactory {
 		
 		name= "Bloodstarved Bat";
 		plural= "Bloodstarved Bats";
-		region=Region.Jungle;
+		region=Region.jungle;
 		species=Species.beast;
 		description = "I'm not a vampire, leave me alone!";
-		frameNumber = 12;
+		frameNumber = 68;
 		level = 1;
 		health = 7;
 		randomPool=1;
@@ -584,9 +584,9 @@ public class MonsterFactory {
 		
 		name = "Frenzied Goblin";
 		plural= "Frenzied Goblins";
-		region=Region.Jungle;
+		region=Region.jungle;
 		description = "Welcome to da club. Hehe geddit?";
-		frameNumber = 15;
+		frameNumber = 69;
 		level = 1;
 		health = 6;
 		randomPool=1;
@@ -597,7 +597,7 @@ public class MonsterFactory {
 
 		name = "Jungle Warrior";
 		plural= "Jungle Warriors";
-		region=Region.Jungle;
+		region=Region.jungle;
 		description = "Welcome to the jungle";
 		frameNumber = 55;
 		level = 1 ;
@@ -612,9 +612,9 @@ public class MonsterFactory {
 		
 		name = "Hilly Gnoll";
 		plural= "Hilly Gnolls";
-		region=Region.Jungle;
+		region=Region.jungle;
 		description = "What are you looking at??";
-		frameNumber = 31;
+		frameNumber = 73;
 		level = 2;
 		health = 8;
 		randomPool=1;
@@ -625,7 +625,7 @@ public class MonsterFactory {
 		
 		name = "Lizardman";
 		plural= "Lizardmen";
-		region=Region.Jungle;
+		region=Region.jungle;
 		description = "Fresh from Innsmouth";
 		frameNumber = 30;
 		level = 2;
@@ -638,7 +638,7 @@ public class MonsterFactory {
 		
 		name = "ManEating Plant";
 		plural= "Man-Eating Plants";
-		region=Region.Jungle;
+		region=Region.jungle;
 		description = "CZRCHHHH!!";
 		frameNumber = 56;
 		level = 2 ;
@@ -651,7 +651,7 @@ public class MonsterFactory {
 
 		name = "Harpy";
 		plural= "Harpies";
-		region=Region.Jungle;
+		region=Region.jungle;
 		description = "Good friends with the guitary";
 		frameNumber = 26;
 		level = 2;
@@ -664,10 +664,10 @@ public class MonsterFactory {
 		
 		name = "Poisonous Snake";
 		plural= "Poisonous Snakes";
-		region=Region.Jungle;
+		region=Region.jungle;
 		species=Species.beast;
 		description = "SSSsssssssss";
-		frameNumber = 28;
+		frameNumber = 71;
 		level = 2;
 		health = 8;
 		randomPool=1;
@@ -678,9 +678,9 @@ public class MonsterFactory {
 
 		name = "Rat Berserker";
 		plural= "Rat Berserkers";
-		region=Region.Jungle;
+		region=Region.jungle;
 		description = "Squeak squeak!";
-		frameNumber = 42;
+		frameNumber = 72;
 		level = 2;
 		health = 10;
 		randomPool=1;
@@ -695,8 +695,8 @@ public class MonsterFactory {
 		
 		name = "Air Elemental";
 		plural= "Air Elementals";
-		region=Region.Jungle;
-		description = "needs description";
+		region=Region.jungle;
+		description = "Whooosh";
 		frameNumber = 23;
 		level = 3;
 		health = 11;
@@ -708,10 +708,10 @@ public class MonsterFactory {
 		
 		name = "Dire Scorpion";
 		plural= "Scorpions";
-		region=Region.Jungle;
+		region=Region.jungle;
 		species=Species.undead;
 		description = "Snap snap";
-		frameNumber = 43;
+		frameNumber = 75;
 		level = 3;
 		health = 8;
 		randomPool=1;
@@ -722,7 +722,7 @@ public class MonsterFactory {
 
 		name = "Owl Bear";
 		plural= "Owl Bears";
-		region=Region.Jungle;
+		region=Region.jungle;
 		description = "Sqoarrrrrwk";
 		frameNumber = 35;
 		level = 3;
@@ -735,7 +735,7 @@ public class MonsterFactory {
 
 		name = "Jungle Shaman";
 		plural= "Jungle Shamen";
-		region=Region.Jungle;
+		region=Region.jungle;
 		description = "Ommmmm";
 		frameNumber = 54;
 		level = 3;
@@ -748,7 +748,7 @@ public class MonsterFactory {
 	
 		name = "Worm";
 		plural= "Worms";
-		region=Region.Jungle;
+		region=Region.jungle;
 		description = "Loves paprika";
 		frameNumber = 14;
 		level = 3;
@@ -761,7 +761,7 @@ public class MonsterFactory {
 
 		name = "Gargoyle";
 		plural= "Gargoyles";
-		region=Region.Jungle;
+		region=Region.jungle;
 		description = "No, not a big bat, a gargoyle!";
 		frameNumber = 10;
 		level = 3;
@@ -776,7 +776,7 @@ public class MonsterFactory {
 
 		name = "Medusa";
 		plural= "Medusas";
-		region=Region.Jungle;
+		region=Region.jungle;
 		description = "Likes to gorge on goujons";
 		frameNumber = 45;
 		level = 4;
@@ -790,7 +790,7 @@ public class MonsterFactory {
 
 		name = "Ettin";
 		plural= "Ettins";
-		region=Region.Jungle;
+		region=Region.jungle;
 		description = "You can't beat both of us!";
 		frameNumber = 24;
 		level = 4;
@@ -803,7 +803,7 @@ public class MonsterFactory {
 
 		name = "Chimera";
 		plural= "Chimerae";
-		region=Region.Jungle;
+		region=Region.jungle;
 		description = "Used to have a squirrel's head too";
 		frameNumber = 52;
 		level = 4 ;
@@ -834,7 +834,7 @@ public class MonsterFactory {
 
 		name = "Ogre";
 		plural= "Ogres";
-		region=Region.Jungle;
+		region=Region.jungle;
 		description = "Impossible to push over";
 		frameNumber = 50;
 		level = 4 ;
@@ -847,7 +847,7 @@ public class MonsterFactory {
 
 		name = "Dragon";
 		plural= "Dragons";
-		region=Region.Jungle;
+		region=Region.jungle;
 		description = "Very grumpy in the morning";
 		frameNumber = 53;
 		level = 4;
@@ -888,8 +888,8 @@ public class MonsterFactory {
 
 		name = "Miner";
 		plural= "Miners";
-		region=Region.Mines;
-		description = "needs description";
+		region=Region.mines;
+		description = "Can still buy drinks though";
 		frameNumber = 58;
 		level = 1;
 		health = 7;
@@ -901,8 +901,8 @@ public class MonsterFactory {
 		
 		name = "Digger";
 		plural= "Diggers";
-		region=Region.Mines;
-		description = "needs description";
+		region=Region.mines;
+		description = "Nothing but a gold digger";
 		frameNumber = 59;
 		level = 1;
 		health = 9;
@@ -914,9 +914,9 @@ public class MonsterFactory {
 
 		name = "Infected Slime";
 		plural= "Infected Slimes";
-		region=Region.Mines;
-		description = "needs description";
-		frameNumber = 3;
+		region=Region.mines;
+		description = "Don't get too close";
+		frameNumber = 76;
 		level = 1;
 		health = 11;
 		randomPool=1;
@@ -927,9 +927,9 @@ public class MonsterFactory {
 
 		name = "Albino Goblin";
 		plural= "Albino Goblin";
-		region=Region.Mines;
-		description = "needs description";
-		frameNumber = 15;
+		region=Region.mines;
+		description = "Spent their how life down here";
+		frameNumber = 77;
 		level = 1;
 		health = 9;
 		randomPool=1;
@@ -940,10 +940,10 @@ public class MonsterFactory {
 
 		name = "Dwarvern Explosives";
 		plural= "Dwarvern Explosiveses";
-		region=Region.Mines;
+		region=Region.mines;
 		species= Species.demonic;
-		description = "needs description";
-		frameNumber = 40;
+		description = "Quick! Hit it with something!";
+		frameNumber = 83;
 		level = 1;
 		health = 8;
 		randomPool=1;
@@ -954,7 +954,7 @@ public class MonsterFactory {
 
 		name = "Rust Monster";
 		plural= "Rust Monsters";
-		region=Region.Mines;
+		region=Region.mines;
 		description = "Rusts the iron right out of your blood!";
 		frameNumber = 33;
 		level = 1;
@@ -972,9 +972,9 @@ public class MonsterFactory {
 
 		name = "Rotting Corpse";
 		plural= "Rotting Corpse";
-		region=Region.Mines;
-		description = "*needs description";
-		frameNumber = 5;
+		region=Region.mines;
+		description = "Smell it a mile off";
+		frameNumber = 79;
 		level = 2;
 		health = 12;
 		randomPool=1;
@@ -985,10 +985,10 @@ public class MonsterFactory {
 
 		name = "Wailing Ghost";
 		plural= "Wailing Ghosts";
-		region=Region.Mines;
+		region=Region.mines;
 		species=Species.undead;
-		description = "needs description";
-		frameNumber = 11;
+		description = "Shut up already";
+		frameNumber = 80;
 		level = 2;
 		health = 7;
 		randomPool=1;
@@ -999,7 +999,7 @@ public class MonsterFactory {
 
 		name = "Gelatinous Cube";
 		plural= "Gelatinous Cubes";
-		region=Region.Mines;
+		region=Region.mines;
 		description = "Lemon flavour";
 		frameNumber = 34;
 		level = 2;
@@ -1012,9 +1012,9 @@ public class MonsterFactory {
 		
 		name = "Blind Worm";
 		plural= "Blind Worms";
-		region=Region.Mines;
-		description = "needs description";
-		frameNumber = 14;
+		region=Region.mines;
+		description = "Just sneak past it";
+		frameNumber = 78;
 		level = 2;
 		health = 11;
 		randomPool=1;
@@ -1025,10 +1025,10 @@ public class MonsterFactory {
 
 		name = "Clattering Bones";
 		plural= "Clattering Bones";
-		region=Region.Mines;
+		region=Region.mines;
 		species=Species.undead;
-		description = "needs description";
-		frameNumber = 1;
+		description = "clack clack clack";
+		frameNumber = 81;
 		level = 2;
 		health = 10;
 		randomPool=1;
@@ -1039,9 +1039,9 @@ public class MonsterFactory {
 
 		name = "Spider Drill";
 		plural= "Spider Drills";
-		region=Region.Mines;
-		description = "needs description";
-		frameNumber = 21;
+		region=Region.mines;
+		description = "VZZZZZZZ";
+		frameNumber = 82;
 		level = 2;
 		health = 9;
 		randomPool=0;
@@ -1056,9 +1056,9 @@ public class MonsterFactory {
 
 		name = "Cursed Mummy";
 		plural= "Cursed Mummies";
-		region=Region.Mines;
+		region=Region.mines;
 		species=Species.undead;
-		description = "needs description";
+		description = "Someone called him an ass";
 		frameNumber = 4;
 		level = 3;
 		health = 13;
@@ -1070,9 +1070,9 @@ public class MonsterFactory {
 
 		name = "Cave Troll";
 		plural= "Cave Trolls";
-		region=Region.Mines;
+		region=Region.mines;
 		species=Species.undead;
-		description = "needs description";
+		description = "You should see the clubbing scene in the mines";
 		frameNumber = 60;
 		level = 3;
 		health = 9;
@@ -1084,8 +1084,8 @@ public class MonsterFactory {
 
 		name = "Earth Elemental";
 		plural= "Earth Elementals";
-		description = "needs description";
-		region=Region.Mines;
+		description = "Formed from the walls of the mine";
+		region=Region.mines;
 		frameNumber = 22;
 		level = 3;
 		health = 11;
@@ -1097,8 +1097,8 @@ public class MonsterFactory {
 
 		name = "Genii";
 		plural= "Genies";
-		description = "needs description";
-		region=Region.Mines;
+		description = "What's he doing in a mine?";
+		region=Region.mines;
 		frameNumber = 9;
 		level = 3;
 		health = 9;
@@ -1110,7 +1110,7 @@ public class MonsterFactory {
 		name = "Vampire";
 		plural= "Vampires";
 		description = "You can't kill me!";
-		region=Region.Mines;
+		region=Region.mines;
 		frameNumber = 16;
 		level = 3;
 		health = 9;
@@ -1123,7 +1123,7 @@ public class MonsterFactory {
 		name = "Nymph";
 		plural= "Nymphs";
 		description = "It takes years of meditation to grow these";
-		region=Region.Mines;
+		region=Region.mines;
 		frameNumber = 32;
 		level = 3;
 		health = 9;
@@ -1149,7 +1149,7 @@ public class MonsterFactory {
 
 		name = "Dwarf Sentry";
 		plural= "Dwarf Sentries";
-		description = "needs description";
+		description = "Are you still there?";
 		frameNumber = 67;
 		level = 4;
 		health = 12;
@@ -1161,7 +1161,7 @@ public class MonsterFactory {
 
 		name = "Dwarf Masterpiece";
 		plural= "Dwarf Masterpieces";
-		description = "needs description";
+		description = "So shiny";
 		frameNumber = 65;
 		level = 4;
 		health = 13;
@@ -1173,7 +1173,7 @@ public class MonsterFactory {
 
 		name = "Dwarf Mecha";
 		plural= "Dwarf Mecha";
-		description = "needs description";
+		description = "It's charging for you!";
 		frameNumber = 61;
 		level = 4;
 		health = 14;
@@ -1234,7 +1234,7 @@ public class MonsterFactory {
 
 		name = "Dwarf Magnate";
 		plural= "Dwarf Magnate";
-		description = "needs description";
+		description = "Looks amazing with that 'tache!";
 		frameNumber = 66;
 		level = 4;
 		health = 10;
@@ -1264,11 +1264,17 @@ public class MonsterFactory {
 		description = "Vicious!";
 		frameNumber = 44;
 		level = 4 ;
-		health = 8;
+		health = 14;
 		randomPool=0;
 		sound = MSound.giant_bat;
-		traits = null;
-		skills = new Skill[]{Skill.get(SkillType.Feral).asLevel(5)};
+		traits = new Trait[]{Trait.MagicalVuln, Trait.Fury, Trait.Skilled};
+		skills = new Skill[]{Skill.get(SkillType.Feral).asLevel(5),
+				Skill.get(SkillType.Irritable).asLevel(5),
+				Skill.get(SkillType.Burly).asLevel(4),
+				Skill.get(SkillType.Rage).asLevel(4),
+				Skill.get(SkillType.Demonic).asLevel(4),
+		};
+				
 		make();
 
 
@@ -1532,10 +1538,10 @@ public class MonsterFactory {
 		for(Monster m :monsters){
 			if(m.region==null)continue;
 			switch(m.region){
-			case Jungle:
+			case jungle:
 				jungleMonsters.add(m);
 				break;
-			case Stone:
+			case stone:
 				stoneMonsters.add(m);
 				break;
 			default:

@@ -56,7 +56,7 @@ public class HeroFactory {
 
 		heroName=SkillType.Ranger;
 		aHP=6;
-		traits=new Trait[]{Trait.Accurate, Trait.Ranged};
+		traits=new Trait[]{Trait.Ranged};
 		aChats=HeroChat.chumpChats;
 		addClass();
 

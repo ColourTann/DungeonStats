@@ -13,7 +13,7 @@ import fighter.Fighter.Trait;
 
 public class Item {
 
-	public enum TreasureType{MEGA_CHEST("MEGA CHEST"), GOLD_COIN("Gold Coin"), Large_Chest("Large Chest"), Massive_Gem("Massive Gem"), Sapphire_Ring("Sapphire Ring");
+	public enum TreasureType{MEGA_CHEST("MEGA CHEST"), GOLD_COIN("Gold Coin"), Large_Chest("Large Chest"), Massive_Gem("Massive Gem"), Sapphire_Ring("Sapphire Ring"), Orb_of_Nosiness("Orb of Nosiness"), Gold_Ore("Gold Ore");
 	String nice;
 	TreasureType(String nice){
 		this.nice=nice;
@@ -135,7 +135,7 @@ public class Item {
 		aDesc="A pouch bulging with coins";
 		aLevel=3;
 		aGlory=3;
-		aRandomPool=0;
+		aRandomPool=1;
 		aSound=Sound.equip_coin_bag;
 		add();
 
@@ -143,7 +143,7 @@ public class Item {
 		aDesc="Does this match the set we have in the guild?";
 		aLevel=3;
 		aGlory=3;
-		aRandomPool=0;
+		aRandomPool=1;
 		aSound=Sound.equip_staff;
 		add();
 
@@ -446,7 +446,7 @@ public class Item {
 		aOffsetX=175; aOffsetY=162;
 		add();
 
-		aName="Green Bow";
+		aName="Cursed Bow";
 		aDesc="Poison? Elves sure can be MEAN.";
 		aEquipment=1;
 		aType=EquipmentType.weapon;
@@ -456,8 +456,7 @@ public class Item {
 		aUnlock=UnlockedBy.Wood;
 		aRandomPool=0;
 		aSound=Sound.equip_bow;
-		aSkills=new Skill[]{Skill.swift.asLevel(1)};
-		aTraits=new Trait[]{Trait.Accurate};
+		aTraits=new Trait[]{Trait.Ranged, Trait.Meaty};
 		aOffsetX=156; aOffsetY=168;
 		add();
 
@@ -1386,7 +1385,48 @@ public class Item {
 		aOffsetX=67; aOffsetY=178;
 		add();
 
-
+		aFrameNumber+=9; //fountains aren't items//
+		
+		aName="Orb of Nosiness";
+		aDesc="Hot gossip!";
+		aLevel=3;
+		aGlory=3;
+		aRandomPool=0;
+		aSound=Sound.equip_staff;
+		add();
+		
+		aName="Key";
+		aDesc="A key item!";
+		aLevel=3;
+		aGlory=3;
+		aRandomPool=0;
+		aSound=Sound.equip_staff;
+		add();
+		
+		aName="Gold Ore";
+		aDesc="Kerching!";
+		aLevel=3;
+		aGlory=3;
+		aRandomPool=0;
+		aSound=Sound.equip_staff;
+		add();
+		
+		aName="Golden Sun Idol";
+		aDesc="Looks heavy";
+		aLevel=3;
+		aGlory=3;
+		aRandomPool=0;
+		aSound=Sound.equip_staff;
+		add();
+		
+		aName="Stock certificates";
+		aDesc="It's just paperwork?";
+		aLevel=3;
+		aGlory=3;
+		aRandomPool=0;
+		aSound=Sound.equip_staff;
+		add();
+		
 		//		aName="placeholder";
 		//		aDesc="";
 		//		aEquipment=1;

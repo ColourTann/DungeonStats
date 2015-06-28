@@ -12,7 +12,7 @@ public abstract class Fighter {
 	public enum Trait{
 		Tenacious, Brittle, Meaty, Respite, Fury, Burn, 
 		Skilled, Damp, Blessed, Covetous, ArcaneBlade, 
-		Ranged, Ferocious, Bulwark, Accurate, Wise, Spikey, 
+		Ranged, Ferocious, Bulwark, Wise, Spikey, 
 		Deathwish, Halfbaked, Sleepy, SpellSword, Retribution, 
 		Cunning, VitaSuit, Talented, Intuition, 
 		MagicalVuln, PhysicalVuln,
@@ -90,8 +90,6 @@ public abstract class Fighter {
 					break;
 				case Bisect:
 					bonusHP+=.6f;
-					break;
-				case Accurate:
 					break;
 				case ArcaneBlade:
 					break;

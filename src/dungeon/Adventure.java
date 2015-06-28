@@ -30,30 +30,42 @@ public class Adventure {
 	float mapX, mapY;
 	float trophyX, trophyY;
 	String trophyName;
+	Region region;
 	ArrayList<Dungeon> dungeons;
+	int preReqs, numUnlocks;;
 	@SuppressWarnings("unchecked")
-	public Adventure(String name, String description, String icon, float aAdvX2, float aAdvY2, float trophyX, float trophyY, String trophyName, ArrayList<Dungeon> dungeons) {
+	public Adventure(String name, String description, String icon, float aAdvX2, float aAdvY2, float trophyX, float trophyY, String trophyName, ArrayList<Dungeon> dungeons, int preReqs, int numUnlocks, Region region) {
 		this.name=name; this.description=description; this.icon=icon;
 		this.mapX=aAdvX2; this.mapY=aAdvY2;
 		this.trophyX=trophyX; this.trophyY=trophyY; this.trophyName=trophyName;
 		this.dungeons=(ArrayList<Dungeon>) dungeons.clone();
+		this.preReqs=preReqs;
+		this.region=region;
+		this.numUnlocks=numUnlocks;
 	}
 
 	public String toJson(){
 		String output="";
+		boolean finale = icon.equalsIgnoreCase("finale");
 		output+= Json.startList(name);
 		output+= Json.addKey("Description", description, true);
 		output+= Json.addKey("Icon", icon, true);
+		
+		if(finale) output+=Json.addKey("IconType", "large", true);
+		
+		output+= Json.addKey("region", region.toString(), true);
 		output+= Json.addKey("mapX", mapX+"", true);
 		output+= Json.addKey("mapY", mapY+"", true);
-		int numUnlocks = 1;
-		if(name.equals("Rats? How original!")){
-			numUnlocks=3;
+		if(finale){
+			output+= Json.addKey("journalPassageComplete", 5, true);
 		}
-		output += Json.addKey("numUnlocks", numUnlocks, true);
+		if(numUnlocks>0)output += Json.addKey("numUnlocks", numUnlocks, true);
+		if(preReqs>0)output+=Json.addKey("prereqsComplete", preReqs, true);
+		if(!finale){
 		output+=Json.addKey("trophy", trophyName, true);
 		output+=Json.addKey("trophyX", trophyX, true);
 		output+=Json.addKey("trophyY", trophyY, true);
+		}
 		output+= Json.startArray("Quests"); 
 		for(int i=0;i<dungeons.size();i++){
 			Dungeon d = dungeons.get(i);
@@ -80,20 +92,31 @@ public class Adventure {
 
 		output+=Json.enclose();
 		output+=Json.addKey("name", "Stone", true);
+		output+=Json.addKey("journal_passage", 1, true);
 		output+=Json.addKey("x", 0, true);
 		output+=Json.addKey("y", 0, false);
 		output+=Json.endEnclose(true);
 
 		output+=Json.enclose();
 		output+=Json.addKey("name", "Jungle", true);
+		output+=Json.addKey("journal_passage", 2, true);
 		output+=Json.addKey("x", -1157, true);
 		output+=Json.addKey("y", 0, false);
 		output+=Json.endEnclose(true);
 
 		output+=Json.enclose();
 		output+=Json.addKey("name", "Mines", true);
+		output+=Json.addKey("journal_passage", 3, true);
 		output+=Json.addKey("x", 0, true);
 		output+=Json.addKey("y", -684, false);
+		output+=Json.endEnclose(true);
+		
+		output+=Json.enclose();
+		output+=Json.addKey("name", "Finale", true);
+		output+=Json.addKey("journal_passage", 4, true);
+		output+=Json.addKey("noregion", true, true);
+		output+=Json.addKey("x", 0, true);
+		output+=Json.addKey("y", 0, false);
 		output+=Json.endEnclose(false);
 
 		output+=Json.endArray(true);
@@ -130,13 +153,17 @@ public class Adventure {
 	static float aAdvX, aAdvY;
 	static float aTrophyX, aTrophyY;
 	static String aTrophyName; 
-
-
+	static int aPrereqs;
+	static Region currentRegion;
+	static int aNumUnlocks;
 	static ArrayList<Dungeon> aDungeons = new ArrayList<>();
 	private static CardType[] aDrawRate;
 
 	public static void setup(){	
 
+		//STONE ZONE//
+		currentRegion=Region.tutorial;
+		
 		// RAT ADVENTURE //
 
 		ArrayList<Monster> ratList1 = MonsterFactory.getMonsters(new String[]{"Nasty Rat", "Giant Bat"});
@@ -145,6 +172,7 @@ public class Adventure {
 		aAdvName="Rats? How original!";
 		//aAdvDescription="Delve into the basement and defeat the mighty... rats";
 		aAdvIcon="stone_hatch";
+		aNumUnlocks=3;
 		aAdvX=1;
 		aAdvY=.25f;
 		aTrophyName="Rat King's Tail";
@@ -221,6 +249,9 @@ public class Adventure {
 		aMonsters=ratList2;
 		addDungeon();
 		createAdventure();
+		
+		currentRegion=Region.stone;
+		
 
 		// EMBRO ADVENTURE //
 		ArrayList<Monster> embroList= MonsterFactory.getMonsters(new String[]{"Fire Imp", "Scary Spider", "Goblin", "Ghost", "Zombie", "Gnoll", "Bear Owl", "Fire Elemental", "Bandito"});
@@ -668,7 +699,7 @@ public class Adventure {
 				new TurnLimitAction(ActionType.BossChat, new String[]{"\""+Trigger.ComingToAttack+"\""}, "The ritual is complete")
 				)};
 		aTurnLimit=10;
-		aMonsters=MonsterFactory.getMonsters(Region.Stone, 3);
+		aMonsters=MonsterFactory.getMonsters(Region.stone, 3);
 		addDungeon();
 		createAdventure();
 
@@ -687,6 +718,8 @@ public class Adventure {
 		aTrophyName= "Jar of Eyeballs";
 		aTrophyX= 1;
 		aTrophyY=-1;
+		aPrereqs=6;
+		aNumUnlocks=3;
 		aName="Curious Crypt";
 		aDescription="Find your way into the eye-beast's lair";
 		aReward=100;
@@ -743,14 +776,14 @@ public class Adventure {
 		};
 		aStartingTile=TileName.room_collapse_new;
 		aLayout= new DungeonLayout(new TileLocation[]{
-				new TileLocation(Tile.get("d"), -1, -4, "", TreasureType.Sapphire_Ring),
+				new TileLocation(Tile.get("d"), -1, -4, "", TreasureType.Orb_of_Nosiness),
 				new TileLocation(Tile.get("du"), -1, -3, "BOSS", null, new TileDetails(false, true, true, -1, -3, false)),
 				new TileLocation(TileName.room_round_s, 1, -3, "", TreasureType.Large_Chest, new TileDetails(false, true, false, 0, 0, false)),
 				new TileLocation(TileName.corr_rubble_e, -2, -1, "", TreasureType.MEGA_CHEST, new TileDetails(false, true, false, 0, 0, false)),
 
 		});
 		aObjectives = new Objective[]{
-				new Objective(ObjectiveType.Collect, TreasureType.Sapphire_Ring.toString(), 1)
+				new Objective(ObjectiveType.Collect, TreasureType.Orb_of_Nosiness.toString(), 1)
 		};
 		aTurnLimit=8;
 		aTurnLimitActions= new TurnLimitAction[]{
@@ -768,7 +801,8 @@ public class Adventure {
 		 * 
 		 * 
 		 */
-
+		currentRegion=Region.jungle;
+		
 		// SAPPHIRE ADVENTURE //
 
 		ArrayList<Monster> sapphireList= MonsterFactory.getMonsters(new String[]{
@@ -1101,6 +1135,8 @@ public class Adventure {
 		aTrophyName= "Dragon Claw";
 		aTrophyX= -3.5f;
 		aTrophyY= 0;
+		aPrereqs=12;
+		aNumUnlocks=3;
 		aName="Heist";
 		aDescription="Steal 3 chests";
 		aReward=100;
@@ -1160,9 +1196,14 @@ public class Adventure {
 
 
 		//MINES//
+		currentRegion=Region.mines;
 
+		ArrayList<Monster> trollList= MonsterFactory.getMonsters(new String[]{
+				"Miner", "Digger",
+				"Rotting Corpse", "Blind Worm",
+				"Cursed Mummy", "Earth Elemental"});
 
-
+		
 		// TROLL ADVENTURE //
 
 		aAdvName="Troll Adventure";
@@ -1176,10 +1217,16 @@ public class Adventure {
 		aDescription="Disrupt the mining operation";
 		aReward=100;
 		aTerrainType=TerrainType.mines;
-		aBoss="Troll";
-		aBossName="Troll";
+		aBoss="Miner";
+		aBossName="Miner";
 		aStartingTile=Tile.get("murd");
-		aBossChats= new BossChat[]{};
+		aBossChats= new BossChat[]{
+				new BossChat(Trigger.ZerothTurn, new BossSpeech[]{
+						new BossSpeech("We got an intruder guys."),
+						new BossSpeech("Take him out!")
+				}, PostFunc.StartingRoom
+						)
+		};
 		aLayout= new DungeonLayout(new TileLocation[]{
 				new TileLocation(Tile.get("mulr"), 0, 2, "Miner", null, new TileDetails(false, true, true, 0, 2, false)),
 				new TileLocation(Tile.get("mlud"), 2, 0, "Miner", null, new TileDetails(false, true, false, 0, 0, false)),				
@@ -1192,18 +1239,14 @@ public class Adventure {
 		addDungeon();
 
 		aName="Troll attack!";
-		aDescription="The miner's set a troll on you";
+		aDescription="The miners set a troll on you";
 		aReward=100;
 		aTerrainType=TerrainType.mines;
 		aBoss="Troll";
 		aBossName="Troll";
 		aStartingTile=Tile.get("muldr");
 		aBossChats= new BossChat[]{
-				new BossChat(Trigger.ZerothTurn, new BossSpeech[]{
-						new BossSpeech("Troll smash!"),
-				}, PostFunc.Chase
-						),
-		};
+				new BossChat(Trigger.ZerothTurn, new BossSpeech[]{new BossSpeech("Troll smash!"),}, PostFunc.Chase),};
 		aLayout= new DungeonLayout(new TileLocation[]{
 				new TileLocation(Tile.get("ml"), 6, 0, "BOSS", null, new TileDetails(false, true, true, 6, 0, false)),
 				new TileLocation(Tile.get("mlr"), 5, 0, "", null, new TileDetails(false, true, false, 0, 0, false)),				
@@ -1216,12 +1259,18 @@ public class Adventure {
 				new Objective(ObjectiveType.Defeat, "BOSS", 1),
 		};
 		aTurnLimit=-1;
-		aMonsters=MonsterFactory.getMonsters(new String[]{"Miner"});
+		aMonsters=trollList;
 		addDungeon();
 		createAdventure();
 
 		// CYCLOPS ADVENTURE //
 
+		ArrayList<Monster> cyclopsList= MonsterFactory.getMonsters(new String[]{
+				"Digger", "Infected Slime", "Albino Goblin",
+				"Rotting Corpse", "Blind Worm", "Wailing Ghost",
+				"Cursed Mummy", "Genii", "Vampire"});
+		
+		
 		aAdvName="Cyclops Adventure";
 		aAdvIcon="mines_cave";
 		aAdvX=2f;
@@ -1252,12 +1301,17 @@ public class Adventure {
 				new Objective(ObjectiveType.Defeat, "BOSS", -1),
 		};
 		aTurnLimit=-1;
-		aMonsters=MonsterFactory.getMonsters(Region.Mines, 3);
+		aMonsters=cyclopsList;
 		addDungeon();
 		createAdventure();
 
 		// SENTRY ADVENTURE //
 
+		ArrayList<Monster> sentryList= MonsterFactory.getMonsters(new String[]{
+				"Dwarvern Explosives", "Infected Slime", "Albino Goblin",
+				"Spider Drill", "Blind Worm", "Wailing Ghost",
+				"Cave Troll", "Genii", "Vampire"});
+		
 		aAdvName="Sentry Adventure";
 		aAdvIcon="mines_hut";
 		aAdvX=1.5f;
@@ -1266,7 +1320,7 @@ public class Adventure {
 		aTrophyX=-1f;
 		aTrophyY=1f;
 		aName="Steal it all!";
-		aDescription="Grab some piles of gold";
+		aDescription="Grab some piles of gold ore";
 		aReward=100;
 		aTerrainType=TerrainType.mines;
 		aBoss="Dwarf Sentry";
@@ -1280,16 +1334,16 @@ public class Adventure {
 						)
 		};
 		aLayout= new DungeonLayout(new TileLocation[]{
-				new TileLocation(Tile.get("mu"), 0, 2, "", TreasureType.GOLD_COIN, new TileDetails(false, true, true, 0, 2, false)),
-				new TileLocation(Tile.get("mu"), 1, 2, "Rust Monster", TreasureType.GOLD_COIN, new TileDetails(false, true, false, 0, 0, false)),
-				new TileLocation(Tile.get("mu"), -1, 2, "Gelatinous Cube", TreasureType.GOLD_COIN, new TileDetails(false, true, false, 0, 0, false)),
-				new TileLocation(Tile.get("mudlr"), -1, 1, "Clattering Bones", TreasureType.GOLD_COIN, new TileDetails(false, true, false, 0, 0, false)),
+				new TileLocation(Tile.get("mu"), 0, 2, "", TreasureType.Gold_Ore, new TileDetails(FountainType.Clairvoyance)),
+				new TileLocation(Tile.get("mu"), 1, 2, "Rust Monster", TreasureType.Gold_Ore, new TileDetails(false, true, false, 0, 0, false)),
+				new TileLocation(Tile.get("mu"), -1, 2, "Gelatinous Cube", TreasureType.Gold_Ore, new TileDetails(false, true, false, 0, 0, false)),
+				new TileLocation(Tile.get("mudlr"), -1, 1, "Clattering Bones", TreasureType.Gold_Ore, new TileDetails(false, true, false, 0, 0, false)),
 		});
 		aObjectives = new Objective[]{
-				new Objective(ObjectiveType.Collect, TreasureType.GOLD_COIN.toString(), 4),
+				new Objective(ObjectiveType.Collect, TreasureType.Gold_Ore.toString(), 4),
 		};
 		aTurnLimit=-1;
-		aMonsters=MonsterFactory.getMonsters(Region.Mines, 3);
+		aMonsters=sentryList;
 		addDungeon();
 
 		aName="Get out alive";
@@ -1331,12 +1385,18 @@ public class Adventure {
 		aTurnLimitActions= new TurnLimitAction[]{(
 				new TurnLimitAction(ActionType.BossChat, new String[]{"\""+Trigger.kill.toString()+"\""}, "Sentry shoots")
 				)};
-		aMonsters=MonsterFactory.getMonsters(Region.Mines, 3);
+		aMonsters=sentryList;
 		addDungeon();
 		createAdventure();
 
 		// MECHA ADVENTURE //
 
+		ArrayList<Monster> mechaList= MonsterFactory.getMonsters(new String[]{
+				"Dwarvern Explosives", "Rust Monster", "Albino Goblin",
+				"Spider Drill", "Clattering Bones", "Wailing Ghost",
+				"Cave Troll", "Nymph", "Vampire"});
+		
+		
 		aAdvName="Mecha Adventure";
 		aAdvIcon="mines_cart";
 		aAdvX=2.5f;
@@ -1363,7 +1423,7 @@ public class Adventure {
 				new Objective(ObjectiveType.Defeat, "Vampire", 2),
 		};
 		aTurnLimit=-1;
-		aMonsters=MonsterFactory.getMonsters(Region.Mines, 2);
+		aMonsters=mechaList;
 		addDungeon();
 
 		aName="Caught!";
@@ -1381,24 +1441,30 @@ public class Adventure {
 						),
 		};
 		aLayout= new DungeonLayout(new TileLocation[]{
-				new TileLocation(Tile.get("md"), 1, -4, "BOSS", null, new TileDetails(false, true, true, 1, -3, false)),
-				new TileLocation(Tile.get("mud"), 1, -3, "", null, new TileDetails(false, true, false, 0, 0, false)),
-				new TileLocation(Tile.get("mul"), 1, -2, "", null, new TileDetails(false, true, false, 0, 0, false)),
-				new TileLocation(Tile.get("mrd"), 0, -2, "", null, new TileDetails(false, true, false, 0, 0, false)),
-				new TileLocation(Tile.get("mud"), 0, -1, "", null, new TileDetails(false, true, false, 0, 0, false)),
+				new TileLocation(Tile.get("md"), 1, -4, "BOSS", null, new TileDetails(null)),
+				new TileLocation(Tile.get("mud"), 1, -3, "", null, new TileDetails(null)),
+				new TileLocation(Tile.get("mul"), 1, -2, "", null, new TileDetails(null)),
+				new TileLocation(Tile.get("mrd"), 0, -2, "", null, new TileDetails(null)),
+				new TileLocation(Tile.get("mud"), 0, -1, "", null, new TileDetails(null)),
+				new TileLocation(Tile.get("mudlr"), 1, 1, "", null, new TileDetails(FountainType.Decay)),
 
 		});
 		aObjectives = new Objective[]{
 				new Objective(ObjectiveType.Defeat, "BOSS", 1),
 		};
 		aTurnLimit=-1;
-		aMonsters=MonsterFactory.getMonsters(Region.Mines, 3);
+		aMonsters=mechaList;
 		addDungeon();
 
 		createAdventure();
 
 		//DWARF MASTERPIECE ADVENTURE//
 
+		ArrayList<Monster> masterpieceList= MonsterFactory.getMonsters(new String[]{
+				"Dwarvern Explosives", "Digger", "Albino Goblin",
+				"Spider Drill", "Clattering Bones", "Wailing Ghost",
+				"Cave Troll", "Earth Elemental", "Vampire"});
+		
 		aAdvName="Masterpiece Adventure";
 		aAdvIcon="mines_factory";
 		aAdvX=1f;
@@ -1436,7 +1502,7 @@ public class Adventure {
 				new Objective(ObjectiveType.Arrive, "objective", 1),
 		};
 		aTurnLimit=-1;
-		aMonsters=MonsterFactory.getMonsters(Region.Mines, 3);
+		aMonsters=masterpieceList;
 		addDungeon();
 
 		aName="Demolition";
@@ -1481,7 +1547,7 @@ public class Adventure {
 		aTurnLimitActions= new TurnLimitAction[]{(
 				new TurnLimitAction(ActionType.BossChat, new String[]{"\""+Trigger.kill.toString()+"\""}, "Torch runs out")
 				)};
-		aMonsters=MonsterFactory.getMonsters(Region.Mines, 3);
+		aMonsters=masterpieceList;
 		addDungeon();
 		createAdventure();
 
@@ -1498,8 +1564,8 @@ public class Adventure {
 		aTrophyName="Magante's Stock Cert";
 		aTrophyX=-.5f;
 		aTrophyY=-2;
-
-		aName="Final quest 1";
+		aPrereqs=18;
+		aName="Security";
 		aDescription="Take out the guardians of the magnate";
 		aReward=100;
 		aTerrainType=TerrainType.mines;
@@ -1527,11 +1593,11 @@ public class Adventure {
 				new Objective(ObjectiveType.Defeat, "ANY", 3)
 		};
 		aTurnLimit=-1;
-		aMonsters=MonsterFactory.noMonsters;
+		aMonsters=MonsterFactory.getMonsters(Region.mines, 3);
 		addDungeon();
 
 
-		aName="Final quest 2";
+		aName="Get inside";
 		aDescription="Get into the magnate's boardroom";
 		aReward=100;
 		aTerrainType=TerrainType.mines;
@@ -1564,11 +1630,11 @@ public class Adventure {
 				new Objective(ObjectiveType.Arrive, "objective", 1)
 		};
 		aTurnLimit=-1;
-		aMonsters=MonsterFactory.getMonsters(Region.Mines, 3);
+		aMonsters=MonsterFactory.getMonsters(Region.mines, 3);
 		addDungeon();
 
-		aName="Final quest 3";
-		aDescription="Kill the dwarf leader before you get trapped!";
+		aName="Win big";
+		aDescription="Kill the dwarf magnate before you get trapped!";
 		aReward=100;
 		aTerrainType=TerrainType.mines;
 		aBoss="Dwarf Magnate";
@@ -1610,17 +1676,89 @@ public class Adventure {
 		};
 		aTurnLimit=10;
 		aTurnLimitActions= new TurnLimitAction[]{(
-				new TurnLimitAction(ActionType.BossChat, new String[]{"\""+Trigger.kill.toString()+"\""}, "Death ray ")
+				new TurnLimitAction(ActionType.BossChat, new String[]{"\""+Trigger.kill.toString()+"\""}, "Death ray")
 				)};
-		aMonsters=MonsterFactory.getMonsters(Region.Mines, 3);
+		aMonsters=MonsterFactory.getMonsters(Region.mines, 3);
 		addDungeon();
 		createAdventure();
-
-	}
-
-	public TileName getTile(String directions){
-
-		return null;
+		
+		currentRegion=Region.finale;
+		ArrayList<Monster> finaleList= MonsterFactory.getMonsters(new String[]{
+				"Albino Goblin", "Rust Monster", "Dwarvern Explosives", 
+				"Spider Drill", "Clattering Bones", "Blind Worm",
+				"Nymph", "Vampire", "Genii"});
+		
+		
+		aAdvName="Finale Adventure";
+		//aAdvDescription="Delve into the basement and defeat the mighty... rats";
+		aAdvIcon="finale";
+		aAdvX=.25f;
+		aAdvY=2f;
+		aNumUnlocks=0;
+		aPrereqs=19;
+		aName="Rough them up";
+		aDescription="Defeat some old faces";
+		aReward=100;
+		aTerrainType=TerrainType.stone;
+		aBoss="Eye Beast";
+		aBossName="Eye Beast";
+		aBossChats= new BossChat[]{
+				new BossChat(Trigger.ZerothTurn, new BossSpeech[]{new BossSpeech("Where is magnate? He was supposed to be here already."),new BossSpeech("Oh no! It's that evil guild again! I'm calling the Ivory League on you!"),}),
+				new BossChat(Trigger.FirstTurn, new BossSpeech[]{new BossSpeech("Is that Cecil Smythe? I need you to get help, that guild is here!"),}),
+				new BossChat(Trigger.FirstKill, new BossSpeech[]{new BossSpeech("They're on a rampage! Hold me, Medusa!"),}),
+		};
+		aStartingTile=Tile.get("ulr");
+		aLayout= new DungeonLayout(new TileLocation[]{
+				new TileLocation(Tile.get("lr"), 0, -3, "The Black Knight", TreasureType.Large_Chest, null),
+				new TileLocation(Tile.get("udr"), -2, -3, "Eye Beast", null, null),
+				new TileLocation(Tile.get("lrd"), -1, -4, "Medusa", null, null),
+				new TileLocation(Tile.get("udl"), 1, -2, "Clattering Bones", null, new TileDetails(FountainType.Power)),
+		});
+		aObjectives = new Objective[]{
+				new Objective(ObjectiveType.Defeat, "The Black Knight", 1),
+				new Objective(ObjectiveType.Defeat, "Eye Beast", 1),
+				new Objective(ObjectiveType.Defeat, "Mimic Queen", 1),
+		};
+		aTurnLimit=10;
+		aTurnLimitActions= new TurnLimitAction[]{(
+				new TurnLimitAction(ActionType.FailDungeon, new String[]{}, "Ivory League arrives")
+				)};
+		aMonsters=finaleList;
+		addDungeon();
+		
+		
+		aName="Operation: Ivory League sucks";
+		aDescription="Plant the evidence";
+		aReward=100;
+		aTerrainType=TerrainType.stone;
+		aBoss="Dragon";
+		aBossName="Dragon";
+		aBossChats= new BossChat[]{
+				new BossChat(Trigger.ZerothTurn, new BossSpeech[]{new BossSpeech("Oh god they killed embro! And now they're coming for us!"),}),
+				new BossChat(Trigger.FirstTurn, new BossSpeech[]{new BossSpeech("Come on Ivory League, I don't wanna die!"),}),
+		};
+		aStartingTile=Tile.get("ulr");
+		aLayout= new DungeonLayout(new TileLocation[]{
+				new TileLocation(Tile.get("lrd"), -1, -1, "", TreasureType.GOLD_COIN, new TileDetails(FountainType.Blindness)),
+				new TileLocation(Tile.get("lru"), -1, 1, "", null, new TileDetails(FountainType.Stupidity)),
+				new TileLocation(Tile.get("rd"), -4, -1, "Troll", null, null),
+				new TileLocation(Tile.get("lru"), -3, 1, "Dragon", null, null),
+				new TileLocation(Tile.get("rd"), -4, 1, "Ogre", null, null),
+				new TileLocation(Tile.get("lrd"), -3, -1, "Ettin", null, null),
+				new TileLocation(Tile.get("udl"), -4, 0, "Angry Bunny", null, new TileDetails(false,false,false,0,0,true)),
+				new TileLocation(Tile.get("r"), -5, 0, "", null, new TileDetails(false,false,false,0,0,true)),
+		});
+		aObjectives = new Objective[]{
+				new Objective(ObjectiveType.Arrive, "objective", -1),
+		};
+		aTurnLimit=10;
+		aTurnLimitActions= new TurnLimitAction[]{(
+				new TurnLimitAction(ActionType.FailDungeon, new String[]{}, "Ivory League arrives")
+				)};
+		aMonsters=finaleList;
+		addDungeon();
+		
+		createAdventure();
 	}
 
 	private static void addDungeon() {
@@ -1649,11 +1787,11 @@ public class Adventure {
 
 	private static ArrayList<Adventure> adventures = new ArrayList<>();
 	private static void createAdventure(){
-		adventures.add(new Adventure(aAdvName, aAdvDescription, aAdvIcon, aAdvX, aAdvY, aTrophyX, aTrophyY, aTrophyName, aDungeons));
+		adventures.add(new Adventure(aAdvName, aAdvDescription, aAdvIcon, aAdvX, aAdvY, aTrophyX, aTrophyY, aTrophyName, aDungeons, aPrereqs, aNumUnlocks, currentRegion));
 		resetAdventure();
 	}
 
 	private static void resetAdventure() {
-		aAdvName=""; aAdvDescription=""; aAdvIcon=""; aAdvX=0; aAdvY=0; aTrophyName="unset"; aTrophyX=0; aTrophyY=0; aDungeons.clear();
+		aAdvName=""; aAdvDescription=""; aAdvIcon=""; aAdvX=0; aAdvY=0; aTrophyName="unset"; aTrophyX=0; aTrophyY=0; aDungeons.clear(); aPrereqs=0; aNumUnlocks=1;
 	}	
 }
