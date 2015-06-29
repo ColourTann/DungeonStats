@@ -189,6 +189,7 @@ public class Item {
 		aUnlockLevel=1;
 		aUnlock=UnlockedBy.Leather;
 		aRandomPool=1;
+		aKeepHair=2;
 		aSound=Sound.equip_leather_helm;
 		aSkills=new Skill[]{Skill.armour.asLevel(2), Skill.holy.asLevel(1)};
 		aOffsetX=111; aOffsetY=68;
@@ -203,6 +204,7 @@ public class Item {
 		aUnlockLevel=2;
 		aUnlock=UnlockedBy.Smith;
 		aRandomPool=0;
+		aKeepHair=2;
 		aSound=Sound.equip_horned_helm;
 		aSkills=new Skill[]{Skill.blade.asLevel(1)};
 		aTraits=new Trait[]{Trait.Fury};
@@ -218,6 +220,7 @@ public class Item {
 		aUnlockLevel=3;
 		aUnlock=UnlockedBy.Smith;
 		aRandomPool=0;
+		aKeepHair=2;
 		aSound=Sound.equip_winged_helm;
 		aSkills=new Skill[]{Skill.holy.asLevel(1)};
 		aTraits=new Trait[]{Trait.Retribution};
@@ -413,6 +416,7 @@ public class Item {
 		aEquipFrame=32;
 		aUnlockLevel=-5;
 		aRandomPool=0;
+		aKeepHair=2;
 		aSound=Sound.equip_cloth_hat;
 		aSkills=new Skill[]{Skill.arcane.asLevel(2), Skill.fire.asLevel(1)};
 		aOffsetX=108; aOffsetY=50;
@@ -794,6 +798,7 @@ public class Item {
 		aUnlockLevel=2;
 		aUnlock=UnlockedBy.Smith;
 		aRandomPool=1;
+		aKeepHair=2;
 		aSound=Sound.equip_horned_helm;
 		aSkills=new Skill[]{Skill.armour.asLevel(1)};
 		aHealth=1;
@@ -809,6 +814,7 @@ public class Item {
 		aUnlockLevel=1;
 		aUnlock=UnlockedBy.Smith;
 		aRandomPool=0;
+		aKeepHair=2;
 		aSound=Sound.equip_horned_helm;
 		aTraits=new Trait[]{Trait.Tenacious};
 		aOffsetX=111; aOffsetY=61;
@@ -823,6 +829,7 @@ public class Item {
 		aUnlockLevel=1;
 		aUnlock=UnlockedBy.Leather;
 		aRandomPool=0;
+		aKeepHair=2;
 		aSound=Sound.equip_horned_helm;
 		aSkills= new Skill[]{Skill.swift.asLevel(2), Skill.armour.asLevel(1)};
 		aOffsetX=110; aOffsetY=88;
@@ -837,6 +844,7 @@ public class Item {
 		aUnlockLevel=3;
 		aUnlock=UnlockedBy.Curio;
 		aRandomPool=0;
+		aKeepHair=2;
 		aSound=Sound.equip_horned_helm;
 		aSkills= new Skill[]{Skill.growth.asLevel(2)};
 		aHealth=1;
@@ -851,6 +859,7 @@ public class Item {
 		aEquipFrame=59;
 		aUnlockLevel=0;
 		aRandomPool=1;
+		aKeepHair=2;
 		aSound=Sound.equip_horned_helm;
 		aSkills= new Skill[]{Skill.fire.asLevel(1), Skill.crush.asLevel(1)};
 		aOffsetX=100; aOffsetY=48;
@@ -1385,7 +1394,7 @@ public class Item {
 		aOffsetX=67; aOffsetY=178;
 		add();
 
-		aFrameNumber+=9; //fountains aren't items//
+		aFrameNumber+=2*3; //fountains aren't items//
 		
 		aName="Orb of Nosiness";
 		aDesc="Hot gossip!";
@@ -1427,17 +1436,6 @@ public class Item {
 		aSound=Sound.equip_staff;
 		add();
 		
-		//		aName="placeholder";
-		//		aDesc="";
-		//		aEquipment=1;
-		//		aType=EquipmentType.weapon;
-		//		aLevel=1;
-		//		aEquipFrame=36;
-		//		aRandomPool=0;
-		//		aSound=Sound.equip_club;
-		//		aSkills=null;
-		//		add();
-
 		setupLevels();
 	}
 

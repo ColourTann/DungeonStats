@@ -14,7 +14,7 @@ public abstract class Fighter {
 		Skilled, Damp, Blessed, Covetous, ArcaneBlade, 
 		Ranged, Ferocious, Bulwark, Wise, Spikey, 
 		Deathwish, Halfbaked, Sleepy, SpellSword, Retribution, 
-		Cunning, VitaSuit, Talented, Intuition, 
+		Cunning, VitaSuit, Talented, 
 		MagicalVuln, PhysicalVuln,
 		Predictable, Sluggish,
 		
@@ -26,7 +26,7 @@ public abstract class Fighter {
 		Aggressive, //Chase
 		Thief, //moves to gold
 		Wandering //random move
-, Bisect, Wild
+, Bisect, Wild, Inventive
 		;
 
 		public String toJson() {
@@ -121,9 +121,6 @@ public abstract class Fighter {
 					bonusHP+=1;
 					break;
 				case Wise:
-					break;
-				case Intuition:
-					bonusHP+=1.2f;
 					break;
 				case MagicalVuln:
 					bonusHP-=getHP()/5f;

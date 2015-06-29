@@ -142,7 +142,7 @@ public class Adventure {
 		return output;
 	}
 
-	static String aName, aDescription; static int aReward;
+	static String aName, aDescription; 
 	static TerrainType aTerrainType;
 	static String aBoss, aBossName; static BossChat[] aBossChats;
 	static TileName aStartingTile; static Hand aStartingHand; static DungeonLayout aLayout;
@@ -180,7 +180,7 @@ public class Adventure {
 		aTrophyY= -1;
 		aName="Squeak squeak";
 		aDescription="Everyone's gotta start somewhere";
-		aReward=100;
+		
 		aTerrainType=TerrainType.stone;
 		aTutorial=true;
 		aBoss="Rat Man";
@@ -216,7 +216,7 @@ public class Adventure {
 
 		aName="Rat King's Tale";
 		aDescription="Defeat the rat king!";
-		aReward=100;
+		
 		aTerrainType=TerrainType.stone;
 		aBoss="Rat King Cole";
 		aBossName="Rat King Cole";
@@ -265,7 +265,7 @@ public class Adventure {
 		aTrophyY=0;
 		aName="Fiery Foray";
 		aDescription="Scope out Embro's defences";
-		aReward=100;
+		
 		aTerrainType=TerrainType.stone;
 		aBoss="Embro";
 		aBossName="Embro";
@@ -296,7 +296,7 @@ public class Adventure {
 
 		aName="Scorching Spoils";
 		aDescription="Loot all of Embro's treasure";
-		aReward=100;
+		
 		aTerrainType=TerrainType.stone;
 		aBoss="Embro";
 		aBossName="Embro";
@@ -321,7 +321,7 @@ public class Adventure {
 
 		aName="Evil Embers";
 		aDescription="Defeat Embro";
-		aReward=100;
+		
 		aTerrainType=TerrainType.stone;
 		aBoss="Embro";
 		aBossName="Embro";
@@ -380,7 +380,7 @@ public class Adventure {
 		aTrophyY= -1;
 		aName="Lovely loot";
 		aDescription="Chests full of treasure!";
-		aReward=100;
+		
 		aTerrainType=TerrainType.stone;
 		aBoss="Mimic Queen";
 		aBossName="Mimic Queen";
@@ -400,7 +400,7 @@ public class Adventure {
 
 		aName="Terrible Truth";
 		aDescription="Get strong enough to beat the mimic before she catches you!";
-		aReward=100;
+		
 		aTerrainType=TerrainType.stone; 
 		aBoss="Mimic Queen";
 		aBossName="Mimic Queen";
@@ -447,7 +447,7 @@ public class Adventure {
 		aTrophyY=0;
 		aName="Goblin Menace";
 		aDescription="Take out the guards";
-		aReward=100;
+		
 		aTerrainType=TerrainType.stone;
 		aBoss="Orc Warlord";
 		aBossName="Orc Warlord";
@@ -468,7 +468,7 @@ public class Adventure {
 
 		aName="Knives and Orcs";
 		aDescription="Defeat the big orc";
-		aReward=100;
+		
 		aTerrainType=TerrainType.stone;
 		aBoss="Orc Warlord";
 		aBossName="Orc Warlord";
@@ -519,7 +519,7 @@ public class Adventure {
 		aTrophyY= -1;
 		aName="Test your mettle";
 		aDescription="Defeat a Skeleton!";
-		aReward=100;
+		
 		aTerrainType=TerrainType.stone;
 		aBoss="The Black Knight";
 		aBossName="The Black Knight";
@@ -544,7 +544,7 @@ public class Adventure {
 
 		aName="Flee!";
 		aDescription="Defeat a minotaur";
-		aReward=100;
+		
 		aTerrainType=TerrainType.stone;
 		aBoss="Minotaur";
 		aBossName="Minotaur";
@@ -567,7 +567,7 @@ public class Adventure {
 
 		aName="Dark duel";
 		aDescription="Defeat the Black Knight!";
-		aReward=100;
+		
 		aTerrainType=TerrainType.stone;
 		aBoss="The Black Knight";
 		aBossName="The Black Knight";
@@ -625,7 +625,7 @@ public class Adventure {
 
 		aName="Curious Crypt";
 		aDescription="Get to the ritual chamber in time!";
-		aReward=100;
+		
 		aTerrainType=TerrainType.stone;
 		aBoss="Lich";
 		aBossName="Evil Lich";
@@ -664,7 +664,7 @@ public class Adventure {
 
 		aName="The summoning";
 		aDescription="Destroy the Evil Lich";
-		aReward=100;
+		
 		aTerrainType=TerrainType.stone;
 		aBoss="Lich";
 		aBossName="Evil Lich";
@@ -722,7 +722,7 @@ public class Adventure {
 		aNumUnlocks=3;
 		aName="Curious Crypt";
 		aDescription="Find your way into the eye-beast's lair";
-		aReward=100;
+		
 		aTerrainType=TerrainType.stone;
 		aBoss="Eye Beast";
 		aBossName="Eye Beast";
@@ -753,7 +753,7 @@ public class Adventure {
 
 		aName="Staring match";
 		aDescription="Steal the orb of nosiness";
-		aReward=100;
+		
 		aTerrainType=TerrainType.stone;
 		aBoss="Eye Beast";
 		aBossName="Eye Beast";
@@ -821,7 +821,7 @@ public class Adventure {
 		aTrophyY= 0;
 		aName="Grab";
 		aDescription="Steal the sapphire";
-		aReward=100;
+		
 		aTerrainType=TerrainType.jungle;
 		aBoss="Eye Beast";
 		aBossName="Eye Beast";
@@ -841,7 +841,7 @@ public class Adventure {
 
 		aName="Run";
 		aDescription="Get out before the roof collapses!";
-		aReward=100;
+		
 		aTerrainType=TerrainType.jungle;
 		aBoss="Eye Beast";
 		aBossName="Eye Beast";
@@ -885,7 +885,7 @@ public class Adventure {
 		aTrophyY= -1;
 		aName="Snakes";
 		aDescription="I hate snakes";
-		aReward=100;
+		
 		aTerrainType=TerrainType.jungle;
 		aBoss="Medusa";
 		aBossName="Medusa";
@@ -909,7 +909,7 @@ public class Adventure {
 
 		aName="Stony Stare";
 		aDescription="Defeat Medusa before you get turned to stone!";
-		aReward=100;
+		
 		aTerrainType=TerrainType.jungle;
 		aBoss="Medusa";
 		aBossName="Medusa";
@@ -956,7 +956,7 @@ public class Adventure {
 
 		aName="Venture deeper";
 		aDescription="Into the jungle in search of treasure";
-		aReward=100;
+		
 		aTerrainType=TerrainType.jungle;
 		aBoss="Ettin";
 		aBossName="Ettin";
@@ -978,7 +978,7 @@ public class Adventure {
 
 		aName="Ettin Troubles";
 		aDescription="He's ganging up on you!";
-		aReward=100;
+		
 		aTerrainType=TerrainType.jungle;
 		aBoss="Ettin";
 		aBossName="Ettin";
@@ -1026,7 +1026,7 @@ public class Adventure {
 		aTrophyY= -1;
 		aName="Wild Life";
 		aDescription="Defend yourself!";
-		aReward=100;
+		
 		aTerrainType=TerrainType.jungle;
 		aBoss="Chimera";
 		aBossName="Chimera";
@@ -1047,7 +1047,7 @@ public class Adventure {
 
 		aName="Awakened";
 		aDescription="Defeat the chimera!";
-		aReward=100;
+		
 		aTerrainType=TerrainType.jungle;
 		aBoss="Chimera";
 		aBoss="Chimera";
@@ -1091,7 +1091,7 @@ public class Adventure {
 		aTrophyY= 0;
 		aName="Assassination";
 		aDescription="Defeat the ogre while he's still sleepy";
-		aReward=100;
+		
 		aTerrainType=TerrainType.jungle;
 		aBoss="Ogre";
 		aBossName="Ogre";
@@ -1139,7 +1139,7 @@ public class Adventure {
 		aNumUnlocks=3;
 		aName="Heist";
 		aDescription="Steal 3 chests";
-		aReward=100;
+		
 		aTerrainType=TerrainType.jungle;
 		aBoss="Dragon";
 		aBossName="Dragon";
@@ -1160,7 +1160,7 @@ public class Adventure {
 
 		aName="Revenge";
 		aDescription="Defeat the angry Dragon!";
-		aReward=100;
+		
 		aTerrainType=TerrainType.jungle;
 		aBoss="Dragon";
 		aBossName="Dragon";
@@ -1215,7 +1215,7 @@ public class Adventure {
 		aTrophyY=1;
 		aName="Tools down";
 		aDescription="Disrupt the mining operation";
-		aReward=100;
+		
 		aTerrainType=TerrainType.mines;
 		aBoss="Miner";
 		aBossName="Miner";
@@ -1224,7 +1224,7 @@ public class Adventure {
 				new BossChat(Trigger.ZerothTurn, new BossSpeech[]{
 						new BossSpeech("We got an intruder guys."),
 						new BossSpeech("Take him out!")
-				}, PostFunc.StartingRoom
+				}
 						)
 		};
 		aLayout= new DungeonLayout(new TileLocation[]{
@@ -1240,7 +1240,7 @@ public class Adventure {
 
 		aName="Troll attack!";
 		aDescription="The miners set a troll on you";
-		aReward=100;
+		
 		aTerrainType=TerrainType.mines;
 		aBoss="Troll";
 		aBossName="Troll";
@@ -1280,7 +1280,7 @@ public class Adventure {
 		aTrophyY=-2f;
 		aName="Mine Patrol";
 		aDescription="Defeat the Cyclops";
-		aReward=100;
+		
 		aTerrainType=TerrainType.mines;
 		aBoss="Cyclops";
 		aBossName="Cyclops";
@@ -1321,7 +1321,7 @@ public class Adventure {
 		aTrophyY=1f;
 		aName="Steal it all!";
 		aDescription="Grab some piles of gold ore";
-		aReward=100;
+		
 		aTerrainType=TerrainType.mines;
 		aBoss="Dwarf Sentry";
 		aBossName="Dwarf Sentry";
@@ -1348,7 +1348,7 @@ public class Adventure {
 
 		aName="Get out alive";
 		aDescription="Defeat the sentry before it shoots!";
-		aReward=100;
+		
 		aTerrainType=TerrainType.mines;
 		aBoss="Dwarf Sentry";
 		aBossName="Dwarf Sentry";
@@ -1407,7 +1407,7 @@ public class Adventure {
 
 		aName="Deeper and deeper!";
 		aDescription="Venturing deeper into the mines you run into vampires!";
-		aReward=100;
+		
 		aTerrainType=TerrainType.mines;
 		aBoss="Dwarf Mecha";
 		aBossName="Dwarf Mecha";
@@ -1428,7 +1428,7 @@ public class Adventure {
 
 		aName="Caught!";
 		aDescription="";
-		aReward=100;
+		
 		aTerrainType=TerrainType.mines;
 		aBoss="Dwarf Mecha";
 		aBossName="Dwarf Mecha";
@@ -1474,7 +1474,7 @@ public class Adventure {
 		aTrophyY=1;
 		aName="Workshop infiltration";
 		aDescription="Get into the secret workshop";
-		aReward=100;
+		
 		aTerrainType=TerrainType.mines;
 		aBoss="Dwarf Masterpiece";
 		aBossName="Dwarf Masterpiece";
@@ -1507,7 +1507,7 @@ public class Adventure {
 
 		aName="Demolition";
 		aDescription="Destroy the masterpiece";
-		aReward=100;
+		
 		aTerrainType=TerrainType.mines;
 		aBoss="Dwarf Masterpiece";
 		aBossName="Dwarf Masterpiece";
@@ -1567,7 +1567,7 @@ public class Adventure {
 		aPrereqs=18;
 		aName="Security";
 		aDescription="Take out the guardians of the magnate";
-		aReward=100;
+		
 		aTerrainType=TerrainType.mines;
 		aBoss="Dwarf Magnate";
 		aBossName="Dwarf Magnate";
@@ -1599,7 +1599,7 @@ public class Adventure {
 
 		aName="Get inside";
 		aDescription="Get into the magnate's boardroom";
-		aReward=100;
+		
 		aTerrainType=TerrainType.mines;
 		aBoss="Dwarf Magnate";
 		aBossName="Dwarf Magnate";
@@ -1635,7 +1635,7 @@ public class Adventure {
 
 		aName="Win big";
 		aDescription="Kill the dwarf magnate before you get trapped!";
-		aReward=100;
+		
 		aTerrainType=TerrainType.mines;
 		aBoss="Dwarf Magnate";
 		aBossName="Dwarf Magnate";
@@ -1698,7 +1698,7 @@ public class Adventure {
 		aPrereqs=19;
 		aName="Rough them up";
 		aDescription="Defeat some old faces";
-		aReward=100;
+		
 		aTerrainType=TerrainType.stone;
 		aBoss="Eye Beast";
 		aBossName="Eye Beast";
@@ -1729,7 +1729,7 @@ public class Adventure {
 		
 		aName="Operation: Ivory League sucks";
 		aDescription="Plant the evidence";
-		aReward=100;
+		
 		aTerrainType=TerrainType.stone;
 		aBoss="Dragon";
 		aBossName="Dragon";
@@ -1763,7 +1763,7 @@ public class Adventure {
 
 	private static void addDungeon() {
 		aDungeons.add(new Dungeon(
-				aName, aDescription, aReward,
+				aName, aDescription,
 				aTerrainType,
 				aBoss,aBossName, aBossChats,
 				aStartingTile, aStartingHand, aLayout,
@@ -1776,7 +1776,7 @@ public class Adventure {
 
 
 	private static void resetDungeon() {
-		aName=""; aDescription=""; aReward=0;
+		aName=""; aDescription="";
 		aTerrainType=null;
 		aBoss=""; aBossName=""; aBossChats=null;
 		aStartingTile=null; aStartingHand=null; aLayout=null;

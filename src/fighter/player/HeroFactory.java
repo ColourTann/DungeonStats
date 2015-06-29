@@ -28,9 +28,11 @@ public class HeroFactory {
 
 		heroName=SkillType.Chump;
 		aHP=5;
+		aFrame=14;
 		aChats=HeroChat.chumpChats;
 		addClass();
 
+		aFrame=103;
 		heroName=SkillType.Cat_Burglar;
 		aHP=5;
 		traits=new Trait[]{Trait.Covetous};
@@ -104,7 +106,7 @@ public class HeroFactory {
 		addClass();
 
 		heroName=SkillType.Artificer;
-		traits = new Trait[]{Trait.Intuition};
+		traits = new Trait[]{Trait.Inventive};
 		aHP=8;
 		aChats=HeroChat.chumpChats;
 		addClass();

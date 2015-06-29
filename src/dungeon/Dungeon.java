@@ -17,7 +17,7 @@ public class Dungeon {
 	Objective[] objectives; int turnLimit; TurnLimitAction[] turnLimitActions;
 	ArrayList<Monster> monsters; CardType[] drawRate;
 	boolean tutorial;
-	public Dungeon(String name, String description, int reward,
+	public Dungeon(String name, String description,
 			TerrainType terrainType, 
 			String boss, String bossName, BossChat[] bossChat,
 			TileName startingTile, Hand startingHand, DungeonLayout layout,
@@ -25,13 +25,29 @@ public class Dungeon {
 			ArrayList<Monster> monsters, CardType[] drawRate,
 			boolean tutorial
 			) {
-		this.name=name; this.description=description; this.reward=reward;
+		this.name=name; this.description=description;
 		this.terrainType=terrainType;
 		this.boss=boss; this.bossName=bossName; this.bossChats=bossChat;
 		this.startingTile = startingTile; this.startingHand=startingHand; this.layout=layout;
 		this.objectives=objectives; this.turnLimit=turnLimit; this.turnLimitActions=turnLimitActions;
 		this.monsters=monsters; this.drawRate=drawRate;
 		this.tutorial=tutorial;
+
+		switch(terrainType){
+		case jungle:
+			reward=150;
+			break;
+		case mines:
+			reward=200;
+			break;
+		case stone:
+			reward=100;
+			break;
+		default:
+			break;
+			
+		}
+		
 	}
 	
 	public String toJson(){
