@@ -214,7 +214,7 @@ public class MonsterFactory {
 		plural= "Snakes";
 		region=Region.stone;
 		species=Species.beast;
-		description = "Why'd it have to be snakes?";
+		description = "*Rattle!!!!*";
 		frameNumber = 28;
 		level = 2;
 		health = 7;
@@ -372,12 +372,12 @@ public class MonsterFactory {
 		
 		
 		
-		name = "Rat King Cole";
-		plural= "Rat Kings Cole";
+		name = "Rat King";
+		plural= "Rat Kings";
 		description = "Squeak squeak!";
 		frameNumber = 62;
 		level = 3;
-		health = 8;
+		health = 7;
 		randomPool=0;
 		traits = new Trait[]{Trait.Leader};
 		sound= MSound.giant_bat;
@@ -646,7 +646,7 @@ public class MonsterFactory {
 		randomPool=1;
 		sound = MSound.giant_bat;
 		traits = null;
-		skills = new Skill[]{Skill.get(SkillType.Venom).asLevel(4), Skill.get(SkillType.Stupidity).asLevel(2)};
+		skills = new Skill[]{Skill.get(SkillType.Venom).asLevel(3), Skill.get(SkillType.Stupidity).asLevel(1)};
 		make();
 
 		name = "Harpy";
@@ -699,10 +699,10 @@ public class MonsterFactory {
 		description = "Whooosh";
 		frameNumber = 23;
 		level = 3;
-		health = 11;
+		health = 9;
 		randomPool=1;
 		sound = MSound.giant_bat;
-		traits = new Trait[]{Trait.MagicalVuln, Trait.Wandering};
+		traits = new Trait[]{Trait.Bulwark, Trait.Wandering};
 		skills = new Skill[]{Skill.get(SkillType.Sorcery).asLevel(3), Skill.get(SkillType.Irritable).asLevel(3)};
 		make();
 		
@@ -928,7 +928,7 @@ public class MonsterFactory {
 		name = "Albino Goblin";
 		plural= "Albino Goblin";
 		region=Region.mines;
-		description = "Spent their how life down here";
+		description = "Spent their whole life down here";
 		frameNumber = 77;
 		level = 1;
 		health = 9;
@@ -1207,7 +1207,7 @@ public class MonsterFactory {
 		plural= "Trolls";
 		description = "Really rude to people who go over his bridge";
 		frameNumber = 48;
-		level = 5 ;
+		level = 4;
 		health = 14;
 		randomPool=0;
 		sound = MSound.giant_bat;

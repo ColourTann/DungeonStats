@@ -534,7 +534,7 @@ public class CardFactory {
 
 			cName= "Bull-horns";
 			cStrength=1.8f;
-			cDescription = "1 physical, block 1 physical";
+			cDescription = "1 physical damage, block 1 physical";
 			cDescSize=24;
 			aActionType=ActionType.Attack;
 			aDamageType=DamageType.Physical;
@@ -884,6 +884,9 @@ public class CardFactory {
 			aDamageType=DamageType.Magical;
 			aEffectCondition=ActionEffectCondition.Hand;
 			addAction();
+			aActionType=ActionType.SelfDiscard;
+			aEffect=4;
+			addAction();
 			addCard(type);
 
 			cName= "Card Flick";
@@ -912,13 +915,13 @@ public class CardFactory {
 			cStrength=2.3f;
 			cDescription = "1 magic damage, block 2 magic damage";
 			cDescSize=22;
-			aActionType=ActionType.Block;
-			aDamageType=DamageType.Magical;
-			aEffect=2;
-			addAction();
 			aActionType=ActionType.Attack;
 			aDamageType=DamageType.Magical;
 			aEffect=1;
+			addAction();
+			aActionType=ActionType.Block;
+			aDamageType=DamageType.Magical;
+			aEffect=2;
 			addAction();
 			addCard(type);
 
@@ -952,17 +955,14 @@ public class CardFactory {
 
 			cName= "Calculate";
 			cStrength=2.5f;
-			cDescription = "+1 card, +1 hp, +1 next magic damage";
+			cDescription = "+1 hp, +2 next magic damage";
 			cDescSize=22;
-			aActionType=ActionType.Draw;
-			aEffect=1;
-			addAction();
 			aActionType=ActionType.Heal;
 			aEffect=1;
 			addAction();
 			aActionType=ActionType.NextAttack;
 			aDamageType=DamageType.Magical;
-			aEffect=1;
+			aEffect=2;
 			addAction();
 			addCard(type);
 
@@ -1036,13 +1036,13 @@ public class CardFactory {
 			cStrength=2.4f;
 			cDescription = "Block 2 physical, 1 physical damage";
 			cDescSize=22;
-			aActionType=ActionType.Block;
-			aDamageType=DamageType.Physical;
-			aEffect=2;
-			addAction();
 			aActionType=ActionType.Attack;
 			aDamageType=DamageType.Physical;
 			aEffect=1;
+			addAction();
+			aActionType=ActionType.Block;
+			aDamageType=DamageType.Physical;
+			aEffect=2;
 			addAction();
 			addCard(type);
 			
@@ -1050,13 +1050,13 @@ public class CardFactory {
 			cStrength=2.4f;
 			cDescription = "Block 1 magic, 2 magic damage";
 			cDescSize=22;
-			aActionType=ActionType.Block;
-			aDamageType=DamageType.Magical;
-			aEffect=1;
-			addAction();
 			aActionType=ActionType.Attack;
 			aDamageType=DamageType.Magical;
 			aEffect=2;
+			addAction();
+			aActionType=ActionType.Block;
+			aDamageType=DamageType.Magical;
+			aEffect=1;
 			addAction();
 			addCard(type);
 			
@@ -1100,58 +1100,6 @@ public class CardFactory {
 
 			/*
 			 * 
-			 * BLESSINGS
-			 * 
-			 */
-
-
-		case Crone:
-			cName="Crone's Wrath";
-			cStrength=4.5f;
-			cDescription = "4 magic damage [unblockable]";
-			cDescSize=22;
-			aActionType=ActionType.Attack;
-			aDamageType=DamageType.Magical;
-			aEffect=4;
-			aUnblockable=true;
-			addAction();
-			addCard(type);
-			break;
-		case HealAid:
-			cName="Phlogis Tonic";
-			cStrength=3f;
-			cDescription = "+3 hp";
-			cDescSize=22;
-			aActionType=ActionType.Heal;
-			aEffect=3;
-			addAction();
-			addCard(type);
-			break;
-		case Trickster:
-			cName="Trickster's Skill";
-			cStrength=2.5f;
-			cDescription = "2 physical damage [quick]";
-			cDescSize=22;
-			aActionType=ActionType.Attack;
-			aDamageType=DamageType.Magical;
-			aEffect=2;
-			aQuick=true;
-			addAction();
-			addCard(type);
-			break;
-		case Warrior:
-			cName="Warrior's Guidance";
-			cStrength=2f;
-			cDescription = "Block all";
-			cDescSize=22;
-			aActionType=ActionType.Block;
-			aDamageType=DamageType.Either;
-			addAction();
-			addCard(type);
-			break;
-
-			/*
-			 * 
 			 * PLAYER SKILLS
 			 * 
 			 */
@@ -1159,16 +1107,15 @@ public class CardFactory {
 
 		case Arcane:
 
-			cName= "Force Shield";
+			cName= "Mind Strike";
 			cStrength=2;
-			cDescription = "1 magic damage, block 1 magic damage";
+			cDescription = "1 magic damage, draw a card";
 			cDescSize=20;
-			aActionType=ActionType.Block;
+			aActionType=ActionType.Attack;
 			aDamageType=DamageType.Magical;
 			aEffect=1;
 			addAction();
-			aActionType=ActionType.Attack;
-			aDamageType=DamageType.Magical;
+			aActionType=ActionType.Draw;
 			aEffect=1;
 			addAction();
 			addCard(type);
@@ -1215,7 +1162,7 @@ public class CardFactory {
 			break;
 		case Armour:
 
-			cName= "Advance";
+			cName= "Repel";
 			cStrength=2;
 			cDescription = "Block 3 physical damage";
 			cDescSize=19;
@@ -1227,13 +1174,13 @@ public class CardFactory {
 
 			cName= "Counter";
 			cStrength=2.5f;
-			cDescription = "Block 2 physical dmg, +1 to next physical attack";
+			cDescription = "2 physical damage, block 1 physical dmg";
 			cDescSize=19;
-			aActionType=ActionType.Block;
+			aActionType=ActionType.Attack;
 			aDamageType=DamageType.Physical;
 			aEffect=2;
 			addAction();
-			aActionType=ActionType.NextAttack;
+			aActionType=ActionType.Block;
 			aDamageType=DamageType.Physical;
 			aEffect=1;
 			addAction();
@@ -1543,17 +1490,14 @@ public class CardFactory {
 
 			cName= "Shift";
 			cStrength=2;
-			cDescription = "1 physical damage [quick], +1 vs unblockable";
+			cDescription = "1 physical damage [quick], draw a card";
 			cDescSize=19;
 			aActionType=ActionType.Attack;
 			aDamageType=DamageType.Physical;
 			aQuick=true;
 			aEffect=1;
 			addAction();
-			aActionType=ActionType.Attack;
-			aDamageType=DamageType.Physical;
-			aQuick=true;
-			aBonusMechanic=BonusVsMechanic.unblockable;
+			aActionType=ActionType.Draw;
 			aEffect=1;
 			addAction();
 			addCard(type);
@@ -2604,7 +2548,7 @@ public class CardFactory {
 		}
 
 		public enum ActionType{
-			Attack, Heal, Block, Discard, TakeDamage, Draw, NextAttack, Effect, SetHP, Withstand, Copy, Scry, Stupidity
+			Attack, Heal, Block, Discard, TakeDamage, Draw, NextAttack, Effect, SetHP, Withstand, Copy, Scry, Stupidity, SelfDiscard
 		}
 		public enum DamageType{
 			Physical("Physical"), Magical("Magical"), Either("Magical,Physical");
@@ -2644,6 +2588,7 @@ public class CardFactory {
 				case Draw:
 				case Heal:
 				case SetHP:
+				case SelfDiscard:
 					output+=Json.addKey("quantity", effect, true);
 					break;	
 				case Withstand:

@@ -25,7 +25,7 @@ public class Hero extends Fighter{
 		String output="";
 		output+="\""+name.replaceAll("_", " ")+"\" : {\n";
 		output+="\"health\" : "+getHP()+",\n";		
-		if(frame>102)output+= Json.addKey("frame", frame, true);
+		output+= Json.addKey("frame", frame, true);
 		if(traits!=null){
 			output+="\"Traits\" : [\n";
 			for(int i=0;i<traits.length;i++){

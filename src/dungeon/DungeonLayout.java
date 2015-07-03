@@ -75,6 +75,14 @@ public class DungeonLayout {
 				output+=Json.addKey("MONSTER", monster, true);	
 			}
 			output+=Json.addKey("TREASURE", treasure==null?"":treasure, false);
+			if(treasure==TreasureType.Orb_of_Nosiness.toString()){
+				output = Json.addComma(output);
+				output += Json.addKey("monsterOffsetX", 30, true);
+				output += Json.addKey("monsterOffsetY", -40, true);
+				output += Json.addKey("treasureOffsetX", -30, true);
+				output += Json.addKey("treasureOffsetY", -0, false);
+			}
+			
 			output += Json.endEnclose(false);
 			return output;
 		}

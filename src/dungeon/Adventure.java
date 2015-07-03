@@ -184,7 +184,7 @@ public class Adventure {
 		aTerrainType=TerrainType.stone;
 		aTutorial=true;
 		aBoss="Rat Man";
-		aBossName="Rat King Cole";
+		aBossName="Rat King";
 		aBossChats= new BossChat[]{
 				new BossChat(Trigger.Second_Turn, new BossSpeech[]{
 						new BossSpeech("Squeak squeak squeak"),
@@ -214,12 +214,12 @@ public class Adventure {
 		aMonsters=ratList1;
 		addDungeon();
 
-		aName="Rat King's Tale";
+		aName="Rat Pack";
 		aDescription="Defeat the rat king!";
 		
 		aTerrainType=TerrainType.stone;
-		aBoss="Rat King Cole";
-		aBossName="Rat King Cole";
+		aBoss="Rat King";
+		aBossName="Rat King";
 		aBossChats= new BossChat[]{
 				new BossChat(Trigger.ZerothTurn, new BossSpeech[]{
 						new BossSpeech("Squeak!!"),
@@ -243,19 +243,20 @@ public class Adventure {
 				new TileLocation(Tile.get("nesw"), 0, -4, "Rat Man", null, new TileDetails(false, true, false, 0, 0, false)),
 		});
 		aObjectives = new Objective[]{
-				new Objective(ObjectiveType.Defeat, "BOSS", -1)
+				new Objective(ObjectiveType.Defeat, "BOSS", -1, true)
 		};
 		aTurnLimit=-1;
 		aMonsters=ratList2;
 		addDungeon();
 		createAdventure();
 		
+		
 		currentRegion=Region.stone;
 		
 
 		// EMBRO ADVENTURE //
 		ArrayList<Monster> embroList= MonsterFactory.getMonsters(new String[]{"Fire Imp", "Scary Spider", "Goblin", "Ghost", "Zombie", "Gnoll", "Bear Owl", "Fire Elemental", "Bandito"});
-		aAdvName="Embro";
+		aAdvName="Firelord";
 		//aAdvDescription="Defeat the evil demon, Embro";
 		aAdvIcon="stone_fire_cave";
 		aAdvX=.2f;
@@ -313,13 +314,13 @@ public class Adventure {
 				new TileLocation(TileName.room_semicircle_nsw, 2, 0, "Fire Elemental", TreasureType.Large_Chest, null)
 		});
 		aObjectives = new Objective[]{
-				new Objective(ObjectiveType.Collect, TreasureType.Large_Chest.toString(), 3)
+				new Objective(ObjectiveType.Collect, TreasureType.Large_Chest.toString(), 3, true)
 		};
 		aTurnLimit=-1;
 		aMonsters=embroList;
 		addDungeon();
 
-		aName="Evil Embers";
+		aName="Bath Bomb";
 		aDescription="Defeat Embro";
 		
 		aTerrainType=TerrainType.stone;
@@ -356,7 +357,7 @@ public class Adventure {
 				new TileLocation(TileName.room_round_s, 2, -3, "", TreasureType.MEGA_CHEST, null),
 		});
 		aObjectives = new Objective[]{
-				new Objective(ObjectiveType.Defeat, "BOSS", -1)
+				new Objective(ObjectiveType.Defeat, "BOSS", -1, true)
 		};
 		aTurnLimit=12;
 		aMonsters=embroList;
@@ -370,7 +371,7 @@ public class Adventure {
 				"Ghost", "Skeleton", "Gnoll", 
 				"Bear Owl", "Fire Elemental", "Bandito"});
 
-		aAdvName="Shiny treasure";
+		aAdvName="A Victimless Crime";
 		//aAdvDescription="Loot all the treasure";
 		aAdvIcon="stone_chest";
 		aAdvX=1.25f;
@@ -392,7 +393,7 @@ public class Adventure {
 				new TileLocation(TileName.room_semicircle_nsw, 1, -2, "Bear Owl", TreasureType.Large_Chest, null),
 		});
 		aObjectives = new Objective[]{
-				new Objective(ObjectiveType.Collect, "Large Chest", 2),
+				new Objective(ObjectiveType.Collect, "Large Chest", 2, true),
 		};
 		aTurnLimit=-1;
 		aMonsters=mimicList;
@@ -437,7 +438,7 @@ public class Adventure {
 				"Skeleton", "Rat Man", "Gnoll", 
 				"Bear Owl", "Bandito", "Scorpion"});
 
-		aAdvName="Goblins!";
+		aAdvName="Gobliiins";
 		//aAdvDescription="Loot all the treasure";
 		aAdvIcon="stone_skull_cave";
 		aAdvX=2;
@@ -466,7 +467,7 @@ public class Adventure {
 		aMonsters=goblinList;
 		addDungeon();
 
-		aName="Knives and Orcs";
+		aName="Orcs!";
 		aDescription="Defeat the big orc";
 		
 		aTerrainType=TerrainType.stone;
@@ -494,7 +495,7 @@ public class Adventure {
 				new TileLocation(TileName.room_semicircle_esw, 0, -3, "BOSS", null, new TileDetails(false, true, false, 0, 0, false))
 		});
 		aObjectives = new Objective[]{
-				new Objective(ObjectiveType.Defeat, "BOSS", -1)
+				new Objective(ObjectiveType.Defeat, "BOSS", -1, true)
 		};
 		aTurnLimit=-1;
 		aMonsters=goblinList;
@@ -509,7 +510,7 @@ public class Adventure {
 				"Bear Owl", "Bandito", "Scorpion"});
 
 
-		aAdvName="Black Knight";
+		aAdvName="None Shall Pass";
 		//aAdvDescription="Loot all the treasure";
 		aAdvIcon="stone_castle";
 		aAdvX=2.15f;
@@ -596,7 +597,7 @@ public class Adventure {
 				new TileLocation(TileName.room_round_s, -2, -3, "", TreasureType.MEGA_CHEST, null)
 		});
 		aObjectives = new Objective[]{
-				new Objective(ObjectiveType.Defeat, "BOSS", -1)
+				new Objective(ObjectiveType.Defeat, "BOSS", -1, true)
 		};
 		aTurnLimitActions= new TurnLimitAction[]{(
 				new TurnLimitAction(ActionType.BossChat, new String[]{"\""+Trigger.ComingToAttack.toString()+"\""}, "Duel")
@@ -653,7 +654,7 @@ public class Adventure {
 				new TileLocation(Tile.get("u"), 0, 6, "", null, new TileDetails(false, false, false, 0, 0, true)),
 		});
 		aObjectives = new Objective[]{
-				new Objective(ObjectiveType.Arrive, "objective", 1),
+				new Objective(ObjectiveType.Arrive, "objective", 1, true),
 		};
 		aTurnLimit=10;
 		aTurnLimitActions= new TurnLimitAction[]{(
@@ -662,7 +663,7 @@ public class Adventure {
 		aMonsters=lichst;
 		addDungeon();
 
-		aName="The summoning";
+		aName="Shady Summoning";
 		aDescription="Destroy the Evil Lich";
 		
 		aTerrainType=TerrainType.stone;
@@ -693,7 +694,7 @@ public class Adventure {
 						new BossSpeech("And by the way it was actually TWO orphanages muahahaha")}, PostFunc.FireDemonMoveToBoard, new PostEffect[]{new PostEffect(Trait.Halfbaked, false)})
 		};
 		aObjectives = new Objective[]{
-				new Objective(ObjectiveType.Defeat, "BOSS", -1),
+				new Objective(ObjectiveType.Defeat, "BOSS", -1, true),
 		};
 		aTurnLimitActions= new TurnLimitAction[]{(
 				new TurnLimitAction(ActionType.BossChat, new String[]{"\""+Trigger.ComingToAttack+"\""}, "The ritual is complete")
@@ -710,7 +711,7 @@ public class Adventure {
 				"Snake", "Mimic", "Ghost", 
 				"Minotaur", "Bear Owl", "Shade"});
 
-		aAdvName="The Eye Beast";
+		aAdvName="Nosy Eye";
 		//aAdvDescription="Loot all the treasure";
 		aAdvIcon="stone_temple";
 		aAdvX=3f;
@@ -720,7 +721,7 @@ public class Adventure {
 		aTrophyY=-1;
 		aPrereqs=6;
 		aNumUnlocks=3;
-		aName="Curious Crypt";
+		aName="Ocular Rift";
 		aDescription="Find your way into the eye-beast's lair";
 		
 		aTerrainType=TerrainType.stone;
@@ -745,13 +746,13 @@ public class Adventure {
 				new TileLocation(Tile.get("r"), -5, 0, "", null, new TileDetails(false, false, false, 0, 0, true)),
 		});
 		aObjectives = new Objective[]{
-				new Objective(ObjectiveType.Arrive, "objective", 1),
+				new Objective(ObjectiveType.Arrive, "objective", 1, true),
 		};
 		aTurnLimit=-1;
 		aMonsters=eyeblist;
 		addDungeon();
 
-		aName="Staring match";
+		aName="Staring Match";
 		aDescription="Steal the orb of nosiness";
 		
 		aTerrainType=TerrainType.stone;
@@ -760,7 +761,7 @@ public class Adventure {
 		aBossChats= new BossChat[]{
 				new BossChat(Trigger.ZerothTurn, new BossSpeech[]{
 						new BossSpeech("How daaare you interrupt me during my evening entertainment"),
-						new BossSpeech("You thought you could steal my priiize?")}, PostFunc.StartingRoom),
+						new BossSpeech("You thought you could steal my priiize?")}, PostFunc.StartingRoomNoPickup),
 						new BossChat(Trigger.FirstTurn, new BossSpeech[]{new BossSpeech("I knew your were coming!")}),
 						new BossChat(Trigger.ThirdTurn, new BossSpeech[]{new BossSpeech("Get out or I turn you to stone")}),
 						new BossChat(Trigger.SixthTurn, new BossSpeech[]{new BossSpeech("Tick tock hero!")}),
@@ -776,14 +777,13 @@ public class Adventure {
 		};
 		aStartingTile=TileName.room_collapse_new;
 		aLayout= new DungeonLayout(new TileLocation[]{
-				new TileLocation(Tile.get("d"), -1, -4, "", TreasureType.Orb_of_Nosiness),
-				new TileLocation(Tile.get("du"), -1, -3, "BOSS", null, new TileDetails(false, true, true, -1, -3, false)),
+				new TileLocation(Tile.get("d"), -1, -3, "BOSS", TreasureType.Orb_of_Nosiness, new TileDetails(false, true, true, -1, -3, false)),
 				new TileLocation(TileName.room_round_s, 1, -3, "", TreasureType.Large_Chest, new TileDetails(false, true, false, 0, 0, false)),
 				new TileLocation(TileName.corr_rubble_e, -2, -1, "", TreasureType.MEGA_CHEST, new TileDetails(false, true, false, 0, 0, false)),
 
 		});
 		aObjectives = new Objective[]{
-				new Objective(ObjectiveType.Collect, TreasureType.Orb_of_Nosiness.toString(), 1)
+				new Objective(ObjectiveType.Collect, TreasureType.Orb_of_Nosiness.toString(), 1, true)
 		};
 		aTurnLimit=8;
 		aTurnLimitActions= new TurnLimitAction[]{
@@ -858,7 +858,7 @@ public class Adventure {
 				new TileLocation(Tile.get("ju"), 0, 4, "", null, new TileDetails(false, false, false, 0, 0, true)),
 		});
 		aObjectives = new Objective[]{
-				new Objective(ObjectiveType.Arrive, "objective", 1)
+				new Objective(ObjectiveType.Arrive, "objective", 1, true)
 		};
 		aTurnLimit=9;
 		aTurnLimitActions= new TurnLimitAction[]{
@@ -876,14 +876,14 @@ public class Adventure {
 				"Poisonous Snake", "Lizardman", "ManEating Plant",
 				"Jungle Shaman", "Dire Scorpion", "Owl Bear"});
 
-		aAdvName="Medusa Adventure";
+		aAdvName="Snakes on a Plain";
 		aAdvIcon="jungle_snake";
 		aAdvX=-1.5f;
 		aAdvY=.5f;
 		aTrophyName= "Snakeskin Belt";
 		aTrophyX= 2.25f;
 		aTrophyY= -1;
-		aName="Snakes";
+		aName="Why'd it have to be snakes?";
 		aDescription="I hate snakes";
 		
 		aTerrainType=TerrainType.jungle;
@@ -928,7 +928,7 @@ public class Adventure {
 				new TileLocation(Tile.get("jdl"), 2, -3, "Dire Scorpion", null, new TileDetails(FountainType.Knowledge)),
 		});
 		aObjectives = new Objective[]{
-				new Objective(ObjectiveType.Defeat, "BOSS", -1)
+				new Objective(ObjectiveType.Defeat, "BOSS", -1, true)
 		};
 		aTurnLimit=10;
 		aTurnLimitActions=new TurnLimitAction[]{
@@ -945,7 +945,7 @@ public class Adventure {
 				"Poisonous Snake", "Lizardman", "ManEating Plant",
 				"Jungle Shaman", "Dire Scorpion", "Owl Bear"});
 
-		aAdvName="Ettin Adventure";
+		aAdvName="Double Trouble";
 		aAdvIcon="jungle_mailbox";
 		aAdvX=-1.75f;
 		aAdvY=1.5f;
@@ -976,7 +976,7 @@ public class Adventure {
 		aMonsters=ettinList;
 		addDungeon();
 
-		aName="Ettin Troubles";
+		aName="Eatin' Ettin";
 		aDescription="He's ganging up on you!";
 		
 		aTerrainType=TerrainType.jungle;
@@ -1000,7 +1000,7 @@ public class Adventure {
 
 		});
 		aObjectives = new Objective[]{
-				new Objective(ObjectiveType.Defeat, "BOSS", -1),
+				new Objective(ObjectiveType.Defeat, "BOSS", -1, true),
 		};
 		aTurnLimit=6;
 		aTurnLimitActions= new TurnLimitAction[]{(
@@ -1017,7 +1017,7 @@ public class Adventure {
 				"Poisonous Snake", "Hilly Gnoll", "ManEating Plant",
 				"Worm", "Dire Scorpion", "Owl Bear"});
 
-		aAdvName="Chimera Adventure";
+		aAdvName="All Mixed Up";
 		aAdvIcon="jungle_temple";
 		aAdvX=-2;
 		aAdvY=2;
@@ -1082,7 +1082,7 @@ public class Adventure {
 				"Harpy", "Hilly Gnoll", "Rat Berserker",
 				"Worm", "Gargoyle", "Owl Bear"});
 
-		aAdvName="Ogre Adventure";
+		aAdvName="Ogre Menace";
 		aAdvIcon="jungle_keepout";
 		aAdvX=-2.5f;
 		aAdvY=1;
@@ -1110,7 +1110,7 @@ public class Adventure {
 				new TileLocation(Tile.get("je"), -2, -1, "Gargoyle", TreasureType.MEGA_CHEST, null),
 		});
 		aObjectives = new Objective[]{
-				new Objective(ObjectiveType.Defeat, "BOSS", -1),
+				new Objective(ObjectiveType.Defeat, "BOSS", -1, true),
 		};
 		aTurnLimit=10;
 		aTurnLimitActions= new TurnLimitAction[]{(
@@ -1128,7 +1128,7 @@ public class Adventure {
 				"Harpy", "Poisonous Snake", "Rat Berserker",
 				"Worm", "Gargoyle", "Jungle Shaman"});
 
-		aAdvName="Dragon Adventure";
+		aAdvName="Dragon's Hoard";
 		aAdvIcon="jungle_volcano";
 		aAdvX=-3;
 		aAdvY=2;
@@ -1152,10 +1152,10 @@ public class Adventure {
 				new TileLocation(Tile.get("jdw"), 0, -3, "Gargoyle", TreasureType.Large_Chest, new TileDetails(false, true, false, 0, 0, false)),
 		});
 		aObjectives = new Objective[]{
-				new Objective(ObjectiveType.Collect, TreasureType.Large_Chest.toString(), 3),
+				new Objective(ObjectiveType.Collect, TreasureType.Large_Chest.toString(), 3, true),
 		};
 		aTurnLimit=-1;
-		aMonsters=MonsterFactory.noMonsters;
+		aMonsters=dragonList;
 		addDungeon();
 
 		aName="Revenge";
@@ -1206,7 +1206,7 @@ public class Adventure {
 		
 		// TROLL ADVENTURE //
 
-		aAdvName="Troll Adventure";
+		aAdvName="Mine Troll";
 		aAdvIcon="mines_rope_shaft";
 		aAdvX=1f;
 		aAdvY=-.5f;
@@ -1271,7 +1271,7 @@ public class Adventure {
 				"Cursed Mummy", "Genii", "Vampire"});
 		
 		
-		aAdvName="Cyclops Adventure";
+		aAdvName="Deep in the mines";
 		aAdvIcon="mines_cave";
 		aAdvX=2f;
 		aAdvY=-.5f;
@@ -1298,7 +1298,7 @@ public class Adventure {
 				new TileLocation(Tile.get("mudlr"), -1, 1, "", TreasureType.Large_Chest, new TileDetails(false, true, false, 0, 0, false)),
 		});
 		aObjectives = new Objective[]{
-				new Objective(ObjectiveType.Defeat, "BOSS", -1),
+				new Objective(ObjectiveType.Defeat, "BOSS", -1, true),
 		};
 		aTurnLimit=-1;
 		aMonsters=cyclopsList;
@@ -1312,7 +1312,7 @@ public class Adventure {
 				"Spider Drill", "Blind Worm", "Wailing Ghost",
 				"Cave Troll", "Genii", "Vampire"});
 		
-		aAdvName="Sentry Adventure";
+		aAdvName="Target Acquired";
 		aAdvIcon="mines_hut";
 		aAdvX=1.5f;
 		aAdvY=-1f;
@@ -1340,7 +1340,7 @@ public class Adventure {
 				new TileLocation(Tile.get("mudlr"), -1, 1, "Clattering Bones", TreasureType.Gold_Ore, new TileDetails(false, true, false, 0, 0, false)),
 		});
 		aObjectives = new Objective[]{
-				new Objective(ObjectiveType.Collect, TreasureType.Gold_Ore.toString(), 4),
+				new Objective(ObjectiveType.Collect, TreasureType.Gold_Ore.toString(), 3, true),
 		};
 		aTurnLimit=-1;
 		aMonsters=sentryList;
@@ -1379,7 +1379,7 @@ public class Adventure {
 				new TileLocation(Tile.get("mudlr"), -1, 1, "Wailing Ghost", TreasureType.MEGA_CHEST, new TileDetails(false, true, false, 0, 0, false)),
 		});
 		aObjectives = new Objective[]{
-				new Objective(ObjectiveType.Defeat, "BOSS", 1),
+				new Objective(ObjectiveType.Defeat, "BOSS", 1, true),
 		};
 		aTurnLimit=9;
 		aTurnLimitActions= new TurnLimitAction[]{(
@@ -1397,7 +1397,7 @@ public class Adventure {
 				"Cave Troll", "Nymph", "Vampire"});
 		
 		
-		aAdvName="Mecha Adventure";
+		aAdvName="Mechanical Menace";
 		aAdvIcon="mines_cart";
 		aAdvX=2.5f;
 		aAdvY=-1f;
@@ -1465,7 +1465,7 @@ public class Adventure {
 				"Spider Drill", "Clattering Bones", "Wailing Ghost",
 				"Cave Troll", "Earth Elemental", "Vampire"});
 		
-		aAdvName="Masterpiece Adventure";
+		aAdvName="Marvelous Masterpiece";
 		aAdvIcon="mines_factory";
 		aAdvX=1f;
 		aAdvY=-1.5f;
@@ -1499,7 +1499,7 @@ public class Adventure {
 
 		});
 		aObjectives = new Objective[]{
-				new Objective(ObjectiveType.Arrive, "objective", 1),
+				new Objective(ObjectiveType.Arrive, "objective", 1, true),
 		};
 		aTurnLimit=-1;
 		aMonsters=masterpieceList;
@@ -1541,7 +1541,7 @@ public class Adventure {
 				new TileLocation(Tile.get("mudlr"), -2, 1, "Cave Troll", TreasureType.MEGA_CHEST, new TileDetails(false, true, false, 0, 0, false)),
 		});
 		aObjectives = new Objective[]{
-				new Objective(ObjectiveType.Defeat, "BOSS", 1),
+				new Objective(ObjectiveType.Defeat, "BOSS", 1, true),
 		};
 		aTurnLimit=10;
 		aTurnLimitActions= new TurnLimitAction[]{(
@@ -1557,7 +1557,7 @@ public class Adventure {
 
 
 
-		aAdvName="Magnate Adventure";
+		aAdvName="Magnate Mogul";
 		aAdvIcon="mines_office";
 		aAdvX=2f;
 		aAdvY=-1.5f;
@@ -1627,7 +1627,7 @@ public class Adventure {
 				new TileLocation(Tile.get("mdr"), 1, -1, "Miner", null, null),
 		});
 		aObjectives = new Objective[]{
-				new Objective(ObjectiveType.Arrive, "objective", 1)
+				new Objective(ObjectiveType.Arrive, "objective", 1, true)
 		};
 		aTurnLimit=-1;
 		aMonsters=MonsterFactory.getMonsters(Region.mines, 3);
@@ -1672,7 +1672,7 @@ public class Adventure {
 				new TileLocation(Tile.get("mdlr"), 5, -1, "Earth Elemental", null, new TileDetails(false, true, false, 0, 0, false)),
 		});
 		aObjectives = new Objective[]{
-				new Objective(ObjectiveType.Defeat, "BOSS", -1)
+				new Objective(ObjectiveType.Defeat, "BOSS", -1, true)
 		};
 		aTurnLimit=10;
 		aTurnLimitActions= new TurnLimitAction[]{(
@@ -1689,7 +1689,7 @@ public class Adventure {
 				"Nymph", "Vampire", "Genii"});
 		
 		
-		aAdvName="Finale Adventure";
+		aAdvName="The Big Plan";
 		//aAdvDescription="Delve into the basement and defeat the mighty... rats";
 		aAdvIcon="finale";
 		aAdvX=.25f;
@@ -1715,9 +1715,9 @@ public class Adventure {
 				new TileLocation(Tile.get("udl"), 1, -2, "Clattering Bones", null, new TileDetails(FountainType.Power)),
 		});
 		aObjectives = new Objective[]{
-				new Objective(ObjectiveType.Defeat, "The Black Knight", 1),
-				new Objective(ObjectiveType.Defeat, "Eye Beast", 1),
-				new Objective(ObjectiveType.Defeat, "Mimic Queen", 1),
+				new Objective(ObjectiveType.Defeat, "The Black Knight", 1, true),
+				new Objective(ObjectiveType.Defeat, "Eye Beast", 1, true),
+				new Objective(ObjectiveType.Defeat, "Medusa", 1, true),
 		};
 		aTurnLimit=10;
 		aTurnLimitActions= new TurnLimitAction[]{(
@@ -1745,11 +1745,11 @@ public class Adventure {
 				new TileLocation(Tile.get("lru"), -3, 1, "Dragon", null, null),
 				new TileLocation(Tile.get("rd"), -4, 1, "Ogre", null, null),
 				new TileLocation(Tile.get("lrd"), -3, -1, "Ettin", null, null),
-				new TileLocation(Tile.get("udl"), -4, 0, "Angry Bunny", null, new TileDetails(false,false,false,0,0,true)),
+				new TileLocation(Tile.get("udl"), -4, 0, "Angry Bunny", null, null),
 				new TileLocation(Tile.get("r"), -5, 0, "", null, new TileDetails(false,false,false,0,0,true)),
 		});
 		aObjectives = new Objective[]{
-				new Objective(ObjectiveType.Arrive, "objective", -1),
+				new Objective(ObjectiveType.Arrive, "objective", -1, true),
 		};
 		aTurnLimit=10;
 		aTurnLimitActions= new TurnLimitAction[]{(
@@ -1788,10 +1788,29 @@ public class Adventure {
 	private static ArrayList<Adventure> adventures = new ArrayList<>();
 	private static void createAdventure(){
 		adventures.add(new Adventure(aAdvName, aAdvDescription, aAdvIcon, aAdvX, aAdvY, aTrophyX, aTrophyY, aTrophyName, aDungeons, aPrereqs, aNumUnlocks, currentRegion));
+		for(int i=0;i<aDungeons.size();i++){
+			aDungeons.get(i).setFinal(i==aDungeons.size()-1);
+		}
 		resetAdventure();
 	}
 
 	private static void resetAdventure() {
 		aAdvName=""; aAdvDescription=""; aAdvIcon=""; aAdvX=0; aAdvY=0; aTrophyName="unset"; aTrophyX=0; aTrophyY=0; aDungeons.clear(); aPrereqs=0; aNumUnlocks=1;
 	}	
+	
+	public static String adventureNames(){
+		String output="";
+		
+		for(Adventure a: adventures){
+			output+=a.name+" [";
+			for(Dungeon d:a.dungeons){
+				output+=d.name+"||";
+			}
+			output=output.substring(0, output.length()-2);
+			output+="]\n";
+		}
+		
+		return output;
+	}
+	
 }

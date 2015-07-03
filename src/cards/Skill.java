@@ -18,7 +18,7 @@ public class Skill {
 		
 		Chump, Bruiser, Cat_Burglar, Apprentice, Mime, Ranger, Barbarian, Alchemist, Shapeshifter, Troubador, Most_Holy_Grail_Knight, Cartomancer, Mathemagician, Artificer,  
 		
-		Trickster, Warrior, Crone, HealAid
+
 	}
 	
 	public static SkillType[] monsterSkills=new SkillType[]{SkillType.Feral, SkillType.Spooky, SkillType.Irritable, SkillType.Stupidity, SkillType.Armed, SkillType.Flame, SkillType.Nature, SkillType.Death,

@@ -35,13 +35,13 @@ public class Dungeon {
 
 		switch(terrainType){
 		case jungle:
-			reward=150;
+			reward=170;
 			break;
 		case mines:
-			reward=200;
+			reward=220;
 			break;
 		case stone:
-			reward=100;
+			reward=120;
 			break;
 		default:
 			break;
@@ -49,6 +49,34 @@ public class Dungeon {
 		}
 		
 	}
+	
+	public void setFinal(boolean b) {
+		switch(terrainType){
+		case jungle:
+			reward=125;
+			break;
+		case mines:
+			reward=160;
+			break;
+		case stone:
+			reward=80;
+			break;
+		default:
+			break;
+		}
+		if(b)reward*=2;
+		
+		if(name.equals("Squeak squeak")){
+			reward=100;
+		}
+		if(name.equals("Rough them up")){
+			reward=500;			
+		}
+		if(name.equals("Operation: Ivory League sucks")){
+			reward=9999;
+		}
+		
+	}	
 	
 	public String toJson(){
 		String output="";
@@ -111,5 +139,7 @@ public class Dungeon {
 		output += Json.endEnclose(false); //this dungeon
 		output += Json.endEnclose(false); //main enclose
 		return output;
-	}	
+	}
+
+
 }
