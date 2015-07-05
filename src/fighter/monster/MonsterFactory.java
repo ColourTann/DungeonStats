@@ -892,7 +892,7 @@ public class MonsterFactory {
 		description = "Can still buy drinks though";
 		frameNumber = 58;
 		level = 1;
-		health = 7;
+		health = 6;
 		randomPool=1;
 		sound = MSound.giant_bat;
 		traits = new Trait[]{Trait.Fury, Trait.Leader};
@@ -905,7 +905,7 @@ public class MonsterFactory {
 		description = "Nothing but a gold digger";
 		frameNumber = 59;
 		level = 1;
-		health = 9;
+		health = 8;
 		randomPool=1;
 		sound = MSound.giant_bat;
 		traits = new Trait[]{Trait.Brittle, Trait.Leader};
@@ -918,7 +918,7 @@ public class MonsterFactory {
 		description = "Don't get too close";
 		frameNumber = 76;
 		level = 1;
-		health = 11;
+		health = 10;
 		randomPool=1;
 		sound = MSound.giant_bat;
 		traits = new Trait[]{Trait.Meaty};
@@ -931,7 +931,7 @@ public class MonsterFactory {
 		description = "Spent their whole life down here";
 		frameNumber = 77;
 		level = 1;
-		health = 9;
+		health = 8;
 		randomPool=1;
 		sound = MSound.giant_bat;
 		traits = new Trait[]{Trait.Tenacious, Trait.NightOwl};
@@ -945,7 +945,7 @@ public class MonsterFactory {
 		description = "Quick! Hit it with something!";
 		frameNumber = 83;
 		level = 1;
-		health = 8;
+		health = 7;
 		randomPool=1;
 		sound = MSound.goblin;
 		traits = new Trait[]{Trait.Retribution};
@@ -958,7 +958,7 @@ public class MonsterFactory {
 		description = "Rusts the iron right out of your blood!";
 		frameNumber = 33;
 		level = 1;
-		health = 7;
+		health = 6;
 		randomPool=0;
 		sound = MSound.giant_bat;
 		traits = new Trait[]{Trait.Wandering};
@@ -1075,7 +1075,7 @@ public class MonsterFactory {
 		description = "You should see the clubbing scene in the mines";
 		frameNumber = 60;
 		level = 3;
-		health = 9;
+		health =  9;
 		randomPool=1;
 		sound = MSound.mummy;
 		traits = new Trait[]{Trait.Fury, Trait.Aggressive};

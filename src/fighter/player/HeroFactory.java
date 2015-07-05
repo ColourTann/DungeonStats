@@ -82,32 +82,32 @@ public class HeroFactory {
 		addClass();
 
 		heroName=SkillType.Most_Holy_Grail_Knight;
-		aHP=8;
+		aHP=9;
 		traits = new Trait[]{Trait.Retribution};
 		aChats=HeroChat.chumpChats;
 		addClass();
 
 		heroName=SkillType.Troubador;
-		aHP=7;
+		aHP=8;
 		traits = new Trait[]{Trait.SpellSword};
 		aChats=HeroChat.chumpChats;
 		addClass();
 
 		heroName=SkillType.Cartomancer;
 		traits = new Trait[]{Trait.Cunning};
-		aHP=7;
+		aHP=8;
 		aChats=HeroChat.chumpChats;
 		addClass();
 
 		heroName=SkillType.Mathemagician;
-		aHP=7;
+		aHP=8;
 		traits = new Trait[]{Trait.Bisect};
 		aChats=HeroChat.chumpChats;
 		addClass();
 
 		heroName=SkillType.Artificer;
 		traits = new Trait[]{Trait.Inventive};
-		aHP=8;
+		aHP=9;
 		aChats=HeroChat.chumpChats;
 		addClass();
 		//		heroName=SkillType.Shapeshifter;

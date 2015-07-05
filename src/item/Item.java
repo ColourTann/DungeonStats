@@ -604,8 +604,8 @@ public class Item {
 		aUnlockLevel=2;
 		aUnlock=UnlockedBy.Curio;
 		aRandomPool=1;
+		aSkills=new Skill[]{Skill.arcane.asLevel(2)};
 		aSound=Sound.equip_great_shield;
-		aTraits=new Trait[]{Trait.Wise};
 		aOffsetX=67; aOffsetY=185;
 		add();
 
@@ -1305,7 +1305,7 @@ public class Item {
 		aUnlock=UnlockedBy.Wood;
 		aRandomPool=0;
 		aSound=Sound.equip_silver_shield;
-		aSkills= new Skill[]{Skill.armour.asLevel(1)};
+		aSkills= new Skill[]{Skill.armour.asLevel(1), Skill.blade.asLevel(2)};
 		aTraits= new Trait[]{Trait.Spikey};
 		aOffsetX=74; aOffsetY=178;
 		add();

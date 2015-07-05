@@ -853,10 +853,10 @@ public class CardFactory {
 
 			cName= "Flagellate";
 			cStrength=1f;
-			cDescription = "+2 hp, -1 hp";
+			cDescription = "+3 hp, -1 hp";
 			cDescSize=22;
 			aActionType=ActionType.Heal;
-			aEffect=2;
+			aEffect=3;
 			addAction();
 			aActionType=ActionType.TakeDamage;
 			aEffect=1;

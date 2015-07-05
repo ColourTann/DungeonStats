@@ -183,7 +183,7 @@ public class Adventure {
 		
 		aTerrainType=TerrainType.stone;
 		aTutorial=true;
-		aBoss="Rat Man";
+		aBoss="Rat King";
 		aBossName="Rat King";
 		aBossChats= new BossChat[]{
 				new BossChat(Trigger.Second_Turn, new BossSpeech[]{
@@ -1232,7 +1232,7 @@ public class Adventure {
 				new TileLocation(Tile.get("mlud"), 2, 0, "Miner", null, new TileDetails(false, true, false, 0, 0, false)),				
 		});
 		aObjectives = new Objective[]{
-				new Objective(ObjectiveType.Defeat, "Miner", 4),
+				new Objective(ObjectiveType.Defeat, "Miner", 3),
 		};
 		aTurnLimit=-1;
 		aMonsters=MonsterFactory.getMonsters(new String[]{"Miner"});
@@ -1737,7 +1737,7 @@ public class Adventure {
 				new BossChat(Trigger.ZerothTurn, new BossSpeech[]{new BossSpeech("Oh god they killed embro! And now they're coming for us!"),}),
 				new BossChat(Trigger.FirstTurn, new BossSpeech[]{new BossSpeech("Come on Ivory League, I don't wanna die!"),}),
 		};
-		aStartingTile=Tile.get("ulr");
+		aStartingTile=Tile.get("uld");
 		aLayout= new DungeonLayout(new TileLocation[]{
 				new TileLocation(Tile.get("lrd"), -1, -1, "", TreasureType.GOLD_COIN, new TileDetails(FountainType.Blindness)),
 				new TileLocation(Tile.get("lru"), -1, 1, "", null, new TileDetails(FountainType.Stupidity)),
@@ -1798,16 +1798,22 @@ public class Adventure {
 		aAdvName=""; aAdvDescription=""; aAdvIcon=""; aAdvX=0; aAdvY=0; aTrophyName="unset"; aTrophyX=0; aTrophyY=0; aDungeons.clear(); aPrereqs=0; aNumUnlocks=1;
 	}	
 	
-	public static String adventureNames(){
+	public static String adventureDetails(){
+		int grandTotal=0;
 		String output="";
 		
 		for(Adventure a: adventures){
+			int totalReward=0;
 			output+=a.name+" [";
 			for(Dungeon d:a.dungeons){
-				output+=d.name+"||";
+				totalReward+=d.reward;
+				output+=d.name+"("+d.reward+")||";
 			}
+			grandTotal+=totalReward;
 			output=output.substring(0, output.length()-2);
-			output+="]\n";
+			
+			output+="]";
+			output += " ("+totalReward+") Total ("+grandTotal+")\n";
 		}
 		
 		return output;

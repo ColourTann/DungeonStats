@@ -31,46 +31,35 @@ public class Dungeon {
 		this.startingTile = startingTile; this.startingHand=startingHand; this.layout=layout;
 		this.objectives=objectives; this.turnLimit=turnLimit; this.turnLimitActions=turnLimitActions;
 		this.monsters=monsters; this.drawRate=drawRate;
-		this.tutorial=tutorial;
-
-		switch(terrainType){
-		case jungle:
-			reward=170;
-			break;
-		case mines:
-			reward=220;
-			break;
-		case stone:
-			reward=120;
-			break;
-		default:
-			break;
-			
-		}
-		
+		this.tutorial=tutorial;		
 	}
 	
 	public void setFinal(boolean b) {
 		switch(terrainType){
 		case jungle:
-			reward=125;
+			reward=b?300:100;
 			break;
 		case mines:
-			reward=160;
+			reward=b?1000:200;
 			break;
 		case stone:
-			reward=80;
+			reward=b?100:20;
 			break;
 		default:
 			break;
 		}
-		if(b)reward*=2;
 		
 		if(name.equals("Squeak squeak")){
 			reward=100;
 		}
+		if(name.equals("Staring Match")){
+			reward=1000;
+		}
+		if(name.equals("Revenge")){
+			reward=4000;
+		}
 		if(name.equals("Rough them up")){
-			reward=500;			
+			reward=999;			
 		}
 		if(name.equals("Operation: Ivory League sucks")){
 			reward=9999;
